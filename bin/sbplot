@@ -1,0 +1,172 @@
+#!/usr/bin/env python
+import json
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib import rc
+import argparse
+import glob
+
+def curvedef(infile,color,label,w):
+
+   if infile == 'all':
+      plotfiles = glob.glob('*.json')
+   else:
+      plotfiles = infile.split(',')
+
+   n = len(plotfiles)
+
+   if color == 'auto':
+      color = ['k','m','r']
+   else:
+      color = color.split(',')
+
+   if w == 'auto':
+      w = [1,1,1]
+   else:
+      w = w.split(',')
+
+   if label == 'auto':
+      label = []
+      for i in range(n):
+         label.append(plotfiles[i].split('.')[0])
+   elif label == 'none':
+      label = np.zeros(n,dtype=str)
+   else:
+      label = label.split(',')
+
+   return plotfiles,color,label,w
+
+
+def addplot(ax,pfile,func,color,label,w,linestyle):
+
+   with open(pfile) as data:
+      dict = json.load(data)
+
+   f  = np.array(dict['f'])
+
+   if func == 'spl':
+      pb = np.array(dict['pbr'])+1j*np.array(dict['pbi'])
+      u = 20*np.log10(abs(pb))
+   elif func == 'phase':
+      pb = np.array(dict['pbr'])+1j*np.array(dict['pbi'])
+      u = np.unwrap(np.angle(pb))
+      if u[-1] < -np.pi:
+         u = u+2*np.pi
+   elif func == 'z':
+      z = np.array(dict['zr'])+1j*np.array(dict['zi'])
+      u = abs(z)
+   elif func == 'zphase':
+      z = np.array(dict['zr'])+1j*np.array(dict['zi'])
+      u = np.unwrap(np.angle(z))
+
+   ax.plot(f,u,color=color,linestyle=linestyle,alpha=0.8,label=label,linewidth=w)
+
+   if label != '':
+      ax.legend()
+
+   return ax
+
+
+def opts():
+
+    parser=argparse.ArgumentParser(description="Speakerbanch Plot")
+
+    parser.add_argument('-i',
+                        help="Input files",
+                        type=str,
+                        default='all')
+
+    parser.add_argument('-f',
+                        help="Function to plot (spl,phase,z,zphase)",
+                        type=str,
+                        default='spl')
+
+    parser.add_argument('-c',
+                        help="Line colors",
+                        type=str,
+                        default='auto')
+
+    parser.add_argument('-w',
+                        help="Line width",
+                        type=str,
+                        default='auto')
+
+    parser.add_argument('-label',
+                        help="Curve label",
+                        type=str,
+                        default='auto')
+
+    parser.add_argument('-ymin',
+                        help="Y-axis minimum SPL",
+                        type=int,
+                        default=0)
+
+    parser.add_argument('-ymax',
+                        help="Y-axis maximum SPL",
+                        type=int,
+                        default=0)
+
+    parser.add_argument('-o',
+                        help="Output file (screen,myfile.png,myfile.pdf)",
+                        type=str,
+                        default='screen')
+    
+    args=parser.parse_args()
+    
+    return args.i,args.f,args.c,args.label,args.ymin,args.ymax,args.o,args.w
+
+infile,func,color,label,ymin,ymax,out,w = opts()
+
+plotfiles,color,label,w = curvedef(infile,color,label,w)
+
+rc('text',usetex=True)
+rc('font',size=20)
+
+TICKS=[20,50,100,200,500,1000,2000]
+LABELS=[r'$20$',r'$50$',r'$100$',r'$200$',r'$500$',
+        r'$1\mathrm{k}$',r'$2\mathrm{k}$']
+
+# plotting
+fig = plt.figure(figsize=(9,6))
+ax = fig.add_subplot(111)
+
+ax.set_xlim([TICKS[0],TICKS[-1]])
+ax.set_xlim([10,4000])
+ax.set_xscale('log')
+ax.set_yscale('linear')
+ax.set_xlabel(r'$f \; \mathrm{(Hz)}$')
+ax.grid(which="both",ls="-",alpha=0.4)
+ax.set_xticks(TICKS)
+ax.set_xticklabels(LABELS)
+
+linestyle = ['-','-','-']
+
+for i,pfile in enumerate(plotfiles):
+   ax = addplot(ax,pfile,func,color[i],label[i],w[i],linestyle[i])
+
+if func == 'spl':
+   if ymin == 0:
+      ymin = 60.0
+   if ymax == 0:
+      ymax = 90.0
+   ax.set_ylabel(r'$\mathrm{SPL \, (dB) \; [2.83V/1m, baffled]}$')
+elif func == 'phase' or func == 'zphase':
+   if ymin == 0:
+      ymin = -2*np.pi
+   if ymax == 0:
+      ymax = 2*np.pi
+   ax.set_ylabel(r'$\mathrm{arg}(p)$')
+elif func == 'z':
+   if ymin == 0:
+      ymin = 0.0
+   if ymax == 0:
+      ymax = 100.0
+   ax.set_ylabel(r'$|Z|~\mathrm{Ohms}$')
+
+ax.set_ylim([ymin,ymax])
+plt.tight_layout(pad=0.3)
+
+if out == 'screen':
+   plt.show()
+else:
+   plt.savefig(out)
