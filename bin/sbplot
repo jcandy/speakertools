@@ -69,32 +69,40 @@ def addplot(ax,pfile,func,color,label,w,linestyle):
 
 def opts():
 
-    parser=argparse.ArgumentParser(description="Speakerbanch Plot")
+    parser=argparse.ArgumentParser(
+       prog="sbplot",
+       description="Speakerbench Plot",
+       epilog="Copyright 2023: Speakerbench Team")
 
     parser.add_argument('-i',
-                        help="Input files",
+                        help="Speakerbench BOX-files (comma separated list)",
                         type=str,
-                        default='all')
+                        default='all',
+                        metavar='FILES')
+
+    parser.add_argument('-c',
+                        help="Line colors (comma separated list)",
+                        type=str,
+                        default='auto',
+                        metavar='COLORS')
+
+    parser.add_argument('-w',
+                        help='Line width (comma separated list)',
+                        type=str,
+                        default='auto',
+                        metavar='WIDTHS')
+
+    parser.add_argument('-label',
+                        help="Curve label (comma separated list)",
+                        type=str,
+                        default='auto',
+                        metavar='LABELS')
 
     parser.add_argument('-f',
                         help="Function to plot (spl,phase,z,zphase)",
                         type=str,
-                        default='spl')
-
-    parser.add_argument('-c',
-                        help="Line colors",
-                        type=str,
-                        default='auto')
-
-    parser.add_argument('-w',
-                        help="Line width",
-                        type=str,
-                        default='auto')
-
-    parser.add_argument('-label',
-                        help="Curve label",
-                        type=str,
-                        default='auto')
+                        default='spl',
+                        metavar='FUNC')
 
     parser.add_argument('-ymin',
                         help="Y-axis minimum SPL",
@@ -109,7 +117,8 @@ def opts():
     parser.add_argument('-o',
                         help="Output file (screen,myfile.png,myfile.pdf)",
                         type=str,
-                        default='screen')
+                        default='screen',
+                        metavar='OUTFILE')
     
     args=parser.parse_args()
     

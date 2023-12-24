@@ -1,7 +1,7 @@
 Alignments
 ==========
 
-To facilitate choosing the box volume and vent tuning, Speakerbench will propose values based on standard 4th-order alignments bass-reflex alignments. These alignments are simply particular types of 4th-order high-pass filters. Following Small :cite:`small:1973c` (Eq. 57) we can write the normalized response function as 
+To facilitate choosing the box volume and vent tuning, Speakerbench will propose values based on standard 4th-order bass-reflex alignments. These alignments are particular types of 4th-order high-pass filters. Following Small :cite:`small:1973c` (Eq. 57) we can write the normalized response function as 
 
 .. math::
    G_\mathrm{H}(s) = \frac{s^4}{s^4 + a_1 s^3 + a_2 s^2 + a_3 s + 1} \; ,
@@ -20,23 +20,27 @@ where
   A_3 &=& a_3^2-2 a_2 \; .
   \end{eqnarray}
 
-.. csv-table:: **Discrete Alignments**
+Butterworth filters have :math:`A_1=A_2=A_3=0` which gives the mathematical feature of *maximal flatness*. We summarize the values for :math:`A_i` below
+
+.. csv-table:: **Discrete Alignments Coefficients**
    :header: Filter, :math:`Q_T`, :math:`A_1`, :math:`A_2`, :math:`A_3`
-   :widths: 20, 6, 5, 5, 5
+   :widths: 16, 6, 5, 5, 5
+   :align: center
 
    Butterworth (B4), 0.383, 0, 0, 0
    Linkwitz-Riley (LR4), 0.354, 0, 2, 0
    Bessel (BL4), 0.316, 1.464, 1.286, 0.976
 
-Since these respective alignments are possible only for a single value of :math:`Q_T`, a procedure is required to extend (or approximate) them for a continuous range of :math:`Q_T`. We use three alignment families which are based on the discrete alignments above.
+Since these respective alignments are possible only for a single value of :math:`Q_T`, a procedure is required to extend (or approximate) them for a continuous range of :math:`Q_T`. We use the following alignment families, which are based on the discrete alignments above.
 
-.. csv-table:: **Speakerbench Continuous Alignments**
-   :header: Abbreviation, Description,:math:`Q_T`
-   :widths: 13, 20, 10 
+.. csv-table:: **Speakerbench Suggested Alignments**
+   :header: Alignment, Description,:math:`Q_T` range
+   :widths: 10, 20, 10 
+   :align: center
 
    C4,     Chebyshev (extension of B4), :math:`0.24 < Q_T < 2.0`
    B4-CA,  B4 with compliance alteration, :math:`0.36 < Q_T < 0.56`
-   B4-AM,  B4 with amplitude matching (QB3),  :math:`0.36 < Q_T < 0.56`
+   B4-AM,  B4 with amplitude matching (same as QB3),  :math:`0.36 < Q_T < 0.56`
    LR4-CA, LR4 with compliance alteration, :math:`0.34 < Q_T < 0.4`
    LR4-AM, LR4 with amplitude matching, :math:`0.34 < Q_T < 0.4`
    BL4-CA, BL4 with compliance alteration, :math:`0.3 < Q_T < 0.36`

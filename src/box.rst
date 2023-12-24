@@ -2,9 +2,9 @@ Box Simulation
 ==============
 
 .. note::
-   **STEP 4**: You can use data created or imported from :doc:`STEP 3 <create>`, or imported from the `Loudspeaker Database <https://loudspeakerdatabase.com>`_.
+   **STEP 4**: You can perform box simulations using data created (or imported) in :doc:`STEP 3 <create>`. You can also import data from the massive `Loudspeaker Database <https://loudspeakerdatabase.com>`_!
 
-The point of measuring the driver and determining the parameters is to be able to simulate (predict) the behavior in a box before it is actually built. Here we offer a powerful box simulator that can calculate various quantities of interest using the advanced parameter model, or with the legacy Thiele-Small model.
+The purpose of measuring the driver impedance (STEP 0) and determining the parameters (STEPS 1-3) is to be able to accurately predict the behavior in a box before it is actually built. Here we offer a powerful box simulator that can calculate various quantities of interest using the advanced parameter model, or with the legacy Thiele-Small model.
 
 To load parameters for a driver into the box simulator, you need to use the :doc:`Datasheet Creator <create>`. When the data visible in the Datasheet Creator generates a JSON output, the data is stored in your local browser memory and automagically shows up in the box simulator. Hereafter you are able to adjust box parameters in the *Settings* tab and simulate the system behavior.
 
