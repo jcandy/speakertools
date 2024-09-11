@@ -28,8 +28,8 @@ where
 
 .. math::
   \begin{eqnarray}
-  A_1 &=& a_1^2-2 a_2 \nonumber \\
-  A_2 &=& a_2^2+2-2 a_1 a_3 \nonumber \\
+  A_1 &=& a_1^2-2 a_2 \; , \\
+  A_2 &=& a_2^2+2-2 a_1 a_3 \; , \\
   A_3 &=& a_3^2-2 a_2 \; .
   \end{eqnarray}
 
@@ -46,10 +46,25 @@ Butterworth filters have :math:`A_1=A_2=A_3=0` which gives the mathematical feat
 
 Since these respective alignments are possible only for a single value of :math:`Q_T`, a procedure is required to extend (or approximate) them for a continuous range of :math:`Q_T`. 
 
-Quasi-alignments
-----------------
+Generalized quasi-alignments
+----------------------------
 
-By relaxing the condition on :math:`A_3` we can obtain a variety of practical quasi-alignments that can be used for any driver. By setting only :math:`(A_1,A_2)` we can solve for the quasi-alignments using the recursive formulae 
+In a design process based on alignments, we consider :math:`(Q_L,Q_T)` as given inputs and :math:`(\alpha,h)` as output parameters to be computed by the alignment. Since we have two free parameters, it follows that we can specify only two of the three values :math:`(A_1,A_2,A_3)`. The approach taken is to relax (i.e., ignore) the condition on :math:`A_3`; that is, we match the behaviour in the pass-band :math:`(A_1)` and mid-band :math:`(A_2)` but **not** the stop-band :math:`(A_3)`.
+
+By defining :math:`\Gamma = \left( \alpha+1+h \right)/h`, we can rewrite these two conditions as
+
+.. math::
+  \begin{eqnarray}
+  A_1 &=& \frac{q^2}{h} - 2\Gamma + \epsilon^2 q^2 h \; , \\
+  A_2 &=& \left( \Gamma + \epsilon q^2 \right)+2-2q^2\left[ 1+\epsilon^2+\epsilon (h+1/h) \right] \; .
+  \end{eqnarray}
+
+where :math:`q = 1/Q_T` and :math:`\epsilon = Q_T/Q_L \ll 1` is a small parameter.
+
+Recursive solution
+------------------
+
+In the limit :math:`\epsilon = 0`, we can solve explicitly for :math:`(\Gamma,h)`, and this uniquely determines :math:`(\alpha,h)`. However, an explicit solution is not possible in the case :math:`\epsilon >  0`. But since :math:`\epsilon` is small, we expect the following recursion to converge in a few iterations: 
 
 .. math::
    \begin{eqnarray}
@@ -57,10 +72,12 @@ By relaxing the condition on :math:`A_3` we can obtain a variety of practical qu
         h &=& \frac{q^2}{2\Gamma + A_1-\epsilon^2 q^2 h}
    \end{eqnarray}
 
-where :math:`q = 1/Q_T` and :math:`\epsilon = Q_T/Q_L \ll 1` is a small parameter. When the iterations converge, we can determine :math:`\alpha` using
+Once converged, we can obtain :math:`\alpha` according to
 
 .. math::
    \alpha = h \Gamma-\left(1+h^2\right)
+
+Finally, note that by setting :math:`\epsilon=0` above we obtain the lossless solution explicitly.
 
 Source code:
 
@@ -94,7 +111,7 @@ Source code:
      print('Qt={:.4f}, h={:.4f}, alpha={:.4f}'.format(Qt,h,alpha))
 
   print()
-  print('QBW4')
+  print('QB4')
   A1=0 ; A2=0
   for Qt in Qtvec:
      h,alpha = quasi(Ql,Qt,A1,A2)
@@ -113,7 +130,7 @@ Output
   Qt=0.3800, h=0.9631, alpha=1.5396
   Qt=0.3900, h=0.9374, alpha=1.4130
 
-  QBW4
+  QB4
   Qt=0.3400, h=1.1493, alpha=2.0109
   Qt=0.3500, h=1.1197, alpha=1.8342
   Qt=0.3600, h=1.0918, alpha=1.6719

@@ -66,7 +66,8 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Alignments</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#basic-theory">Basic theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#quasi-alignments">Quasi-alignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generalized-quasi-alignments">Generalized quasi-alignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recursive-solution">Recursive solution</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">Sample Data</a></li>
@@ -119,8 +120,8 @@ a_3 &amp;=&amp; \frac{h \: Q_L + Q_T}{\sqrt{h} \: Q_L \: Q_T} \; ,\label{eq:box}
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{eqnarray}
-A_1 &amp;=&amp; a_1^2-2 a_2 \nonumber \\
-A_2 &amp;=&amp; a_2^2+2-2 a_1 a_3 \nonumber \\
+A_1 &amp;=&amp; a_1^2-2 a_2 \; , \\
+A_2 &amp;=&amp; a_2^2+2-2 a_1 a_3 \; , \\
 A_3 &amp;=&amp; a_3^2-2 a_2 \; .
 \end{eqnarray}\end{split}\]</div>
 <p>Butterworth filters have <span class="math notranslate nohighlight">\(A_1=A_2=A_3=0\)</span> which gives the mathematical feature of <em>maximal flatness</em>. We summarize the values for <span class="math notranslate nohighlight">\(A_i\)</span> below</p>
@@ -164,17 +165,29 @@ A_3 &amp;=&amp; a_3^2-2 a_2 \; .
 </table>
 <p>Since these respective alignments are possible only for a single value of <span class="math notranslate nohighlight">\(Q_T\)</span>, a procedure is required to extend (or approximate) them for a continuous range of <span class="math notranslate nohighlight">\(Q_T\)</span>.</p>
 </section>
-<section id="quasi-alignments">
-<h2>Quasi-alignments<a class="headerlink" href="#quasi-alignments" title="Link to this heading"></a></h2>
-<p>By relaxing the condition on <span class="math notranslate nohighlight">\(A_3\)</span> we can obtain a variety of practical quasi-alignments that can be used for any driver. By setting only <span class="math notranslate nohighlight">\((A_1,A_2)\)</span> we can solve for the quasi-alignments using the recursive formulae</p>
+<section id="generalized-quasi-alignments">
+<h2>Generalized quasi-alignments<a class="headerlink" href="#generalized-quasi-alignments" title="Link to this heading"></a></h2>
+<p>In a design process based on alignments, we consider <span class="math notranslate nohighlight">\((Q_L,Q_T)\)</span> as given inputs and <span class="math notranslate nohighlight">\((\alpha,h)\)</span> as output parameters to be computed by the alignment. Since we have two free parameters, it follows that we can specify only two of the three values <span class="math notranslate nohighlight">\((A_1,A_2,A_3)\)</span>. The approach taken is to relax (i.e., ignore) the condition on <span class="math notranslate nohighlight">\(A_3\)</span>; that is, we match the behaviour in the pass-band <span class="math notranslate nohighlight">\((A_1)\)</span> and mid-band <span class="math notranslate nohighlight">\((A_2)\)</span> but <strong>not</strong> the stop-band <span class="math notranslate nohighlight">\((A_3)\)</span>.</p>
+<p>By defining <span class="math notranslate nohighlight">\(\Gamma = \left( \alpha+1+h \right)/h\)</span>, we can rewrite these two conditions as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray}
+A_1 &amp;=&amp; \frac{q^2}{h} - 2\Gamma + \epsilon^2 q^2 h \; , \\
+A_2 &amp;=&amp; \left( \Gamma + \epsilon q^2 \right)+2-2q^2\left[ 1+\epsilon^2+\epsilon (h+1/h) \right] \; .
+\end{eqnarray}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(q = 1/Q_T\)</span> and <span class="math notranslate nohighlight">\(\epsilon = Q_T/Q_L \ll 1\)</span> is a small parameter.</p>
+</section>
+<section id="recursive-solution">
+<h2>Recursive solution<a class="headerlink" href="#recursive-solution" title="Link to this heading"></a></h2>
+<p>In the limit <span class="math notranslate nohighlight">\(\epsilon = 0\)</span>, we can solve explicitly for <span class="math notranslate nohighlight">\((\Gamma,h)\)</span>, and this uniquely determines <span class="math notranslate nohighlight">\((\alpha,h)\)</span>. However, an explicit solution is not possible in the case <span class="math notranslate nohighlight">\(\epsilon &gt;  0\)</span>. But since <span class="math notranslate nohighlight">\(\epsilon\)</span> is small, we expect the following recursion to converge in a few iterations:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{eqnarray}
 \Gamma &amp;=&amp; -\epsilon q^2 + \sqrt{A_2-2+2q^2 \left[ 1+\epsilon^2+\epsilon\left(h+1/h\right)\right]}\\
      h &amp;=&amp; \frac{q^2}{2\Gamma + A_1-\epsilon^2 q^2 h}
 \end{eqnarray}\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(q = 1/Q_T\)</span> and <span class="math notranslate nohighlight">\(\epsilon = Q_T/Q_L \ll 1\)</span> is a small parameter. When the iterations converge, we can determine <span class="math notranslate nohighlight">\(\alpha\)</span> using</p>
+<p>Once converged, we can obtain <span class="math notranslate nohighlight">\(\alpha\)</span> according to</p>
 <div class="math notranslate nohighlight">
 \[\alpha = h \Gamma-\left(1+h^2\right)\]</div>
+<p>Finally, note that by setting <span class="math notranslate nohighlight">\(\epsilon=0\)</span> above we obtain the lossless solution explicitly.</p>
 <p>Source code:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -204,7 +217,7 @@ A_3 &amp;=&amp; a_3^2-2 a_2 \; .
    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Qt=</span><span class="si">{:.4f}</span><span class="s1">, h=</span><span class="si">{:.4f}</span><span class="s1">, alpha=</span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Qt</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">alpha</span><span class="p">))</span>
 
 <span class="nb">print</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;QBW4&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;QB4&#39;</span><span class="p">)</span>
 <span class="n">A1</span><span class="o">=</span><span class="mi">0</span> <span class="p">;</span> <span class="n">A2</span><span class="o">=</span><span class="mi">0</span>
 <span class="k">for</span> <span class="n">Qt</span> <span class="ow">in</span> <span class="n">Qtvec</span><span class="p">:</span>
    <span class="n">h</span><span class="p">,</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">quasi</span><span class="p">(</span><span class="n">Ql</span><span class="p">,</span><span class="n">Qt</span><span class="p">,</span><span class="n">A1</span><span class="p">,</span><span class="n">A2</span><span class="p">)</span>
@@ -220,7 +233,7 @@ A_3 &amp;=&amp; a_3^2-2 a_2 \; .
 <span class="n">Qt</span><span class="o">=</span><span class="mf">0.3800</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.9631</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.5396</span>
 <span class="n">Qt</span><span class="o">=</span><span class="mf">0.3900</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.9374</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.4130</span>
 
-<span class="n">QBW4</span>
+<span class="n">QB4</span>
 <span class="n">Qt</span><span class="o">=</span><span class="mf">0.3400</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1.1493</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">2.0109</span>
 <span class="n">Qt</span><span class="o">=</span><span class="mf">0.3500</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1.1197</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.8342</span>
 <span class="n">Qt</span><span class="o">=</span><span class="mf">0.3600</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1.0918</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.6719</span>
