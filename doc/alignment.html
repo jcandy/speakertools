@@ -7,7 +7,7 @@
   <title>Alignments &mdash; Speakerbench</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="_static/contentui.css" />
+      <link rel="stylesheet" type="text/css" href="_static/contentui.css?v=4cf5b151" />
 
   
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -20,7 +20,7 @@
         <script src="_static/documentation_options.js?v=5929fcd5"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="_static/contentui.js"></script>
+        <script src="_static/contentui.js?v=9ee86694"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -188,58 +188,56 @@ A_2 &amp;=&amp; \left( \Gamma + \epsilon q^2 \right)+2-2q^2\left[ 1+\epsilon^2+\
 <div class="math notranslate nohighlight">
 \[\alpha = h \Gamma-\left(1+h^2\right)\]</div>
 <p>Finally, note that by setting <span class="math notranslate nohighlight">\(\epsilon=0\)</span> above we obtain the lossless solution explicitly.</p>
-<p>Source code:</p>
+<p><strong>Source code</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="k">def</span> <span class="nf">quasi</span><span class="p">(</span><span class="n">Ql</span><span class="p">,</span><span class="n">Qt</span><span class="p">,</span><span class="n">A1</span><span class="p">,</span><span class="n">A2</span><span class="p">):</span>
 
-  <span class="n">q</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">Qt</span>
-  <span class="n">eps</span> <span class="o">=</span> <span class="n">Qt</span><span class="o">/</span><span class="n">Ql</span>
+   <span class="n">q</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">Qt</span>
+   <span class="n">eps</span> <span class="o">=</span> <span class="n">Qt</span><span class="o">/</span><span class="n">Ql</span>
 
-  <span class="c1"># starting values</span>
-  <span class="n">h</span> <span class="o">=</span> <span class="mi">1</span>
-  <span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span>
-  <span class="c1"># iterate (should add convergence check)</span>
-  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
-     <span class="n">gamma</span> <span class="o">=</span> <span class="o">-</span><span class="n">eps</span><span class="o">*</span><span class="n">q</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">A2</span><span class="o">-</span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">q</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">eps</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">eps</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">h</span><span class="o">+</span><span class="n">h</span><span class="p">)))</span>
-     <span class="n">h</span> <span class="o">=</span> <span class="n">q</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">gamma</span><span class="o">+</span><span class="n">A1</span><span class="o">-</span><span class="n">eps</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="o">*</span><span class="n">q</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-     <span class="n">alpha</span> <span class="o">=</span> <span class="n">h</span><span class="o">*</span><span class="n">gamma</span><span class="o">-</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+   <span class="c1"># starting values</span>
+   <span class="n">h</span> <span class="o">=</span> <span class="mi">1</span>
+   <span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span>
 
-  <span class="k">return</span> <span class="n">h</span><span class="p">,</span><span class="n">alpha</span>
+   <span class="c1"># iterate (should add convergence check)</span>
+   <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+      <span class="n">gamma</span> <span class="o">=</span> <span class="o">-</span><span class="n">eps</span><span class="o">*</span><span class="n">q</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">A2</span><span class="o">-</span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">q</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">eps</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">eps</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">h</span><span class="o">+</span><span class="n">h</span><span class="p">)))</span>
+      <span class="n">h</span> <span class="o">=</span> <span class="n">q</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">gamma</span><span class="o">+</span><span class="n">A1</span><span class="o">-</span><span class="n">eps</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="o">*</span><span class="n">q</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+      <span class="n">alpha</span> <span class="o">=</span> <span class="n">h</span><span class="o">*</span><span class="n">gamma</span><span class="o">-</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+   <span class="k">return</span> <span class="n">h</span><span class="p">,</span><span class="n">alpha</span>
 
 <span class="n">Ql</span><span class="o">=</span><span class="mi">10</span>
-<span class="n">Qtvec</span><span class="o">=</span><span class="p">[</span><span class="mf">0.34</span><span class="p">,</span><span class="mf">0.35</span><span class="p">,</span><span class="mf">0.36</span><span class="p">,</span><span class="mf">0.37</span><span class="p">,</span><span class="mf">0.38</span><span class="p">,</span><span class="mf">0.39</span><span class="p">]</span>
+<span class="n">Qtvec</span><span class="o">=</span><span class="p">[</span><span class="mf">0.31</span><span class="p">,</span><span class="mf">0.32</span><span class="p">,</span><span class="mf">0.33</span><span class="p">,</span><span class="mf">0.34</span><span class="p">,</span><span class="mf">0.35</span><span class="p">,</span><span class="mf">0.36</span><span class="p">,</span><span class="mf">0.37</span><span class="p">,</span><span class="mf">0.38</span><span class="p">,</span><span class="mf">0.39</span><span class="p">,</span><span class="mf">0.40</span><span class="p">]</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;QLR4&#39;</span><span class="p">)</span>
-<span class="n">A1</span><span class="o">=</span><span class="mi">0</span> <span class="p">;</span> <span class="n">A2</span><span class="o">=</span><span class="mi">2</span>
-<span class="k">for</span> <span class="n">Qt</span> <span class="ow">in</span> <span class="n">Qtvec</span><span class="p">:</span>
-   <span class="n">h</span><span class="p">,</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">quasi</span><span class="p">(</span><span class="n">Ql</span><span class="p">,</span><span class="n">Qt</span><span class="p">,</span><span class="n">A1</span><span class="p">,</span><span class="n">A2</span><span class="p">)</span>
-   <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Qt=</span><span class="si">{:.4f}</span><span class="s1">, h=</span><span class="si">{:.4f}</span><span class="s1">, alpha=</span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Qt</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">alpha</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;            QBL4           QLR4           QB4&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39; Qt      h    alpha     h    alpha     h    alpha &#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-----  -------------  -------------  -------------&#39;</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;QB4&#39;</span><span class="p">)</span>
-<span class="n">A1</span><span class="o">=</span><span class="mi">0</span> <span class="p">;</span> <span class="n">A2</span><span class="o">=</span><span class="mi">0</span>
 <span class="k">for</span> <span class="n">Qt</span> <span class="ow">in</span> <span class="n">Qtvec</span><span class="p">:</span>
-   <span class="n">h</span><span class="p">,</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">quasi</span><span class="p">(</span><span class="n">Ql</span><span class="p">,</span><span class="n">Qt</span><span class="p">,</span><span class="n">A1</span><span class="p">,</span><span class="n">A2</span><span class="p">)</span>
-   <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Qt=</span><span class="si">{:.4f}</span><span class="s1">, h=</span><span class="si">{:.4f}</span><span class="s1">, alpha=</span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Qt</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">alpha</span><span class="p">))</span>
+   <span class="n">h1</span><span class="p">,</span><span class="n">alpha1</span> <span class="o">=</span> <span class="n">quasi</span><span class="p">(</span><span class="n">Ql</span><span class="p">,</span><span class="n">Qt</span><span class="p">,</span><span class="mf">1.464</span><span class="p">,</span><span class="mf">1.286</span><span class="p">)</span>
+   <span class="n">h2</span><span class="p">,</span><span class="n">alpha2</span> <span class="o">=</span> <span class="n">quasi</span><span class="p">(</span><span class="n">Ql</span><span class="p">,</span><span class="n">Qt</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">2.0</span><span class="p">)</span>
+   <span class="n">h3</span><span class="p">,</span><span class="n">alpha3</span> <span class="o">=</span> <span class="n">quasi</span><span class="p">(</span><span class="n">Ql</span><span class="p">,</span><span class="n">Qt</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span>
+
+   <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.3f}</span><span class="s1">  </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1">  </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1">  </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1">  &#39;</span>
+         <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Qt</span><span class="p">,</span><span class="n">h1</span><span class="p">,</span><span class="n">alpha1</span><span class="p">,</span><span class="n">h2</span><span class="p">,</span><span class="n">alpha2</span><span class="p">,</span><span class="n">h3</span><span class="p">,</span><span class="n">alpha3</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>Output</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">QLR4</span>
-<span class="n">Qt</span><span class="o">=</span><span class="mf">0.3400</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1.0808</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">2.1629</span>
-<span class="n">Qt</span><span class="o">=</span><span class="mf">0.3500</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1.0489</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.9869</span>
-<span class="n">Qt</span><span class="o">=</span><span class="mf">0.3600</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1.0188</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.8253</span>
-<span class="n">Qt</span><span class="o">=</span><span class="mf">0.3700</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.9902</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.6767</span>
-<span class="n">Qt</span><span class="o">=</span><span class="mf">0.3800</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.9631</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.5396</span>
-<span class="n">Qt</span><span class="o">=</span><span class="mf">0.3900</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.9374</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.4130</span>
-
-<span class="n">QB4</span>
-<span class="n">Qt</span><span class="o">=</span><span class="mf">0.3400</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1.1493</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">2.0109</span>
-<span class="n">Qt</span><span class="o">=</span><span class="mf">0.3500</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1.1197</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.8342</span>
-<span class="n">Qt</span><span class="o">=</span><span class="mf">0.3600</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1.0918</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.6719</span>
-<span class="n">Qt</span><span class="o">=</span><span class="mf">0.3700</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1.0656</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.5225</span>
-<span class="n">Qt</span><span class="o">=</span><span class="mf">0.3800</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1.0409</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.3846</span>
-<span class="n">Qt</span><span class="o">=</span><span class="mf">0.3900</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1.0175</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.2571</span>
+<p><strong>Output</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>           <span class="n">QBL4</span>           <span class="n">QLR4</span>           <span class="n">QB4</span>
+ <span class="n">Qt</span>      <span class="n">h</span>    <span class="n">alpha</span>     <span class="n">h</span>    <span class="n">alpha</span>     <span class="n">h</span>    <span class="n">alpha</span>
+<span class="o">-----</span>  <span class="o">-------------</span>  <span class="o">-------------</span>  <span class="o">-------------</span>
+<span class="mf">0.310</span>  <span class="mf">1.0341</span> <span class="mf">2.3819</span>  <span class="mf">1.1887</span> <span class="mf">2.7969</span>  <span class="mf">1.2505</span> <span class="mf">2.6469</span>
+<span class="mf">0.320</span>  <span class="mf">0.9972</span> <span class="mf">2.1634</span>  <span class="mf">1.1505</span> <span class="mf">2.5657</span>  <span class="mf">1.2146</span> <span class="mf">2.4150</span>
+<span class="mf">0.330</span>  <span class="mf">0.9626</span> <span class="mf">1.9648</span>  <span class="mf">1.1146</span> <span class="mf">2.3551</span>  <span class="mf">1.1809</span> <span class="mf">2.2038</span>
+<span class="mf">0.340</span>  <span class="mf">0.9300</span> <span class="mf">1.7838</span>  <span class="mf">1.0808</span> <span class="mf">2.1629</span>  <span class="mf">1.1493</span> <span class="mf">2.0109</span>
+<span class="mf">0.350</span>  <span class="mf">0.8994</span> <span class="mf">1.6185</span>  <span class="mf">1.0489</span> <span class="mf">1.9869</span>  <span class="mf">1.1197</span> <span class="mf">1.8342</span>
+<span class="mf">0.360</span>  <span class="mf">0.8704</span> <span class="mf">1.4670</span>  <span class="mf">1.0188</span> <span class="mf">1.8253</span>  <span class="mf">1.0918</span> <span class="mf">1.6719</span>
+<span class="mf">0.370</span>  <span class="mf">0.8431</span> <span class="mf">1.3279</span>  <span class="mf">0.9902</span> <span class="mf">1.6767</span>  <span class="mf">1.0656</span> <span class="mf">1.5225</span>
+<span class="mf">0.380</span>  <span class="mf">0.8172</span> <span class="mf">1.1999</span>  <span class="mf">0.9631</span> <span class="mf">1.5396</span>  <span class="mf">1.0409</span> <span class="mf">1.3846</span>
+<span class="mf">0.390</span>  <span class="mf">0.7927</span> <span class="mf">1.0819</span>  <span class="mf">0.9374</span> <span class="mf">1.4130</span>  <span class="mf">1.0175</span> <span class="mf">1.2571</span>
+<span class="mf">0.400</span>  <span class="mf">0.7694</span> <span class="mf">0.9727</span>  <span class="mf">0.9130</span> <span class="mf">1.2957</span>  <span class="mf">0.9955</span> <span class="mf">1.1389</span>
 </pre></div>
 </div>
 </section>

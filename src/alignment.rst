@@ -79,7 +79,7 @@ Once converged, we can obtain :math:`\alpha` according to
 
 Finally, note that by setting :math:`\epsilon=0` above we obtain the lossless solution explicitly.
 
-Source code:
+**Source code**
 
 .. code-block:: python
 		
@@ -87,57 +87,56 @@ Source code:
 
   def quasi(Ql,Qt,A1,A2):
 
-    q = 1/Qt
-    eps = Qt/Ql
+     q = 1/Qt
+     eps = Qt/Ql
 
-    # starting values
-    h = 1
-    alpha = 1
-    # iterate (should add convergence check)
-    for i in range(4):
-       gamma = -eps*q**2+np.sqrt(A2-2+2*q**2*(1+eps**2+eps*(1/h+h)))
-       h = q**2/(2*gamma+A1-eps**2*h*q**2)
-       alpha = h*gamma-(1+h**2)
+     # starting values
+     h = 1
+     alpha = 1
+
+     # iterate (should add convergence check)
+     for i in range(4):
+        gamma = -eps*q**2+np.sqrt(A2-2+2*q**2*(1+eps**2+eps*(1/h+h)))
+        h = q**2/(2*gamma+A1-eps**2*h*q**2)
+        alpha = h*gamma-(1+h**2)
       
-    return h,alpha
+     return h,alpha
 
   Ql=10
-  Qtvec=[0.34,0.35,0.36,0.37,0.38,0.39]
+  Qtvec=[0.31,0.32,0.33,0.34,0.35,0.36,0.37,0.38,0.39,0.40]
 
-  print('QLR4')
-  A1=0 ; A2=2
+  print('            QBL4           QLR4           QB4')
+  print(' Qt      h    alpha     h    alpha     h    alpha ')
+  print('-----  -------------  -------------  -------------')  
+
   for Qt in Qtvec:
-     h,alpha = quasi(Ql,Qt,A1,A2)
-     print('Qt={:.4f}, h={:.4f}, alpha={:.4f}'.format(Qt,h,alpha))
+     h1,alpha1 = quasi(Ql,Qt,1.464,1.286)
+     h2,alpha2 = quasi(Ql,Qt,0.0,2.0)
+     h3,alpha3 = quasi(Ql,Qt,0.0,0.0)
 
-  print()
-  print('QB4')
-  A1=0 ; A2=0
-  for Qt in Qtvec:
-     h,alpha = quasi(Ql,Qt,A1,A2)
-     print('Qt={:.4f}, h={:.4f}, alpha={:.4f}'.format(Qt,h,alpha))
+     print('{:.3f}  {:.4f} {:.4f}  {:.4f} {:.4f}  {:.4f} {:.4f}  '
+           .format(Qt,h1,alpha1,h2,alpha2,h3,alpha3))
 
 
-Output
+**Output**
 
 ::
 
-  QLR4
-  Qt=0.3400, h=1.0808, alpha=2.1629
-  Qt=0.3500, h=1.0489, alpha=1.9869
-  Qt=0.3600, h=1.0188, alpha=1.8253
-  Qt=0.3700, h=0.9902, alpha=1.6767
-  Qt=0.3800, h=0.9631, alpha=1.5396
-  Qt=0.3900, h=0.9374, alpha=1.4130
+             QBL4           QLR4           QB4
+   Qt      h    alpha     h    alpha     h    alpha 
+  -----  -------------  -------------  -------------
+  0.310  1.0341 2.3819  1.1887 2.7969  1.2505 2.6469  
+  0.320  0.9972 2.1634  1.1505 2.5657  1.2146 2.4150  
+  0.330  0.9626 1.9648  1.1146 2.3551  1.1809 2.2038  
+  0.340  0.9300 1.7838  1.0808 2.1629  1.1493 2.0109  
+  0.350  0.8994 1.6185  1.0489 1.9869  1.1197 1.8342  
+  0.360  0.8704 1.4670  1.0188 1.8253  1.0918 1.6719  
+  0.370  0.8431 1.3279  0.9902 1.6767  1.0656 1.5225  
+  0.380  0.8172 1.1999  0.9631 1.5396  1.0409 1.3846  
+  0.390  0.7927 1.0819  0.9374 1.4130  1.0175 1.2571  
+  0.400  0.7694 0.9727  0.9130 1.2957  0.9955 1.1389  
 
-  QB4
-  Qt=0.3400, h=1.1493, alpha=2.0109
-  Qt=0.3500, h=1.1197, alpha=1.8342
-  Qt=0.3600, h=1.0918, alpha=1.6719
-  Qt=0.3700, h=1.0656, alpha=1.5225
-  Qt=0.3800, h=1.0409, alpha=1.3846
-  Qt=0.3900, h=1.0175, alpha=1.2571
-   
+
 ..
    Speakerbench Suggested Alignments
    :header: Alignment, Description,:math:`Q_T` range
