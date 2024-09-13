@@ -49,13 +49,13 @@ Since these respective alignments are possible only for a single value of :math:
 Generalized quasi-alignments
 ----------------------------
 
-In a design process based on alignments, we consider :math:`(Q_L,Q_T)` as given inputs and :math:`(\alpha,h)` as output parameters to be computed by the alignment. Since we have two free parameters, it follows that we can specify only two of the three values :math:`(A_1,A_2,A_3)`. The approach taken is to relax (i.e., ignore) the condition on :math:`A_3`; that is, we match the behaviour in the pass-band :math:`(A_1)` and mid-band :math:`(A_2)` but **not** the stop-band :math:`(A_3)`.
+In a design process based on alignments, we consider :math:`(Q_L,Q_T)` as given inputs and :math:`(\alpha,h)` as output parameters to be computed by the alignment. Since we have two free parameters, it follows that we can specify only two of the three values :math:`(A_1,A_2,A_3)`. The approach taken is to relax (i.e., ignore) the condition on :math:`A_3`; that is, we match the behaviour in the pass-band :math:`(A_1)` and mid-band :math:`(A_2)` but **not** the stop-band :math:`(A_3)`. This is described in more detail for so-called QB3 (although we prefer QB4 because the order of the filter is 4) :cite:`benson:1993` (page 188).
 
-By defining :math:`\Gamma = \left( \alpha+1+h \right)/h`, we can rewrite these two conditions as
+By defining :math:`G = \left( \alpha+1+h^2 \right)/h`, we can rewrite these two conditions as
 
 .. math::
   \begin{eqnarray}
-  A_1 &=& \frac{q^2}{h} - 2\Gamma + \epsilon^2 q^2 h \; , \\
+  A_1 &=& \frac{q^2}{h} - 2G + \epsilon^2 q^2 h \; , \\
   A_2 &=& \left( \Gamma + \epsilon q^2 \right)+2-2q^2\left[ 1+\epsilon^2+\epsilon (h+1/h) \right] \; .
   \end{eqnarray}
 
@@ -64,18 +64,18 @@ where :math:`q = 1/Q_T` and :math:`\epsilon = Q_T/Q_L \ll 1` is a small paramete
 Recursive solution
 ------------------
 
-In the limit :math:`\epsilon = 0`, we can solve explicitly for :math:`(\Gamma,h)`, and this uniquely determines :math:`(\alpha,h)`. However, an explicit solution is not possible in the case :math:`\epsilon >  0`. But since :math:`\epsilon` is small, we expect the following recursion to converge in a few iterations: 
+In the limit :math:`\epsilon = 0`, we can solve explicitly for :math:`(G,h)`, and this uniquely determines :math:`(\alpha,h)`. However, an explicit solution is not possible in the case :math:`\epsilon >  0`. But since :math:`\epsilon` is small, we expect the following recursion to converge in a few iterations: 
 
 .. math::
    \begin{eqnarray}
-   \Gamma &=& -\epsilon q^2 + \sqrt{A_2-2+2q^2 \left[ 1+\epsilon^2+\epsilon\left(h+1/h\right)\right]}\\
-        h &=& \frac{q^2}{2\Gamma + A_1-\epsilon^2 q^2 h}
+   G &=& -\epsilon q^2 + \sqrt{A_2-2+2q^2 \left[ 1+\epsilon^2+\epsilon\left(h+1/h\right)\right]}\\
+        h &=& \frac{q^2}{2G + A_1-\epsilon^2 q^2 h}
    \end{eqnarray}
 
 Once converged, we can obtain :math:`\alpha` according to
 
 .. math::
-   \alpha = h \Gamma-\left(1+h^2\right)
+   \alpha = Gh-\left(1+h^2\right)
 
 Finally, note that by setting :math:`\epsilon=0` above we obtain the lossless solution explicitly.
 
@@ -136,18 +136,3 @@ Finally, note that by setting :math:`\epsilon=0` above we obtain the lossless so
   0.390  0.7927 1.0819  0.9374 1.4130  1.0175 1.2571  
   0.400  0.7694 0.9727  0.9130 1.2957  0.9955 1.1389  
 
-
-..
-   Speakerbench Suggested Alignments
-   :header: Alignment, Description,:math:`Q_T` range
-   :widths: 10, 20, 10 
-   :align: center
-
-   C4,     Chebyshev (extension of B4), :math:`0.24 < Q_T < 2.0`
-   B4-CA,  B4 with compliance alteration, :math:`0.36 < Q_T < 0.56`
-   B4-AM,  B4 with amplitude matching (same as QB3),  :math:`0.36 < Q_T < 0.56`
-   LR4-CA, LR4 with compliance alteration, :math:`0.34 < Q_T < 0.4`
-   LR4-AM, LR4 with amplitude matching, :math:`0.34 < Q_T < 0.4`
-   BL4-CA, BL4 with compliance alteration, :math:`0.3 < Q_T < 0.36`
-   BL4-AM, BL4 with amplitude matching, :math:`0.3 < Q_T < 0.36`
-   
