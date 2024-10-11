@@ -21,7 +21,7 @@ Speakerbench workflows are separated into 4 apps:
 
 **Create**
    Create a standard driver datasheet
-   
+
 **Box**
    Simulate the system response in an enclosure
 
@@ -29,16 +29,19 @@ Speakerbench doesn't do the actual impedance measurements for you; rather, you w
 
 .. toctree::
    quickstart
+   :hidden:
 
 .. toctree::
    :caption: Impedance
+   :hidden:
 
    measure
    collect
    fit
 
 .. toctree::
-   :caption: Box Modeling 
+   :caption: Box Modeling
+   :hidden:
 
    create
    box
