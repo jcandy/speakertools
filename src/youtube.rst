@@ -1,6 +1,12 @@
 YouTube
 =======
 
+- `STEP 0: Impedance Measurement (14:09)`_.
+- `STEP 1: Impedance Data Object (5:58)`_.
+- `STEP 2: Advanced Model Fit (8:10)`_.
+- `STEP 3: Create Datasheet (7:40)`_.
+- `STEP 4: Box Simulation (11:55)`_.
+
 We have youtube videos that address the relevant steps:
 
 STEP 0: Impedance Measurement (14:09)
