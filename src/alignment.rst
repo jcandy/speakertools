@@ -1,10 +1,15 @@
+.. meta::
+   :author: Jeff Candy and Claus Futtrup
+   :keywords: speakerbench,loudspeaker,driver,parameter,json,design,calculator,impedance,measurement,simulation,software,free,audio
+   :description: Speakerbench Documentation
+
 Alignments
 ==========
 
 Basic theory
 ------------
 
-To facilitate choosing the box volume and vent tuning, Speakerbench will propose values based on standard 4th-order bass-reflex alignments. These alignments are particular types of 4th-order high-pass filters. Following Small :cite:`small:1973c` (Eq. 57) we can write the normalized response function as 
+To facilitate choosing the box volume and vent tuning, Speakerbench will propose values based on standard 4th-order bass-reflex alignments. These alignments are particular types of 4th-order high-pass filters. Following Small :cite:`small:1973c` (Eq. 57) we can write the normalized response function as
 
 .. math::
    G_\mathrm{H}(s) = \frac{s^4}{s^4 + a_1 s^3 + a_2 s^2 + a_3 s + 1} \; ,
@@ -44,7 +49,7 @@ Butterworth filters have :math:`A_1=A_2=A_3=0` which gives the mathematical feat
    Linkwitz-Riley (LR4), 0.354, 0, 2, 0
    Bessel (BL4), 0.316, 1.464, 1.286, 0.976
 
-Since these respective alignments are possible only for a single value of :math:`Q_T`, a procedure is required to extend (or approximate) them for a continuous range of :math:`Q_T`. 
+Since these respective alignments are possible only for a single value of :math:`Q_T`, a procedure is required to extend (or approximate) them for a continuous range of :math:`Q_T`.
 
 Generalized quasi-alignments
 ----------------------------
@@ -64,7 +69,7 @@ where :math:`q = 1/Q_T` and :math:`\epsilon = Q_T/Q_L \ll 1` is a small paramete
 Recursive solution
 ------------------
 
-In the limit :math:`\epsilon = 0`, we can solve explicitly for :math:`(G,h)`, and this uniquely determines :math:`(\alpha,h)`. However, an explicit solution is not possible in the case :math:`\epsilon >  0`. But since :math:`\epsilon` is small, we expect the following recursion to converge in a few iterations: 
+In the limit :math:`\epsilon = 0`, we can solve explicitly for :math:`(G,h)`, and this uniquely determines :math:`(\alpha,h)`. However, an explicit solution is not possible in the case :math:`\epsilon >  0`. But since :math:`\epsilon` is small, we expect the following recursion to converge in a few iterations:
 
 .. math::
    \begin{eqnarray}
@@ -99,7 +104,7 @@ Finally, note that by setting :math:`\epsilon=0` above we obtain the lossless so
         gamma = -eps*q**2+np.sqrt(A2-2+2*q**2*(1+eps**2+eps*(1/h+h)))
         h = q**2/(2*gamma+A1-eps**2*h*q**2)
         alpha = h*gamma-(1+h**2)
-      
+
      return h,alpha
 
   Ql=10
@@ -107,7 +112,7 @@ Finally, note that by setting :math:`\epsilon=0` above we obtain the lossless so
 
   print('            QBL4           QLR4           QB4')
   print(' Qt      h    alpha     h    alpha     h    alpha ')
-  print('-----  -------------  -------------  -------------')  
+  print('-----  -------------  -------------  -------------')
 
   for Qt in Qtvec:
      h1,alpha1 = quasi(Ql,Qt,1.464,1.286)
@@ -123,16 +128,16 @@ Finally, note that by setting :math:`\epsilon=0` above we obtain the lossless so
 ::
 
              QBL4           QLR4           QB4
-   Qt      h    alpha     h    alpha     h    alpha 
+   Qt      h    alpha     h    alpha     h    alpha
   -----  -------------  -------------  -------------
-  0.310  1.0341 2.3819  1.1887 2.7969  1.2505 2.6469  
-  0.320  0.9972 2.1634  1.1505 2.5657  1.2146 2.4150  
-  0.330  0.9626 1.9648  1.1146 2.3551  1.1809 2.2038  
-  0.340  0.9300 1.7838  1.0808 2.1629  1.1493 2.0109  
-  0.350  0.8994 1.6185  1.0489 1.9869  1.1197 1.8342  
-  0.360  0.8704 1.4670  1.0188 1.8253  1.0918 1.6719  
-  0.370  0.8431 1.3279  0.9902 1.6767  1.0656 1.5225  
-  0.380  0.8172 1.1999  0.9631 1.5396  1.0409 1.3846  
-  0.390  0.7927 1.0819  0.9374 1.4130  1.0175 1.2571  
-  0.400  0.7694 0.9727  0.9130 1.2957  0.9955 1.1389  
+  0.310  1.0341 2.3819  1.1887 2.7969  1.2505 2.6469
+  0.320  0.9972 2.1634  1.1505 2.5657  1.2146 2.4150
+  0.330  0.9626 1.9648  1.1146 2.3551  1.1809 2.2038
+  0.340  0.9300 1.7838  1.0808 2.1629  1.1493 2.0109
+  0.350  0.8994 1.6185  1.0489 1.9869  1.1197 1.8342
+  0.360  0.8704 1.4670  1.0188 1.8253  1.0918 1.6719
+  0.370  0.8431 1.3279  0.9902 1.6767  1.0656 1.5225
+  0.380  0.8172 1.1999  0.9631 1.5396  1.0409 1.3846
+  0.390  0.7927 1.0819  0.9374 1.4130  1.0175 1.2571
+  0.400  0.7694 0.9727  0.9130 1.2957  0.9955 1.1389
 

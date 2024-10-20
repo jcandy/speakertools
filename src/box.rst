@@ -1,3 +1,8 @@
+.. meta::
+   :author: Jeff Candy and Claus Futtrup
+   :keywords: speakerbench,loudspeaker,driver,parameter,json,design,calculator,impedance,measurement,simulation,software,free,audio
+   :description: Speakerbench Documentation
+
 Box Simulation
 ==============
 
@@ -14,7 +19,7 @@ Enclosure Options
 The box models supported by Speakerbench are:
 
 **Simple**
-    Beranek-Mellow transmission matrix formulation :cite:`beranek:2012` with a simple (classic) compliance model for the box matrix. Damping material settings are ignored. 
+    Beranek-Mellow transmission matrix formulation :cite:`beranek:2012` with a simple (classic) compliance model for the box matrix. Damping material settings are ignored.
 
 **Futtrup**
    Low-frequency circuit model for enclosures with added damping material as described in :cite:`futtrup:2011`. In the no-fill limit this still includes acoustic mass effects.

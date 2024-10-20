@@ -1,12 +1,17 @@
+.. meta::
+   :author: Jeff Candy and Claus Futtrup
+   :keywords: speakerbench,loudspeaker,driver,parameter,json,design,calculator,impedance,measurement,simulation,software,free,audio
+   :description: Speakerbench Documentation
+
 Impedance Measurement
 =====================
 
 .. note::
    **STEP 0**: This section describes how to measure impedance data required by Speakerbench. You will need to do this on your own using a measurement system. Once done, you can :doc:`create a data object <collect>`.
-   
+
 `Thiele-Small parameters <https://en.wikipedia.org/wiki/Thiele/Small_parameters>`_ are classically determined by adding mass to the moving part (cone) of the loudspeaker. Then, by comparing the weighted to the unweighted free-air impedance measurements, one can compute all model parameters. In the present case, to extract parameters for the new advanced model, the fitting procedure will require **three impedance measurements**
 
-1. with a large added mass :math:`m_2` 
+1. with a large added mass :math:`m_2`
 2. with a small added mass :math:`m_1` (roughly half :math:`m_2`)
 3. without added mass
 
