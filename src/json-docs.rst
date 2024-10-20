@@ -6,7 +6,7 @@
 .. title:: Speakerbench JSON Docs
 
 The JSON Documentation
-######################
+======================
 
 .. toctree::
    :maxdepth: 1
@@ -17,7 +17,7 @@ The JSON Documentation
 4. `Thiele/Small Datasheet JSON file format`_.
 
 Measurements Collected JSON file format
-=======================================
+---------------------------------------
 
 Measurement data contains added masses m1 and m2 and frequency, magnitude and phase data for a total of three impedance measurements named z0, z1 and z2. All JSON data can be on a single line, or by choice on multiple lines. Here is a structured view of the content of such a JSON file (actual data are just for the example). The file name is by convention a Z_something.json.
 
@@ -60,7 +60,7 @@ Specifying the applied voltage during measurements is optional, but it is nice (
 All JSON files are 'escaped' such that a space (in the comment section) is replaced by an underscore.
 
 Fitted Data JSON file format
-============================
+----------------------------
 
 The fitted data contains only the information identified by the fitting procedure plus the information you typed into the comment sections. All JSON data can be on a single line, or by choice on multiple lines. Here is a structured view of the content of such a JSON file (actual data are from the L16RNX just for the example). The file name is by convention an ADV_something.json.
 
@@ -95,7 +95,7 @@ The 'git' hashtag is determined by the version of Speakerbench that was used for
 All JSON files are 'escaped' such that a space (in the comment section) is replaced by an underscore.
 
 Datasheet JSON file format
-==========================
+--------------------------
 
 The complete datasheet file contains all information necessary to describe a driver for Speakerbench simulations. All JSON data can be on a single line, or by choice on multiple lines. Here is a structured view of the content of such a JSON file (actual data are from the L16RNX just for the example). The file name is by convention a SBD_something.json.
 
@@ -149,7 +149,7 @@ Note the distinction between manufacturer and brand. For example brand name SB A
 All JSON files are 'escaped' such that a space is replaced by an underscore.
 
 Thiele/Small Datasheet JSON file format
-=======================================
+---------------------------------------
 
 Speakerbench can work with standard Thiele/Small datasheets. The key is to set the 'comments' section to either 'ts1' or 'ts2' which implies there are two methods supported by Speakerbench. The first method is to accept the Q-values and other Thiele/Small parameters as input and calculate the mechanical parameters. The second method is to accept the mechanical parameters (Cms, Mms, Rms and so on) and calculate the Q-values, etc. The file contains the same keywords as a standard datasheet (see previous section) and the file name is unchanged; SBD_something.json. Here is a structured view of the content of such a JSON file, with comments (which should obviously not be typed into the JSON file).
 
