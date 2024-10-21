@@ -61,7 +61,7 @@ By defining :math:`G = \left( \alpha+1+h^2 \right)/h`, we can rewrite these two 
 .. math::
   \begin{eqnarray}
   A_1 &=& \frac{q^2}{h} - 2G + \epsilon^2 q^2 h \; , \\
-  A_2 &=& \left( \Gamma + \epsilon q^2 \right)+2-2q^2\left[ 1+\epsilon^2+\epsilon (h+1/h) \right] \; .
+  A_2 &=& \left( \Gamma + \epsilon q^2 \right)^2 + 2-2q^2\left[ 1+\epsilon^2+\epsilon (h+1/h) \right] \; .
   \end{eqnarray}
 
 where :math:`q = 1/Q_T` and :math:`\epsilon = Q_T/Q_L \ll 1` is a small parameter.

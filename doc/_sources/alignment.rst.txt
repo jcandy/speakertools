@@ -1,10 +1,15 @@
+.. meta::
+   :author: Jeff Candy and Claus Futtrup
+   :keywords: speakerbench,loudspeaker,driver,parameter,json,design,calculator,impedance,measurement,simulation,software,free,audio
+   :description: Speakerbench Documentation
+
 Alignments
 ==========
 
 Basic theory
 ------------
 
-To facilitate choosing the box volume and vent tuning, Speakerbench will propose values based on standard 4th-order bass-reflex alignments. These alignments are particular types of 4th-order high-pass filters. Following Small :cite:`small:1973c` (Eq. 57) we can write the normalized response function as 
+To facilitate choosing the box volume and vent tuning, Speakerbench will propose values based on standard 4th-order bass-reflex alignments. These alignments are particular types of 4th-order high-pass filters. Following Small :cite:`small:1973c` (Eq. 57) we can write the normalized response function as
 
 .. math::
    G_\mathrm{H}(s) = \frac{s^4}{s^4 + a_1 s^3 + a_2 s^2 + a_3 s + 1} \; ,
@@ -44,19 +49,19 @@ Butterworth filters have :math:`A_1=A_2=A_3=0` which gives the mathematical feat
    Linkwitz-Riley (LR4), 0.354, 0, 2, 0
    Bessel (BL4), 0.316, 1.464, 1.286, 0.976
 
-Since these respective alignments are possible only for a single value of :math:`Q_T`, a procedure is required to extend (or approximate) them for a continuous range of :math:`Q_T`. 
+Since these respective alignments are possible only for a single value of :math:`Q_T`, a procedure is required to extend (or approximate) them for a continuous range of :math:`Q_T`.
 
 Generalized quasi-alignments
 ----------------------------
 
-In a design process based on alignments, we consider :math:`(Q_L,Q_T)` as given inputs and :math:`(\alpha,h)` as output parameters to be computed by the alignment. Since we have two free parameters, it follows that we can specify only two of the three values :math:`(A_1,A_2,A_3)`. The approach taken is to relax (i.e., ignore) the condition on :math:`A_3`; that is, we match the behaviour in the pass-band :math:`(A_1)` and mid-band :math:`(A_2)` but **not** the stop-band :math:`(A_3)`.
+In a design process based on alignments, we consider :math:`(Q_L,Q_T)` as given inputs and :math:`(\alpha,h)` as output parameters to be computed by the alignment. Since we have two free parameters, it follows that we can specify only two of the three values :math:`(A_1,A_2,A_3)`. The approach taken is to relax (i.e., ignore) the condition on :math:`A_3`; that is, we match the behaviour in the pass-band :math:`(A_1)` and mid-band :math:`(A_2)` but **not** the stop-band :math:`(A_3)`. This is described in more detail for so-called QB3 (although we prefer QB4 because the order of the filter is 4) :cite:`benson:1993` (page 188).
 
-By defining :math:`\Gamma = \left( \alpha+1+h \right)/h`, we can rewrite these two conditions as
+By defining :math:`G = \left( \alpha+1+h^2 \right)/h`, we can rewrite these two conditions as
 
 .. math::
   \begin{eqnarray}
-  A_1 &=& \frac{q^2}{h} - 2\Gamma + \epsilon^2 q^2 h \; , \\
-  A_2 &=& \left( \Gamma + \epsilon q^2 \right)+2-2q^2\left[ 1+\epsilon^2+\epsilon (h+1/h) \right] \; .
+  A_1 &=& \frac{q^2}{h} - 2G + \epsilon^2 q^2 h \; , \\
+  A_2 &=& \left( \Gamma + \epsilon q^2 \right)^2 + 2-2q^2\left[ 1+\epsilon^2+\epsilon (h+1/h) \right] \; .
   \end{eqnarray}
 
 where :math:`q = 1/Q_T` and :math:`\epsilon = Q_T/Q_L \ll 1` is a small parameter.
@@ -64,18 +69,18 @@ where :math:`q = 1/Q_T` and :math:`\epsilon = Q_T/Q_L \ll 1` is a small paramete
 Recursive solution
 ------------------
 
-In the limit :math:`\epsilon = 0`, we can solve explicitly for :math:`(\Gamma,h)`, and this uniquely determines :math:`(\alpha,h)`. However, an explicit solution is not possible in the case :math:`\epsilon >  0`. But since :math:`\epsilon` is small, we expect the following recursion to converge in a few iterations: 
+In the limit :math:`\epsilon = 0`, we can solve explicitly for :math:`(G,h)`, and this uniquely determines :math:`(\alpha,h)`. However, an explicit solution is not possible in the case :math:`\epsilon >  0`. But since :math:`\epsilon` is small, we expect the following recursion to converge in a few iterations:
 
 .. math::
    \begin{eqnarray}
-   \Gamma &=& -\epsilon q^2 + \sqrt{A_2-2+2q^2 \left[ 1+\epsilon^2+\epsilon\left(h+1/h\right)\right]}\\
-        h &=& \frac{q^2}{2\Gamma + A_1-\epsilon^2 q^2 h}
+   G &=& -\epsilon q^2 + \sqrt{A_2-2+2q^2 \left[ 1+\epsilon^2+\epsilon\left(h+1/h\right)\right]}\\
+        h &=& \frac{q^2}{2G + A_1-\epsilon^2 q^2 h}
    \end{eqnarray}
 
 Once converged, we can obtain :math:`\alpha` according to
 
 .. math::
-   \alpha = h \Gamma-\left(1+h^2\right)
+   \alpha = Gh-\left(1+h^2\right)
 
 Finally, note that by setting :math:`\epsilon=0` above we obtain the lossless solution explicitly.
 
@@ -99,7 +104,7 @@ Finally, note that by setting :math:`\epsilon=0` above we obtain the lossless so
         gamma = -eps*q**2+np.sqrt(A2-2+2*q**2*(1+eps**2+eps*(1/h+h)))
         h = q**2/(2*gamma+A1-eps**2*h*q**2)
         alpha = h*gamma-(1+h**2)
-      
+
      return h,alpha
 
   Ql=10
@@ -107,7 +112,7 @@ Finally, note that by setting :math:`\epsilon=0` above we obtain the lossless so
 
   print('            QBL4           QLR4           QB4')
   print(' Qt      h    alpha     h    alpha     h    alpha ')
-  print('-----  -------------  -------------  -------------')  
+  print('-----  -------------  -------------  -------------')
 
   for Qt in Qtvec:
      h1,alpha1 = quasi(Ql,Qt,1.464,1.286)
@@ -123,31 +128,16 @@ Finally, note that by setting :math:`\epsilon=0` above we obtain the lossless so
 ::
 
              QBL4           QLR4           QB4
-   Qt      h    alpha     h    alpha     h    alpha 
+   Qt      h    alpha     h    alpha     h    alpha
   -----  -------------  -------------  -------------
-  0.310  1.0341 2.3819  1.1887 2.7969  1.2505 2.6469  
-  0.320  0.9972 2.1634  1.1505 2.5657  1.2146 2.4150  
-  0.330  0.9626 1.9648  1.1146 2.3551  1.1809 2.2038  
-  0.340  0.9300 1.7838  1.0808 2.1629  1.1493 2.0109  
-  0.350  0.8994 1.6185  1.0489 1.9869  1.1197 1.8342  
-  0.360  0.8704 1.4670  1.0188 1.8253  1.0918 1.6719  
-  0.370  0.8431 1.3279  0.9902 1.6767  1.0656 1.5225  
-  0.380  0.8172 1.1999  0.9631 1.5396  1.0409 1.3846  
-  0.390  0.7927 1.0819  0.9374 1.4130  1.0175 1.2571  
-  0.400  0.7694 0.9727  0.9130 1.2957  0.9955 1.1389  
+  0.310  1.0341 2.3819  1.1887 2.7969  1.2505 2.6469
+  0.320  0.9972 2.1634  1.1505 2.5657  1.2146 2.4150
+  0.330  0.9626 1.9648  1.1146 2.3551  1.1809 2.2038
+  0.340  0.9300 1.7838  1.0808 2.1629  1.1493 2.0109
+  0.350  0.8994 1.6185  1.0489 1.9869  1.1197 1.8342
+  0.360  0.8704 1.4670  1.0188 1.8253  1.0918 1.6719
+  0.370  0.8431 1.3279  0.9902 1.6767  1.0656 1.5225
+  0.380  0.8172 1.1999  0.9631 1.5396  1.0409 1.3846
+  0.390  0.7927 1.0819  0.9374 1.4130  1.0175 1.2571
+  0.400  0.7694 0.9727  0.9130 1.2957  0.9955 1.1389
 
-
-..
-   Speakerbench Suggested Alignments
-   :header: Alignment, Description,:math:`Q_T` range
-   :widths: 10, 20, 10 
-   :align: center
-
-   C4,     Chebyshev (extension of B4), :math:`0.24 < Q_T < 2.0`
-   B4-CA,  B4 with compliance alteration, :math:`0.36 < Q_T < 0.56`
-   B4-AM,  B4 with amplitude matching (same as QB3),  :math:`0.36 < Q_T < 0.56`
-   LR4-CA, LR4 with compliance alteration, :math:`0.34 < Q_T < 0.4`
-   LR4-AM, LR4 with amplitude matching, :math:`0.34 < Q_T < 0.4`
-   BL4-CA, BL4 with compliance alteration, :math:`0.3 < Q_T < 0.36`
-   BL4-AM, BL4 with amplitude matching, :math:`0.3 < Q_T < 0.36`
-   
