@@ -1,3 +1,8 @@
+.. meta::
+   :author: Jeff Candy and Claus Futtrup
+   :keywords: speakerbench,loudspeaker,driver,parameter,json,design,calculator,impedance,measurement,simulation,software,free,audio
+   :description: Speakerbench Documentation
+
 Create datasheet
 ================
 
@@ -9,16 +14,20 @@ The **Import** tab ('page') in the Datasheet Creator application is a simple way
 The datasheet creator takes input from the fitter. The purpose of the creator is to add information to your dataset such that it becomes enough information to constitute a *complete datasheet* for the driver (but without frequency response graphs or other pictures). This complete dataset may be filed on your computer locally and/or shared with others. To be able to save the data, you must add the **Brand** and **Model number**.
 
 .. figure:: images/brand.png
-            :width: 95 %
+            :width: 60 %
 	    :alt: Input box for brand name
 	    :align: center
+
+|
 
 as well as the effective piston **driver area** (or diameter)
 
 .. figure:: images/sd.png
-            :width: 95 %
+            :width: 50 %
 	    :alt: Input box for Sd
 	    :align: center
+
+|
 
 It is customary to add :math:`X_\mathrm{MAX}`, which is found available under the Simple tab, but it is not required by Speakerbench although some box simulation software might require this.
 

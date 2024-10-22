@@ -1,7 +1,19 @@
+.. meta::
+   :author: Jeff Candy and Claus Futtrup
+   :keywords: speakerbench,loudspeaker,driver,parameter,json,design,calculator,impedance,measurement,simulation,software,free,audio
+   :description: Speakerbench Documentation
+
 Speakerbench
 ============
 
-`Speakerbench <https://www.speakerbench.com>`_ is a free, web-based application for modeling loudspeakers. A novel feature of the software is the use of an **advanced transducer model** that includes motor semi-inductance and suspension viscoelasticity. These corrections to the traditional Thiele-Small approach resolve a long-standing problem with impedance maxima in vented systems
+`Speakerbench <https://www.speakerbench.com>`_ is a free, web-based application for modeling loudspeakers. A novel feature of the software is the use of an **advanced transducer model** that includes motor semi-inductance and suspension viscoelasticity.
+
+.. figure:: images/speaker_scaled.png
+            :width: 20 %
+	    :alt: speaker
+	    :align: left
+
+These corrections to the traditional Thiele-Small approach resolve a long-standing problem with impedance maxima in vented systems.
 
 .. figure:: images/impedance.png
             :width: 90 %
@@ -21,7 +33,7 @@ Speakerbench workflows are separated into 4 apps:
 
 **Create**
    Create a standard driver datasheet
-   
+
 **Box**
    Simulate the system response in an enclosure
 
@@ -29,24 +41,29 @@ Speakerbench doesn't do the actual impedance measurements for you; rather, you w
 
 .. toctree::
    quickstart
+   :hidden:
 
 .. toctree::
    :caption: Impedance
+   :hidden:
 
    measure
    collect
    fit
 
 .. toctree::
-   :caption: Box Modeling 
+   :caption: Box Modeling
+   :hidden:
 
    create
    box
 
 .. toctree::
    :caption: Resources
+   :hidden:
 
    alignment
    sampledata
    youtube
+   json-docs
    zreferences

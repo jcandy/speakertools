@@ -1,27 +1,28 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="Jeff Candy and Claus Futtrup" name="author" />
+<meta content="speakerbench,loudspeaker,driver,parameter,json,design,calculator,impedance,measurement,simulation,software,free,audio" name="keywords" />
+<meta content="Speakerbench Documentation" name="description" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Create datasheet &mdash; Speakerbench</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+  <title>Create datasheet &mdash; Speakerbench 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/contentui.css" />
 
   
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="_static/contentui.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/contentui.js"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -67,6 +68,7 @@
 <li class="toctree-l1"><a class="reference internal" href="alignment.html">Alignments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">Sample Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="youtube.html">YouTube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="json-docs.html">The JSON Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="zreferences.html">References</a></li>
 </ul>
 
@@ -103,12 +105,20 @@
 <p>The <strong>Import</strong> tab (‘page’) in the Datasheet Creator application is a simple way to load one of a few predefined drivers into the creator. When working with your own measurements, please ignore this.</p>
 <p>The datasheet creator takes input from the fitter. The purpose of the creator is to add information to your dataset such that it becomes enough information to constitute a <em>complete datasheet</em> for the driver (but without frequency response graphs or other pictures). This complete dataset may be filed on your computer locally and/or shared with others. To be able to save the data, you must add the <strong>Brand</strong> and <strong>Model number</strong>.</p>
 <figure class="align-center">
-<a class="reference internal image-reference" href="_images/brand.png"><img alt="Input box for brand name" src="_images/brand.png" style="width: 95%;" /></a>
+<a class="reference internal image-reference" href="_images/brand.png"><img alt="Input box for brand name" src="_images/brand.png" style="width: 60%;" />
+</a>
 </figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 <p>as well as the effective piston <strong>driver area</strong> (or diameter)</p>
 <figure class="align-center">
-<a class="reference internal image-reference" href="_images/sd.png"><img alt="Input box for Sd" src="_images/sd.png" style="width: 95%;" /></a>
+<a class="reference internal image-reference" href="_images/sd.png"><img alt="Input box for Sd" src="_images/sd.png" style="width: 50%;" />
+</a>
 </figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 <p>It is customary to add <span class="math notranslate nohighlight">\(X_\mathrm{MAX}\)</span>, which is found available under the Simple tab, but it is not required by Speakerbench although some box simulation software might require this.</p>
 <p>Once these additional parameters are added, the data object will be sufficient for box modeling. Beyond the necessary input data, you can provide additional information for the datasheet which may be useful in extreme environments; for example, air parameters (air temperature, barometric pressure, relative humidity) which are used for calculating <span class="math notranslate nohighlight">\(V_{AS}\)</span>.</p>
 <div class="admonition note">
@@ -128,7 +138,9 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2020-2024 | C. Futtrup and J. Candy.</p>
+    <p>&#169; Copyright 2020-2024 | C. Futtrup and J. Candy.
+      <span class="lastupdated">Last updated on Oct 21, 2024.
+      </span></p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

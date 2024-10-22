@@ -1,27 +1,28 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="Jeff Candy and Claus Futtrup" name="author" />
+<meta content="speakerbench,loudspeaker,driver,parameter,json,design,calculator,impedance,measurement,simulation,software,free,audio" name="keywords" />
+<meta content="Speakerbench Documentation" name="description" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Speakerbench &mdash; Speakerbench</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+  <title>Speakerbench &mdash; Speakerbench 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/contentui.css?v=4cf5b151" />
 
   
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="_static/contentui.js?v=9ee86694"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/contentui.js?v=9ee86694"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -66,6 +67,7 @@
 <li class="toctree-l1"><a class="reference internal" href="alignment.html">Alignments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">Sample Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="youtube.html">YouTube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="json-docs.html">The JSON Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="zreferences.html">References</a></li>
 </ul>
 
@@ -95,9 +97,15 @@
              
   <section id="speakerbench">
 <h1>Speakerbench<a class="headerlink" href="#speakerbench" title="Link to this heading"></a></h1>
-<p><a class="reference external" href="https://www.speakerbench.com">Speakerbench</a> is a free, web-based application for modeling loudspeakers. A novel feature of the software is the use of an <strong>advanced transducer model</strong> that includes motor semi-inductance and suspension viscoelasticity. These corrections to the traditional Thiele-Small approach resolve a long-standing problem with impedance maxima in vented systems</p>
+<p><a class="reference external" href="https://www.speakerbench.com">Speakerbench</a> is a free, web-based application for modeling loudspeakers. A novel feature of the software is the use of an <strong>advanced transducer model</strong> that includes motor semi-inductance and suspension viscoelasticity.</p>
+<figure class="align-left">
+<a class="reference internal image-reference" href="images/speaker_scaled.png"><img alt="speaker" src="images/speaker_scaled.png" style="width: 20%;" />
+</a>
+</figure>
+<p>These corrections to the traditional Thiele-Small approach resolve a long-standing problem with impedance maxima in vented systems.</p>
 <figure class="align-center" id="id2">
-<a class="reference internal image-reference" href="_images/impedance.png"><img alt="impedance" src="_images/impedance.png" style="width: 90%;" /></a>
+<a class="reference internal image-reference" href="_images/impedance.png"><img alt="impedance" src="_images/impedance.png" style="width: 90%;" />
+</a>
 <figcaption>
 <p><span class="caption-text">The advanced model (magenta) correctly predicts the impedance peak offset for
 a woofer in a vented box. Classical Thiele-Small theory (black) misses this effect.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
@@ -116,50 +124,12 @@ a woofer in a vented box. Classical Thiele-Small theory (black) misses this effe
 </dl>
 <p>Speakerbench doesn’t do the actual impedance measurements for you; rather, you will need to do this with external hardware as outlined in this document.</p>
 <div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
-</ul>
 </div>
 <div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Impedance</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="measure.html">Impedance Measurement</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collect.html">Impedance Data Object</a></li>
-<li class="toctree-l1"><a class="reference internal" href="fit.html">Advanced Model Fit</a></li>
-</ul>
 </div>
 <div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Box Modeling</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="create.html">Create datasheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="box.html">Box Simulation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="box.html#enclosure-options">Enclosure Options</a></li>
-<li class="toctree-l2"><a class="reference internal" href="box.html#port-options">Port Options</a></li>
-<li class="toctree-l2"><a class="reference internal" href="box.html#time-domain">Time Domain</a></li>
-</ul>
-</li>
-</ul>
 </div>
 <div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="alignment.html">Alignments</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="alignment.html#basic-theory">Basic theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="alignment.html#generalized-quasi-alignments">Generalized quasi-alignments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="alignment.html#recursive-solution">Recursive solution</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Sample Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="youtube.html">YouTube</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="youtube.html#step-0-impedance-measurement">STEP 0: Impedance Measurement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="youtube.html#step-1-impedance-data-object">STEP 1: Impedance Data Object</a></li>
-<li class="toctree-l2"><a class="reference internal" href="youtube.html#step-2-advanced-model-fit">STEP 2: Advanced Model Fit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="youtube.html#step-3-create-datasheet">STEP 3: Create Datasheet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="youtube.html#step-4-box-simulation">STEP 4: Box Simulation</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="zreferences.html">References</a></li>
-</ul>
 </div>
 </section>
 
@@ -173,7 +143,9 @@ a woofer in a vented box. Classical Thiele-Small theory (black) misses this effe
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2020-2024 | C. Futtrup and J. Candy.</p>
+    <p>&#169; Copyright 2020-2024 | C. Futtrup and J. Candy.
+      <span class="lastupdated">Last updated on Oct 21, 2024.
+      </span></p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

@@ -1,3 +1,8 @@
+.. meta::
+   :author: Jeff Candy and Claus Futtrup
+   :keywords: speakerbench,loudspeaker,driver,parameter,json,design,calculator,impedance,measurement,simulation,software,free,audio
+   :description: Speakerbench Documentation
+
 Advanced Model Fit
 ==================
 
@@ -8,7 +13,7 @@ This app uses the data stored in the previously generated JSON data container to
 
 .. math::
    Z = R_\mathrm{E} + s L_\mathrm{EB} + \left( \frac{1}{R_\mathrm{SS}} + \frac{1}{s L_\mathrm{E}}
-   + \frac{1}{\sqrt{s} K_\mathrm{E}} \right)^{-1} + \frac{(B\ell)^2}{\mathbb{Z}_{\rm mot}} \; , 
+   + \frac{1}{\sqrt{s} K_\mathrm{E}} \right)^{-1} + \frac{(B\ell)^2}{\mathbb{Z}_{\rm mot}} \; ,
 
 where :math:`\mathbb{Z}_{\rm mot}` is the mechanical impedance of the transducer
 

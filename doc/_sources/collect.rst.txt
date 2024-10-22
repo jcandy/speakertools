@@ -1,9 +1,14 @@
+.. meta::
+   :author: Jeff Candy and Claus Futtrup
+   :keywords: speakerbench,loudspeaker,driver,parameter,json,design,calculator,impedance,measurement,simulation,software,free,audio
+   :description: Speakerbench Documentation
+
 Impedance Data Object
 =====================
 
 .. note::
    **STEP 1**: This section describes how to create an impedance data object (Z-file).
-   
+
 We provide a web app to collect the previous impedance measurements (and masses) into a single file. This single (JSON) object can be stored on your computer locally and later uploaded into the parameter fitting app. In principle this step is only a required step because we felt is was a practical way to store measurements, a practical way to feed the data to the fitter, and should anything strange occur, a practical way for you to share the data with us so we can potentially investigate.
 
 The data collection app requires the following input:
@@ -21,7 +26,7 @@ The comment field is the first entry in the data object such that if you open up
 
 .. important::
    All three measurements in the ZMA files must contain the same number of datapoints at the same measurement frequencies.
-   
+
 
 
 
