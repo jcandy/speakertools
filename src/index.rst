@@ -23,6 +23,10 @@ These corrections to the traditional Thiele-Small approach resolve a long-standi
             The advanced model (magenta) correctly predicts the impedance peak offset for
 	    a woofer in a vented box. Classical Thiele-Small theory (black) misses this effect.
 
+With a better prediction of the impedance, you can build the loudspeaker and verify that your design is as intended with impedance measurements, not just the port tuning frequency but also the overall losses of the system.
+
+The impedance is overall simulated correctly, which also implies the power dumped into the speaker (for a given input voltage) is correct, and the output power response is correctly simulated, also at high frequencies.
+
 Speakerbench workflows are separated into 4 apps:
 
 **Collect**
