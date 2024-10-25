@@ -8,12 +8,15 @@ Speakerbench
 
 `Speakerbench <https://www.speakerbench.com>`_ is a free, web-based application for modeling loudspeakers. A novel feature of the software is the use of an **advanced transducer model** that includes motor semi-inductance and suspension viscoelasticity.
 
+Why Speakerbench?
+-----------------
+
 .. figure:: images/speaker_scaled.png
             :width: 20 %
 	    :alt: speaker
 	    :align: left
 
-These corrections to the traditional Thiele-Small approach resolve a long-standing problem with impedance maxima in vented systems.
+The corrections to the traditional Thiele-Small approach resolve a long-standing problem with incorrect prediction of impedance, and not least the maxima in vented systems.
 
 .. figure:: images/impedance.png
             :width: 90 %
