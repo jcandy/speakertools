@@ -11,6 +11,8 @@ The JSON Documentation
 .. toctree::
    :maxdepth: 1
 
+Speakerbench does not save any data server side, instead data is handled in your browser and stored in a format named `JSON <https://en.wikipedia.org/wiki/JSON>`_. This section documents the content of the JSON containers for each application in Speakerbench. A normal user will not need to know. This documentaiton is for other applications and their programmers, who wish to exchange data with Speakerbench.
+
 1. `Measurements Collected JSON file format`_.
 2. `Fitted Data JSON file format`_.
 3. `Datasheet JSON file format`_.
