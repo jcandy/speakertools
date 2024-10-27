@@ -6,6 +6,10 @@
 Alignments
 ==========
 
+In classical loudspeaker theory from the 1960s and onwards, the concept of alignments was developed to provide a target low-frequency response function for loudspeaker designers to aim at.
+
+The Speakerbench box simulator provides an Alignment Chart, which might be helpful in selecting a suitable box volume and port tuning for your driver.
+
 Basic theory
 ------------
 
@@ -51,8 +55,13 @@ Butterworth filters have :math:`A_1=A_2=A_3=0` which gives the mathematical feat
 
 Since these respective alignments are possible only for a single value of :math:`Q_T`, a procedure is required to extend (or approximate) them for a continuous range of :math:`Q_T`.
 
-Generalized quasi-alignments
-----------------------------
+1. Method of ignorance
+----------------------
+
+When targeting one of the discrete alignments, it is unlikely (almost impossible) that you will have a driver available at hand, which fits the required :math:`Q_T` value exactly. The simplest solution is to ignore this fact and continue designing the speaker as if there is a perfect match. This we call the method of ignorance, because you ignore the fact that :math:`Q_T` isn't matched perfectly.
+
+2. Generalized quasi-alignments
+-------------------------------
 
 In a design process based on alignments, we consider :math:`(Q_L,Q_T)` as given inputs and :math:`(\alpha,h)` as output parameters to be computed by the alignment. Since we have two free parameters, it follows that we can specify only two of the three values :math:`(A_1,A_2,A_3)`. The approach taken is to relax (i.e., ignore) the condition on :math:`A_3`; that is, we match the behaviour in the pass-band :math:`(A_1)` and mid-band :math:`(A_2)` but **not** the stop-band :math:`(A_3)`. This is described in more detail for so-called QB3 (although we prefer QB4 because the order of the filter is 4) lossless case by Benson :cite:`benson:1993` (page 188).
 
@@ -66,8 +75,7 @@ By defining :math:`G = \left( \alpha+1+h^2 \right)/h`, we can rewrite these two 
 
 where :math:`q = 1/Q_T` and :math:`\epsilon = Q_T/Q_L \ll 1` is a small parameter.
 
-Recursive solution
-------------------
+**Recursive solution**
 
 In the limit :math:`\epsilon = 0`, we can solve explicitly for :math:`(G,h)`, and this uniquely determines :math:`(\alpha,h)`. However, an explicit solution is not possible in the case :math:`\epsilon >  0`. But since :math:`\epsilon` is small, we expect the following recursion to converge in a few iterations:
 
@@ -141,3 +149,9 @@ Finally, note that by setting :math:`\epsilon=0` above we obtain the lossless so
   0.390  0.7927 1.0819  0.9374 1.4130  1.0175 1.2571
   0.400  0.7694 0.9727  0.9130 1.2957  0.9955 1.1389
 
+3. Compliance Alteration
+------------------------
+
+Another approach to handling the situation where the driver :math:`Q_T` isn't matched perfectly, is to assume the misalignment (or error) is due to the driver suspension being either too soft or too stiff, i.e., that the driver compliance is imagined to be altered such that the target :math:`Q_T` value for the target alignment is met.
+
+Compliance Alteration is computed by first 1) Calculating the reference :math:`Q_{Tref}` for your target and the resulting :math:`\alpha_{ref}` and :math:`h_{ref}`, then 2) shift :math:`\alpha = \alpha_{ref} \cdot ( \frac{Q_{Tref}}{Q_T} )^2` and :math:`h = h_{ref} \cdot \frac{Q_{Tref}}{Q_T}` relative to the :math:`Q_T` for the actual driver at hand.
