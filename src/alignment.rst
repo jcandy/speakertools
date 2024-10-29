@@ -60,6 +60,8 @@ Since these respective alignments are possible only for a single value of :math:
 
 When targeting one of the discrete alignments, it is unlikely (almost impossible) that you will have a driver available at hand, which fits the required :math:`Q_T` value exactly. The simplest solution is to ignore this fact and continue designing the speaker as if there is a perfect match. This we call the method of ignorance, because you ignore the fact that :math:`Q_T` isn't matched perfectly.
 
+In Speakerbench, when we apply this method, the alignment acronym is followed by an 'i' as in B4i, LR4i and BL4i.
+
 2. Generalized quasi-alignments
 -------------------------------
 
@@ -149,9 +151,13 @@ Finally, note that by setting :math:`\epsilon=0` above we obtain the lossless so
   0.390  0.7927 1.0819  0.9374 1.4130  1.0175 1.2571
   0.400  0.7694 0.9727  0.9130 1.2957  0.9955 1.1389
 
+In Speakerbench, when we apply this method, the alignment acronym is preceded by a 'Q' as in QLR4 and QBL4, whereas what should be named QB4 is in reality named QB3 for historical reasons.
+
 3. Compliance Alteration
 ------------------------
 
 Another approach to handling the situation where the driver :math:`Q_T` isn't matched perfectly, is to assume the misalignment (or error) is due to the driver suspension being either too soft or too stiff, i.e., that the driver compliance is imagined to be altered such that the target :math:`Q_T` value for the target alignment is met.
 
 Compliance Alteration is computed by first 1) Calculating the reference :math:`Q_{Tref}` for your target and the resulting :math:`\alpha_{ref}` and :math:`h_{ref}`, then 2) shift :math:`\alpha = \alpha_{ref} \cdot ( \frac{Q_{Tref}}{Q_T} )^2` and :math:`h = h_{ref} \cdot \frac{Q_{Tref}}{Q_T}` relative to the :math:`Q_T` for the actual driver at hand.
+
+In Speakerbench, when we apply this method, the alignment acronym is followed by 'CA' as in B4CA, LR4CA and BL4CA.
