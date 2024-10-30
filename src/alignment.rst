@@ -161,3 +161,33 @@ Another approach to handling the situation where the driver :math:`Q_T` isn't ma
 Compliance Alteration is computed by first 1) Calculating the reference :math:`Q_{Tref}` for your target and the resulting :math:`\alpha_{ref}` and :math:`h_{ref}`, then 2) shift :math:`\alpha = \alpha_{ref} \cdot ( \frac{Q_{Tref}}{Q_T} )^2` and :math:`h = h_{ref} \cdot \frac{Q_{Tref}}{Q_T}` relative to the :math:`Q_T` for the actual driver at hand.
 
 In Speakerbench, when we apply this method, the alignment acronym is followed by 'CA' as in B4CA, LR4CA and BL4CA.
+
+Summary
+-------
+
+We have presented three methods to cope with the (quite normal) situation that the :math:`Q_T` for your driver does not match the target response exactly. For example, consider the 4th order Butterworth, we have the B4i, QB3 (=QB4), as well as the B4CA method. With the three methods in mind, you can study their location in the Alignment Chart. The three methods wlil converge to a single point as your driver :math:`Q_T` approaches the :math:`Q_T` value for the target respone. On the other hand, when your driver :math:`Q_T` is far away from the :math:`Q_T` for the target response, the three methods will be far away from each other.
+
+If you wish to target something rather exact, then choose an alignment where the three methods are close, ideally they overlap.
+
+If you can accept deviation from your target alignment, consider studying what you get from each of the three methods, and go for a method which reflects your target performance, or go for a compromise (i.e., choose something in-between the parameters proposed by the methods).
+
+Overview
+--------
+
+.. csv-table:: **Table of supported discrete alignments and alignment families**
+   :header: "Tag", "Name", "Comments"
+   :widths: 25, 25, 50
+
+   "B4i - QB3 - B4CA",     "Butterworth",        "Centered around :math:`Q_T = 0.40`"
+   "LR4i - QLR4 - LR4CA",  "Linkwitz-Riley",     "Centered around :math:`Q_T = 0.37`"
+   "BL4i - QBL4 - BL4CA",  "Bessel",             "Centered around :math:`Q_T = 0.33`"
+   "CD4i - QCD4 - CD4CA",  "Critically damped",  "Centered around :math:`Q_T = 0.26`"
+   "C4 - SC4",    "Chebyshev",  "For :math:`0.236 < Q_T < 1.416`"
+   "BB4 - SBB4",  "Boombox",    "For :math:`0.20 < Q_T < 0.75`"
+   "B2",          "Butterworth 2\ :sup:`nd` order", "Closed box, :math:`Q_{TC} = 0.71` (requires :math:`Q_T < 0.67)`"
+   "BL2",         "Bessel 2\ :sup:`nd` order",      "Closed box, :math:`Q_{TC} = 0.58` (requires :math:`Q_T < 0.55)`"
+
+NOTE: SQB3 and IB4 are currently not listed.
+
+COMMENT : Maybe explain Chebyshev and Boombox somewhere?
+
