@@ -37,7 +37,7 @@ def curvedef(infile,color,label,w):
    return plotfiles,color,label,w
 
 
-def addplot(ax,pfile,func,color,label,w,linestyle):
+def addplot(ax,pfile,func,color,label,w,linestyle,out):
 
    with open(pfile) as data:
       dict = json.load(data)
@@ -47,6 +47,7 @@ def addplot(ax,pfile,func,color,label,w,linestyle):
    if func == 'spl':
       pb = np.array(dict['pbr'])+1j*np.array(dict['pbi'])
       u = 20*np.log10(abs(pb))
+      ext = '.frd'
    elif func == 'phase':
       pb = np.array(dict['pbr'])+1j*np.array(dict['pbi'])
       u = np.unwrap(np.angle(pb))
@@ -55,12 +56,17 @@ def addplot(ax,pfile,func,color,label,w,linestyle):
    elif func == 'z':
       z = np.array(dict['zr'])+1j*np.array(dict['zi'])
       u = abs(z)
+      ext = '.zma'
    elif func == 'zphase':
       z = np.array(dict['zr'])+1j*np.array(dict['zi'])
       u = np.unwrap(np.angle(z))
 
    ax.plot(f,u,color=color,linestyle=linestyle,alpha=0.8,label=label,linewidth=w)
 
+   if out == 'dump':
+      x = np.c_[f,u]
+      np.savetxt(func+ext,x,fmt='%.8e')
+      
    if label != '':
       ax.legend()
 
@@ -115,7 +121,7 @@ def opts():
                         default=0)
 
     parser.add_argument('-o',
-                        help="Output file (screen,myfile.png,myfile.pdf)",
+                        help="Output file (screen,dump,myfile.png,myfile.pdf)",
                         type=str,
                         default='screen',
                         metavar='OUTFILE')
@@ -151,7 +157,7 @@ ax.set_xticklabels(LABELS)
 linestyle = ['-','-','-']
 
 for i,pfile in enumerate(plotfiles):
-   ax = addplot(ax,pfile,func,color[i],label[i],w[i],linestyle[i])
+   ax = addplot(ax,pfile,func,color[i],label[i],w[i],linestyle[i],out)
 
 if func == 'spl':
    if ymin == 0:
@@ -175,7 +181,7 @@ elif func == 'z':
 ax.set_ylim([ymin,ymax])
 plt.tight_layout(pad=0.3)
 
-if out == 'screen':
+if out == 'screen' or out == 'dump':
    plt.show()
 else:
    plt.savefig(out)
