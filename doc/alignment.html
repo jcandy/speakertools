@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
@@ -9,22 +11,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Alignments &mdash; Speakerbench 0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="_static/contentui.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/contentui.css?v=4cf5b151" />
 
   
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=2709fde1"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="_static/contentui.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/contentui.js?v=9ee86694"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -43,9 +41,6 @@
           <a href="index.html" class="icon icon-home">
             Speakerbench
           </a>
-              <div class="version">
-                0.1
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -76,6 +71,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#generalized-quasi-alignments">2. Generalized quasi-alignments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#compliance-alteration">3. Compliance Alteration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#chebyshev">Chebyshev</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#boombox">Boombox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transitional-alignments">Transitional Alignments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 </ul>
 </li>
@@ -136,7 +134,7 @@ A_1 &amp;=&amp; a_1^2-2 a_2 \; , \\
 A_2 &amp;=&amp; a_2^2+2-2 a_1 a_3 \; , \\
 A_3 &amp;=&amp; a_3^2-2 a_2 \; .
 \end{eqnarray}\end{split}\]</div>
-<p>Butterworth filters have <span class="math notranslate nohighlight">\(A_1=A_2=A_3=0\)</span> which gives the mathematical feature of <em>maximal flatness</em>. We summarize the values for <span class="math notranslate nohighlight">\(A_i\)</span> as well as <span class="math notranslate nohighlight">\(Q_T\)</span> for the lossless case below</p>
+<p>We summarize the values for <span class="math notranslate nohighlight">\(A_i\)</span> for some classical alignments as well as <span class="math notranslate nohighlight">\(Q_T\)</span> for the lossless case below</p>
 <table class="docutils align-center" id="id5">
 <caption><span class="caption-text"><strong>Discrete Alignments Coefficients</strong></span><a class="headerlink" href="#id5" title="Link to this table"></a></caption>
 <colgroup>
@@ -175,6 +173,7 @@ A_3 &amp;=&amp; a_3^2-2 a_2 \; .
 </tr>
 </tbody>
 </table>
+<p>Butterworth filters have <span class="math notranslate nohighlight">\(A_1=A_2=A_3=0\)</span> which gives the mathematical feature of <em>maximal flatness</em>.</p>
 <p>Since these respective alignments are possible only for a single value of <span class="math notranslate nohighlight">\(Q_T\)</span>, a procedure is required to extend (or approximate) them for a continuous range of <span class="math notranslate nohighlight">\(Q_T\)</span>.</p>
 </section>
 <section id="method-of-ignorance">
@@ -226,7 +225,7 @@ G &amp;=&amp; -\epsilon q^2 + \sqrt{A_2-2+2q^2 \left[ 1+\epsilon^2+\epsilon\left
 <span class="n">Ql</span><span class="o">=</span><span class="mi">10</span>
 <span class="n">Qtvec</span><span class="o">=</span><span class="p">[</span><span class="mf">0.31</span><span class="p">,</span><span class="mf">0.32</span><span class="p">,</span><span class="mf">0.33</span><span class="p">,</span><span class="mf">0.34</span><span class="p">,</span><span class="mf">0.35</span><span class="p">,</span><span class="mf">0.36</span><span class="p">,</span><span class="mf">0.37</span><span class="p">,</span><span class="mf">0.38</span><span class="p">,</span><span class="mf">0.39</span><span class="p">,</span><span class="mf">0.40</span><span class="p">]</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;            QBL4           QLR4           QB4&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;            BL4Q           LR4Q           B4Q&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; Qt      h    alpha     h    alpha     h    alpha &#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-----  -------------  -------------  -------------&#39;</span><span class="p">)</span>
 
@@ -240,7 +239,7 @@ G &amp;=&amp; -\epsilon q^2 + \sqrt{A_2-2+2q^2 \left[ 1+\epsilon^2+\epsilon\left
 </pre></div>
 </div>
 <p><strong>Output</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>           <span class="n">QBL4</span>           <span class="n">QLR4</span>           <span class="n">QB4</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>           <span class="n">BL4Q</span>           <span class="n">LR4Q</span>           <span class="n">B4Q</span>
  <span class="n">Qt</span>      <span class="n">h</span>    <span class="n">alpha</span>     <span class="n">h</span>    <span class="n">alpha</span>     <span class="n">h</span>    <span class="n">alpha</span>
 <span class="o">-----</span>  <span class="o">-------------</span>  <span class="o">-------------</span>  <span class="o">-------------</span>
 <span class="mf">0.310</span>  <span class="mf">1.0341</span> <span class="mf">2.3819</span>  <span class="mf">1.1887</span> <span class="mf">2.7969</span>  <span class="mf">1.2505</span> <span class="mf">2.6469</span>
@@ -255,19 +254,38 @@ G &amp;=&amp; -\epsilon q^2 + \sqrt{A_2-2+2q^2 \left[ 1+\epsilon^2+\epsilon\left
 <span class="mf">0.400</span>  <span class="mf">0.7694</span> <span class="mf">0.9727</span>  <span class="mf">0.9130</span> <span class="mf">1.2957</span>  <span class="mf">0.9955</span> <span class="mf">1.1389</span>
 </pre></div>
 </div>
-<p>In Speakerbench, when we apply this method, the alignment acronym is preceded by a ‘Q’ as in QLR4 and QBL4, whereas what should be named QB4 is in reality named QB3 for historical reasons.</p>
+<p>In Speakerbench, when we apply this method, the alignment acronym is followed by a ‘Q’ as in B4Q, LR4Q and BL4Q. Be aware, the B4Q in Speakerbench is the same as what is known in classical theory as the QB3 alignment.</p>
 </section>
 <section id="compliance-alteration">
 <h2>3. Compliance Alteration<a class="headerlink" href="#compliance-alteration" title="Link to this heading"></a></h2>
 <p>Another approach to handling the situation where the driver <span class="math notranslate nohighlight">\(Q_T\)</span> isn’t matched perfectly, is to assume the misalignment (or error) is due to the driver suspension being either too soft or too stiff, i.e., that the driver compliance is imagined to be altered such that the target <span class="math notranslate nohighlight">\(Q_T\)</span> value for the target alignment is met.</p>
-<p>Compliance Alteration is computed by first 1) Calculating the reference <span class="math notranslate nohighlight">\(Q_{Tref}\)</span> for your target and the resulting <span class="math notranslate nohighlight">\(\alpha_{ref}\)</span> and <span class="math notranslate nohighlight">\(h_{ref}\)</span>, then 2) shift <span class="math notranslate nohighlight">\(\alpha = \alpha_{ref} \cdot ( \frac{Q_{Tref}}{Q_T} )^2\)</span> and <span class="math notranslate nohighlight">\(h = h_{ref} \cdot \frac{Q_{Tref}}{Q_T}\)</span> relative to the <span class="math notranslate nohighlight">\(Q_T\)</span> for the actual driver at hand.</p>
+<p>Compliance Alteration is computed by first 1) Calculating the reference <span class="math notranslate nohighlight">\(Q_{Tref}\)</span> for your target and the resulting <span class="math notranslate nohighlight">\(\alpha_{ref}\)</span> and <span class="math notranslate nohighlight">\(h_{ref}\)</span>, then 2) shift <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(h\)</span> relative to the <span class="math notranslate nohighlight">\(Q_T\)</span> for the actual driver at hand in the following way:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray}
+\alpha &amp;=&amp; \alpha_{ref} \cdot \Big( \frac{Q_{Tref}}{Q_T} \Big)^2 \; , \\
+h &amp;=&amp; h_{ref} \cdot \frac{Q_{Tref}}{Q_T} \; .
+\end{eqnarray}\end{split}\]</div>
 <p>In Speakerbench, when we apply this method, the alignment acronym is followed by ‘CA’ as in B4CA, LR4CA and BL4CA.</p>
 </section>
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h2>
-<p>We have presented three methods to cope with the (quite normal) situation that the <span class="math notranslate nohighlight">\(Q_T\)</span> for your driver does not match the target response exactly. For example, consider the 4th order Butterworth, we have the B4i, QB3 (=QB4), as well as the B4CA method. With the three methods in mind, you can study their location in the Alignment Chart. The three methods wlil converge to a single point as your driver <span class="math notranslate nohighlight">\(Q_T\)</span> approaches the <span class="math notranslate nohighlight">\(Q_T\)</span> value for the target respone. On the other hand, when your driver <span class="math notranslate nohighlight">\(Q_T\)</span> is far away from the <span class="math notranslate nohighlight">\(Q_T\)</span> for the target response, the three methods will be far away from each other.</p>
+<p>We have presented three methods to cope with the (quite normal) situation that the <span class="math notranslate nohighlight">\(Q_T\)</span> for your driver does not match the target response exactly. For example, consider the 4th order Butterworth, we have the B4i, B4Q (=QB3), as well as the B4CA method. With the three methods in mind, you can study their location in the Alignment Chart. The three methods wlil converge to a single point as your driver <span class="math notranslate nohighlight">\(Q_T\)</span> approaches the <span class="math notranslate nohighlight">\(Q_T\)</span> value for the target respone. On the other hand, when your driver <span class="math notranslate nohighlight">\(Q_T\)</span> is far away from the <span class="math notranslate nohighlight">\(Q_T\)</span> for the target response, the three methods will be far away from each other.</p>
 <p>If you wish to target something rather exact, then choose an alignment where the three methods are close, ideally they overlap.</p>
 <p>If you can accept deviation from your target alignment, consider studying what you get from each of the three methods, and go for a method which reflects your target performance, or go for a compromise (i.e., choose something in-between the parameters proposed by the methods).</p>
+</section>
+<section id="chebyshev">
+<h2>Chebyshev<a class="headerlink" href="#chebyshev" title="Link to this heading"></a></h2>
+<p>Should we write something about this?</p>
+</section>
+<section id="boombox">
+<h2>Boombox<a class="headerlink" href="#boombox" title="Link to this heading"></a></h2>
+<p>Should we write something about this?</p>
+<p>Explain CD4 ?</p>
+</section>
+<section id="transitional-alignments">
+<h2>Transitional Alignments<a class="headerlink" href="#transitional-alignments" title="Link to this heading"></a></h2>
+<p>Should we write something about this?</p>
+<p>Speakerbench supports a transitional alignment, which transitions between Butterworth and Linkwitz-Riley, named … B4-LR4 ?</p>
 </section>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
@@ -285,19 +303,19 @@ G &amp;=&amp; -\epsilon q^2 + \sqrt{A_2-2+2q^2 \left[ 1+\epsilon^2+\epsilon\left
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>B4i - QB3 - B4CA</p></td>
+<tr class="row-even"><td><p>B4i - B4Q - B4CA</p></td>
 <td><p>Butterworth</p></td>
 <td><p>Centered around <span class="math notranslate nohighlight">\(Q_T = 0.40\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p>LR4i - QLR4 - LR4CA</p></td>
+<tr class="row-odd"><td><p>LR4i - LR4Q - LR4CA</p></td>
 <td><p>Linkwitz-Riley</p></td>
 <td><p>Centered around <span class="math notranslate nohighlight">\(Q_T = 0.37\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p>BL4i - QBL4 - BL4CA</p></td>
+<tr class="row-even"><td><p>BL4i - BL4Q - BL4CA</p></td>
 <td><p>Bessel</p></td>
 <td><p>Centered around <span class="math notranslate nohighlight">\(Q_T = 0.33\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p>CD4i - QCD4 - CD4CA</p></td>
+<tr class="row-odd"><td><p>CD4i - CD4Q - CD4CA</p></td>
 <td><p>Critically damped</p></td>
 <td><p>Centered around <span class="math notranslate nohighlight">\(Q_T = 0.26\)</span></p></td>
 </tr>
@@ -319,7 +337,7 @@ G &amp;=&amp; -\epsilon q^2 + \sqrt{A_2-2+2q^2 \left[ 1+\epsilon^2+\epsilon\left
 </tr>
 </tbody>
 </table>
-<p>NOTE: SQB3 and IB4 are currently not listed.</p>
+<p>NOTE: SQB3 and IB4 are currently not listed. Neither is the B4-LR4 transitional alignment.</p>
 <p>COMMENT : Maybe explain Chebyshev and Boombox somewhere?</p>
 </section>
 </section>
@@ -336,7 +354,7 @@ G &amp;=&amp; -\epsilon q^2 + \sqrt{A_2-2+2q^2 \left[ 1+\epsilon^2+\epsilon\left
 
   <div role="contentinfo">
     <p>&#169; Copyright 2020-2024 | C. Futtrup and J. Candy.
-      <span class="lastupdated">Last updated on Oct 31, 2024.
+      <span class="lastupdated">Last updated on Nov 01, 2024.
       </span></p>
   </div>
 

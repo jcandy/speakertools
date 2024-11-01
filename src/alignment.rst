@@ -42,7 +42,7 @@ where
   A_3 &=& a_3^2-2 a_2 \; .
   \end{eqnarray}
 
-Butterworth filters have :math:`A_1=A_2=A_3=0` which gives the mathematical feature of *maximal flatness*. We summarize the values for :math:`A_i` as well as :math:`Q_T` for the lossless case below
+We summarize the values for :math:`A_i` for some classical alignments as well as :math:`Q_T` for the lossless case below
 
 .. csv-table:: **Discrete Alignments Coefficients**
    :header: Filter, :math:`Q_T`, :math:`A_1`, :math:`A_2`, :math:`A_3`
@@ -52,6 +52,8 @@ Butterworth filters have :math:`A_1=A_2=A_3=0` which gives the mathematical feat
    Butterworth (B4), 0.383, 0, 0, 0
    Linkwitz-Riley (LR4), 0.354, 0, 2, 0
    Bessel (BL4), 0.316, 1.464, 1.286, 0.976
+
+Butterworth filters have :math:`A_1=A_2=A_3=0` which gives the mathematical feature of *maximal flatness*.
 
 Since these respective alignments are possible only for a single value of :math:`Q_T`, a procedure is required to extend (or approximate) them for a continuous range of :math:`Q_T`.
 
@@ -120,7 +122,7 @@ Finally, note that by setting :math:`\epsilon=0` above we obtain the lossless so
   Ql=10
   Qtvec=[0.31,0.32,0.33,0.34,0.35,0.36,0.37,0.38,0.39,0.40]
 
-  print('            QBL4           QLR4           QB4')
+  print('            BL4Q           LR4Q           B4Q')
   print(' Qt      h    alpha     h    alpha     h    alpha ')
   print('-----  -------------  -------------  -------------')
 
@@ -137,7 +139,7 @@ Finally, note that by setting :math:`\epsilon=0` above we obtain the lossless so
 
 ::
 
-             QBL4           QLR4           QB4
+             BL4Q           LR4Q           B4Q
    Qt      h    alpha     h    alpha     h    alpha
   -----  -------------  -------------  -------------
   0.310  1.0341 2.3819  1.1887 2.7969  1.2505 2.6469
@@ -151,25 +153,50 @@ Finally, note that by setting :math:`\epsilon=0` above we obtain the lossless so
   0.390  0.7927 1.0819  0.9374 1.4130  1.0175 1.2571
   0.400  0.7694 0.9727  0.9130 1.2957  0.9955 1.1389
 
-In Speakerbench, when we apply this method, the alignment acronym is preceded by a 'Q' as in QLR4 and QBL4, whereas what should be named QB4 is in reality named QB3 for historical reasons.
+In Speakerbench, when we apply this method, the alignment acronym is followed by a 'Q' as in B4Q, LR4Q and BL4Q. Be aware, the B4Q in Speakerbench is the same as what is known in classical theory as the QB3 alignment.
 
 3. Compliance Alteration
 ------------------------
 
 Another approach to handling the situation where the driver :math:`Q_T` isn't matched perfectly, is to assume the misalignment (or error) is due to the driver suspension being either too soft or too stiff, i.e., that the driver compliance is imagined to be altered such that the target :math:`Q_T` value for the target alignment is met.
 
-Compliance Alteration is computed by first 1) Calculating the reference :math:`Q_{Tref}` for your target and the resulting :math:`\alpha_{ref}` and :math:`h_{ref}`, then 2) shift :math:`\alpha = \alpha_{ref} \cdot ( \frac{Q_{Tref}}{Q_T} )^2` and :math:`h = h_{ref} \cdot \frac{Q_{Tref}}{Q_T}` relative to the :math:`Q_T` for the actual driver at hand.
+Compliance Alteration is computed by first 1) Calculating the reference :math:`Q_{Tref}` for your target and the resulting :math:`\alpha_{ref}` and :math:`h_{ref}`, then 2) shift :math:`\alpha` and :math:`h` relative to the :math:`Q_T` for the actual driver at hand in the following way:
+
+.. math::
+   \begin{eqnarray}
+   \alpha &=& \alpha_{ref} \cdot \Big( \frac{Q_{Tref}}{Q_T} \Big)^2 \; , \\
+   h &=& h_{ref} \cdot \frac{Q_{Tref}}{Q_T} \; .
+   \end{eqnarray}
 
 In Speakerbench, when we apply this method, the alignment acronym is followed by 'CA' as in B4CA, LR4CA and BL4CA.
 
 Summary
 -------
 
-We have presented three methods to cope with the (quite normal) situation that the :math:`Q_T` for your driver does not match the target response exactly. For example, consider the 4th order Butterworth, we have the B4i, QB3 (=QB4), as well as the B4CA method. With the three methods in mind, you can study their location in the Alignment Chart. The three methods wlil converge to a single point as your driver :math:`Q_T` approaches the :math:`Q_T` value for the target respone. On the other hand, when your driver :math:`Q_T` is far away from the :math:`Q_T` for the target response, the three methods will be far away from each other.
+We have presented three methods to cope with the (quite normal) situation that the :math:`Q_T` for your driver does not match the target response exactly. For example, consider the 4th order Butterworth, we have the B4i, B4Q (=QB3), as well as the B4CA method. With the three methods in mind, you can study their location in the Alignment Chart. The three methods wlil converge to a single point as your driver :math:`Q_T` approaches the :math:`Q_T` value for the target respone. On the other hand, when your driver :math:`Q_T` is far away from the :math:`Q_T` for the target response, the three methods will be far away from each other.
 
 If you wish to target something rather exact, then choose an alignment where the three methods are close, ideally they overlap.
 
 If you can accept deviation from your target alignment, consider studying what you get from each of the three methods, and go for a method which reflects your target performance, or go for a compromise (i.e., choose something in-between the parameters proposed by the methods).
+
+Chebyshev
+---------
+
+Should we write something about this?
+
+Boombox
+-------
+
+Should we write something about this?
+
+Explain CD4 ?
+
+Transitional Alignments
+-----------------------
+
+Should we write something about this?
+
+Speakerbench supports a transitional alignment, which transitions between Butterworth and Linkwitz-Riley, named ... B4-LR4 ?
 
 Overview
 --------
@@ -178,16 +205,16 @@ Overview
    :header: "Tag", "Name", "Comments"
    :widths: 25, 25, 50
 
-   "B4i - QB3 - B4CA",     "Butterworth",        "Centered around :math:`Q_T = 0.40`"
-   "LR4i - QLR4 - LR4CA",  "Linkwitz-Riley",     "Centered around :math:`Q_T = 0.37`"
-   "BL4i - QBL4 - BL4CA",  "Bessel",             "Centered around :math:`Q_T = 0.33`"
-   "CD4i - QCD4 - CD4CA",  "Critically damped",  "Centered around :math:`Q_T = 0.26`"
+   "B4i - B4Q - B4CA",     "Butterworth",        "Centered around :math:`Q_T = 0.40`"
+   "LR4i - LR4Q - LR4CA",  "Linkwitz-Riley",     "Centered around :math:`Q_T = 0.37`"
+   "BL4i - BL4Q - BL4CA",  "Bessel",             "Centered around :math:`Q_T = 0.33`"
+   "CD4i - CD4Q - CD4CA",  "Critically damped",  "Centered around :math:`Q_T = 0.26`"
    "C4 - SC4",    "Chebyshev",  "For :math:`0.236 < Q_T < 1.416`"
    "BB4 - SBB4",  "Boombox",    "For :math:`0.20 < Q_T < 0.75`"
    "B2",          "Butterworth 2\ :sup:`nd` order", "Closed box, :math:`Q_{TC} = 0.71` (requires :math:`Q_T < 0.67)`"
    "BL2",         "Bessel 2\ :sup:`nd` order",      "Closed box, :math:`Q_{TC} = 0.58` (requires :math:`Q_T < 0.55)`"
 
-NOTE: SQB3 and IB4 are currently not listed.
+NOTE: SQB3 and IB4 are currently not listed. Neither is the B4-LR4 transitional alignment.
 
 COMMENT : Maybe explain Chebyshev and Boombox somewhere?
 
