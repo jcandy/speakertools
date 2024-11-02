@@ -168,7 +168,37 @@ In Speakerbench, when we apply this method, the alignment acronym is followed by
 .. code-block:: python
 
   import numpy as np
-  print('WRITE SOME CODE')
+
+  def ca_shift(Qtref,Qt,aref,href):
+
+     h = href * Qtref/Qt
+     alpha = aref * (Qtref/Qt)**2
+     return h,alpha
+
+  Ql = 10
+  Qts = 0.42    # for example
+
+  Qt = 1./(1./np.cos(3*np.pi/8)-1./Ql)
+  h_ref = 1
+  a3 = np.sqrt(8)*np.cos(np.pi/8)
+  alpha_ref = np.sqrt(2) - (1/Ql**2) * (a3*Ql-1)
+  h,alpha = ca_shift(Qt,Qts,alpha_ref,h_ref)
+
+  print('           B4CA')
+  print(' Qts     h    alpha ')
+  print('-----  -------------')
+  print('{:.3f}  {:.4f} {:.4f}  '
+        .format(Qts,h,alpha)   )
+
+**Output**
+
+::
+
+             B4CA
+   Qt      h    alpha
+  -----  -------------
+  0.398  0.9474 1.0438
+
 
 3. Method of ignorance
 ----------------------
