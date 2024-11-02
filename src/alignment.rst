@@ -57,14 +57,7 @@ Butterworth filters have :math:`A_1=A_2=A_3=0` which gives the mathematical feat
 
 Since these respective alignments are possible only for a single value of :math:`Q_T`, a procedure is required to extend (or approximate) them for a continuous range of :math:`Q_T`.
 
-1. Method of ignorance
-----------------------
-
-When targeting one of the discrete alignments, it is unlikely (almost impossible) that you will have a driver available at hand, which fits the required :math:`Q_T` value exactly. The simplest solution is to ignore this fact and continue designing the speaker as if there is a perfect match. This we call the method of ignorance, because you ignore the fact that :math:`Q_T` isn't matched perfectly.
-
-In Speakerbench, when we apply this method, the alignment acronym is followed by an 'i' as in B4i, LR4i and BL4i.
-
-2. Generalized quasi-alignments
+1. Generalized quasi-alignments
 -------------------------------
 
 In a design process based on alignments, we consider :math:`(Q_L,Q_T)` as given inputs and :math:`(\alpha,h)` as output parameters to be computed by the alignment. Since we have two free parameters, it follows that we can specify only two of the three values :math:`(A_1,A_2,A_3)`. The approach taken is to relax (i.e., ignore) the condition on :math:`A_3`; that is, we match the behaviour in the pass-band :math:`(A_1)` and mid-band :math:`(A_2)` but **not** the stop-band :math:`(A_3)`. This is described in more detail for so-called QB3 (although we prefer QB4 because the order of the filter is 4) lossless case by Benson :cite:`benson:1993` (page 188).
@@ -115,8 +108,8 @@ Finally, note that by setting :math:`\epsilon=0` above we obtain the lossless so
      for i in range(4):
         gamma = -eps*q**2+np.sqrt(A2-2+2*q**2*(1+eps**2+eps*(1/h+h)))
         h = q**2/(2*gamma+A1-eps**2*h*q**2)
-        alpha = h*gamma-(1+h**2)
 
+     alpha = h*gamma-(1+h**2)
      return h,alpha
 
   Ql=10
@@ -155,7 +148,7 @@ Finally, note that by setting :math:`\epsilon=0` above we obtain the lossless so
 
 In Speakerbench, when we apply this method, the alignment acronym is followed by a 'Q' as in B4Q, LR4Q and BL4Q. Be aware, the B4Q in Speakerbench is the same as what is known in classical theory as the QB3 alignment.
 
-3. Compliance Alteration
+2. Compliance Alteration
 ------------------------
 
 Another approach to handling the situation where the driver :math:`Q_T` isn't matched perfectly, is to assume the misalignment (or error) is due to the driver suspension being either too soft or too stiff, i.e., that the driver compliance is imagined to be altered such that the target :math:`Q_T` value for the target alignment is met.
@@ -169,6 +162,27 @@ Compliance Alteration is computed by first 1) Calculating the reference :math:`Q
    \end{eqnarray}
 
 In Speakerbench, when we apply this method, the alignment acronym is followed by 'CA' as in B4CA, LR4CA and BL4CA.
+
+**Source code**
+
+.. code-block:: python
+
+  import numpy as np
+  print('WRITE SOME CODE')
+
+3. Method of ignorance
+----------------------
+
+When targeting one of the discrete alignments, it is unlikely (almost impossible) that you will have a driver available at hand, which fits the required :math:`Q_T` value exactly. The simplest solution is to ignore this fact and continue designing the speaker as if there is a perfect match. This we call the method of ignorance, because you ignore the fact that :math:`Q_T` isn't matched perfectly.
+
+In Speakerbench, when we apply this method, the alignment acronym is followed by an 'i' as in B4i, LR4i and BL4i.
+
+**Source code**
+
+.. code-block:: python
+
+  import numpy as np
+  print('WRITE SOME CODE')
 
 Summary
 -------
@@ -189,7 +203,7 @@ Boombox
 
 Should we write something about this?
 
-Explain CD4 ?
+Explain CD4? Create a sub-page, which is similar to the article in Voice Coil Magazine, then link to it from here.
 
 Transitional Alignments
 -----------------------
@@ -197,6 +211,7 @@ Transitional Alignments
 Should we write something about this?
 
 Speakerbench supports a transitional alignment, which transitions between Butterworth and Linkwitz-Riley, named ... B4-LR4 ?
+Create a sub-page, which is similar to the article in Voice Coil Magazine, then link to it from here.
 
 Overview
 --------

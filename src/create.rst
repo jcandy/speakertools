@@ -14,7 +14,7 @@ The **Import** tab ('page') in the Datasheet Creator application is a simple way
 The datasheet creator takes input from the fitter. The purpose of the creator is to add information to your dataset such that it becomes enough information to constitute a *complete datasheet* for the driver (but without frequency response graphs or other pictures). This complete dataset may be filed on your computer locally and/or shared with others. To be able to save the data, you must add the **Brand** and **Model number**.
 
 .. figure:: images/brand.png
-            :width: 60 %
+            :width: 90 %
 	    :alt: Input box for brand name
 	    :align: center
 
@@ -23,7 +23,7 @@ The datasheet creator takes input from the fitter. The purpose of the creator is
 as well as the effective piston **driver area** (or diameter)
 
 .. figure:: images/sd.png
-            :width: 50 %
+            :width: 90 %
 	    :alt: Input box for Sd
 	    :align: center
 

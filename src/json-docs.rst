@@ -200,3 +200,16 @@ All JSON files are 'escaped' such that a space is replaced by an underscore.
 
 An online internet database at `Loudspeakerdatabase.com <https://loudspeakerdatabase.com>`_ by Cristian Pop provides access to more than **4000** Thiele/Small datasheets and lets you download a JSON file for Speakerbench in the above mentioned format, which you can import directly into the Datasheet Creator app.
 
+Box simulation JSON file format
+-------------------------------
+
+In Speakerbench you can save your current box simulation in a TUNE.json file. (What is the real name?)
+
+.. code::
+
+  {
+    This is a stub ...
+  }
+
+All JSON files are 'escaped' such that a space is replaced by an underscore.
+
