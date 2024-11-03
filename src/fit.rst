@@ -23,7 +23,7 @@ where :math:`\mathbb{Z}_{\rm mot}` is the mechanical impedance of the transducer
 The equivalent electrical circuit for the driver in free air is
 
 .. figure:: images/elec_total.png
-            :width: 70%
+            :width: 60%
 	    :alt: electrical circuit
 	    :align: center
 
@@ -35,4 +35,4 @@ Thorborg-Futtrup inductance model :cite:`thorborg:2011`) and the *mechanical imp
 
 To compute the fit, simply upload the JSON container of the previous section into the app. The fit analyzes your data and the fit result and provides you with a quality rating: Excellent, Good, Fair or Sorry.
 
-We published an article in the *Loudspeaker Industry Sourcebook 2020* about Speakerbench :cite:`LIS:2020` which explains some aspects of the fitting and how to analyze the results. More background information can be found in our ALMA International Symposium 2017 presentation (held in Las Vegas) titled :download:`Physical Accuracy and Modeling Robustness of Motional Impedance Models  <data/ALMA-2017.pdf>`.
+We published an article in the *Loudspeaker Industry Sourcebook 2020* about Speakerbench :cite:`LIS:2020` which explains some aspects of the fitting and how to analyze the results. More background information can be found in our ALMA International Symposium 2017 presentation :cite:`futtrup:2017`.
