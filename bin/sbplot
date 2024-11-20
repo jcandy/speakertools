@@ -60,13 +60,17 @@ def opts():
                         help="frequency maximum",
                         type=float,
                         default=1e4)
+
+    parser.add_argument('-o',
+                        help="output (png,jpg,pdf,screen) | default: screen",
+                        type=str,
+                        default='screen')
     
     args=parser.parse_args()
 
-    return args.c,args.loc,args.amin,args.amax,args.fmin,args.fmax
+    return args.c,args.loc,args.amin,args.amax,args.fmin,args.fmax,args.o
 
 # defaults
-plotfile = 'screen'
 zero = 0
 type = 'a'
 t = 'null'
@@ -81,7 +85,7 @@ ylabel = 'null'
 xs = 12
 ys = 6
 
-c,loc,amin,amax,fmin,fmax = opts()
+c,loc,amin,amax,fmin,fmax,plotfile = opts()
 
 #-------------------------------------------------------------------------
 # Plot setup
@@ -226,5 +230,5 @@ if plotfile == 'screen':
     plt.show()
 else:
     plt.savefig(plotfile)
-    print("INFO: (plot_frd_zma) Wrote plot to "+plotfile+".")
+    print("INFO: (sbplot) Wrote plot to "+plotfile)
 #------------------------------------------------------------
