@@ -72,6 +72,11 @@ def opts():
                         help="frequency maximum",
                         type=float,
                         default=1e4)
+
+    parser.add_argument('-o',
+                        help="output (png,jpg,pdf,screen) | default: screen",
+                        type=str,
+                        default='screen')
     
     parser.add_argument('-gain',
                         help="gain",
@@ -235,4 +240,3 @@ if out == 'screen':
 else:
     plt.savefig(out)
     print('INFO: (sbplot) Wrote plot to {}'.format(out))
-#------------------------------------------------------------
