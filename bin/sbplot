@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 #------------------------------------------------------------
 # Plotting tool for FRD/ZMA files.
@@ -21,23 +21,35 @@ rc('font',size=GFONTSIZE)
 def opts():
 
     mytext = '''\
-    output:
-       NEED DOCUMENTATION HERE
+    description:
+       sbplot is a flexible tool to plot frd files (containing SPL data) and
+       zma files (containined impedance data).
     '''
 
     parser = argparse.ArgumentParser(
         formatter_class=argparse.RawTextHelpFormatter,
         prog = 'sbplot',
-        description="Speakerbench plotter",
+        description="Speakerbench Plot",
         epilog=textwrap.dedent(mytext))
     
+    parser.add_argument('-i',
+                        help="Speakerbench PLT file",
+                        type=str,
+                        default='null',
+                        metavar='PLTFILES')
+
     parser.add_argument('-c',
                         help="comma-separated list of frd or zma files",
                         type=str,
-                        default='')
+                        default='null')
+
+    parser.add_argument('-o',
+                        help="output (screen, pdf, png, jpg)",
+                        type=str,
+                        default='screen')
 
     parser.add_argument('-loc',
-                        help="Legend quadrant",
+                        help="legend quadrant (1-4)",
                         type=int,
                         default=1)
       
@@ -61,27 +73,47 @@ def opts():
                         type=float,
                         default=1e4)
     
+    parser.add_argument('-gain',
+                        help="gain",
+                        type=str,
+                        default='0')
+
+    parser.add_argument('-t',
+                        help="legend text",
+                        type=str,
+                        default='null')
+
+    parser.add_argument('-phase',
+                        help='toggle phase',
+                        action='store_true')
+
+    parser.add_argument('-title',
+                        help='plot title',
+                        type=str,
+                        default='null')
+    
     args=parser.parse_args()
 
-    return args.c,args.loc,args.amin,args.amax,args.fmin,args.fmax
+    return args.i,args.c,args.o,args.loc,args.amin, \
+        args.amax,args.fmin,args.fmax,args.gain,args.t, \
+        args.phase,args.title
 
 # defaults
-plotfile = 'screen'
 zero = 0
-type = 'a'
-t = 'null'
 colors = 'null'
 style = 'null'
 width = 'null'
 alpha = 'null'
-d = 0.0
 col = 1
-title = 'null'
 ylabel = 'null'
 xs = 12
 ys = 6
 
-c,loc,amin,amax,fmin,fmax = opts()
+pltfiles,c,out,loc,amin,amax,fmin,fmax,gain,t,phase,title = opts()
+
+if pltfiles == 'null' and c == 'null':
+    print('ERROR: (sbplot) No input files specified. Type sbplot -h for help.')
+    sys.exit()
 
 #-------------------------------------------------------------------------
 # Plot setup
@@ -108,38 +140,33 @@ ax.set_xscale('log')
 ax.set_xticks(TICKS)
 ax.set_xticklabels(LABELS)
 
-if type == 'b':
-    axt = ax.twinx()
-
 color = ['black', 'red', 'green', 'blue', 'magenta', 'cyan', 'purple']
 #-------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------
 # Process datasets (comma separated list of frd files in c)
+
 p = 0
 for x in c.split(','):
     try:
-        data = np.genfromtxt(x, comments="#")
+        data = np.genfromtxt(x,comments="#")
     except:
-        print('ERROR: (plot_frd_zma) ' + str(x) + ' not found.')
+        print('ERROR: (sbplot) {} not found'.format(x))
         sys.exit()
 
     f = data[:, 0]
 
     try:
-        gain = float(d.split(',')[p])
+        g = float(gain.split(',')[p])
     except:
-        gain = 0.0
+        g = 0.0
 
-    if type == 'a':
-        a = data[:, 1] + gain
-    elif type == 'p':
-        a = data[:, 2]
+    if phase:
+        a = data[:,2]
     else:
-        a = data[:, 1] + gain
-        b = data[:, 2]
+        a = data[:,1] + g
 
-    name, ext = os.path.splitext(x)
+    name,ext = os.path.splitext(x)
 
     if t == 'null':
         # Watch for underscore
@@ -171,24 +198,14 @@ for x in c.split(','):
     if zero == 1:
         a[:] = a[:]-a[0]
 
-    if type == 'b':
-        ax.plot(f, a, linewidth=1, label=label, color='k')
-        axt.plot(f, b, linewidth=1, color='b')
-    else:
-        ax.plot(f,a,linewidth=w0,label=label,color=c0,linestyle=s0,alpha=a0)
+    ax.plot(f,a,linewidth=w0,label=label,color=c0,linestyle=s0,alpha=a0)
 
     p = p + 1
 #-------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------
 # Generate plots
-if type == 'a':
-    # Plot SPL
-    if ext == '.frd' or ext == '.FRD':
-        ax.set_ylabel(SPL)
-    else:
-        ax.set_ylabel(IMP)
-elif type == 'p':
+if phase:
     # Plot phase
     ax.set_ylim(-180, 180)
     if ext == '.frd' or ext == '.FRD':
@@ -196,20 +213,11 @@ elif type == 'p':
     else:
         ax.set_ylabel(r'$\arg(Z) ~ (\mathrm{degrees})$')
 else:
-    # Plot SPL and phase
+    # Plot SPL
     if ext == '.frd' or ext == '.FRD':
         ax.set_ylabel(SPL)
     else:
         ax.set_ylabel(IMP)
-
-    axt.set_ylim(-180, 180)
-
-    if ext == '.frd' or ext == '.FRD':
-        axt.set_ylabel(
-            r'$\arg(\mathrm{SPL}) ~ (\mathrm{degrees})$',color='b')
-    else:
-        axt.set_ylabel(r'$\arg(Z) ~ (\mathrm{degrees})$', color='b')
-
 
 # Overide y-axis label
 if ylabel != 'null':
@@ -222,9 +230,9 @@ if amin != 'auto':
 ax.legend(loc=loc,ncol=col)
 plt.tight_layout(pad=0.3)
 
-if plotfile == 'screen':
+if out == 'screen':
     plt.show()
 else:
-    plt.savefig(plotfile)
-    print("INFO: (plot_frd_zma) Wrote plot to "+plotfile+".")
+    plt.savefig(out)
+    print('INFO: (sbplot) Wrote plot to {}'.format(out))
 #------------------------------------------------------------
