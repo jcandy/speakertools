@@ -17,6 +17,47 @@ GFONTSIZE=18
 rc('text',usetex=True)
 rc('font',size=GFONTSIZE)
 
+# Plot frame and axis setup
+def plotsetup(phase,ext):
+
+    FHZ=r'$f\,(\mathrm{Hz})$'
+    SPL=r'$\mathrm{SPL}\,\mathrm{(dB)}$'
+    PHASE=r'$\mathrm{Phase}\,\mathrm{(deg)}$'
+    IMP=r'$|Z|\,(\Omega)$'
+    TICKS=[10,20,50,100,200,500,1000,2000,5000,10000,20000]
+    LABELS=[r'$10$',r'$20$',r'$50$',r'$100$',r'$200$',r'$500$',
+            r'$1\mathrm{k}$',r'$2\mathrm{k}$',r'$5\mathrm{k}$',r'$10\mathrm{k}$',r'$20\mathrm{k}$']
+
+    fig = plt.figure(figsize=(xs,ys))
+
+    ax = fig.add_subplot(111)
+
+    if title != 'null':
+        ax.set_title(r'$\mathrm{' + title + '}$', size=18)
+
+    ax.grid(which="major", ls="-", alpha=0.4)
+    ax.grid(which="minor", ls=":", alpha=0.4)
+    ax.set_xlabel(FHZ)
+    ax.set_xscale('log')
+    ax.set_xticks(TICKS)
+    ax.set_xticklabels(LABELS)
+
+    if phase:
+        # Plot phase
+        ax.set_ylim(-180,180)
+        if ext == '.frd' or ext == '.FRD':
+            ax.set_ylabel(r'$\arg(\mathrm{SPL}) ~ (\mathrm{degrees})$')
+        else:
+            ax.set_ylabel(r'$\arg(Z) ~ (\mathrm{degrees})$')
+    else:
+        # Plot SPL
+        if ext == '.frd' or ext == '.FRD':
+            ax.set_ylabel(SPL)
+        else:
+            ax.set_ylabel(IMP)
+
+    return plt,ax
+
 # Command line option parser
 def opts():
 
@@ -42,11 +83,6 @@ def opts():
                         help="comma-separated list of frd or zma files",
                         type=str,
                         default='null')
-
-    parser.add_argument('-o',
-                        help="output (screen, pdf, png, jpg)",
-                        type=str,
-                        default='screen')
 
     parser.add_argument('-loc',
                         help="legend quadrant (1-4)",
@@ -81,10 +117,15 @@ def opts():
     parser.add_argument('-gain',
                         help="gain",
                         type=str,
-                        default='0')
+                        default='null')
 
     parser.add_argument('-t',
                         help="legend text",
+                        type=str,
+                        default='null')
+
+    parser.add_argument('-w',
+                        help="line width",
                         type=str,
                         default='null')
 
@@ -99,79 +140,59 @@ def opts():
     
     args=parser.parse_args()
 
-    return args.i,args.c,args.o,args.loc,args.amin, \
-        args.amax,args.fmin,args.fmax,args.gain,args.t, \
-        args.phase,args.title
+    return args.i,args.c,args.loc,args.amin, \
+        args.amax,args.fmin,args.fmax,args.o, \
+        args.gain,args.t,args.w,args.phase,args.title
 
 # defaults
 zero = 0
 colors = 'null'
 style = 'null'
-width = 'null'
 alpha = 'null'
 col = 1
 ylabel = 'null'
 xs = 12
 ys = 6
 
-pltfiles,c,out,loc,amin,amax,fmin,fmax,gain,t,phase,title = opts()
+pltfiles,c,loc,amin,amax,fmin,fmax,out,gain,t,width,phase,title = opts()
 
 if pltfiles == 'null' and c == 'null':
     print('ERROR: (sbplot) No input files specified. Type sbplot -h for help.')
     sys.exit()
 
-#-------------------------------------------------------------------------
-# Plot setup
+# list of filenames
+myfiles = c.split(',')
+n = len(myfiles)
 
-FHZ=r'$f\,(\mathrm{Hz})$'
-SPL=r'$\mathrm{SPL}\,\mathrm{(dB)}$'
-PHASE=r'$\mathrm{Phase}\,\mathrm{(deg)}$'
-IMP=r'$|Z|\,(\Omega)$'
-TICKS=[10,20,50,100,200,500,1000,2000,5000,10000,20000]
-LABELS=[r'$10$',r'$20$',r'$50$',r'$100$',r'$200$',r'$500$',
-        r'$1\mathrm{k}$',r'$2\mathrm{k}$',r'$5\mathrm{k}$',r'$10\mathrm{k}$',r'$20\mathrm{k}$']
+name,ext = os.path.splitext(myfiles[0])
 
-fig = plt.figure(figsize=(xs,ys))
+plt,ax = plotsetup(phase,ext)
 
-ax = fig.add_subplot(111)
-
-if title != 'null':
-    ax.set_title(r'$\mathrm{' + title + '}$', size=18)
-
-ax.grid(which="major", ls="-", alpha=0.4)
-ax.grid(which="minor", ls=":", alpha=0.4)
-ax.set_xlabel(FHZ)
-ax.set_xscale('log')
-ax.set_xticks(TICKS)
-ax.set_xticklabels(LABELS)
-
-color = ['black', 'red', 'green', 'blue', 'magenta', 'cyan', 'purple']
+color = ['black','red','green','blue','magenta','cyan','purple']
 #-------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------
 # Process datasets (comma separated list of frd files in c)
 
 p = 0
-for x in c.split(','):
+for x in myfiles:
     try:
         data = np.genfromtxt(x,comments="#")
     except:
         print('ERROR: (sbplot) {} not found'.format(x))
         sys.exit()
 
-    f = data[:, 0]
+    f = data[:,0]
 
-    try:
-        g = float(gain.split(',')[p])
-    except:
+    if gain == 'null':
         g = 0.0
+    else:
+        g = float(gain.split(',')[p])
 
     if phase:
         a = data[:,2]
     else:
         a = data[:,1] + g
-
-    name,ext = os.path.splitext(x)
 
     if t == 'null':
         # Watch for underscore
@@ -210,27 +231,14 @@ for x in c.split(','):
 
 #-------------------------------------------------------------------------
 # Generate plots
-if phase:
-    # Plot phase
-    ax.set_ylim(-180, 180)
-    if ext == '.frd' or ext == '.FRD':
-        ax.set_ylabel(r'$\arg(\mathrm{SPL}) ~ (\mathrm{degrees})$')
-    else:
-        ax.set_ylabel(r'$\arg(Z) ~ (\mathrm{degrees})$')
-else:
-    # Plot SPL
-    if ext == '.frd' or ext == '.FRD':
-        ax.set_ylabel(SPL)
-    else:
-        ax.set_ylabel(IMP)
 
 # Overide y-axis label
 if ylabel != 'null':
     ax.set_ylabel(r'$'+ylabel+'$')
 
-ax.set_xlim(float(fmin), float(fmax))
+ax.set_xlim(float(fmin),float(fmax))
 if amin != 'auto':
-    ax.set_ylim(float(amin), float(amax))
+    ax.set_ylim(float(amin),float(amax))
 
 ax.legend(loc=loc,ncol=col)
 plt.tight_layout(pad=0.3)

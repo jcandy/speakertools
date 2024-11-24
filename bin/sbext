@@ -17,7 +17,7 @@ def extract(pltfile,rootname):
    
    with open(pltfile) as data:
       dict = json.load(data)
-
+   
    f  = np.array(dict['f'])
 
    # frd
