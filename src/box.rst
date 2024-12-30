@@ -9,38 +9,41 @@ Box Simulation
 .. note::
    **STEP 4**: You can perform box simulations using data created (or imported) in :doc:`STEP 3 <create>`. You can also import data from the massive `Loudspeaker Database <https://loudspeakerdatabase.com>`_!
 
-The purpose of measuring the driver impedance (STEP 0) and determining the parameters (STEPS 1-3) is to be able to accurately predict the behavior in a box before it is actually built. Here we offer a powerful box simulator that can calculate various quantities of interest using the advanced parameter model, or with the legacy Thiele-Small model.
+The purpose of measuring the driver impedance (STEP 0) and determining the advanced parameters (STEPS 1-3) is to accurately predict the behavior in a box before it is built. Speakerbench offers a powerful box simulator that can calculate various quantities of interest using the advanced parameter model, or with the legacy Thiele-Small model.
 
-To load parameters for a driver into the box simulator, you need to use the :doc:`Datasheet Creator <create>`. When the data visible in the Datasheet Creator generates a JSON output, the data is stored in your local browser memory and automagically shows up in the box simulator. Hereafter you are able to adjust box parameters in the *Settings* tab and simulate the system behavior.
+To load parameters for a driver into the box simulator, you need to use the :doc:`Datasheet Creator <create>`. When the data visible in the Datasheet Creator generates a JSON output, the data is stored in your local browser memory and automagically shows up in the box simulator. Thereafter, box parameters can be varied in the *Settings* tab to simulate the system behavior. A detailed description of the underlying theory is also summarized in the :ref:`box_theory` section.
 
 Enclosure Options
 -----------------
 
-The box models supported by Speakerbench are:
+The enclosure options supported by Speakerbench are:
 
-**Simple**
-    Beranek-Mellow transmission matrix formulation :cite:`beranek:2012` with a simple (classic) compliance model for the box matrix. Damping material settings are ignored.
+**classic**
+     A simple (classic) series resistance-compliance model for the enclosure as described by Small, Benson and others. 
 
-**Futtrup**
-   Low-frequency circuit model for enclosures with added damping material as described in :cite:`futtrup:2011`. In the no-fill limit this still includes acoustic mass effects.
-
-**T-net**
-   Beranek-Mellow transmission matrix formulation with a low-frequency 2-port model for the box matrix including acoustic mass and compliance. When fill is added, the impedance and wavenumber are replaced by the complex (lossy) values from Tarnow :cite:`tarnow:2002`. This method has been checked against measurements and we believe it is the most accurate.
-
-All the enclosure models are reliable only for the low-frequency range, below the first box resonance. With either the T-net or the Futtrup model you can choose between a number of different damping materials, either from Polyester or PET fiber, or from Glass wool (the number indicates the density in kg/m3).
+**2-port**
+   A low-frequency 2-port model for the enclosure matrix that includes rigorous acoustic mass elements derived by solving the Helmholtz equation. Losses and volume expansion due to fill are also treated including theoretical estimates from the theory of Futtrup :cite:`futtrup:2011`. Different damping materials, from Polyester or PET fiber, or from Glass wool, are treated. Significant effort has gone in to experimental validation of the methods.
+   
+The Beranek-Mellow transmission matrix formulation :cite:`beranek:2012` is used to implement both options. The calculated results are reliable only for the low-frequency range, below the first box resonance. 
 
 Port Options
 ------------
 
 For bass reflex simulation, Speakerbench supports two port models
 
-**Simple**
-   The classic circuit model (mass and resistance)
+**classic**
+   The classic series mass-resistance model for vent impedance as described by Small, Benson and others. 
 
 **T-line**
-   Transmission-line that includes reflections and pipe resonance. The dissipation in the vent is chosed to match the simple theory at low frequency.
+   An arbitrary-frequency transmission-line model that includes reflections and pipe resonance. The dissipation in the vent is chosen to match the classic theory at low frequency.
 
-Time Domain
------------
+Alignments
+----------
 
-In addition to the usual frequency-domain plots of SPL, velocity and displacement, Speakerbench can also calculate the step-response, enabled by switching on the *Time domain* toggle in the Settings tab. This is more computationally intensive, so we recommend to leave it off until the step response is desired. Two plots are given: (1) the step response and (2) the contour map of the transfer function. Since Speakerbench implements an advanced transducer model, with viscoelasticity and semi-inductance, the time domain response is calculated with a contour integral algorithm as documented in :cite:`candy:2018`.
+To facilitate choosing the box volume and vent tuning, Speakerbench will propose values based on standard 4th-order bass-reflex alignments :cite:`small:1973c`. These alignments are particular types of 4th-order high-pass filters. A comprehensive description is given in the :ref:`alignment_theory` section.
+
+Transient Response
+------------------
+
+In addition to the usual frequency-domain plots of SPL, velocity and displacement, Speakerbench can also calculate the step response, enabled by switching on the *Time domain* toggle in the Settings tab. This is more computationally intensive, so we recommend to leave it off until the step response is desired. Two plots are given: (1) the step response and (2) the contour map of the transfer function. Since Speakerbench implements an advanced transducer model, with viscoelasticity and semi-inductance, the time domain response is calculated with a contour integral algorithm as documented in :cite:`candy:2018`.
+

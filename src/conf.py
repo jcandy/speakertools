@@ -29,6 +29,12 @@ master_doc = 'index'
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
+html_static_path = ['_static']
+
+html_css_files = [
+    'css/custom.css',
+]
+
 imgmath_font_size='16'
 
 # -- Options for HTML output ---------------------------------------------------

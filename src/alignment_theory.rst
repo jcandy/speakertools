@@ -3,15 +3,15 @@
    :keywords: speakerbench,loudspeaker,driver,parameter,json,design,calculator,impedance,measurement,simulation,software,free,audio
    :description: Speakerbench Documentation
 
-Alignments
-==========
+.. _alignment_theory:
 
-In classical loudspeaker theory from the 1960s and onwards, the concept of alignments was developed to provide a target low-frequency response function for loudspeaker designers to aim at.
+Speakerbench Alignments
+=======================
 
-The Speakerbench box simulator provides an Alignment Chart, which might be helpful in selecting a suitable box volume and port tuning for your driver.
+In classical loudspeaker theory from the 1960s and onwards, the concept of alignments was developed to provide a systematic prescription for choosing box volume and port tuning to yield a target low-frequency response function.
 
-Basic theory
-------------
+History and framework
+---------------------
 
 To facilitate choosing the box volume and vent tuning, Speakerbench will propose values based on standard 4th-order bass-reflex alignments. These alignments are particular types of 4th-order high-pass filters. Following Small :cite:`small:1973c` (Eq. 57) we can write the normalized response function as
 

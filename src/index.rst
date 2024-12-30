@@ -65,12 +65,12 @@ Speakerbench doesn't do the actual impedance measurements for you; rather, you w
    create
    box
    box_theory
+   alignment_theory
 
 .. toctree::
    :caption: Resources
    :hidden:
 
-   alignment
    sampledata
    youtube
    json-docs
