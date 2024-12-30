@@ -1,6 +1,6 @@
 .. meta::
    :author: Jeff Candy and Claus Futtrup
-   :keywords: speakerbench,loudspeaker,driver,parameter,json,design,calculator,impedance,measurement,simulation,software,free,audio
+   :keywords: speakerbench,loudspeaker,driver,parameter,impedance,measurement,simulation,port
    :description: Speakerbench Documentation
 
 Box Simulation

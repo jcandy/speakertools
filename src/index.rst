@@ -64,6 +64,7 @@ Speakerbench doesn't do the actual impedance measurements for you; rather, you w
 
    create
    box
+   box_theory
 
 .. toctree::
    :caption: Resources
