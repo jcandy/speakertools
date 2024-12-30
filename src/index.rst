@@ -6,29 +6,30 @@
 Speakerbench
 ============
 
-`Speakerbench <https://www.speakerbench.com>`_ is a free, web-based application for modeling loudspeakers. A novel feature of the software is the use of an **advanced transducer model** that includes motor semi-inductance and suspension viscoelasticity.
-
-Why Speakerbench?
------------------
-
 .. figure:: images/speaker_scaled.png
             :width: 20 %
 	    :alt: speaker
 	    :align: left
 
-The corrections to the traditional Thiele-Small approach resolve a long-standing problem with incorrect prediction of impedance, and not least the maxima in vented systems.
+`Speakerbench <https://www.speakerbench.com>`_ is a free, web-based application for modeling loudspeakers. A novel feature of the software is the use of an **advanced transducer model** that includes motor semi-inductance and suspension viscoelasticity.
+
+
+Why Speakerbench?
+-----------------
+
+Speakerbench provides a new framework for higher-accuracy driver simulation. Corrections to the traditional Thiele-Small approach resolve systematic errors in the description of driver losses and system impedance. For example, as shown in :ref:`Fig 1 <mainfig>`, maxima in vented systems are correctly predicted with Speakerbench.
+
+.. _mainfig:
 
 .. figure:: images/impedance.png
-            :width: 90 %
+            :width: 80 %
 	    :alt: impedance
 	    :align: center
 
-            The advanced model (magenta) correctly predicts the impedance peak offset for
+            **Fig 1:** The advanced model (magenta) correctly predicts the impedance peak offset for
 	    a woofer in a vented box. Classical Thiele-Small theory (black) misses this effect.
 
-With a better prediction of the impedance, you can build the loudspeaker and verify that your design is as intended with impedance measurements, not just the port tuning frequency but also the overall losses of the system.
-
-The impedance is overall simulated correctly, which also implies the power dumped into the speaker (for a given input voltage) is correct, and the output power response is correctly simulated, also at high frequencies.
+With a physically accurate specification of impedance and losses, you can build a loudspeaker and precisely verify the performance and power dissipation versus applied voltage. With the traditional model, losses that originate in the loudspeaker suspension are typically **misattributed** to ficticuous box leakage or port losses. With the advanced model, once can obtain a correct physical attribution of the losses.
 
 Speakerbench workflows are separated into 4 apps:
 

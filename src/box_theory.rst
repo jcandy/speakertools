@@ -24,7 +24,16 @@ Speakerbench Box Theory
 History of enclosure models
 ---------------------------
 
-The standard theory of loudspeaker enclosures was popularized by Small, although the same essential theory was presented by Benson in much more detail in his series of articles *Theory and Design of Loudspeaker Enclosures* :cite:`benson:1993`
+The standard theory of loudspeaker enclosures was popularized by Small :cite:`small:1972a,small:1972b,small:1973b`, although the equivalent theory was presented by Benson in greater detail in his series of articles *Theory and Design of Loudspeaker Enclosures* :cite:`benson:1993`
+
+.. figure:: images/small_vented.png
+            :width: 50 %
+	    :alt: small_vented
+	    :align: center
+
+	    Circuit diagram for vented loudspeaker as presented by Small in Ref. :cite:`small:1973b`.
+
+
 
 Acoustical impedances for unfilled box
 --------------------------------------
@@ -78,10 +87,10 @@ where :math:`\sbx = l_x \, l_y` is the baffle area, :math:`l_z` is the enclosure
 Connection to Beranek factor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Beranek factor :math:`B` is related to the piston self-interaction coefficient :math:`\epsilon_{11}` and defines the acoustic mass :math:`M` when the port is blocked:
+The end-correction factor :math:`B`, first introduced by Beranek in his 1954 book :cite:`beranek:1954`, is related to the piston self-interaction coefficient :math:`\epsilon_{11}` and defines the acoustic mass :math:`M` when the port is blocked:
 
 .. math::
-   M_{11} \doteq \epsilon_{11} \ma =  \frac{B \rho}{\pi\ad} \; .
+   M_{11} \doteq \epsilon_{11} \ma =  \frac{B \rho}{\pi \, \ad} \; .
 
 Thus, we can define :math:`B` in terms of :math:`\epsilon_{11}` as
 

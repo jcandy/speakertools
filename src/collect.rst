@@ -19,8 +19,7 @@ The data collection app requires the following input:
 4. The value of :math:`m_1` in grams
 5. The value of :math:`m_2` in grams
 
-This app also provides an optional comment field. We recommended that you type the driver name into this field. An optional field for specification of the input voltage is also available. Specifying the voltage is not a requirement either, but it's good practice to record this because we know that the suspension compliance will depend on the input
-level. Remember to fill out these optional fields before you complete entering the five inputs.
+This app also provides an optional comment field. We recommended that you type the driver name into this field. An optional field for specification of the input voltage is also available. Specifying the voltage is not a requirement either, but it's good practice to record this because we know that the suspension compliance will depend on the input level. Remember to fill out these optional fields before you complete entering the five inputs.
 
 The comment field is the first entry in the data object such that if you open up the file in a text editor, you can read your comment in plain text (at the top). This will help you identify the measurement. When measuring your driver, we recommend that you follow steps outlined in :doc:`measure`.
 
