@@ -21,12 +21,13 @@ Ideally, :math:`m_2` will be in the same ballpark as the moving mass of the spea
    It is important to measure on a precision scale and specify the masses as accurately as possible.
 
 These three impedance data files must be uploaded to the web app in ZMA file format, which lists 3 columns of data: frequency (column 1), impedance magnitude (column 2) and impedance phase (column 3). Acceptable ZMA files may contain header data (ignored) marked with an asterisk (*). Ideally the steady-state impedance measurements will be logarithmic, range from about 10 Hz to 20 kHz, and contain several hundred data points. However, linear frequency measurements with
-thousands of data points is also acceptable. Since the goal is to determine the advanced model parameters as accurately as possible, we recommend that :math:`m_2` consist of 4 masses and that :math:`m_1` consist of half these masses (with the other half removed from the cone). The four masses are placed in a cross-pattern (equally spaced) in a mechanically stable way near the voice coil and with a good physical connection to the voice coil. All 4 masses should be of approximately the same weight, yet for high precision they are individually marked and their weight measured individually before applied to the cone. This is illustrated in the image below.
+thousands of data points is also acceptable. Since the goal is to determine the advanced model parameters as accurately as possible, we recommend that :math:`m_2` consist of 4 masses and that :math:`m_1` consist of half these masses (with the other half removed from the cone). The four masses are placed in a cross-pattern (equally spaced) in a mechanically stable way near the voice coil and with a good physical connection to the voice coil. All 4 masses should be of approximately the same weight, yet for high precision they are individually marked and their weight measured individually before applied to the cone. This is illustrated in :numref:`fig.mass`.
 
 .. figure:: images/mass.jpg
             :width: 95 %
             :alt: Drivers with and without added mass
             :align: center
+            :name: fig.mass
 
 	    Driver with (1) with added mass :math:`m_2`, (2) with added mass :math:`m_1`, (3) without added mass
 	

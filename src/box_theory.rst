@@ -108,7 +108,21 @@ The interior of the box provides an end correction to the port mass. In the case
 whereas the internal correction is
 
 .. math::
-  \Delta l_\mathrm{port} = \frac{\epsilon_{22}-\epsilon_{21}}{l_x l_y} \, l_x \sdp
+  \Delta l_\mathrm{port} = \frac{\epsilon_{22}-\epsilon_{21}}{l_x l_y} \, l_z \sdp
+
+Summary of acoustic masses
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+It is perhaps useful to print a table of the 6 relevant acoustic masses in the table below. The outer masses are associated with unflanged piston radiation, the intrinsic masses are the physical masses (loudspeaker moving mass and port air plug), and the inner masses are assocated with the Helmholtz matrix elements.
+
+.. csv-table:: **Table of acoustic masses**
+   :align: center
+   :header: "", *outer*, *intrinsic*,*inner*
+   :widths: 25, 25, 25, 25
+
+   port,":math:`\displaystyle \left(0.6\adp\right)\frac{\rho}{\sdp}`",":math:`\displaystyle \frac{\rho \, V_\mathrm{tube}}{\sdp^2}`",":math:`\displaystyle \left(\epsilon_{22}-\epsilon_{12}\right)\,\ma`"
+   box,":math:`\displaystyle \left(0.6\ad\right) \frac{\rho}{\sd}`",":math:`\displaystyle \frac{M_{ms}}{\sd^2}`",":math:`\displaystyle \epsilon_{11} \, \ma`"
+
 
 Losses due to enclosure fill
 ----------------------------

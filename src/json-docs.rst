@@ -5,8 +5,8 @@
 
 .. title:: Speakerbench JSON Docs
 
-The JSON Documentation
-======================
+JSON Datafile Definitions
+=========================
 
 .. toctree::
    :maxdepth: 1

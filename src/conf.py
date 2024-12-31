@@ -10,8 +10,8 @@ extensions=[
     'sphinxcontrib.bibtex',
     'sphinxcontrib.contentui',
     'fluiddoc.mathmacro',
-    'sphinxcontrib.youtube'
-]
+    'sphinxcontrib.youtube',
+    'sphinx_subfigure']
 
 language  = 'en'
 project   = 'Speakerbench'
@@ -23,6 +23,7 @@ release = version
 
 bibtex_bibfiles = ['refs.bib']
 bibtex_default_style = 'alpha'
+numfig = True
 
 master_doc = 'index'
 
