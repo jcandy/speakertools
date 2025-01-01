@@ -117,13 +117,12 @@ Evidently, one can also compute the step response by integration of the impulse 
 .. math::
   \xs(t) = \int_0^t d\tp \, \xim(\tp) \; .
 
-A simple example outlining the calculation of impulse and step responses for a simple linear oscillator is given in Appendix~\ref{ap.example}. In Secs.~2-5, we will focus on the step response, :math:`\xs`, because it avoids the singularity present in the impulse response.  The step response is also the quantity normally computed in box modeling programs.
+A simple example outlining the calculation of impulse and step responses for a simple linear oscillator is given in the Appendix. In the following sections we will focus on the step response, :math:`\xs`, because it avoids the singularity present in the impulse response.  The step response is typically computed in box modeling programs.
 
 Application to transducer response
 ----------------------------------
 
-In the present paper, we choose to formulate the inverse problem using a dimensionless time :math:t = \omega_s \tau$, where :math:\tau$ is the physical time, and :math:`\omega_s = 2 \pi f_s` is the resonant frequency of the loudspeaker driver.  To illustrate the inversion process for a simple case, we consider the
-steady-state pressure response for an undamped, closed box :cite:`benson:1993`. In this case, the response function takes the form of a 2nd-order high-pass filter
+In the present paper, we choose to formulate the inverse problem using a dimensionless time :math:`t = \omega_s \tau`, where :math:`\tau` is the physical time, and :math:`\omega_s = 2 \pi f_s` is the resonant frequency of the loudspeaker driver.  To illustrate the inversion process for a simple case, we consider the steady-state pressure response for an undamped, closed box :cite:`benson:1993`. In this case, the response function takes the form of a 2nd-order high-pass filter
 
 .. math::
    :label: eq.hp2
@@ -147,9 +146,7 @@ The integrand contains a pole of order 2 at :math:`s=-1`, in which case we can c
 	   
    \xs(t) = \frac{\partial}{\partial s}\left. \left(s e^{st}\right) \right|_{s = -1} = e^{-t} (1-t) \; .
  
-In the more realistic case of vented and damped enclosures, the same method based on analytic contour integration will work in principle, although locating the poles and computing residues may become tedious and complicated.  In practical cases, the residue calculation is done numerically by computing eigenvalues of the *companion matrix* :cite:`edelman:1995`.  The companion matrix approach is relatively complicated and relies on sophisticated linear algebra software.  For example, the Scipy ``scipy.signal.residue()`` :cite:`scipy` function, and the Scilab ``residu()`` :cite:`scilab` function are each based on finding eigenvectors of a companion matrix.
-
-Importantly, the residue-based methods described above are applicable only to rational functions, and fail in the general case for which the driver circuit model contains semi-inductance :cite:`thorborg:2011` or viscoelastic creep :cite:`knudsen:1993,thorborg:2010,thorborg:2013,novak:2016`. In this case the frequency-domain response function will contain elements described by functions with branch points -- for example, :math:`\sqrt{s}` or :math:`\ln(s)`.  One must then return to the Bromwich integral in Eq. :eq:`eq.brom` and perform the contour integration numerically.
+In the more realistic case of vented and damped enclosures, the same method based on analytic contour integration will work in principle, although locating the poles and computing residues may become tedious and complicated.  In practical cases, the residue calculation is done numerically by computing eigenvalues of the *companion matrix* :cite:`edelman:1995`.  Importantly, the residue-based methods described above are applicable only to rational functions, and fail in the general case for which the driver circuit model contains semi-inductance :cite:`thorborg:2011` or viscoelastic creep :cite:`knudsen:1993,thorborg:2010,thorborg:2013,novak:2016`. In this case the frequency-domain response function will contain elements described by functions with branch points -- for example, :math:`\sqrt{s}` or :math:`\ln(s)`.  One must then return to the Bromwich integral in Eq. :eq:`eq.brom` and perform the contour integration numerically.
 
 The problem of numerical inversion of the Laplace transform has been an active area of research since the 1960s :cite:`bellman:1966`, with an important method developed by Talbot in 1979 :cite:`talbot:1979`.  There is no single best method; rather, the most suitable method will in general depend on the nature of the problem. To illustrate the convergence issues associated with inversion of the transform, consider again the example of Eq. :eq:`eq.simple`.  As a straightforward attempt to evaluate the Bromwich integral directly, one can put the integration contour on the imaginary axis :math:`s=iy`.  In this case the Bromwich integral, Eq. :eq:`eq.simple`, reduces to the inverse Fourier transform
 
@@ -175,7 +172,7 @@ As required, the analytic solution in Eq. :eq:`eq.direct`, obtained by directvin
   \frac{2y^2 \cos(yt) + (y^3-y) \sin(yt)}{(1+y^2)^2} \sim \frac{\sin(yt)}{y}
   \; \text{as}\; y \rightarrow \infty \; .
   
-Thus, at small times :math:`t \ll 1`, extremely large values of :math:`y` (i.e., very high frequencies in the Fourier sense) must be retained to accurately evaluate the integral.  This is in contrast to the previous contour integration, which can determine the integral exactly via any closed contour surrounding the pole at :math:`s = iy = -1`.  The implication is that a numerical method based on integration along a vertical contour will be fundamentally inefficient, quite independent of the numerical quadrature method.  Let us take this illustration further by explicitly constructing a numerical inversion, via \textit{inverse discrete Fourier transform} (iDFT), and rewrite the integral as
+Thus, at small times :math:`t \ll 1`, extremely large values of :math:`y` (i.e., very high frequencies in the Fourier sense) must be retained to accurately evaluate the integral.  This is in contrast to the previous contour integration, which can determine the integral exactly via any closed contour surrounding the pole at :math:`s = iy = -1`.  The implication is that a numerical method based on integration along a vertical contour will be fundamentally inefficient, quite independent of the numerical quadrature method.  Let us take this illustration further by explicitly constructing a numerical inversion, via *inverse discrete Fourier transform* (iDFT), and rewrite the integral as
 
 .. math::
    :label: eq.cont
@@ -326,7 +323,7 @@ where :math:`c(s)` is an analytic function
 that multiplies the static suspension compliance, :math:`C_0`.  In this example, we have chosen :math:`s_0=2`, corresponding to a transition frequency that is double the resonant frequency, but in practical cases other values may apply.  Note that when replacing the static compliance with the 3PC model, the meaning of :math:`\rms` will change in response to the frequency-dependent damping effect (originating from the imaginary part of the logarithm). We emphasize that due to the branch cut :math:`s \in [-2,0]`, the inverse transform of :math:`R(s)/s` *cannot* be computed by traditional transform tables or a straightforward integration. :numref:`fig.perror` shows the time-domain step response as computed using the method of the present paper. The solid and dashed curves, respectively, show the response with and without the creep function.  We can also give
 an indication of the resolution required to give acceptable results.  Also in :numref:`fig.perror` we plot the absolute inversion error as a function of the initial number of nodes, :math:`N_0`.  We remark that eventually all curves overlap at sufficiently large :math:`t` for which :math:`\mu = 1`. These results show that the present method can compute the inverse efficiently to nearly machine precision.  In fact, in generating :numref:`fig.perror`, it was sufficient to use :math:`N_0 \le 32`.  This is surprising given the apparent computational complexity of the integral in Eq. :eq:`eq.direct`.
 
-Although the Fourier approach of Eq. :eq:`eq.dft` can be modified to give some accuracy improvement, it is manifestly less computationally efficient than the more elegant contour method. The latter with :math:`N = 2 N_0 + 1 = 17` gives better accuracy than the Fourier method with :math:`N = 8000`, and with :math:`N = 65$ points`, the modified Weideman contour method returns an answer correct to nearly the full machine precision!
+Although the Fourier approach of Eq. :eq:`eq.dft` can be modified to give some accuracy improvement, it is manifestly less computationally efficient than the more elegant contour method. The latter with :math:`N = 2 N_0 + 1 = 17` gives better accuracy than the Fourier method with :math:`N = 8000`, and with :math:`N = 65` points, the modified Weideman contour method returns an answer correct to nearly the full machine precision!
 
 Nonlinear driver simulation
 ---------------------------
@@ -391,57 +388,14 @@ be implemented in only a few lines of code.  The complete algorithm is summarize
 Appendices
 ----------
 
-Example impulse and step response calculation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To illustrate the theory it is instructive to compute all relevant quantities for a simple example.  Consider then the displacement :math:`x(\tau)` of a linear oscillator of mass :math:`m`, resistance :math:`r` and spring constant :math:`k` driven by a time-dependent force :math:`g(\tau)`:
-
-.. math:: m \, \frac{d^2 x}{d\tau^2} + r \, \frac{dx}{d\tau} + k x = g(\tau) \; .
-
-To simplify the problem, we restrict consideration to undamped oscillations with :math:`r=0`.  Define the natural frequency :math:`\omega_0^2 = k/m`, and in terms of this frequency let :math:`t = \omega_0 \tau` be a dimensionless time.  Then, the equation becomes
-
-.. math::
-   :label: eq.sos
-	   
-   \ddot{x} + x = f(t) \; ,
-  
-where :math:`f(t) \doteq g(\tau)/(m\omega_0^2)` is a normalized force with the same units as the displacement :math:`x`. We consider the oscillator to be at rest for :math:`t < 0` (The case for arbitrary initial conditions is discussed by Morse :cite:`morse:1986`. Taking the Laplace transform gives
-
-.. math::
-   X(s) = \frac{1}{s^2+1} \, F(s) \; .
-
-The impulse and step responses are
-
-.. math::
-   \begin{eqnarray}
-   \xim(t) & = & {\cal L} \left[ \frac{1}{s^2+1} \right] = H(t) \sin(t) \; , \\
-   \xs(t) & = & {\cal L} \left[ \frac{1}{s(s^2+1)} \right] = H(t) \left[ 1-\cos(t) \right] \, .
-   \end{eqnarray}
-
-It is also instructive to compute the derivatives of :math:`\xim(t)` to verify the solution:
-
-.. math::
-   \begin{eqnarray}
-   \dot{x}_\mathrm{I} & = & H(t) \cos(t) \; , \\
-   \ddot{x}_\mathrm{I} & = & \delta(t) - H(t) \sin(t) \; .
-   \end{eqnarray}
-
-Thus, we have verified that
-
-.. math:: \ddot{x}_\mathrm{I} + \xim = \delta(t) \; .
-	  
-Finally, the general solution of Eq. :eq:`eq.sos` is written as
-
-.. math:: x(t) = \int_0^t d\tp \sin(\tp) f(t-\tp) \; .
-
 Simplification of the Ritter 3PC compliance model
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In Eq.~(13) of a paper by Ritter and Agerkvist :cite:`ritter:2010`, the viscoelastic compliance contains a logarithmic term that is expressed as
+In Eq. (13) of a paper by Ritter and Agerkvist :cite:`ritter:2010`, the viscoelastic compliance contains a logarithmic term that is expressed as
 
 .. math:: \log_{10} \left[ \frac{i \omega \tau_\mathrm{min} e^{-i \beta}}{\sqrt{1+\omega^2\tau_\mathrm{min}^2}} \right] \; .
 
-In this expression, :math:`\beta=\tan^{-1}(\tau_\mathrm{min} \omega)` is the phase angle. We remark that Ritter's :math:`\beta` is unrelated to our :math:`\beta` of Secs.~5-6.  By defining :math:`s_0 \doteq 1/\tau_\mathrm{min}`, setting :math:`s=i\omega`, and expanding the complex exponential, we can rewrite this as
+In this expression, :math:`\beta=\tan^{-1}(\tau_\mathrm{min} \omega)` is the phase angle. We remark that Ritter's :math:`\beta` is unrelated to :math:`\beta` in these notes.  By defining :math:`s_0 \doteq 1/\tau_\mathrm{min}`, setting :math:`s=i\omega`, and expanding the complex exponential, we can rewrite this as
 
 .. math:: \log_{10} \left[ \frac{(s/s_0)}{\sqrt{1-s^2/s_0^2}} \left( \cos\beta - i \sin\beta\right) \right] \; .
 

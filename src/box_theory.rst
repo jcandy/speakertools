@@ -45,7 +45,7 @@ In Eq. (7.131) of Beranek :cite:`beranek:2019`, the acoustical impedances for an
 	   
    Z_{pq} \sim \frac{1}{s \ca } + s \ma \, \epsilon_{pq} + {\cal O}(s^2) \; .
 
-By ignoring terms of :math:`{\cal O}(s^2)` and higher, we limit the applicability of the theory to the frequency range where those neglected terms are small. The quantity :math:`\epsilon_{pq}` is a dimensionless :math:`2\!\times\!2` array 
+By ignoring terms of :math:`{\cal O}(s^2)` and higher, we limit the applicability of the theory to the frequency range where those neglected terms are small. Note that in this section, all masses and compliances are assumed to be in acoustic units. When mechanical units are used, a lower-case :math:`m` subscript will be added. The quantity :math:`\epsilon_{pq}` is a dimensionless :math:`2\!\times\!2` array 
 
 .. math::
    :label: eq.eps
@@ -102,15 +102,25 @@ Thus, we can define :math:`B` in terms of :math:`\epsilon_{11}` as
 End correction due to box mass
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Because there is no precise theory for the effective port length, :math:`l_p`, in terms of the physical port length, :math:`l_\mathrm{phys}`, it is customary to first define the effective length in terms of the resonant frequency :math:`\omega_p` as
+
+.. math::
+   \omega_p^2 = \frac{1}{C_A M_p} = \frac{S_p c^2}{V l_p} \; .
+
+To derive this result we have used
+
+.. math::
+   M_p = \frac{M_{mp}}{S_p^2} = \frac{\rho V_p}{S_p^2} = \frac{\rho \, l_p}{S_p} \; .
+
 The interior of the box provides an end correction to the port mass. In the case where the port is *external* to the box (internal flange), the exterior end correction is the usual unflanged value
 
 .. math::
-   \Delta l_\mathrm{port} = 0.6 \, \adp
+   l_\mathrm{out} = 0.6 \, \adp
 
 whereas the internal correction is
 
 .. math::
-  \Delta l_\mathrm{port} = \frac{\epsilon_{22}-\epsilon_{21}}{l_x l_y} \, l_z \sdp
+  l_\mathrm{in} = \frac{\epsilon_{22}-\epsilon_{21}}{\sbx} \sdp \, l_z 
 
 Summary of acoustic masses
 ^^^^^^^^^^^^^^^^^^^^^^^^^^

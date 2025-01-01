@@ -78,4 +78,5 @@ Speakerbench doesn't do the actual impedance measurements for you; rather, you w
    sampledata
    youtube
    json-docs
+   glossary
    zreferences
