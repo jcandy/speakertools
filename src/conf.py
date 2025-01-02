@@ -3,6 +3,7 @@ import os
 import time
 import glob
 import numpy
+import re
 
 extensions=[
     'sphinx.ext.mathjax',
@@ -32,9 +33,7 @@ templates_path = ['_templates']
 
 html_static_path = ['_static']
 
-html_css_files = [
-    'css/custom.css',
-]
+html_css_files = ['css/custom.css']
 
 imgmath_font_size='16'
 
@@ -58,4 +57,13 @@ html_theme_options = {
    'titles_only': False
 }
 
+mathjax3_config = {'tex':{'macros':{}}} # Create empty 
 
+with open('macros.tex', 'r') as f:
+	for line in f:
+		macros = re.findall(r'\\newcommand{\\(.*?)}(\[(\d)\])?{(.+)}', line)
+		for macro in macros:
+			if len(macro[1]) == 0:
+				mathjax3_config['tex']['macros'][macro[0]] = "{"+macro[3]+"}"
+			else:
+				mathjax3_config['tex']['macros'][macro[0]] = ["{"+macro[3]+"}", int(macro[2])]

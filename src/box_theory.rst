@@ -1,21 +1,3 @@
-.. |dmn| mathmacro:: \Delta_{mn}
-.. |ca| mathmacro:: C_\mathrm{A}
-.. |ma| mathmacro:: M_\mathrm{A}
-.. |sd| mathmacro:: S_\mathrm{D}
-.. |ad| mathmacro:: a_\mathrm{D}
-.. |sdp| mathmacro:: S_\mathrm{P}
-.. |adp| mathmacro:: a_\mathrm{P}
-.. |sbx| mathmacro:: S_\mathrm{B}
-.. |caf| mathmacro:: C_\mathrm{af}
-.. |cth| mathmacro:: C_\mathrm{th}
-.. |cua| mathmacro:: C_\mathrm{ua}
-.. |raf| mathmacro:: R_\mathrm{af}
-.. |rth| mathmacro:: R_\mathrm{th}
-.. |cfu| mathmacro:: C^*_\mathrm{A}
-.. |rfu| mathmacro:: R^*_\mathrm{A}
-.. |ws| mathmacro:: \omega_s
-.. |deltv| mathmacro:: \delta_v
-
 .. _box_theory:
 		    
 Speakerbench Box Theory
@@ -23,10 +5,10 @@ Speakerbench Box Theory
 
 History of enclosure models
 ---------------------------
-
+      
 The standard theory of loudspeaker enclosures was popularized by Small :cite:`small:1972a,small:1972b,small:1973b`, although the equivalent theory was presented by Benson in greater detail in his series of articles *Theory and Design of Loudspeaker Enclosures* :cite:`benson:1993`
 
-.. figure:: images/small_vented.png
+.. figure:: images/box/small_vented.png
             :width: 50 %
 	    :alt: small_vented
 	    :align: center
@@ -78,7 +60,7 @@ The index :math:`p=1` corresponds to the driver (subscript :math:`D`) and :math:
 
 where :math:`\sbx = l_x \, l_y` is the baffle area, :math:`l_z` is the enclosure depth, :math:`\sd = \pi \ad^2` is the driver area, and :math:`V= l_x \, l_y \, l_z` is the enclosure volume. The circuit diagram for a low-frequency T-network system for an undamped vented box (box connected to a tube) is illustrated in Fig. fig.genbox.
 
-.. figure:: images/box_port_q.png
+.. figure:: images/box/box_port_q.png
             :width: 60 %
 	    :alt: circuit
 	    :align: center
@@ -143,7 +125,7 @@ Losses due to enclosure fill
 
 To incorporate box absorption, we consider the parallel circuit treated by Futtrup :cite:`futtrup:2011` based on the earlier work by Leach :cite:`leach:1989`
 
-.. figure:: images/q_futtrup.png
+.. figure:: images/box/q_futtrup.png
             :width: 60 %
 	    :alt: fillq
 	    :align: center
@@ -166,23 +148,23 @@ These results suggest that we can describe the effect of fill with two empirical
    Q_a \doteq &~ \frac{1}{\ws \ca \rfu} \; .
    \end{align}
 
-Thus we can generalize the classic theory with only a single new added parameter, :math:`\deltv`, which characterizes the volume expansion due the conversion from adiabatic to isothermal expansion. The Futtrup theory provides estimates for :math:`\deltv` and :math:`Q_a` for different materials and fill percentages, as illustrated in :numref:`fig.qgamma`. Further, in :numref:`fig.qg2`, we compare the predicted relationship of :math:`Q_a` versus :math:`\deltv` against experimental measurement in a real filled box.
+Thus we can generalize the classic theory with only a single new added parameter, :math:`\deltv`, which characterizes the volume expansion due the conversion from adiabatic to isothermal expansion. The Futtrup theory provides estimates for :math:`\deltv` and :math:`Q_a` for different materials and fill percentages, as illustrated in :numref:`fig.fill1`. Further, in :numref:`fig.fill2`, we compare the predicted relationship of :math:`Q_a` versus :math:`\deltv` against experimental measurement in a real filled box.
 
 .. subfigure:: A
-   :width: 60%
-   :name: fig.qgamma
+   :width: 66%
+   :name: fig.fill1
    :align: center
 	  
-   .. image:: images/qgamma.png
+   .. image:: images/box/fill1.png
 	    
    Theoretical :math:`Q_a` and :math:`\deltv` versus amount of fill inside a test box.
 	    
 
 .. subfigure:: A
-   :width: 60%
-   :name: fig.qg2
+   :width: 66%
+   :name: fig.fill2
    :align: center
 	  
-   .. image:: images/qg2.png
+   .. image:: images/box/fill2.png
 
    Theoretical :math:`Q_a` versus :math:`\deltv` compared with measured data.

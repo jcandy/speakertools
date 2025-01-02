@@ -1,16 +1,3 @@
-.. |qt| mathmacro:: Q_\mathrm{TS}
-.. |qes| mathmacro:: Q_\mathrm{ES}
-.. |qms| mathmacro:: Q_\mathrm{MS}
-.. |bl| mathmacro:: B\ell
-.. |mms|  mathmacro:: M_\mathrm{MS}
-.. |cms| mathmacro:: C_\mathrm{MS}
-.. |rms| mathmacro:: R_\mathrm{MS}
-.. |cmb| mathmacro:: C_\mathrm{MB}
-.. |xs| mathmacro:: x_\mathrm{S}
-.. |xim| mathmacro:: x_\mathrm{I}
-.. |wm| mathmacro:: \omega_\mathrm{max}
-.. |tp| mathmacro:: t^\prime
-
 .. _time_theory:
 		    
 Speakerbench Transient Theory
