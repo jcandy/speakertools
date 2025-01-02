@@ -7,9 +7,9 @@ Glossary of symbols
    :widths: 10,50
    :name: tab.glossary
 
-   ":math:`B`",      "Beranek mass loading factor"
-   ":math:`C_A`",    "Compliance of box :math:`= V_b/(\rho c^2)`"
-   ":math:`M_A`",    "Unit of acoustic mass :math:`= \rho \, l_z/S_B`" 
-   ":math:`h`",      "System tuning ratio :math:`= \omega_p/\omega_s`"
-   ":math:`\omega_s`", "Resonant frequency of the loudspeaker driver :math:`= 2 \pi f_s`"
-   ":math:`\omega_p`", "Resonant frequency of the vented enclosure"
+   ":math:`B`",   "Beranek mass loading factor"
+   ":math:`\cab`", "Compliance of box :math:`= \vb/(\rho c^2)`"
+   ":math:`M_A`", "Unit of acoustic mass :math:`= \rho \, l_z/\sb`" 
+   ":math:`h`",   "System tuning ratio :math:`= \omega_p/\omega_s`"
+   ":math:`\ws`", "Resonant frequency of the loudspeaker driver :math:`= 2 \pi\fs`"
+   ":math:`\wp`", "Resonant frequency of the vented enclosure"

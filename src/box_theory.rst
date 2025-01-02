@@ -25,7 +25,7 @@ In Eq. (7.131) of Beranek :cite:`beranek:2019`, the acoustical impedances for an
 .. math::
    :label: eq.z
 	   
-   Z_{pq} \sim \frac{1}{s \ca } + s \ma \, \epsilon_{pq} + {\cal O}(s^2) \; .
+   Z_{pq} \sim \frac{1}{s \cab } + s \ma \, \epsilon_{pq} + {\cal O}(s^2) \; .
 
 By ignoring terms of :math:`{\cal O}(s^2)` and higher, we limit the applicability of the theory to the frequency range where those neglected terms are small. Note that in this section, all masses and compliances are assumed to be in acoustic units. When mechanical units are used, a lower-case :math:`m` subscript will be added. The quantity :math:`\epsilon_{pq}` is a dimensionless :math:`2\!\times\!2` array 
 
@@ -54,11 +54,11 @@ The index :math:`p=1` corresponds to the driver (subscript :math:`D`) and :math:
    :label: eq.units
 	   
 	   \begin{align}
-	   \ca = &~ \frac{V}{\rho c^2} = C_\mathrm{MB} \sd^2 \; , \\
-	   \ma = &~ \frac{\rho \, l_z}{\sbx} \; , 
+	   \cab = &~ \frac{\vb}{\rho c^2} = C_\mathrm{MB} \sd^2 \; , \\
+	   \ma = &~ \frac{\rho \, l_z}{\sb} \; , 
 	   \end{align}
 
-where :math:`\sbx = l_x \, l_y` is the baffle area, :math:`l_z` is the enclosure depth, :math:`\sd = \pi \ad^2` is the driver area, and :math:`V= l_x \, l_y \, l_z` is the enclosure volume. The circuit diagram for a low-frequency T-network system for an undamped vented box (box connected to a tube) is illustrated in Fig. fig.genbox.
+where :math:`\sb = l_x \, l_y` is the baffle area, :math:`l_z` is the enclosure depth, :math:`\sd = \pi \ad^2` is the driver area, and :math:`V= l_x \, l_y \, l_z` is the enclosure volume. The circuit diagram for a low-frequency T-network system for an undamped vented box (box connected to a tube) is illustrated in Fig. fig.genbox.
 
 .. figure:: images/box/box_port_q.png
             :width: 60 %
@@ -84,25 +84,25 @@ Thus, we can define :math:`B` in terms of :math:`\epsilon_{11}` as
 End correction due to box mass
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Because there is no precise theory for the effective port length, :math:`l_p`, in terms of the physical port length, :math:`l_\mathrm{phys}`, it is customary to first define the effective length in terms of the resonant frequency :math:`\omega_p` as
+Because there is no precise theory for the effective port length, :math:`\lp`, in terms of the physical port length, :math:`l_\mathrm{phys}`, it is customary to first define the effective length in terms of the resonant frequency :math:`\wp` as
 
 .. math::
-   \omega_p^2 = \frac{1}{C_A M_p} = \frac{S_p c^2}{V l_p} \; .
+   \wp^2 = \frac{1}{\cab \map} = \frac{\sp c^2}{\vb \lp} \; .
 
 To derive this result we have used
 
 .. math::
-   M_p = \frac{M_{mp}}{S_p^2} = \frac{\rho V_p}{S_p^2} = \frac{\rho \, l_p}{S_p} \; .
+   \map = \frac{\mmp}{\sp^2} = \frac{\rho\vp}{\sp^2} = \frac{\rho \,\lp}{\sp} \; .
 
 The interior of the box provides an end correction to the port mass. In the case where the port is *external* to the box (internal flange), the exterior end correction is the usual unflanged value
 
 .. math::
-   l_\mathrm{out} = 0.6 \, \adp
+   l_\mathrm{out} = 0.6 \, \ap
 
 whereas the internal correction is
 
 .. math::
-  l_\mathrm{in} = \frac{\epsilon_{22}-\epsilon_{21}}{\sbx} \sdp \, l_z 
+  l_\mathrm{in} = \frac{\epsilon_{22}-\epsilon_{21}}{\sb} \sp \, l_z 
 
 Summary of acoustic masses
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -115,10 +115,10 @@ The identification and calculation of acoustic masses is complicated and depends
    :widths: 25, 25, 25, 25
    :name: tab.mass
 
-   port,":math:`\displaystyle \left(0.6\adp\right)\frac{\rho}{\sdp}`",":math:`\displaystyle \frac{\rho \, V_\mathrm{tube}}{\sdp^2}`",":math:`\displaystyle \left(\epsilon_{22}-\epsilon_{12}\right)\,\ma`"
-   box,":math:`\displaystyle \left(0.6\ad\right) \frac{\rho}{\sd}`",":math:`\displaystyle \frac{M_{ms}}{\sd^2}`",":math:`\displaystyle \epsilon_{11} \, \ma`"
+   port,":math:`\displaystyle \left(0.6\ap\right)\frac{\rho}{\sp}`",":math:`\displaystyle \frac{\rho \, \vp}{\sp^2}`",":math:`\displaystyle \left(\epsilon_{22}-\epsilon_{12}\right)\,\ma`"
+   box,":math:`\displaystyle \left(0.6\ad\right) \frac{\rho}{\sd}`",":math:`\displaystyle \frac{\mms}{\sd^2}`",":math:`\displaystyle \epsilon_{11} \, \ma`"
 
-The **outer** masses result from radiation into free space. For both the driver and port, the coefficient of 0.6 applies to unflanged radiation. Note that for flanged radiation (infinite baffle) the coefficient is 0.85. The **intrinsic** box and port masses are the moving masses of the driver, and port air plug, respectively. For the driver, it is assumed that the outer mass is already contained in the advanced model :math:`M_{ms}` whereas for the port, we assume it is mounted externally to justify the unflanged assumption. The **inner** masses, finally, require numerical evaluation of the Helmholtz matrix elements :math:`\epsilon_{pq}` via Eq. :eq:`eq.eps`.  
+The **outer** masses result from radiation into free space. For both the driver and port, the coefficient of 0.6 applies to unflanged radiation. Note that for flanged radiation (infinite baffle) the coefficient is 0.85. The **intrinsic** box and port masses are the moving masses of the driver, and port air plug, respectively. For the driver, it is assumed that the outer mass is already contained in the advanced model :math:`\mms` whereas for the port, we assume it is mounted externally to justify the unflanged assumption. The **inner** masses, finally, require numerical evaluation of the Helmholtz matrix elements :math:`\epsilon_{pq}` via Eq. :eq:`eq.eps`.  
 
 Losses due to enclosure fill
 ----------------------------
@@ -140,15 +140,15 @@ To extract the essential acoustic compliance and resistance of this circuit, we 
    \rfu =&~ \raf \left(\frac{\caf+\cth}{\cfu}\right)^2 + \rth \left(\frac{\cth}{\cfu} \right)^2
    \end{align}
 
-These results suggest that we can describe the effect of fill with two empirical parameters: :math:`Q_a` and :math:`\deltv`. :math:`Q_a` is an analog of the box absorption of the classical Benson/Small theory, and :math:`\deltv` is an effective volume expansion coefficient which is normally expected to lie in the range :math:`1.0 < \deltv < 1.4`. The precise definitions are
+These results suggest that we can describe the effect of fill with two empirical parameters: :math:`\qa` and :math:`\deltv`. :math:`\qa` is an analog of the box absorption of the classical Benson/Small theory, and :math:`\deltv` is an effective volume expansion coefficient which is normally expected to lie in the range :math:`1.0 < \deltv < 1.4`. The precise definitions are
 
 .. math::
    \begin{align}
-   \deltv \doteq &~ \frac{\cfu}{\ca} \; , \\
-   Q_a \doteq &~ \frac{1}{\ws \ca \rfu} \; .
+   \deltv \doteq &~ \frac{\cfu}{\cab} \; , \\
+   \qa \doteq &~ \frac{1}{\ws \cab \rfu} \; .
    \end{align}
 
-Thus we can generalize the classic theory with only a single new added parameter, :math:`\deltv`, which characterizes the volume expansion due the conversion from adiabatic to isothermal expansion. The Futtrup theory provides estimates for :math:`\deltv` and :math:`Q_a` for different materials and fill percentages, as illustrated in :numref:`fig.fill1`. Further, in :numref:`fig.fill2`, we compare the predicted relationship of :math:`Q_a` versus :math:`\deltv` against experimental measurement in a real filled box.
+Thus we can generalize the classic theory with only a single new added parameter, :math:`\deltv`, which characterizes the volume expansion due the conversion from adiabatic to isothermal expansion. The Futtrup theory provides estimates for :math:`\deltv` and :math:`\qa` for different materials and fill percentages, as illustrated in :numref:`fig.fill1`. Further, in :numref:`fig.fill2`, we compare the predicted relationship of :math:`\qa` versus :math:`\deltv` against experimental measurement in a real filled box.
 
 .. subfigure:: A
    :width: 66%
@@ -157,7 +157,7 @@ Thus we can generalize the classic theory with only a single new added parameter
 	  
    .. image:: images/box/fill1.png
 	    
-   Theoretical :math:`Q_a` and :math:`\deltv` versus amount of fill inside a test box.
+   Theoretical :math:`\qa` and :math:`\deltv` versus amount of fill inside a test box.
 	    
 
 .. subfigure:: A
@@ -167,4 +167,4 @@ Thus we can generalize the classic theory with only a single new added parameter
 	  
    .. image:: images/box/fill2.png
 
-   Theoretical :math:`Q_a` versus :math:`\deltv` compared with measured data.
+   Theoretical :math:`\qa` versus :math:`\deltv` compared with measured data.

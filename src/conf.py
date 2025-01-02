@@ -59,7 +59,8 @@ html_theme_options = {
 
 mathjax3_config = {'tex':{'macros':{}}} # Create empty 
 
-with open('macros.tex', 'r') as f:
+# Entering math macros in mathjax
+with open('mathmacros.tex','r') as f:
 	for line in f:
 		macros = re.findall(r'\\newcommand{\\(.*?)}(\[(\d)\])?{(.+)}', line)
 		for macro in macros:
