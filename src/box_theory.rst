@@ -16,14 +16,13 @@ The standard theory of loudspeaker enclosures was popularized by Small :cite:`sm
 	    Circuit diagram for vented loudspeaker as presented by Small in Ref. :cite:`small:1973b`.
 
 
-
 Acoustical impedances for unfilled box
 --------------------------------------
 
 In Eq. (7.131) of Beranek :cite:`beranek:2019`, the acoustical impedances for an unfilled enclosure are derived by solving the Helmholtz equation in an unfilled rectangular enclosure. Although Beranek attempts to treat the effect of back-wall lining, we consider infinite (rigid) back-wall impedance. To extract the effective compliance and mass, we expand :math:`Z_{pq}` in powers of :math:`s` to obtain
 
 .. math::
-   :label: eq.z
+   :label: eq.zpq
 	   
    Z_{pq} \sim \frac{1}{s \cab } + s \ma \, \epsilon_{pq} + {\cal O}(s^2) \; .
 

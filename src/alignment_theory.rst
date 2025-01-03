@@ -5,8 +5,8 @@
 
 .. _alignment_theory:
 
-Speakerbench Alignments
-=======================
+Classic Vented Alignments
+=========================
 
 In classical loudspeaker theory from the 1960s and onwards, the concept of alignments was developed to provide a systematic prescription for choosing box volume and port tuning to yield a target low-frequency response function.
 

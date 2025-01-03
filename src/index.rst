@@ -64,9 +64,15 @@ Speakerbench doesn't do the actual impedance measurements for you; rather, you w
 .. toctree::
    :caption: Box Modeling
    :hidden:
-
+      
    create
    box
+
+.. toctree::
+   :caption: Theory Notes
+   :hidden:
+	     
+   deltamass_theory
    box_theory
    alignment_theory
    time_theory

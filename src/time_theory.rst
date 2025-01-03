@@ -1,7 +1,7 @@
 .. _time_theory:
 		    
-Speakerbench Transient Theory
-=============================
+Time-domain Analysis
+====================
 
 The problem and the solution
 ----------------------------
