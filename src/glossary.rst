@@ -22,3 +22,5 @@ Glossary of symbols
    ":math:`\cmb`","Box mechanical compliance"
    ":math:`\cab`","Compliance of box :math:`= \vb/(\rho c^2)`"
    ":math:`M_A`", "Unit of acoustic mass :math:`= \rho \, l_z/\sb`" 
+   ":math:`\lambda`", "Viscoelastic log-model (base 10) parameter used by many (e.g. Klippel)"
+   ":math:`\beta`", "Viscoelastic log-model (base e) parameter used in Speakerbench"
