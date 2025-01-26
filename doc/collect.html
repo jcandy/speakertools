@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
@@ -9,22 +11,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Impedance Data Object &mdash; Speakerbench 0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/contentui.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=a0fb6060" />
 
   
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=2709fde1"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="_static/contentui.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/contentui.js"></script>
+      <script>window.MathJax = {"tex": {"macros": {"qt": "{Q_\\mathrm{TS}}", "qes": "{Q_\\mathrm{ES}}", "qms": "{Q_\\mathrm{MS}}", "qa": "{Q_\\mathrm{{\\hspace -1pt} A}}", "bl": "{B\\ell}", "bls": "{(B\\ell)^2}", "mms": "{M_\\mathrm{MS}}", "mmp": "{M_\\mathrm{MP}}", "cms": "{C_\\mathrm{MS}}", "rms": "{R_\\mathrm{MS}}", "cmb": "{C_\\mathrm{MB}}", "wmin": "{\\omega_\\mathrm{min}}", "wmax": "{\\omega_\\mathrm{max}}", "tp": "{t^\\prime}", "dmn": "{\\Delta_{mn}}", "vb": "{V_\\mathrm{B}}", "vas": "{V_\\mathrm{AS}}", "vp": "{V_\\mathrm{P}}", "cab": "{C_\\mathrm{AB}}", "map": "{M_\\mathrm{AP}}", "ma": "{M_\\mathrm{A}}", "sd": "{S_\\mathrm{D}}", "ad": "{a_\\mathrm{D}}", "sp": "{S_\\mathrm{P}}", "ap": "{a_\\mathrm{P}}", "sb": "{S_\\mathrm{B}}", "caf": "{C_\\mathrm{af}}", "cth": "{C_\\mathrm{th}}", "cua": "{C_\\mathrm{ua}}", "raf": "{R_\\mathrm{af}}", "rth": "{R_\\mathrm{th}}", "cfu": "{C^*_\\mathrm{AB}}", "rfu": "{R^*_\\mathrm{AB}}", "ws": "{\\omega_\\mathrm{S}}", "fp": "{f_\\mathrm{P}}", "wp": "{\\omega_\\mathrm{P}}", "lp": "{l_\\mathrm{P}}", "fs": "{f_\\mathrm{S}}", "fcb": "{f_\\mathrm{CB}}", "qtc": "{Q_\\mathrm{TC}}", "deltv": "{\\delta_v}", "xs": "{x_\\mathrm{S}}", "xim": "{x_\\mathrm{I}}", "xmax": "{X_\\mathrm{max}}", "re": "{R_\\mathrm{E}}", "leb": "{L_\\mathrm{EB}}", "le": "{L_\\mathrm{E}}", "ke": "{K_\\mathrm{E}}", "rss": "{R_\\mathrm{SS}}", "zm": "{Z_\\mathrm{M}}", "zms": "{Z_{\\mathrm{M}*}}", "zin": "{Z}", "ze": "{Z_\\mathrm{E}}", "cmes": "{C_\\mathrm{MES}}", "res": "{R_\\mathrm{ES}}", "lces": "{L_\\mathrm{CES}}", "cas": "{C_\\mathrm{AS}}", "fr": "{g}", "ql": "{\\sigma}", "rlog": "{R_0}", "clog": "{C_0}", "llog": "{L_0}", "flog": "{f_0}", "ssa": "{\\mathrm{SS}_A}", "sse": "{\\mathrm{SS}_E}", "msa": "{\\mathrm{MS}_A}", "mse": "{\\mathrm{MS}_E}", "mmf": "{M_\\mathrm{MF}}", "mmr": "{M_\\mathrm{MR}}", "hz": "{\\textrm{Hz}}", "khz": "{\\textrm{kHz}}", "cm": "{\\textrm{cm}}", "gr": "{\\textrm{g}}", "mg": "{\\textrm{mg}}", "mv": "{\\textrm{mV}}", "mw": "{\\textrm{mW}}", "mh": "{\\textrm{mH}}", "tm": "{\\textrm{Tm}}", "kgm": "{\\textrm{kg/m}^3 \\,}", "mps": "{\\textrm{m/s}}", "heatcap": "{\\textrm{J/(kg K)}}"}}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -43,9 +43,6 @@
           <a href="index.html" class="icon icon-home">
             Speakerbench
           </a>
-              <div class="version">
-                0.1
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -68,12 +65,19 @@
 <li class="toctree-l1"><a class="reference internal" href="create.html">Create datasheet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="box.html">Box Simulation</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Theory Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="deltamass_theory.html">Dual-Added-Mass Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="box_theory.html">Speakerbench Box Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alignment_theory.html">Classic Vented Alignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time_theory.html">Time-domain Analysis</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="alignment.html">Alignments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">Sample Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="youtube.html">YouTube</a></li>
-<li class="toctree-l1"><a class="reference internal" href="json-docs.html">The JSON Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="json-docs.html">JSON Datafile Definitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary of symbols</a></li>
 <li class="toctree-l1"><a class="reference internal" href="zreferences.html">References</a></li>
 </ul>
 
@@ -116,8 +120,7 @@
 <li><p>The value of <span class="math notranslate nohighlight">\(m_1\)</span> in grams</p></li>
 <li><p>The value of <span class="math notranslate nohighlight">\(m_2\)</span> in grams</p></li>
 </ol>
-<p>This app also provides an optional comment field. We recommended that you type the driver name into this field. An optional field for specification of the input voltage is also available. Specifying the voltage is not a requirement either, but it’s good practice to record this because we know that the suspension compliance will depend on the input
-level. Remember to fill out these optional fields before you complete entering the five inputs.</p>
+<p>This app also provides an optional comment field. We recommended that you type the driver name into this field. An optional field for specification of the input voltage is also available. Specifying the voltage is not a requirement either, but it’s good practice to record this because we know that the suspension compliance will depend on the input level. Remember to fill out these optional fields before you complete entering the five inputs.</p>
 <p>The comment field is the first entry in the data object such that if you open up the file in a text editor, you can read your comment in plain text (at the top). This will help you identify the measurement. When measuring your driver, we recommend that you follow steps outlined in <a class="reference internal" href="measure.html"><span class="doc">Impedance Measurement</span></a>.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -136,8 +139,8 @@ level. Remember to fill out these optional fields before you complete entering t
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2020-2024 | C. Futtrup and J. Candy.
-      <span class="lastupdated">Last updated on Oct 31, 2024.
+    <p>&#169; Copyright 2020-2025 | C. Futtrup and J. Candy.
+      <span class="lastupdated">Last updated on Jan 26, 2025.
       </span></p>
   </div>
 

@@ -12,7 +12,8 @@
   <title>Speakerbench &mdash; Speakerbench 0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
-      <link rel="stylesheet" type="text/css" href="_static/contentui.css?v=4cf5b151" />
+      <link rel="stylesheet" type="text/css" href="_static/contentui.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=a0fb6060" />
 
   
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -21,8 +22,9 @@
       <script src="_static/documentation_options.js?v=2709fde1"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script src="_static/contentui.js?v=9ee86694"></script>
-      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="_static/contentui.js"></script>
+      <script>window.MathJax = {"tex": {"macros": {"qt": "{Q_\\mathrm{TS}}", "qes": "{Q_\\mathrm{ES}}", "qms": "{Q_\\mathrm{MS}}", "qa": "{Q_\\mathrm{{\\hspace -1pt} A}}", "bl": "{B\\ell}", "bls": "{(B\\ell)^2}", "mms": "{M_\\mathrm{MS}}", "mmp": "{M_\\mathrm{MP}}", "cms": "{C_\\mathrm{MS}}", "rms": "{R_\\mathrm{MS}}", "cmb": "{C_\\mathrm{MB}}", "wmin": "{\\omega_\\mathrm{min}}", "wmax": "{\\omega_\\mathrm{max}}", "tp": "{t^\\prime}", "dmn": "{\\Delta_{mn}}", "vb": "{V_\\mathrm{B}}", "vas": "{V_\\mathrm{AS}}", "vp": "{V_\\mathrm{P}}", "cab": "{C_\\mathrm{AB}}", "map": "{M_\\mathrm{AP}}", "ma": "{M_\\mathrm{A}}", "sd": "{S_\\mathrm{D}}", "ad": "{a_\\mathrm{D}}", "sp": "{S_\\mathrm{P}}", "ap": "{a_\\mathrm{P}}", "sb": "{S_\\mathrm{B}}", "caf": "{C_\\mathrm{af}}", "cth": "{C_\\mathrm{th}}", "cua": "{C_\\mathrm{ua}}", "raf": "{R_\\mathrm{af}}", "rth": "{R_\\mathrm{th}}", "cfu": "{C^*_\\mathrm{AB}}", "rfu": "{R^*_\\mathrm{AB}}", "ws": "{\\omega_\\mathrm{S}}", "fp": "{f_\\mathrm{P}}", "wp": "{\\omega_\\mathrm{P}}", "lp": "{l_\\mathrm{P}}", "fs": "{f_\\mathrm{S}}", "fcb": "{f_\\mathrm{CB}}", "qtc": "{Q_\\mathrm{TC}}", "deltv": "{\\delta_v}", "xs": "{x_\\mathrm{S}}", "xim": "{x_\\mathrm{I}}", "xmax": "{X_\\mathrm{max}}", "re": "{R_\\mathrm{E}}", "leb": "{L_\\mathrm{EB}}", "le": "{L_\\mathrm{E}}", "ke": "{K_\\mathrm{E}}", "rss": "{R_\\mathrm{SS}}", "zm": "{Z_\\mathrm{M}}", "zms": "{Z_{\\mathrm{M}*}}", "zin": "{Z}", "ze": "{Z_\\mathrm{E}}", "cmes": "{C_\\mathrm{MES}}", "res": "{R_\\mathrm{ES}}", "lces": "{L_\\mathrm{CES}}", "cas": "{C_\\mathrm{AS}}", "fr": "{g}", "ql": "{\\sigma}", "rlog": "{R_0}", "clog": "{C_0}", "llog": "{L_0}", "flog": "{f_0}", "ssa": "{\\mathrm{SS}_A}", "sse": "{\\mathrm{SS}_E}", "msa": "{\\mathrm{MS}_A}", "mse": "{\\mathrm{MS}_E}", "mmf": "{M_\\mathrm{MF}}", "mmr": "{M_\\mathrm{MR}}", "hz": "{\\textrm{Hz}}", "khz": "{\\textrm{kHz}}", "cm": "{\\textrm{cm}}", "gr": "{\\textrm{g}}", "mg": "{\\textrm{mg}}", "mv": "{\\textrm{mV}}", "mw": "{\\textrm{mW}}", "mh": "{\\textrm{mH}}", "tm": "{\\textrm{Tm}}", "kgm": "{\\textrm{kg/m}^3 \\,}", "mps": "{\\textrm{m/s}}", "heatcap": "{\\textrm{J/(kg K)}}"}}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -62,12 +64,19 @@
 <li class="toctree-l1"><a class="reference internal" href="create.html">Create datasheet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="box.html">Box Simulation</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Theory Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="deltamass_theory.html">Dual-Added-Mass Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="box_theory.html">Speakerbench Box Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alignment_theory.html">Classic Vented Alignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time_theory.html">Time-domain Analysis</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="alignment.html">Alignments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">Sample Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="youtube.html">YouTube</a></li>
-<li class="toctree-l1"><a class="reference internal" href="json-docs.html">The JSON Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="json-docs.html">JSON Datafile Definitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary of symbols</a></li>
 <li class="toctree-l1"><a class="reference internal" href="zreferences.html">References</a></li>
 </ul>
 
@@ -98,35 +107,46 @@
   <section id="speakerbench">
 <h1>Speakerbench<a class="headerlink" href="#speakerbench" title="Link to this heading"></a></h1>
 <p><a class="reference external" href="https://www.speakerbench.com">Speakerbench</a> is a free, web-based application for modeling loudspeakers. A novel feature of the software is the use of an <strong>advanced transducer model</strong> that includes motor semi-inductance and suspension viscoelasticity.</p>
-<section id="why-speakerbench">
-<h2>Why Speakerbench?<a class="headerlink" href="#why-speakerbench" title="Link to this heading"></a></h2>
-<figure class="align-left">
-<a class="reference internal image-reference" href="_images/speaker_scaled.png"><img alt="speaker" src="_images/speaker_scaled.png" style="width: 20%;" />
-</a>
-</figure>
-<p>The corrections to the traditional Thiele-Small approach resolve a long-standing problem with incorrect prediction of impedance, and not least the maxima in vented systems.</p>
-<figure class="align-center" id="id2">
-<a class="reference internal image-reference" href="_images/impedance.png"><img alt="impedance" src="_images/impedance.png" style="width: 90%;" />
+<section id="why-use-speakerbench">
+<h2>Why use Speakerbench?<a class="headerlink" href="#why-use-speakerbench" title="Link to this heading"></a></h2>
+<p>Speakerbench provides a new framework for <strong>higher-accuracy</strong> driver simulation. Corrections to the traditional Thiele-Small approach resolve systematic errors in the description of driver losses and system impedance. For example, as shown in <a class="reference internal" href="#impedance"><span class="std std-numref">Fig. 1</span></a>, maxima in vented systems are correctly predicted with Speakerbench.</p>
+<figure class="align-center" id="impedance">
+<a class="reference internal image-reference" href="_images/impedance.png"><img alt="_images/impedance.png" src="_images/impedance.png" style="width: 80%;" />
 </a>
 <figcaption>
-<p><span class="caption-text">The advanced model (magenta) correctly predicts the impedance peak offset for
-a woofer in a vented box. Classical Thiele-Small theory (black) misses this effect.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">The Speakerbench advanced model (magenta) correctly predicts the impedance peak offset for
+a woofer in a vented box. Classical Thiele-Small theory (black) misses this effect.</span><a class="headerlink" href="#impedance" title="Link to this image"></a></p>
 </figcaption>
 </figure>
-<p>With a better prediction of the impedance, you can build the loudspeaker and verify that your design is as intended with impedance measurements, not just the port tuning frequency but also the overall losses of the system.</p>
-<p>The impedance is overall simulated correctly, which also implies the power dumped into the speaker (for a given input voltage) is correct, and the output power response is correctly simulated, also at high frequencies.</p>
+<p>With a physically accurate specification of impedance and losses, you can build a loudspeaker and precisely verify the performance and power dissipation versus applied voltage. With the traditional model, losses that originate in the loudspeaker suspension are typically <strong>misattributed</strong> to ficticuous box leakage or port losses. With the advanced model, once can obtain a correct physical attribution of the losses.</p>
 <p>Speakerbench workflows are separated into 4 apps:</p>
-<dl class="simple">
-<dt><strong>Collect</strong></dt><dd><p>Merge three impedance measurements into a json data container</p>
-</dd>
-<dt><strong>Fit</strong></dt><dd><p>Analyze impedance data container to compute advanced model parameters</p>
-</dd>
-<dt><strong>Create</strong></dt><dd><p>Create a standard driver datasheet</p>
-</dd>
-<dt><strong>Box</strong></dt><dd><p>Simulate the system response in an enclosure</p>
-</dd>
-</dl>
+<div class="admonition-collect admonition">
+<p class="admonition-title"><strong>Collect</strong></p>
+<ol class="arabic simple">
+<li><p>Merge three impedance measurements into a json data container</p></li>
+</ol>
+</div>
+<div class="admonition-fit admonition">
+<p class="admonition-title"><strong>Fit</strong></p>
+<ol class="arabic simple" start="2">
+<li><p>Analyze impedance data container to compute advanced model parameters</p></li>
+</ol>
+</div>
+<div class="admonition-create admonition">
+<p class="admonition-title"><strong>Create</strong></p>
+<ol class="arabic simple" start="3">
+<li><p>Create a standard driver datasheet</p></li>
+</ol>
+</div>
+<div class="admonition-box admonition">
+<p class="admonition-title"><strong>Box</strong></p>
+<ol class="arabic simple" start="4">
+<li><p>Simulate the system response in an enclosure</p></li>
+</ol>
+</div>
 <p>Speakerbench doesn’t do the actual impedance measurements for you; rather, you will need to do this with external hardware as outlined in this document.</p>
+<div class="toctree-wrapper compound">
+</div>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
@@ -148,8 +168,8 @@ a woofer in a vented box. Classical Thiele-Small theory (black) misses this effe
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2020-2024 | C. Futtrup and J. Candy.
-      <span class="lastupdated">Last updated on Nov 01, 2024.
+    <p>&#169; Copyright 2020-2025 | C. Futtrup and J. Candy.
+      <span class="lastupdated">Last updated on Jan 26, 2025.
       </span></p>
   </div>
 

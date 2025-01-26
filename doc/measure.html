@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
@@ -9,22 +11,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Impedance Measurement &mdash; Speakerbench 0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/contentui.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=a0fb6060" />
 
   
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=2709fde1"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="_static/contentui.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/contentui.js"></script>
+      <script>window.MathJax = {"tex": {"macros": {"qt": "{Q_\\mathrm{TS}}", "qes": "{Q_\\mathrm{ES}}", "qms": "{Q_\\mathrm{MS}}", "qa": "{Q_\\mathrm{{\\hspace -1pt} A}}", "bl": "{B\\ell}", "bls": "{(B\\ell)^2}", "mms": "{M_\\mathrm{MS}}", "mmp": "{M_\\mathrm{MP}}", "cms": "{C_\\mathrm{MS}}", "rms": "{R_\\mathrm{MS}}", "cmb": "{C_\\mathrm{MB}}", "wmin": "{\\omega_\\mathrm{min}}", "wmax": "{\\omega_\\mathrm{max}}", "tp": "{t^\\prime}", "dmn": "{\\Delta_{mn}}", "vb": "{V_\\mathrm{B}}", "vas": "{V_\\mathrm{AS}}", "vp": "{V_\\mathrm{P}}", "cab": "{C_\\mathrm{AB}}", "map": "{M_\\mathrm{AP}}", "ma": "{M_\\mathrm{A}}", "sd": "{S_\\mathrm{D}}", "ad": "{a_\\mathrm{D}}", "sp": "{S_\\mathrm{P}}", "ap": "{a_\\mathrm{P}}", "sb": "{S_\\mathrm{B}}", "caf": "{C_\\mathrm{af}}", "cth": "{C_\\mathrm{th}}", "cua": "{C_\\mathrm{ua}}", "raf": "{R_\\mathrm{af}}", "rth": "{R_\\mathrm{th}}", "cfu": "{C^*_\\mathrm{AB}}", "rfu": "{R^*_\\mathrm{AB}}", "ws": "{\\omega_\\mathrm{S}}", "fp": "{f_\\mathrm{P}}", "wp": "{\\omega_\\mathrm{P}}", "lp": "{l_\\mathrm{P}}", "fs": "{f_\\mathrm{S}}", "fcb": "{f_\\mathrm{CB}}", "qtc": "{Q_\\mathrm{TC}}", "deltv": "{\\delta_v}", "xs": "{x_\\mathrm{S}}", "xim": "{x_\\mathrm{I}}", "xmax": "{X_\\mathrm{max}}", "re": "{R_\\mathrm{E}}", "leb": "{L_\\mathrm{EB}}", "le": "{L_\\mathrm{E}}", "ke": "{K_\\mathrm{E}}", "rss": "{R_\\mathrm{SS}}", "zm": "{Z_\\mathrm{M}}", "zms": "{Z_{\\mathrm{M}*}}", "zin": "{Z}", "ze": "{Z_\\mathrm{E}}", "cmes": "{C_\\mathrm{MES}}", "res": "{R_\\mathrm{ES}}", "lces": "{L_\\mathrm{CES}}", "cas": "{C_\\mathrm{AS}}", "fr": "{g}", "ql": "{\\sigma}", "rlog": "{R_0}", "clog": "{C_0}", "llog": "{L_0}", "flog": "{f_0}", "ssa": "{\\mathrm{SS}_A}", "sse": "{\\mathrm{SS}_E}", "msa": "{\\mathrm{MS}_A}", "mse": "{\\mathrm{MS}_E}", "mmf": "{M_\\mathrm{MF}}", "mmr": "{M_\\mathrm{MR}}", "hz": "{\\textrm{Hz}}", "khz": "{\\textrm{kHz}}", "cm": "{\\textrm{cm}}", "gr": "{\\textrm{g}}", "mg": "{\\textrm{mg}}", "mv": "{\\textrm{mV}}", "mw": "{\\textrm{mW}}", "mh": "{\\textrm{mH}}", "tm": "{\\textrm{Tm}}", "kgm": "{\\textrm{kg/m}^3 \\,}", "mps": "{\\textrm{m/s}}", "heatcap": "{\\textrm{J/(kg K)}}"}}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -43,9 +43,6 @@
           <a href="index.html" class="icon icon-home">
             Speakerbench
           </a>
-              <div class="version">
-                0.1
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -68,12 +65,19 @@
 <li class="toctree-l1"><a class="reference internal" href="create.html">Create datasheet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="box.html">Box Simulation</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Theory Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="deltamass_theory.html">Dual-Added-Mass Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="box_theory.html">Speakerbench Box Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alignment_theory.html">Classic Vented Alignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time_theory.html">Time-domain Analysis</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="alignment.html">Alignments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">Sample Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="youtube.html">YouTube</a></li>
-<li class="toctree-l1"><a class="reference internal" href="json-docs.html">The JSON Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="json-docs.html">JSON Datafile Definitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary of symbols</a></li>
 <li class="toctree-l1"><a class="reference internal" href="zreferences.html">References</a></li>
 </ul>
 
@@ -119,11 +123,12 @@
 <p>It is important to measure on a precision scale and specify the masses as accurately as possible.</p>
 </div>
 <p>These three impedance data files must be uploaded to the web app in ZMA file format, which lists 3 columns of data: frequency (column 1), impedance magnitude (column 2) and impedance phase (column 3). Acceptable ZMA files may contain header data (ignored) marked with an asterisk (*). Ideally the steady-state impedance measurements will be logarithmic, range from about 10 Hz to 20 kHz, and contain several hundred data points. However, linear frequency measurements with
-thousands of data points is also acceptable. Since the goal is to determine the advanced model parameters as accurately as possible, we recommend that <span class="math notranslate nohighlight">\(m_2\)</span> consist of 4 masses and that <span class="math notranslate nohighlight">\(m_1\)</span> consist of half these masses (with the other half removed from the cone). The four masses are placed in a cross-pattern (equally spaced) in a mechanically stable way near the voice coil and with a good physical connection to the voice coil. All 4 masses should be of approximately the same weight, yet for high precision they are individually marked and their weight measured individually before applied to the cone. This is illustrated in the image below.</p>
-<figure class="align-center" id="id2">
-<a class="reference internal image-reference" href="_images/mass.jpg"><img alt="Drivers with and without added mass" src="_images/mass.jpg" style="width: 95%;" /></a>
+thousands of data points is also acceptable. Since the goal is to determine the advanced model parameters as accurately as possible, we recommend that <span class="math notranslate nohighlight">\(m_2\)</span> consist of 4 masses and that <span class="math notranslate nohighlight">\(m_1\)</span> consist of half these masses (with the other half removed from the cone). The four masses are placed in a cross-pattern (equally spaced) in a mechanically stable way near the voice coil and with a good physical connection to the voice coil. All 4 masses should be of approximately the same weight, yet for high precision they are individually marked and their weight measured individually before applied to the cone. This is illustrated in <a class="reference internal" href="#fig-mass"><span class="std std-numref">Fig. 2</span></a>.</p>
+<figure class="align-center" id="fig-mass">
+<a class="reference internal image-reference" href="_images/mass.jpg"><img alt="Drivers with and without added mass" src="_images/mass.jpg" style="width: 95%;" />
+</a>
 <figcaption>
-<p><span class="caption-text">Driver with (1) with added mass <span class="math notranslate nohighlight">\(m_2\)</span>, (2) with added mass <span class="math notranslate nohighlight">\(m_1\)</span>, (3) without added mass</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Driver with (1) with added mass <span class="math notranslate nohighlight">\(m_2\)</span>, (2) with added mass <span class="math notranslate nohighlight">\(m_1\)</span>, (3) without added mass</span><a class="headerlink" href="#fig-mass" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>Measure the impedance with all 4 mass-loads (<span class="math notranslate nohighlight">\(m_2\)</span>, left panel) and save this data to the <strong>first ZMA file</strong>. Now very gently remove the two diagonal masses, leaving the remaining masses balanced and rocking modes prevented during the measurement of the speaker. Remeasure the impedance with the remaining two masses (<span class="math notranslate nohighlight">\(m_1\)</span>, middle panel) and save this data to a <strong>second ZMA file</strong>. Now very gently remove the two masses leaving the bare cone (right panel). Measure the impedance of the unweighted cone and save this data to a <strong>third ZMA file</strong>.</p>
@@ -135,7 +140,7 @@ thousands of data points is also acceptable. Since the goal is to determine the 
 <li><p><a class="reference external" href="https://www.roomeqwizard.com">Room EQ Wizard (REW)</a>, using <a class="reference external" href="https://www.roomeqwizard.com/help/help_en-GB/html/file.html#filewritemeasured">Text Export</a> (software only)</p></li>
 <li><p><a class="reference external" href="https://www.daytonaudio.com/product/1650/dats-v3-computer-based-audio-component-test-system">Dayton Audio DATS V3</a></p></li>
 </ul>
-<p>We recommend either a stepped-sine signal measurement such that all frequency points are measured under steady-state conditions, or a Farina sweep <span id="id1">[<a class="reference internal" href="zreferences.html#id17" title="A. Farina. Simultaneous measurement of impulse response and distortion with a swept-sine technique. In Audio Engineering Society Convention 108. Feb 2000. URL: http://www.aes.org/e-lib/browse.cfm?elib=10211.">Far00</a>]</span> with sufficiently long duation (10s) to resolve low frequencies. Note that REW and DATS V3 both use a sweep.</p>
+<p>We recommend either a stepped-sine signal measurement such that all frequency points are measured under steady-state conditions, or a Farina sweep <span id="id1">[<a class="reference internal" href="zreferences.html#id20" title="A. Farina. Simultaneous measurement of impulse response and distortion with a swept-sine technique. In Audio Engineering Society Convention 108. Feb 2000. URL: http://www.aes.org/e-lib/browse.cfm?elib=10211.">Far00</a>]</span> with sufficiently long duation (10s) to resolve low frequencies. Note that REW and DATS V3 both use a sweep.</p>
 </section>
 
 
@@ -149,8 +154,8 @@ thousands of data points is also acceptable. Since the goal is to determine the 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2020-2024 | C. Futtrup and J. Candy.
-      <span class="lastupdated">Last updated on Oct 31, 2024.
+    <p>&#169; Copyright 2020-2025 | C. Futtrup and J. Candy.
+      <span class="lastupdated">Last updated on Jan 26, 2025.
       </span></p>
   </div>
 

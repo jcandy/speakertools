@@ -145,7 +145,7 @@ The complete datasheet file contains all information necessary to describe a dri
 
 The 'sd' input is required and must be entered by the user. Brand and Model are also required and must be entered by the user, conveniently stored at the beginning of the file so that you can open a SBD file in a text editor and identify the test object. The listed temp, pres and ah (air temperature, air pressure and relative air humidity) are defaults but you can change this to reflect your actual measurement conditions.
 
-Some inputs are optional, for example xmax is optional (set xmax = 0.0 if the information is not available). Specifying xmax adds additional functionality to Speakerbench. See below description for the Thiele/Small Datasheet for details.
+Some inputs are optional, for example xmax is optional (set xmax = 0.0 if the information is not available). Specifying xmax adds additional functionality to Speakerbench. See below description for the Thiele/Small Datasheet for details. In the SBD-file all numbers are stored as strings.
 
 Note the distinction between manufacturer and brand. For example brand name SB Acoustics are manufactured by Sinar Baja Electric Co. Ltd. Some brands have several manufacturing sites.
 
