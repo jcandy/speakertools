@@ -409,8 +409,8 @@ between Butterworth and Linkwitz-Riley, named B4-LR4.
 
 Studying the poles of the polynomial transfer function in the s-plane,
 we know that the LR4 response function has two double poles, located at
-:math:`Theta = \pm 3/4 \pi` (:math:`\pm 135 \deg`), whereas the B4
-response function has equally spaced poles, located at :math:`Theta =
+:math:`\Theta = \pm 3/4 \pi` (:math:`\pm 135 \deg`), whereas the B4
+response function has equally spaced poles, located at :math:`\Theta =
 5/8 \pi`, :math:`7/8 \pi`, :math:`9/8 \pi`, and :math:`11/8 \pi` (45
 degrees apart).
 
@@ -425,8 +425,8 @@ and LR4 as specific cases. Consider:
 where :math:`\epsilon` is an angle for which :math:`0 \leq \epsilon \leq
 \pi/8`. Geometrically, :math:`\epsilon` is an angle for which the four
 distinct poles of the response function lie on the unit circle at
-:math:`s = e^(i \Theta)` at :math:`Theta = 3/4 \pi \pm \epsilon` and
-:math:`Theta = -3/4 \pi \pm \epsilon`. We can see that for
+:math:`s = e^{i \Theta}` at :math:`\Theta = 3/4 \pi \pm \epsilon` and
+:math:`\Theta = -3/4 \pi \pm \epsilon`. We can see that for
 :math:`\epsilon = 0`, we have the LR4 response function, and for
 :math:`\epsilon = \pi / 8`, we have the B4 response function.
 
