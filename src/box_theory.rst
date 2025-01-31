@@ -24,9 +24,9 @@ In Eq. (7.131) of Beranek :cite:`beranek:2019`, the acoustical impedances for an
 .. math::
    :label: eq.zpq
 	   
-   Z_{pq} \sim \frac{1}{s \cab } + s \ma \, \epsilon_{pq} + {\cal O}(s^2) \; .
+   Z_{pq} = \frac{1}{s \cab } + s \ma \, \epsilon_{pq} \; .
 
-By ignoring terms of :math:`{\cal O}(s^2)` and higher, we limit the applicability of the theory to the frequency range where those neglected terms are small. Note that in this section, all masses and compliances are assumed to be in acoustic units. When mechanical units are used, a lower-case :math:`m` subscript will be added. The quantity :math:`\epsilon_{pq}` is a dimensionless :math:`2\!\times\!2` array 
+In this expression we have ignored terms of order :math:`s^2` and higher. By ignoring these terms we limit the applicability of the theory to the frequency range where the neglected terms are small. Note that in this section, all masses and compliances are assumed to be in acoustic units. When mechanical units are used, a lower-case :math:`m` subscript will be added. The quantity :math:`\epsilon_{pq}` is a dimensionless :math:`2\!\times\!2` array 
 
 .. math::
    :label: eq.eps
@@ -119,8 +119,8 @@ The identification and calculation of acoustic masses is complicated and depends
 
 The **outer** masses result from radiation into free space. For both the driver and port, the coefficient of 0.6 applies to unflanged radiation. Note that for flanged radiation (infinite baffle) the coefficient is 0.85. The **intrinsic** box and port masses are the moving masses of the driver, and port air plug, respectively. For the driver, it is assumed that the outer mass is already contained in the advanced model :math:`\mms` whereas for the port, we assume it is mounted externally to justify the unflanged assumption. The **inner** masses, finally, require numerical evaluation of the Helmholtz matrix elements :math:`\epsilon_{pq}` via Eq. :eq:`eq.eps`.  
 
-Losses due to enclosure fill
-----------------------------
+Futtrup-Leach model of enclosure fill
+-------------------------------------
 
 To incorporate box absorption, we consider the parallel circuit treated by Futtrup :cite:`futtrup:2011` based on the earlier work by Leach :cite:`leach:1989`
 
@@ -167,3 +167,27 @@ Thus we can generalize the classic theory with only a single new added parameter
    .. image:: images/box/fill2.png
 
    Theoretical :math:`\qa` versus :math:`\deltv` compared with measured data.
+
+Porous media model of fill
+--------------------------
+
+We begin by rewriting Eq. :eq:`eq.zpq` in terms of a generalized density and sound speed 
+
+.. math::
+   :label: eq.zpq2
+	   
+   Z_{pq} = \rho c \left[ \frac{1}{l_x l_y (i k l_z)} + \frac{(i k l_z)}{l_x l_y} \epsilon_{pq} \right] \; .
+
+Use the porous media theory described by Wilson :cite:`wilson:1993`, Tarnow :cite:`tarnow:2002` and others, we first write the generalized density and compressibility as
+
+.. math::
+   \begin{align}
+   \rho = &~\rho_0 \left[ \frac{\sqrt{1+s\tauv}}{\sqrt{1+s\tauv}-1} \right] \; , \\
+   \beta = &~ \frac{1}{\gamma P_0} \left[ 1 + \frac{\gamma-1}{\sqrt{1+s\taue}} \right] \; ,
+   \end{align}
+
+where :math:`\taue` is the decay time of the *entropy mode* and :math:`\tauv` is the decay time of the vorticity mode. :math:`c = 1/\sqrt{\beta\rho}` and :math:`k = \omega \sqrt{\beta\rho}`. This gives
+
+.. math::
+   Z_{pq} = \frac{1}{s \cab \left[\displaystyle 1 + \frac{\gamma-1}{\sqrt{1+s\taue}} \right]}
+   + s \ma \epsilon_{pq} \left[ \frac{\sqrt{1+s\tauv}}{\sqrt{1+s\tauv}-1} \right] \; .
