@@ -83,7 +83,7 @@ These can be solved for :math:`\Delta C_1` and :math:`\Delta C_2`, respectively,
 
 .. math::
    :label: eq.omegadeltac
-	
+
    \begin{eqnarray}
    i \omega \Delta C_1 &=& \frac{\Delta Z_1}{\zm^2 - \zm \Delta Z_1} \; , \\
    i \omega \Delta C_2 &=& \frac{\Delta Z_2}{\zm^2 - \zm \Delta Z_2} \; .
@@ -98,7 +98,7 @@ where :math:`\mu = m_2 / m_1`. Thus, we arrive at the key result; namely, the *m
 
 .. math::
    :label: eq.zms
-	
+
    \zms = \frac{(1-\mu) \Delta Z_1 \Delta Z_2}{\Delta Z_2 - \mu \Delta Z_1} \; .
 
 For clarity, we refer to this *estimate* of the motional impedance as :math:`\zms`. Although :math:`\zms` is formally a good approximation to the true :math:`\zm` as long as :math:`\Delta C_1` is independent of :math:`\omega`, in practice the accuracy of :math:`\zms` is limited to the region where :math:`\Delta Z_1` and :math:`\Delta Z_2` are not too small.  A sample calculation is given in :numref:`fig.zms` and shows that, in reality, :math:`\zms` is accurate and should be used only in the vicinity of :math:`\omega = \ws`, where :math:`\ws` is the driver resonant frequency.  Despite this caveat, there are two advantages to the dual-added-mass approach.  First, it operates entirely on measurement data without any model assumptions about stiffness or damping.  Second, the mechanical impedance is completely isolated, with :math:`\ze` removed from the problem.  In addition to :math:`\ze`, the amplifier's output impedance (i.e., the generator impedance :math:`R_g`), the cable impedance, and the series (current sensor) resistor of the measurement equipment are removed from the problem.  In contrast, when attempting to determine the motional parameters using the traditional delta-mass or delta-volume methods, it is not possible to eliminate :math:`\ze` from the problem. For this reason an approximate lumped-parameter model for :math:`\ze` must be assumed :cite:`struck:2010, thorborg:2013`, such that errors associated with :math:`\ze` become intertwined with errors in :math:`\zm`.  The present method removes this source of error.
@@ -119,7 +119,7 @@ Based on Eqs. :eq:`eq.deltac` and :eq:`eq.omegadeltac`, :math:`\bl` is calculate
 
 .. math::
    :label: eq.blw
-	
+
    \bls = \frac{m_1}{\Delta C_1} = m_1 \, \mathrm{Re} \left\langle \frac{i \omega \zms ( \zms - \Delta Z_1)}{\Delta Z_1} \right\rangle_{\omega_1}^{\omega_2} \; ,
 
 where the angle brackets denote an average.  For each measurement point in frequency, a :math:`\bl` value can be extracted and hence it is possible to plot a :math:`\bl(\omega)` curve.  An example of this curve is shown in Fig. :numref:`fig.bl`.  Of course, :math:`\bl` in the model does not change with frequency, so it remains to select a suitable frequency range for the average in Eq. :eq:`eq.blw`.  We recommend :math:`\omega_1 = 0.8 \omega_s` and :math:`\omega_2 = 1.2 \omega_s`, where :math:`\ws` is determined by Eq. :eq:`eq.fs_estimated`.  For the average to be meaningful, a flat area of the :math:`\bl(\omega)` curve must be found. Typically, provided the measurements are good, this occurs in the vicinity of the free-air resonant frequency of the driver.  In this way, :math:`\bl` may be determined *without* any model assumptions about :math:`\fr(\omega)`.
@@ -321,7 +321,7 @@ A list of all 21 measurements is shown in :numref:`tab.msa`, including date of m
    :name: tab.msa
    :align: center
    :header: ID, "Date (YMD)", ":math:`m_1 \, (\gr)`", ":math:`m_2 \, (\gr)`", ":math:`\bl \, (\tm)`", ":math:`\mms \, (\gr)`"
-	
+
    A, 16-11-30, 8.017, 16.048 , 7.007 , 15.05
    A, 17-01-20, 8.910, 17.865 , 7.065 , 15.18
    B, 17-01-26, 8.909, 17.868 , 7.047 , 15.18
@@ -358,7 +358,7 @@ Based on a series of diagnostics, three measurements were identified as flawed a
    (**left**) Raw :math:`(\bl,\mms)` data plotted against linear trend-line showing positive correlation :math:`\delta\mms/\mms \simeq 1.45`. The mean values here are :math:`\overline{\bl}=7.034\tm` and :math:`\overline{\mms}=15.13\gr`.
    (**right**) Raw :math:`(\bl,\cmes)` data plotted against linear trend-line showing negative correlation :math:`\delta\cmes/\cmes = -0.55` (right).  The mean values here are :math:`\overline{\bl}=7.034\tm` and :math:`\overline{\cmes}=0.306\,\mathrm{mF}`.
 
-In :numref:`fig.bl2`, we can see that the measurements are bounded by :math:`6.99\tm < \bl < 7.08\tm` and :math:`14.9\gr < \mms < 15.3\gr`. This leads us to conclude the proposed measurement technique is capable of determining :math:`\bl` with a tolerance of about :math:`\pm 0.5:math:` %, and :math:`\mms` with a tolerance of about :math:`\pm 1:math:`\%.  It is interesting to note that, because :math:`\mms` is computed from :math:`\cmes` and :math:`\bl` using the formula :math:`\mms = \bls \cmes`, a correlation between errors is produced; that is, the errors :math:`\delta\bl` and :math:`\delta\cmes` will propagate to :math:`\delta\mms` according to
+In :numref:`fig.bl2`, we can see that the measurements are bounded by :math:`6.99\tm < \bl < 7.08\tm` and :math:`14.9\gr < \mms < 15.3\gr`. This leads us to conclude the proposed measurement technique is capable of determining :math:`\bl` with a tolerance of about :math:`\pm 0.5\%`, and :math:`\mms` with a tolerance of about :math:`\pm 1\%`.  It is interesting to note that, because :math:`\mms` is computed from :math:`\cmes` and :math:`\bl` using the formula :math:`\mms = \bls \cmes`, a correlation between errors is produced; that is, the errors :math:`\delta\bl` and :math:`\delta\cmes` will propagate to :math:`\delta\mms` according to
 
 .. math::
    :label: eq.error
