@@ -151,38 +151,6 @@ Note the distinction between manufacturer and brand. For example brand name SB A
 
 All JSON files are 'escaped' such that a space is replaced by an underscore.
 
-Box Tuning JSON file format
----------------------------
-
-Speakerbench allows you to download your box tuning parameters into a TUNE file and upload a TUNE file to configure the box simulator with saved settings. All JSON data can be on a single line, or by choice on multiple lines. Here is a structured view of the content of such a JSON file (actual data are just for the example). The file name is by convention an TUNE_something.json.
-
-.. code::
-
-  {
-    "eg": 2.83,
-    "fp": "43.1856",
-    "vb": "8.302388637830859",
-    "dp": 2,
-    "qp": "50.0",
-    "ql": "100.0",
-    "port": "simple",
-    "mybox": "T-net",
-    "fillpercent": "0",
-    "fillmaterial": "pet",
-    "gain": 1,
-    "fmax": 10000,
-    "nfreq": 256,
-    "time": false,
-    "lxlz": 1,
-    "lylz": 1,
-    "filt": false,
-    "ls": "0",
-    "rs": "0",
-    "cp": 8.2,
-    "rcp": 12,
-    "tname": null
-  }
-
 Thiele/Small Datasheet JSON file format
 ---------------------------------------
 
