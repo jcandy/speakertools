@@ -36,15 +36,15 @@ Speakerbench workflows are separated into 4 apps:
    1. Merge three impedance measurements into a json data container
 
 .. admonition:: **Fit**
-		
+
    2. Analyze impedance data container to compute advanced model parameters
 
 .. admonition:: **Create**
-		
+
    3. Create a standard driver datasheet
 
 .. admonition:: **Box**
-		
+
    4. Simulate the system response in an enclosure
 
 Speakerbench doesn't do the actual impedance measurements for you; rather, you will need to do this with external hardware as outlined in this document.
@@ -64,16 +64,15 @@ Speakerbench doesn't do the actual impedance measurements for you; rather, you w
 .. toctree::
    :caption: Box Modeling
    :hidden:
-      
+
    create
    box
 
 .. toctree::
    :caption: Theory Notes
    :hidden:
-	     
+	
    deltamass_theory
-   box_theory
    alignment_theory
    time_theory
 

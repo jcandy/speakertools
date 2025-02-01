@@ -60,7 +60,7 @@ For a design with leakage loss, you may recalculate :math:`Q_T` and
 :math:`\alpha`. Leakage loss results in a smaller :math:`\alpha` and
 consequently a larger box, which means :math:`Q_{TC}` is reduced. To
 arrive at :math:`Q_{TC} = 0.5`, one must set :math:`Q_L = 1.5`
-(:math:`Q_L = 0.3`). This is awfully lossy, and we conclude that, in
+(:math:`Q_T = 0.3`). This is awfully lossy, and we conclude that, in
 practice, for a CD4 reflex box with a plugged (stuffed or covered) port,
 :math:`Q_{TC}` will always be larger than 0.5.
 

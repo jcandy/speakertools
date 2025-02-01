@@ -11,7 +11,7 @@ Box Simulation
 
 The purpose of measuring the driver impedance (STEP 0) and determining the advanced parameters (STEPS 1-3) is to accurately predict the behavior in a box before it is built. Speakerbench offers a powerful box simulator that can calculate various quantities of interest using the advanced parameter model, or with the legacy Thiele-Small model.
 
-To load parameters for a driver into the box simulator, you need to use the :doc:`Datasheet Creator <create>`. When the data visible in the Datasheet Creator generates a JSON output, the data is stored in your local browser memory and automagically shows up in the box simulator. Thereafter, box parameters can be varied in the *Settings* tab to simulate the system behavior. A detailed description of the underlying theory is also summarized in the :ref:`box_theory` section.
+To load parameters for a driver into the box simulator, you need to use the :doc:`Datasheet Creator <create>`. When the data visible in the Datasheet Creator generates a JSON output, the data is stored in your local browser memory and automagically shows up in the box simulator. Thereafter, box parameters can be varied in the *Settings* tab to simulate the system behavior.
 
 Enclosure Options
 -----------------
@@ -19,12 +19,12 @@ Enclosure Options
 The enclosure options supported by Speakerbench are:
 
 **classic**
-     A simple (classic) series resistance-compliance model for the enclosure as described by Small, Benson and others. 
+     A simple (classic) series resistance-compliance model for the enclosure as described by Small, Benson and others.
 
 **2-port**
    A low-frequency 2-port model for the enclosure matrix that includes rigorous acoustic mass elements derived by solving the Helmholtz equation. Losses and volume expansion due to fill are also treated including theoretical estimates from the theory of Futtrup :cite:`futtrup:2011`. Different damping materials, from Polyester or PET fiber, or from Glass wool, are treated. Significant effort has gone in to experimental validation of the methods.
-   
-The Beranek-Mellow transmission matrix formulation :cite:`beranek:2012` is used to implement both options. The calculated results are reliable only for the low-frequency range, below the first box resonance. 
+
+The Beranek-Mellow transmission matrix formulation :cite:`beranek:2012` is used to implement both options. The calculated results are reliable only for the low-frequency range, below the first box resonance.
 
 Port Options
 ------------
@@ -32,7 +32,7 @@ Port Options
 For bass reflex simulation, Speakerbench supports two port models
 
 **classic**
-   The classic series mass-resistance model for vent impedance as described by Small, Benson and others. 
+   The classic series mass-resistance model for vent impedance as described by Small, Benson and others.
 
 **T-line**
    An arbitrary-frequency transmission-line model that includes reflections and pipe resonance. The dissipation in the vent is chosen to match the classic theory at low frequency.
