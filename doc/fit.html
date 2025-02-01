@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
@@ -9,22 +11,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Advanced Model Fit &mdash; Speakerbench 0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/contentui.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=a0fb6060" />
 
   
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=2709fde1"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="_static/contentui.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/contentui.js"></script>
+      <script>window.MathJax = {"tex": {"macros": {"qt": "{Q_\\mathrm{TS}}", "qes": "{Q_\\mathrm{ES}}", "qms": "{Q_\\mathrm{MS}}", "qa": "{Q_\\mathrm{{\\hspace -1pt} A}}", "bl": "{B\\ell}", "bls": "{(B\\ell)^2}", "mms": "{M_\\mathrm{MS}}", "mmp": "{M_\\mathrm{MP}}", "cms": "{C_\\mathrm{MS}}", "rms": "{R_\\mathrm{MS}}", "cmb": "{C_\\mathrm{MB}}", "wmin": "{\\omega_\\mathrm{min}}", "wmax": "{\\omega_\\mathrm{max}}", "tp": "{t^\\prime}", "dmn": "{\\Delta_{mn}}", "vb": "{V_\\mathrm{B}}", "vas": "{V_\\mathrm{AS}}", "vp": "{V_\\mathrm{P}}", "cab": "{C_\\mathrm{AB}}", "map": "{M_\\mathrm{AP}}", "ma": "{M_\\mathrm{A}}", "sd": "{S_\\mathrm{D}}", "ad": "{a_\\mathrm{D}}", "sp": "{S_\\mathrm{P}}", "ap": "{a_\\mathrm{P}}", "sb": "{S_\\mathrm{B}}", "caf": "{C_\\mathrm{af}}", "cth": "{C_\\mathrm{th}}", "cua": "{C_\\mathrm{ua}}", "raf": "{R_\\mathrm{af}}", "rth": "{R_\\mathrm{th}}", "cfu": "{C^*_\\mathrm{AB}}", "rfu": "{R^*_\\mathrm{AB}}", "ws": "{\\omega_\\mathrm{S}}", "fp": "{f_\\mathrm{P}}", "wp": "{\\omega_\\mathrm{P}}", "lp": "{l_\\mathrm{P}}", "fs": "{f_\\mathrm{S}}", "fcb": "{f_\\mathrm{CB}}", "qtc": "{Q_\\mathrm{TC}}", "deltv": "{\\delta_v}", "xs": "{x_\\mathrm{S}}", "xim": "{x_\\mathrm{I}}", "xmax": "{X_\\mathrm{max}}", "re": "{R_\\mathrm{E}}", "leb": "{L_\\mathrm{EB}}", "le": "{L_\\mathrm{E}}", "ke": "{K_\\mathrm{E}}", "rss": "{R_\\mathrm{SS}}", "zm": "{Z_\\mathrm{M}}", "zms": "{Z_{\\mathrm{M}*}}", "zin": "{Z}", "ze": "{Z_\\mathrm{E}}", "cmes": "{C_\\mathrm{MES}}", "res": "{R_\\mathrm{ES}}", "lces": "{L_\\mathrm{CES}}", "cas": "{C_\\mathrm{AS}}", "fr": "{g}", "ql": "{\\sigma}", "rlog": "{R_0}", "clog": "{C_0}", "llog": "{L_0}", "flog": "{f_0}", "ssa": "{\\mathrm{SS}_A}", "sse": "{\\mathrm{SS}_E}", "msa": "{\\mathrm{MS}_A}", "mse": "{\\mathrm{MS}_E}", "mmf": "{M_\\mathrm{MF}}", "mmr": "{M_\\mathrm{MR}}", "hz": "{\\textrm{Hz}}", "khz": "{\\textrm{kHz}}", "cm": "{\\textrm{cm}}", "gr": "{\\textrm{g}}", "mg": "{\\textrm{mg}}", "mv": "{\\textrm{mV}}", "mw": "{\\textrm{mW}}", "mh": "{\\textrm{mH}}", "tm": "{\\textrm{Tm}}", "kgm": "{\\textrm{kg/m}^3 \\,}", "mps": "{\\textrm{m/s}}", "heatcap": "{\\textrm{J/(kg K)}}"}}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -43,9 +43,6 @@
           <a href="index.html" class="icon icon-home">
             Speakerbench
           </a>
-              <div class="version">
-                0.1
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -68,12 +65,19 @@
 <li class="toctree-l1"><a class="reference internal" href="create.html">Create datasheet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="box.html">Box Simulation</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Theory Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="deltamass_theory.html">Dual-Added-Mass Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="box_theory.html">Speakerbench Box Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alignment_theory.html">Classic Vented Alignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time_theory.html">Time-domain Analysis</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="alignment.html">Alignments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">Sample Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="youtube.html">YouTube</a></li>
-<li class="toctree-l1"><a class="reference internal" href="json-docs.html">The JSON Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="json-docs.html">JSON Datafile Definitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary of symbols</a></li>
 <li class="toctree-l1"><a class="reference internal" href="zreferences.html">References</a></li>
 </ul>
 
@@ -115,17 +119,18 @@
 <div class="math notranslate nohighlight">
 \[\mathbb{Z}_{\rm mot} = sM_\mathrm{MS} + R_0 + \displaystyle \frac{1}{C_0} \left[ 1+\beta\ln(1+\omega_0/s)\right] \; .\]</div>
 <p>The equivalent electrical circuit for the driver in free air is</p>
-<figure class="align-center" id="id6">
-<a class="reference internal image-reference" href="_images/elec_total.png"><img alt="electrical circuit" src="_images/elec_total.png" style="width: 70%;" /></a>
+<figure class="align-center" id="id7">
+<a class="reference internal image-reference" href="_images/elec_total.png"><img alt="electrical circuit" src="_images/elec_total.png" style="width: 60%;" />
+</a>
 <figcaption>
-<p><span class="caption-text">Electrical-equivalent circuit for transducer in free air, where <span class="math notranslate nohighlight">\(\mathbb{Z}_{\rm mot}\)</span>
-is the mechanical impedance of the suspension</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Electrical-equivalent circuit for transducer in free air, where <span class="math notranslate nohighlight">\(\mathbb{Z}_{\rm mot}\)</span>
+is the mechanical impedance of the suspension</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
 </figcaption>
 </figure>
-<p>The parameter <span class="math notranslate nohighlight">\(\omega_0\)</span> is a transition frequency, chosen to be <span class="math notranslate nohighlight">\(\omega_0 = 1.5 \, \omega_s = 3 \pi f_s\)</span>, such that <span class="math notranslate nohighlight">\(f_s\)</span> (the driver resonant frequency in Hz) will be determined by the fitting process. Some aspects of the <em>dual-added-mass</em> algorithm are described in our 2017 AES article <span id="id1">[<a class="reference internal" href="zreferences.html#id12" title="J. Candy and C. Futtrup. An Added-Mass Measurement Technique for Transducer Parameter Estimation. J. Audio. Eng. Soc., 65:1005, 2017. doi:10.17743/jaes.2017.0040.">CF17</a>]</span>, whereas other aspects are proprietary. The fit procedure is complicated, but provides a robust and accurate estimation of the model parameters. The advanced model utilizes what we consider to be the best analytic forms for both the <em>electrical impedance</em> (the
-Thorborg-Futtrup inductance model <span id="id2">[<a class="reference internal" href="zreferences.html#id52" title="K. Thorborg and C. Futtrup. Electrodynamic Transducer Model Incorporating Semi-Inductance and Means for Shorting AC Magnetization. J. Audio. Eng. Soc., 59:612, 2011. URL: http://www.aes.org/e-lib/browse.cfm?elib=15978.">TF11</a>]</span>) and the <em>mechanical impedance</em> (the Knudsen-Jensen LOG model of viscoelasticity <span id="id3">[<a class="reference internal" href="zreferences.html#id27" title="M.H. Knudsen and J.G. Jensen. Low-frequency loudspeaker models that include suspension creep. J. Audio. Eng. Soc., 41:3, 1993. URL: http://www.aes.org/e-lib/browse.cfm?elib=7015.">KJ93</a>]</span>), with the added Retardation Spectra function as described by Agerkvist and Ritter <span id="id4">[<a class="reference internal" href="zreferences.html#id3" title="F. Agerkvist and T. Ritter. Modeling viscoelasticity of loudspeaker suspensions using retardation spectra. In Audio Engineering Society Convention 129. Nov 2010. URL: http://www.aes.org/e-lib/browse.cfm?elib=15639.">AR10</a>]</span>. The fit parameters are suitable for high-accuracy loudspeaker box simulations (for designing loudspeaker systems). Please note that all information (including input variables and results) is stored in your browser and nothing is saved to the server (not even temporary data). At the end you should export the data and save the results to your local hard drive. If you don’t and close the browser window, the data will be lost.</p>
+<p>The parameter <span class="math notranslate nohighlight">\(\omega_0\)</span> is a transition frequency, chosen to be <span class="math notranslate nohighlight">\(\omega_0 = 1.5 \, \omega_s = 3 \pi f_s\)</span>, such that <span class="math notranslate nohighlight">\(f_s\)</span> (the driver resonant frequency in Hz) will be determined by the fitting process. Some aspects of the <em>dual-added-mass</em> algorithm are described in our 2017 AES article <span id="id1">[<a class="reference internal" href="zreferences.html#id15" title="J. Candy and C. Futtrup. An Added-Mass Measurement Technique for Transducer Parameter Estimation. J. Audio. Eng. Soc., 65:1005, 2017. doi:10.17743/jaes.2017.0040.">CF17</a>]</span>, whereas other aspects are proprietary. The fit procedure is complicated, but provides a robust and accurate estimation of the model parameters. The advanced model utilizes what we consider to be the best analytic forms for both the <em>electrical impedance</em> (the
+Thorborg-Futtrup inductance model <span id="id2">[<a class="reference internal" href="zreferences.html#id59" title="K. Thorborg and C. Futtrup. Electrodynamic Transducer Model Incorporating Semi-Inductance and Means for Shorting AC Magnetization. J. Audio. Eng. Soc., 59:612, 2011. URL: http://www.aes.org/e-lib/browse.cfm?elib=15978.">TF11</a>]</span>) and the <em>mechanical impedance</em> (the Knudsen-Jensen LOG model of viscoelasticity <span id="id3">[<a class="reference internal" href="zreferences.html#id32" title="M.H. Knudsen and J.G. Jensen. Low-frequency loudspeaker models that include suspension creep. J. Audio. Eng. Soc., 41:3, 1993. URL: http://www.aes.org/e-lib/browse.cfm?elib=7015.">KJ93</a>]</span>), with the added Retardation Spectra function as described by Agerkvist and Ritter <span id="id4">[<a class="reference internal" href="zreferences.html#id3" title="F. Agerkvist and T. Ritter. Modeling viscoelasticity of loudspeaker suspensions using retardation spectra. In Audio Engineering Society Convention 129. Nov 2010. URL: http://www.aes.org/e-lib/browse.cfm?elib=15639.">AR10</a>]</span>. The fit parameters are suitable for high-accuracy loudspeaker box simulations (for designing loudspeaker systems). Please note that all information (including input variables and results) is stored in your browser and nothing is saved to the server (not even temporary data). At the end you should export the data and save the results to your local hard drive. If you don’t and close the browser window, the data will be lost.</p>
 <p>To compute the fit, simply upload the JSON container of the previous section into the app. The fit analyzes your data and the fit result and provides you with a quality rating: Excellent, Good, Fair or Sorry.</p>
-<p>We published an article in the <em>Loudspeaker Industry Sourcebook 2020</em> about Speakerbench <span id="id5">[<a class="reference internal" href="zreferences.html#id58" title="C. Futtrup and J. Candy. Speakerbench. 2020. URL: https://www.loudspeakerindustrysourcebook.com/articles/speakerbench (visited on 2020-10-23).">FC20</a>]</span> which explains some aspects of the fitting and how to analyze the results. More background information can be found in our ALMA International Symposium 2017 presentation (held in Las Vegas) titled <a class="reference download internal" download="" href="_downloads/85c156ef09a4991e004c5314a6eac2e9/ALMA-2017.pdf"><code class="xref download docutils literal notranslate"><span class="pre">Physical</span> <span class="pre">Accuracy</span> <span class="pre">and</span> <span class="pre">Modeling</span> <span class="pre">Robustness</span> <span class="pre">of</span> <span class="pre">Motional</span> <span class="pre">Impedance</span> <span class="pre">Models</span></code></a>.</p>
+<p>We published an article in the <em>Loudspeaker Industry Sourcebook 2020</em> about Speakerbench <span id="id5">[<a class="reference internal" href="zreferences.html#id65" title="C. Futtrup and J. Candy. Speakerbench. 2020. URL: https://www.loudspeakerindustrysourcebook.com/articles/speakerbench (visited on 2020-10-23).">FC20</a>]</span> which explains some aspects of the fitting and how to analyze the results. More background information can be found in our ALMA International Symposium 2017 presentation <span id="id6">[<a class="reference internal" href="zreferences.html#id22" title="C. Futtrup and J. Candy. Physical Accuracy and Modeling Robustness of Motional Impedance Models. AISE, 2017. URL: https://www.cfuttrup.com/blogspot/ALMA-2017.pdf.">FC17</a>]</span>.</p>
 </section>
 
 
@@ -139,8 +144,8 @@ Thorborg-Futtrup inductance model <span id="id2">[<a class="reference internal" 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2020-2024 | C. Futtrup and J. Candy.
-      <span class="lastupdated">Last updated on Oct 31, 2024.
+    <p>&#169; Copyright 2020-2025 | C. Futtrup and J. Candy.
+      <span class="lastupdated">Last updated on Jan 28, 2025.
       </span></p>
   </div>
 
