@@ -12,7 +12,7 @@
   <title>Speakerbench JSON Docs &mdash; Speakerbench 0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
-      <link rel="stylesheet" type="text/css" href="_static/contentui.css" />
+      <link rel="stylesheet" type="text/css" href="_static/contentui.css?v=4cf5b151" />
       <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=a0fb6060" />
 
   
@@ -22,7 +22,7 @@
       <script src="_static/documentation_options.js?v=2709fde1"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script src="_static/contentui.js"></script>
+      <script src="_static/contentui.js?v=9ee86694"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -77,7 +77,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#measurements-collected-json-file-format">Measurements Collected JSON file format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#fitted-data-json-file-format">Fitted Data JSON file format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#datasheet-json-file-format">Datasheet JSON file format</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#box-tuning-json-file-format">Box Tuning JSON file format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#thiele-small-datasheet-json-file-format">Thiele/Small Datasheet JSON file format</a></li>
 </ul>
 </li>
@@ -118,7 +117,6 @@
 <li><p><a class="reference internal" href="#measurements-collected-json-file-format">Measurements Collected JSON file format</a>.</p></li>
 <li><p><a class="reference internal" href="#fitted-data-json-file-format">Fitted Data JSON file format</a>.</p></li>
 <li><p><a class="reference internal" href="#datasheet-json-file-format">Datasheet JSON file format</a>.</p></li>
-<li><p><a class="reference internal" href="#box-tuning-json-file-format">Box Tuning JSON file format</a>.</p></li>
 <li><p><a class="reference internal" href="#thiele-small-datasheet-json-file-format">Thiele/Small Datasheet JSON file format</a>.</p></li>
 </ol>
 <section id="measurements-collected-json-file-format">
@@ -235,36 +233,6 @@
 <p>Some inputs are optional, for example xmax is optional (set xmax = 0.0 if the information is not available). Specifying xmax adds additional functionality to Speakerbench. See below description for the Thiele/Small Datasheet for details. In the SBD-file all numbers are stored as strings.</p>
 <p>Note the distinction between manufacturer and brand. For example brand name SB Acoustics are manufactured by Sinar Baja Electric Co. Ltd. Some brands have several manufacturing sites.</p>
 <p>All JSON files are ‘escaped’ such that a space is replaced by an underscore.</p>
-</section>
-<section id="box-tuning-json-file-format">
-<h2>Box Tuning JSON file format<a class="headerlink" href="#box-tuning-json-file-format" title="Link to this heading"></a></h2>
-<p>Speakerbench allows you to download your box tuning parameters into a TUNE file and upload a TUNE file to configure the box simulator with saved settings. All JSON data can be on a single line, or by choice on multiple lines. Here is a structured view of the content of such a JSON file (actual data are just for the example). The file name is by convention an TUNE_something.json.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;eg&quot;</span><span class="p">:</span> <span class="mf">2.83</span><span class="p">,</span>
-  <span class="s2">&quot;fp&quot;</span><span class="p">:</span> <span class="s2">&quot;43.1856&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;vb&quot;</span><span class="p">:</span> <span class="s2">&quot;8.302388637830859&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;dp&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-  <span class="s2">&quot;qp&quot;</span><span class="p">:</span> <span class="s2">&quot;50.0&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;ql&quot;</span><span class="p">:</span> <span class="s2">&quot;100.0&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="s2">&quot;simple&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;mybox&quot;</span><span class="p">:</span> <span class="s2">&quot;T-net&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;fillpercent&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;fillmaterial&quot;</span><span class="p">:</span> <span class="s2">&quot;pet&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;gain&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-  <span class="s2">&quot;fmax&quot;</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
-  <span class="s2">&quot;nfreq&quot;</span><span class="p">:</span> <span class="mi">256</span><span class="p">,</span>
-  <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-  <span class="s2">&quot;lxlz&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-  <span class="s2">&quot;lylz&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-  <span class="s2">&quot;filt&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-  <span class="s2">&quot;ls&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;rs&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;cp&quot;</span><span class="p">:</span> <span class="mf">8.2</span><span class="p">,</span>
-  <span class="s2">&quot;rcp&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
-  <span class="s2">&quot;tname&quot;</span><span class="p">:</span> <span class="n">null</span>
-<span class="p">}</span>
-</pre></div>
-</div>
 </section>
 <section id="thiele-small-datasheet-json-file-format">
 <h2>Thiele/Small Datasheet JSON file format<a class="headerlink" href="#thiele-small-datasheet-json-file-format" title="Link to this heading"></a></h2>

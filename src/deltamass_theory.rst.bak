@@ -345,7 +345,7 @@ A list of all 21 measurements is shown in :numref:`tab.msa`, including date of m
    A, 17-02-11, 8.992, 18.000 , 7.026 , 15.19
 
 
-Based on a series of diagnostics, three measurements were identified as flawed and subsequently rejected. Regarding the dates for each operator's trial, we remark that the measurements are not performed in a streamlined way but in a somewhat random manner which is the recommended procedure for Gage R&R.  Figure :numref:`fig.bl2` shows the correlation between :math:`\bl` and :math:`\mms` for the remaining 18 measurements in the MSA.
+Based on a series of diagnostics, three measurements were identified as flawed and subsequently rejected. Regarding the dates for each operator's trial, we remark that the measurements are not performed in a streamlined way but in a somewhat random manner which is the recommended procedure for Gage R&R.  Figure :numref:`fig.Bl_Mms` shows the correlation between :math:`\bl` and :math:`\mms` for the remaining 18 measurements in the MSA.
 
 .. subfigure:: AB
    :gap: 6px

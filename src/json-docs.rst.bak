@@ -16,7 +16,8 @@ Speakerbench does not save any data server side, instead data is handled in your
 1. `Measurements Collected JSON file format`_.
 2. `Fitted Data JSON file format`_.
 3. `Datasheet JSON file format`_.
-4. `Thiele/Small Datasheet JSON file format`_.
+4. `Box Tuning JSON file format`_.
+5. `Thiele/Small Datasheet JSON file format`_.
 
 Measurements Collected JSON file format
 ---------------------------------------
