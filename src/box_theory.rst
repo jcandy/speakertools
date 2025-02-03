@@ -186,8 +186,14 @@ Use the porous media theory described by Wilson :cite:`wilson:1993`, Tarnow :cit
    \beta = &~ \frac{1}{\gamma P_0} \left[ 1 + \frac{\gamma-1}{\sqrt{1+s\taue}} \right] \; ,
    \end{align}
 
-where :math:`\taue` is the decay time of the *entropy mode* and :math:`\tauv` is the decay time of the vorticity mode. :math:`c = 1/\sqrt{\beta\rho}` and :math:`k = \omega \sqrt{\beta\rho}`. This gives
+where :math:`\taue` is the decay time of the *entropy mode* and :math:`\tauv` is the decay time of the *vorticity mode*. :math:`c = 1/\sqrt{\beta\rho}` and :math:`k = \omega \sqrt{\beta\rho}`. Taking the limit :math:`\taue, \tauv \rightarrow \infty` gives the result for an unfilled enclosure. Substituting these expressions into Eq. :eq:`eq.zpq2` gives
 
 .. math::
-   Z_{pq} = \frac{1}{s \cab \left[\displaystyle 1 + \frac{\gamma-1}{\sqrt{1+s\taue}} \right]}
-   + s \ma \epsilon_{pq} \left[ \frac{\sqrt{1+s\tauv}}{\sqrt{1+s\tauv}-1} \right] \; .
+   Z_{pq} = \frac{1}{s \cab \displaystyle \left[ 1 + \frac{\gamma-1}{\sqrt{1+s\taue}} \right]} + s \ma \epsilon_{pq} \left[ \frac{\sqrt{1+s\tauv}}{\sqrt{1+s\tauv}-1} \right] \; .
+
+Testing shows that this form of the impedance gives unphysical results. Instead, a modified form that preserves the undamped mass loading on the port performs much better:
+
+.. math::
+   Z_{pq} = \frac{1}{s \cab \displaystyle \left[ 1 + \frac{\gamma-1}{\sqrt{1+s\taue}} \right]} + \frac{s \ma \epsilon_{11}}{\sqrt{1+s\tauv}-1} + s \ma \epsilon_{pq} \; .
+
+Note that :math:`Z_{11}` is unmodified, whereas the port loading :math:`Z_{22}-Z_{21}` recovers the unfilled value. 
