@@ -57,6 +57,31 @@ Butterworth filters have :math:`A_1=A_2=A_3=0` which gives the mathematical feat
 
 Since these respective alignments are possible only for a single value of :math:`Q_T`, a procedure is required to extend (or approximate) them for a continuous range of :math:`Q_T`.
 
+Discrete alignments
+-------------------
+
+A 'discrete' bass reflex alignment means we need to select a driver with a specific Qt value, and tune that with a specific box and port, and then we can obtain this discrete alignment. There are a couple of classic discrete alignments, named Butterworth and Bessel. Besides, A. N. Thiele defines the Inter-Order Butterworth. We furthermore describe the Linkwitz-Riley LR4 and Critically Damped CD4 discrete alignments. Each such discrete alignment is typically defined by a specific property, which we will describe below.
+
+**Butterworth B4**
+
+The Butterworth filter response was first described by Stephen Butterworth around 1930. This filter offers the sharpest roll-off, the most extended bandwidth, and therefore gives us the sharpest knee point without any ripple in the passband. In relation to bass reflex loudspeakers, B4 was a very popular target response for many years, and several (non-discrete) alignment families ultimately develops from B4.
+
+**Bessel BL4**
+
+The Bessel filter response is named after Friedrich Wilhelm Bessel (1784 -1846) and the practical application was worked out by W. E. Thomson in 1949, in a scientific article titled “Delay Networks Having Maximally Flat Frequency Characteristics,” where he described this filter function applied to delay lines. Low-pass Bessel filters are characterized by the fastest settling time, but the property is not guaranteed for high-pass filters, like in a bass reflex alignments.
+
+**Linkwitz-Riley LR4**
+
+The Linkwitz-Riley filter response was described by Siegfried H. Linkwitz in 1976 as two cascaded Butterworth filters, which poses the desirable feature as a crossover between two non-coincident transducers, that they sum in-phase. In relation to bass reflex alignment we are not crossing to another driver, but the LR4 alignment poses some desirable features like fast settling time (nice impulse response) and a more extended frequency response when compared with the BL4 alignment.
+
+**Critically damped CD4**
+
+A critically damped filter response poses the desirable feature of no overshoot, not even to a step function input (a worst case scenario), and with this constraint obtains the most extended frequency response. In relation to bass reflex, we obtain this by placing all the poles on the real axis. The CD4 alignment is defined as two cascaded second order Linkwitz-Riley filters.
+
+**Inter-Order Butterworth IB4**
+
+The fourth-order Inter-Order Butterworth high-pass filter is defined by A. N. Thiele as a combination of a second-order and two identical first-order filters. Two cascaded first-order 'Butterworth' filters becomes a second-order Linkwitz-Riley filter function. The other second-order term is defined by targeting a maximally flat 4th-order response. When compared to the LR4 response, an IB4 alignment will have a bit more extended response, then a sharper knee and faster roll-off (similar to a maximally flat response, but within what's obtainable with the constraint of two first-order filters). The two first-order filters places two of the poles on the real axis.
+
 1. Method of ignorance
 ----------------------
 
