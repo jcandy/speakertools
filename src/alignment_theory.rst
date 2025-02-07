@@ -8,7 +8,7 @@
 Classic Vented Alignments
 =========================
 
-In classical loudspeaker theory from the 1960s and onwards, the concept of alignments was developed to provide a systematic prescription for choosing box volume and port tuning to yield a target low-frequency response function.
+In classical loudspeaker theory from the 1960s and onwards, the concept of alignments was developed to provide a systematic prescription for choosing box volume and port tuning to yield a target low-frequency response function. The theory is not exact, but offers insight into the choice between low frequency extension versus group delay (phase distortion).
 
 History and framework
 ---------------------
@@ -28,7 +28,7 @@ where :math:`s = j \omega / \omega_0` is the dimensionless complex frequency var
    a_3 &=& \frac{h \: Q_L + Q_T}{\sqrt{h} \: Q_L \: Q_T} \; ,\label{eq:box}
    \end{eqnarray}
 
-where :math:`Q_L` is the leakage-loss :math:`Q` of the box and :math:`Q_T` is the total :math:`Q` of the driver. Here, :math:`\omega_B/\omega_S` is the system tuning ratio and :math:`\alpha = V_{AS} / V_B` is the ratio of the compliance volume to the box volume. We remark that the coefficients are approximate and neglect myriad other terms which appear in a more comprehensive model of a vented box. These missing terms would represent more complex losses in the box and in the driver suspension system, driver inductance and semi-inductance, and so on. In the definition of :math:`\omega_0`, :math:`\omega_S` is the driver resonant frequency and :math:`\omega_B` is the vent resonant frequency. This normalization is equivalent to setting :math:`T_0=1` in Small's expressions. The magnitude-versus-frequency behavior is also given in Small :cite:`small:1973c` (Eqs. 58 and 59), which we reproduce here as
+where :math:`Q_L` is the leakage-loss :math:`Q` of the box and :math:`Q_T` is the total :math:`Q` of the driver. Here, :math:`h = \omega_B/\omega_S` is the system tuning ratio and :math:`\alpha = V_{AS} / V_B` is the ratio of the compliance volume to the box volume. We remark that the coefficients are approximate and neglect myriad other terms which appear in a more comprehensive model of a vented box. These missing terms would represent more complex losses in the box and in the driver suspension system, driver inductance and semi-inductance, and so on. In the definition of :math:`\omega_0`, :math:`\omega_S` is the driver resonant frequency and :math:`\omega_B` is the vent resonant frequency. This normalization is equivalent to setting :math:`T_0=1` in Small's expressions. The magnitude-versus-frequency behavior is also given in Small :cite:`small:1973c` (Eqs. 58 and 59), which we reproduce here as
 
 .. math::
    \left| G_\mathrm{H}(i\omega) \right|^2 = \frac{\omega^8}{\omega^8 + A_1 \omega^6 + A_2 \omega^4 + A_3 \omega^2 + 1} \; ,
@@ -55,32 +55,101 @@ We summarize the values for :math:`A_i` for some classical alignments as well as
 
 Butterworth filters have :math:`A_1=A_2=A_3=0` which gives the mathematical feature of *maximal flatness*.
 
-Since these respective alignments are possible only for a single value of :math:`Q_T`, a procedure is required to extend (or approximate) them for a continuous range of :math:`Q_T`.
+Since these respective alignments are discrete, i.e., possible only for a single value of :math:`Q_T`, a procedure is required to extend (or approximate) them for a continuous range of :math:`Q_T`.
 
 Discrete alignments
 -------------------
 
-A 'discrete' bass reflex alignment means we need to select a driver with a specific Qt value, and tune that with a specific box and port, and then we can obtain this discrete alignment. There are a couple of classic discrete alignments, named Butterworth and Bessel. Besides, A. N. Thiele defines the Inter-Order Butterworth. We furthermore describe the Linkwitz-Riley LR4 and Critically Damped CD4 discrete alignments. Each such discrete alignment is typically defined by a specific property, which we will describe below.
+A *discrete* bass reflex alignment means we need to select a driver with a specific :math:`Q_T` value and match that with a specific box volume and port tuning frequency, and then we can obtain this discrete alignment. There are a couple of classic discrete alignments, named Butterworth (B4) and Bessel (BL4). Besides, A. N. Thiele defined the Inter-Order Butterworth (IB4) around 1974. We furthermore describe the Linkwitz-Riley (LR4) and Critically Damped (CD4) discrete alignments. Each such discrete alignment is typically defined by a specific property, which we will describe below.
 
 **Butterworth B4**
 
-The Butterworth filter response was first described by Stephen Butterworth around 1930. This filter offers the sharpest roll-off, the most extended bandwidth, and therefore gives us the sharpest knee point without any ripple in the passband. In relation to bass reflex loudspeakers, B4 was a very popular target response for many years, and several (non-discrete) alignment families ultimately develops from B4.
+The Butterworth filter response was first described by Stephen Butterworth around 1930. This filter offers a maximally flat frequency response, which means that with the constraint of no ripple in the passband, it offers the sharpest knee point towards the roll-off region, and within the constraints the most extended bandwidth. In relation to bass reflex loudspeakers, B4 was a very popular target response for many years, and several (non-discrete) alignment *families* ultimately develops from B4.
+
+.. code-block:: python
+
+   import numpy as np
+
+   Ql = 10
+   Qt = 1/(np.sqrt(4+np.sqrt(8))-1/Ql)    # or: Qt = 1/(np.sqrt(a1*a3)-1/Ql) = 1/(1/np.cos(3*np.pi/8)-1/Ql)
+   h = 1
+   a3 = np.sqrt(8)*np.cos(np.pi/8)
+   alpha = np.sqrt(2) - (1/Ql**2) * (a3*Ql-1)
 
 **Bessel BL4**
 
-The Bessel filter response is named after Friedrich Wilhelm Bessel (1784 -1846) and the practical application was worked out by W. E. Thomson in 1949, in a scientific article titled “Delay Networks Having Maximally Flat Frequency Characteristics,” where he described this filter function applied to delay lines. Low-pass Bessel filters are characterized by the fastest settling time, but the property is not guaranteed for high-pass filters, like in a bass reflex alignments.
+The Bessel filter response is named after Friedrich Wilhelm Bessel (1784 -1846) and the practical application was worked out by W. E. Thomson in 1949, in a scientific article titled “Delay Networks Having Maximally Flat Frequency Characteristics,” where he described this filter function applied to delay lines. Low-pass Bessel filters are characterized by the fastest settling time and maximally flat group delay. A frequency range with flat group delay implies linear phase response and hence for impulsive signals within the frequency range there is no phase distortion of the signal, but the property is not guaranteed for high-pass filters, like in a bass reflex alignments, but BL4 still has a nice impulse response at the expense of bandwidth.
+
+.. code-block:: python
+
+   import numpy as np
+
+   a1 = 105/105**0.75   # Polynomial coefficients
+   a2 = 45/105**0.5
+   a3 = 10/105**0.25
+   Ql = 10
+   Qt = 1/(np.sqrt(a1*a3)-1/Ql)
+   h = 1
+   alpha = a2*h - h**2 - 1 - (a3*np.sqrt(h)*Ql - 1)/Ql**2
 
 **Linkwitz-Riley LR4**
 
-The Linkwitz-Riley filter response was described by Siegfried H. Linkwitz in 1976 as two cascaded Butterworth filters, which poses the desirable feature as a crossover between two non-coincident transducers, that they sum in-phase. In relation to bass reflex alignment we are not crossing to another driver, but the LR4 alignment poses some desirable features like fast settling time (nice impulse response) and a more extended frequency response when compared with the BL4 alignment.
+The Linkwitz-Riley filter response was described by Siegfried H. Linkwitz in 1976 as two cascaded Butterworth filters, which poses the desirable feature as a crossover between two non-coincident transducers, that they sum in-phase. In relation to bass reflex alignment, we are not crossing to another driver, but the LR4 alignment poses some desirable features like fast settling time (nice impulse response) similar to the BL4 alignment and a more extended frequency response when compared with the BL4 alignment.
+
+.. code-block:: python
+
+   import numpy as np
+
+   Ql = 10
+   Qt = 1/(np.sqrt(8)-1/Ql)
+   h = 1
+   alpha = 1/4 * (1/Qt - 1/Ql)^2
 
 **Critically damped CD4**
 
-A critically damped filter response poses the desirable feature of no overshoot, not even to a step function input (a worst case scenario), and with this constraint obtains the most extended frequency response. In relation to bass reflex, we obtain this by placing all the poles on the real axis. The CD4 alignment is defined as two cascaded second order Linkwitz-Riley filters.
+A critically damped filter response poses the desirable feature of no overshoot, not even to a step function input (a worst-case scenario), and with this constraint obtains the most extended frequency response. In relation to bass reflex, we obtain this by placing all the poles on the real axis. The CD4 alignment is defined as two cascaded second-order Linkwitz-Riley filters.
+
+.. code-block:: python
+
+   import numpy as np
+
+   Ql = 10
+   Qt = 1/(4-1/Ql)
+   h = 1
+   alpha = 4 - 1/(Ql * Qt)
 
 **Inter-Order Butterworth IB4**
 
-The fourth-order Inter-Order Butterworth high-pass filter is defined by A. N. Thiele as a combination of a second-order and two identical first-order filters. Two cascaded first-order 'Butterworth' filters becomes a second-order Linkwitz-Riley filter function. The other second-order term is defined by targeting a maximally flat 4th-order response. When compared to the LR4 response, an IB4 alignment will have a bit more extended response, then a sharper knee and faster roll-off (similar to a maximally flat response, but within what's obtainable with the constraint of two first-order filters). The two first-order filters places two of the poles on the real axis.
+The fourth-order Inter-Order Butterworth high-pass filter is defined by A. N. Thiele as a combination of a second-order and two identical first-order filters. Two cascaded first-order 'Butterworth' filters become a second-order Linkwitz-Riley filter function. The other second-order term is defined by targeting a maximally flat 4th-order response. When compared to the LR4 response, an IB4 alignment will have a bit more extended response, then a sharper knee and faster roll-off (similar to a maximally flat response, but within what's obtainable with the constraint of two first-order filters). The two first-order filters place two of the poles on the real axis.
+
+.. code-block:: python
+
+   import numpy as np
+
+   Ql = 10
+   lam = np.sqrt(3)           # lambda
+   kap = np.sqrt(2*(lam-1))   # kappa
+   a1 = (2+kap)*lam**(-0.25)  # polynomial coefficients
+   a2 = (1+2*kap+lam)*lam**(-0.50)
+   a3 = (kap+2*lam)*lam**(-0.75)
+   Qt = 1/(np.sqrt(a1*a3) - 1/Ql)
+   q = 1/Qt
+   eps = Qt/Ql
+   h = 1
+   h0 = 10
+   tol = 1e-8                 # numerically solve for h
+   while abs(h-h0) > tol:
+      h0 = h
+      S =  -eps * q**2 + np.sqrt(A2 - 2 + 2 * q**2 * (1 + eps**2 + eps * (h + 1/h)))
+      h = q**2 / (2*S + A1 - eps**2 * q**2 * h)
+
+   alpha = S * h - (1 + h**2)
+
+**Note**
+
+For the discrete alignments, :math:`Q_T` is not a free variable. In practice you need to consider what to do, if the driver at hand does not match the :math:`Q_T` required by your target alignment.
+
+Insert a graph showing the frequency response and group delay of all of the above mentioned discrete alignments.
 
 1. Method of ignorance
 ----------------------
