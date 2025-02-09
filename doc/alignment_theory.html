@@ -70,6 +70,7 @@
 <li class="toctree-l1"><a class="reference internal" href="deltamass_theory.html">Dual-Added-Mass Method</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Classic Vented Alignments</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#history-and-framework">History and framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#discrete-alignments">Discrete alignments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#method-of-ignorance">1. Method of ignorance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#compliance-alteration">2. Compliance Alteration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#generalized-quasi-alignments">3. Generalized quasi-alignments</a><ul>
@@ -124,7 +125,7 @@
              
   <section id="classic-vented-alignments">
 <span id="alignment-theory"></span><h1>Classic Vented Alignments<a class="headerlink" href="#classic-vented-alignments" title="Link to this heading"></a></h1>
-<p>In classical loudspeaker theory from the 1960s and onwards, the concept of alignments was developed to provide a systematic prescription for choosing box volume and port tuning to yield a target low-frequency response function.</p>
+<p>In classical loudspeaker theory from the 1960s and onwards, the concept of alignments was developed to provide a systematic prescription for choosing box volume and port tuning to yield a target low-frequency response function. The theory is not exact, but offers insight into the choice between low frequency extension versus group delay (phase distortion).</p>
 <section id="history-and-framework">
 <h2>History and framework<a class="headerlink" href="#history-and-framework" title="Link to this heading"></a></h2>
 <p>To facilitate choosing the box volume and vent tuning, Speakerbench will propose values based on standard 4th-order bass-reflex alignments. These alignments are particular types of 4th-order high-pass filters. Following Small <span id="id1">[<a class="reference internal" href="zreferences.html#id52" title="R.H. Small. Vented-Box Loudspeaker Systems Part IV: Appendices. J. Audio. Eng. Soc., 21:635, 1973. URL: https://www.aes.org/e-lib/browse.cfm?elib=1941.">Sma73b</a>]</span> (Eq. 57) we can write the normalized response function as</p>
@@ -138,7 +139,7 @@ a_1 &amp;=&amp; \frac{Q_L + h \: Q_T}{\sqrt{h} \: Q_L \: Q_T} \nonumber \\
 a_2 &amp;=&amp; \frac{h + (\alpha + 1 + h^2) \: Q_L \: Q_T}{h \: Q_L \: Q_T}\nonumber \\
 a_3 &amp;=&amp; \frac{h \: Q_L + Q_T}{\sqrt{h} \: Q_L \: Q_T} \; ,\label{eq:box}
 \end{eqnarray}\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(Q_L\)</span> is the leakage-loss <span class="math notranslate nohighlight">\(Q\)</span> of the box and <span class="math notranslate nohighlight">\(Q_T\)</span> is the total <span class="math notranslate nohighlight">\(Q\)</span> of the driver. Here, <span class="math notranslate nohighlight">\(\omega_B/\omega_S\)</span> is the system tuning ratio and <span class="math notranslate nohighlight">\(\alpha = V_{AS} / V_B\)</span> is the ratio of the compliance volume to the box volume. We remark that the coefficients are approximate and neglect myriad other terms which appear in a more comprehensive model of a vented box. These missing terms would represent more complex losses in the box and in the driver suspension system, driver inductance and semi-inductance, and so on. In the definition of <span class="math notranslate nohighlight">\(\omega_0\)</span>, <span class="math notranslate nohighlight">\(\omega_S\)</span> is the driver resonant frequency and <span class="math notranslate nohighlight">\(\omega_B\)</span> is the vent resonant frequency. This normalization is equivalent to setting <span class="math notranslate nohighlight">\(T_0=1\)</span> in Small’s expressions. The magnitude-versus-frequency behavior is also given in Small <span id="id3">[<a class="reference internal" href="zreferences.html#id52" title="R.H. Small. Vented-Box Loudspeaker Systems Part IV: Appendices. J. Audio. Eng. Soc., 21:635, 1973. URL: https://www.aes.org/e-lib/browse.cfm?elib=1941.">Sma73b</a>]</span> (Eqs. 58 and 59), which we reproduce here as</p>
+<p>where <span class="math notranslate nohighlight">\(Q_L\)</span> is the leakage-loss <span class="math notranslate nohighlight">\(Q\)</span> of the box and <span class="math notranslate nohighlight">\(Q_T\)</span> is the total <span class="math notranslate nohighlight">\(Q\)</span> of the driver. Here, <span class="math notranslate nohighlight">\(h = \omega_B/\omega_S\)</span> is the system tuning ratio and <span class="math notranslate nohighlight">\(\alpha = V_{AS} / V_B\)</span> is the ratio of the compliance volume to the box volume. We remark that the coefficients are approximate and neglect myriad other terms which appear in a more comprehensive model of a vented box. These missing terms would represent more complex losses in the box and in the driver suspension system, driver inductance and semi-inductance, and so on. In the definition of <span class="math notranslate nohighlight">\(\omega_0\)</span>, <span class="math notranslate nohighlight">\(\omega_S\)</span> is the driver resonant frequency and <span class="math notranslate nohighlight">\(\omega_B\)</span> is the vent resonant frequency. This normalization is equivalent to setting <span class="math notranslate nohighlight">\(T_0=1\)</span> in Small’s expressions. The magnitude-versus-frequency behavior is also given in Small <span id="id3">[<a class="reference internal" href="zreferences.html#id52" title="R.H. Small. Vented-Box Loudspeaker Systems Part IV: Appendices. J. Audio. Eng. Soc., 21:635, 1973. URL: https://www.aes.org/e-lib/browse.cfm?elib=1941.">Sma73b</a>]</span> (Eqs. 58 and 59), which we reproduce here as</p>
 <div class="math notranslate nohighlight">
 \[\left| G_\mathrm{H}(i\omega) \right|^2 = \frac{\omega^8}{\omega^8 + A_1 \omega^6 + A_2 \omega^4 + A_3 \omega^2 + 1} \; ,\]</div>
 <p>where</p>
@@ -188,7 +189,96 @@ A_3 &amp;=&amp; a_3^2-2 a_2 \; .
 </tbody>
 </table>
 <p>Butterworth filters have <span class="math notranslate nohighlight">\(A_1=A_2=A_3=0\)</span> which gives the mathematical feature of <em>maximal flatness</em>.</p>
-<p>Since these respective alignments are possible only for a single value of <span class="math notranslate nohighlight">\(Q_T\)</span>, a procedure is required to extend (or approximate) them for a continuous range of <span class="math notranslate nohighlight">\(Q_T\)</span>.</p>
+<p>Since these respective alignments are discrete, i.e., possible only for a single value of <span class="math notranslate nohighlight">\(Q_T\)</span>, a procedure is required to extend (or approximate) them for a continuous range of <span class="math notranslate nohighlight">\(Q_T\)</span>.</p>
+</section>
+<section id="discrete-alignments">
+<h2>Discrete alignments<a class="headerlink" href="#discrete-alignments" title="Link to this heading"></a></h2>
+<p>A <em>discrete</em> bass reflex alignment means we need to select a driver with a specific <span class="math notranslate nohighlight">\(Q_T\)</span> value and match that with a specific box volume and port tuning frequency, and then we can obtain this discrete alignment. There are a couple of classic discrete alignments, named Butterworth (B4) and Bessel (BL4). Besides, A. N. Thiele defined the Inter-Order Butterworth (IB4) around 1974. We furthermore describe the Linkwitz-Riley (LR4) and Critically Damped (CD4) discrete alignments. Each such discrete alignment is typically defined by a specific property, which we will describe below.</p>
+<p><strong>Butterworth B4</strong></p>
+<p>The Butterworth filter response was first described by Stephen Butterworth around 1930. This filter offers a maximally flat frequency response, which means that with the constraint of no ripple in the passband, it offers the sharpest knee point towards the roll-off region, and within the constraints the most extended bandwidth. In relation to bass reflex loudspeakers, B4 was a very popular target response for many years, and several (non-discrete) alignment <em>families</em> ultimately develops from B4.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">Ql</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">Qt</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">Ql</span><span class="p">)</span>    <span class="c1"># or: Qt = 1/(np.sqrt(a1*a3)-1/Ql) = 1/(1/np.cos(3*np.pi/8)-1/Ql)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">a3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">Ql</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">a3</span><span class="o">*</span><span class="n">Ql</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Bessel BL4</strong></p>
+<p>The Bessel filter response is named after Friedrich Wilhelm Bessel (1784 -1846) and the practical application was worked out by W. E. Thomson in 1949, in a scientific article titled “Delay Networks Having Maximally Flat Frequency Characteristics,” where he described this filter function applied to delay lines. Low-pass Bessel filters are characterized by the fastest settling time and maximally flat group delay. A frequency range with flat group delay implies linear phase response and hence for impulsive signals within the frequency range there is no phase distortion of the signal, but the property is not guaranteed for high-pass filters, like in a bass reflex alignments, but BL4 still has a nice impulse response at the expense of bandwidth.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">a1</span> <span class="o">=</span> <span class="mi">105</span><span class="o">/</span><span class="mi">105</span><span class="o">**</span><span class="mf">0.75</span>   <span class="c1"># Polynomial coefficients</span>
+<span class="n">a2</span> <span class="o">=</span> <span class="mi">45</span><span class="o">/</span><span class="mi">105</span><span class="o">**</span><span class="mf">0.5</span>
+<span class="n">a3</span> <span class="o">=</span> <span class="mi">10</span><span class="o">/</span><span class="mi">105</span><span class="o">**</span><span class="mf">0.25</span>
+<span class="n">Ql</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">Qt</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">a1</span><span class="o">*</span><span class="n">a3</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">Ql</span><span class="p">)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">a2</span><span class="o">*</span><span class="n">h</span> <span class="o">-</span> <span class="n">h</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">a3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="o">*</span><span class="n">Ql</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">Ql</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+<p><strong>Linkwitz-Riley LR4</strong></p>
+<p>The Linkwitz-Riley filter response was described by Siegfried H. Linkwitz in 1976 as two cascaded Butterworth filters, which poses the desirable feature as a crossover between two non-coincident transducers, that they sum in-phase. In relation to bass reflex alignment, we are not crossing to another driver, but the LR4 alignment poses some desirable features like fast settling time (nice impulse response) similar to the BL4 alignment and a more extended frequency response when compared with the BL4 alignment.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">Ql</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">Qt</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">Ql</span><span class="p">)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">Qt</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="n">Ql</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span>
+</pre></div>
+</div>
+<p><strong>Critically damped CD4</strong></p>
+<p>A critically damped filter response poses the desirable feature of no overshoot, not even to a step function input (a worst-case scenario), and with this constraint obtains the most extended frequency response. In relation to bass reflex, we obtain this by placing all the poles on the real axis. The CD4 alignment is defined as two cascaded second-order Linkwitz-Riley filters.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">Ql</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">Qt</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">4</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">Ql</span><span class="p">)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">Ql</span> <span class="o">*</span> <span class="n">Qt</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Inter-Order Butterworth IB4</strong></p>
+<p>The fourth-order Inter-Order Butterworth high-pass filter is defined by A. N. Thiele as a combination of a second-order and two identical first-order filters. Two cascaded first-order ‘Butterworth’ filters become a second-order Linkwitz-Riley filter function. The other second-order term is defined by targeting a maximally flat 4th-order response. When compared to the LR4 response, an IB4 alignment will have a bit more extended response, then a sharper knee and faster roll-off (similar to a maximally flat response, but within what’s obtainable with the constraint of two first-order filters). The two first-order filters place two of the poles on the real axis.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">Ql</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">lam</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>           <span class="c1"># lambda</span>
+<span class="n">kap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">lam</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>   <span class="c1"># kappa</span>
+<span class="n">a1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">+</span><span class="n">kap</span><span class="p">)</span><span class="o">*</span><span class="n">lam</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">0.25</span><span class="p">)</span>  <span class="c1"># polynomial coefficients</span>
+<span class="n">a2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">kap</span><span class="o">+</span><span class="n">lam</span><span class="p">)</span><span class="o">*</span><span class="n">lam</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">0.50</span><span class="p">)</span>
+<span class="n">a3</span> <span class="o">=</span> <span class="p">(</span><span class="n">kap</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">lam</span><span class="p">)</span><span class="o">*</span><span class="n">lam</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">0.75</span><span class="p">)</span>
+<span class="n">Qt</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">a1</span><span class="o">*</span><span class="n">a3</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="n">Ql</span><span class="p">)</span>
+<span class="n">q</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">Qt</span>
+<span class="n">eps</span> <span class="o">=</span> <span class="n">Qt</span><span class="o">/</span><span class="n">Ql</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">h0</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-8</span>                 <span class="c1"># numerically solve for h</span>
+<span class="k">while</span> <span class="nb">abs</span><span class="p">(</span><span class="n">h</span><span class="o">-</span><span class="n">h0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">tol</span><span class="p">:</span>
+   <span class="n">h0</span> <span class="o">=</span> <span class="n">h</span>
+   <span class="n">S</span> <span class="o">=</span>  <span class="o">-</span><span class="n">eps</span> <span class="o">*</span> <span class="n">q</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">A2</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">q</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">eps</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">eps</span> <span class="o">*</span> <span class="p">(</span><span class="n">h</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="n">h</span><span class="p">)))</span>
+   <span class="n">h</span> <span class="o">=</span> <span class="n">q</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">S</span> <span class="o">+</span> <span class="n">A1</span> <span class="o">-</span> <span class="n">eps</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">q</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">h</span><span class="p">)</span>
+
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">S</span> <span class="o">*</span> <span class="n">h</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Note</strong></p>
+<p>For the discrete alignments, <span class="math notranslate nohighlight">\(Q_T\)</span> is not a free variable. In practice you need to consider what to do, if the driver at hand does not match the <span class="math notranslate nohighlight">\(Q_T\)</span> required by your target alignment.</p>
+<p><a class="reference internal" href="#discrete-spl"><span class="std std-numref">Fig. 11</span></a> and <a class="reference internal" href="#discrete-gd"><span class="std std-numref">Fig. 12</span></a> shows the (normalized) magnitude response and group delay response of the above mentioned discrete alignments.</p>
+<figure class="align-center" id="discrete-spl">
+<a class="reference internal image-reference" href="_images/discrete_spl.png"><img alt="_images/discrete_spl.png" src="_images/discrete_spl.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">The normalized magnitude response of the discrete alignments.</span><a class="headerlink" href="#discrete-spl" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="discrete-gd">
+<a class="reference internal image-reference" href="_images/discrete_gd.png"><img alt="_images/discrete_gd.png" src="_images/discrete_gd.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">The normalized group delay response of the discrete alignments.</span><a class="headerlink" href="#discrete-gd" title="Link to this image"></a></p>
+</figcaption>
+</figure>
 </section>
 <section id="method-of-ignorance">
 <h2>1. Method of ignorance<a class="headerlink" href="#method-of-ignorance" title="Link to this heading"></a></h2>
@@ -608,7 +698,7 @@ and is always shown.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2020-2025 | C. Futtrup and J. Candy.
-      <span class="lastupdated">Last updated on Feb 01, 2025.
+      <span class="lastupdated">Last updated on Feb 09, 2025.
       </span></p>
   </div>
 

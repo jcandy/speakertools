@@ -149,7 +149,23 @@ The fourth-order Inter-Order Butterworth high-pass filter is defined by A. N. Th
 
 For the discrete alignments, :math:`Q_T` is not a free variable. In practice you need to consider what to do, if the driver at hand does not match the :math:`Q_T` required by your target alignment.
 
-Insert a graph showing the frequency response and group delay of all of the above mentioned discrete alignments.
+:numref:`discrete_spl` and :numref:`discrete_gd` shows the (normalized) magnitude response and group delay response of the above mentioned discrete alignments.
+
+.. figure:: images/discrete_spl.png
+            :width: 80 %
+	    :name: discrete_spl
+	    :align: center
+
+            The normalized magnitude response of the discrete alignments.
+
+
+.. figure:: images/discrete_gd.png
+            :width: 80 %
+	    :name: discrete_gd
+	    :align: center
+
+            The normalized group delay response of the discrete alignments.
+
 
 1. Method of ignorance
 ----------------------
