@@ -175,6 +175,7 @@ Comparison
 
             The normalized group delay response of the discrete alignments.
 
+Note: These graphs are **not** normalized relative to the driver's resonance frequency, but :math:`\omega_0 \doteq \sqrt{\omega_B \, \omega_S}`.
 
 Misalignment of discrete alignments
 -----------------------------------
@@ -258,21 +259,22 @@ In Speakerbench, when we apply this method, the alignment acronym is followed by
      return h,alpha
 
   Ql = 10
-  Qts = 0.42    # for example
+  Qtvec=[0.34,0.36,0.38,0.40,0.42]
 
-  # Butterworth B4 (from theory)
-  Qt_ref = 1./(1./np.cos(3*np.pi/8)-1./Ql)
+  Qt = 1./(1./np.cos(3*np.pi/8)-1./Ql)
   h_ref = 1
   a3 = np.sqrt(8)*np.cos(np.pi/8)
   alpha_ref = np.sqrt(2) - (1/Ql**2) * (a3*Ql-1)
 
-  h,alpha = ca_shift(Qt_ref,Qts,alpha_ref,h_ref)
-
   print('           B4CA')
   print(' Qts     h    alpha ')
   print('-----  -------------')
-  print('{:.3f}  {:.4f} {:.4f}  '
+
+  for i,Qts in enumerate(Qtvec):
+     h,alpha = ca_shift(Qt,Qts,alpha_ref,h_ref)
+     print('{:.3f}  {:.4f} {:.4f}  '
         .format(Qts,h,alpha)   )
+
 
 **Output**
 
@@ -281,6 +283,10 @@ In Speakerbench, when we apply this method, the alignment acronym is followed by
              B4CA
    Qt      h    alpha
   -----  -------------
+  0.340  1.1703 1.5928
+  0.360  1.1053 1.4207
+  0.380  1.0471 1.2751
+  0.400  0.9948 1.1508
   0.420  0.9474 1.0438
 
 Compliance Alteration was first presented in Voice Coil Magazine, October 2024. Later the article became Open Access when AudioXpress released an
