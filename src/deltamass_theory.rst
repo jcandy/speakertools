@@ -47,7 +47,7 @@ where :math:`\ze` is invariant, and
 	
    \zm^{(k)} = \frac{1}{i \omega C_k + \fr(\omega)} \; .
 
-We emphasize that :math:`\ze(\omega)` is taken to have an \textit{arbitrary} frequency dependence in the present analysis (which could include inductance, semi-inductance, or other complex :math:`\omega` dependence.  By combining all three measurements, we can eliminate :math:`\ze(\omega)` from the problem.  Next, instead of three independent :math:`C_k`-values, we take advantage of the fact that we are adding known masses:
+We emphasize that :math:`\ze(\omega)` is taken to have an *arbitrary* frequency dependence in the present analysis (which could include inductance, semi-inductance, or other complex :math:`\omega` dependence.  By combining all three measurements, we can eliminate :math:`\ze(\omega)` from the problem.  Next, instead of three independent :math:`C_k`-values, we take advantage of the fact that we are adding known masses:
 
 .. math::
    \begin{eqnarray}
