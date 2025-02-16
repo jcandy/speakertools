@@ -1,3 +1,4 @@
+===================
 Glossary of symbols
 ===================
 
@@ -61,9 +62,38 @@ Glossary of symbols
    ":math:`\qa`", "Box fill :math:`Q`"
    ":math:`\mmf`", "Mass of air radiation load on front side of driver diaphragm when mounted in a box"
    ":math:`\mmr`", "Mass of air radiation load on rear side of driver diaphragm when mounted in a box"
-   ":math:`\mmp`", "Mass of port air slug"
+   ":math:`\mmp`", "Mass of port air slug :math:`= M_\mathrm{AP} \sd^2`"
    ":math:`\cmb`", "Box mechanical compliance"
    ":math:`\cab`", "Acoustical compliance of box :math:`= \vb/(\rho_0 \, c^2)`"
    ":math:`\fcb`", "Resonant frequency of the loudspeaker driver in closed box, in :math:`\hz`"
    ":math:`\qtc`", "Total :math:`Q` of driver in closed box"
    ":math:`\alpha`", "Compliance ratio :math:`=\cas / \cab = \vas / \vb`"
+
+Converting between domains
+--------------------------
+
+In loudspeaker theory, it is common to represent the parameters in electrical equivalent circuits and convert between the electrical, the mechanical and the acoustical domains by transformation with :math:`\bl` and :math:`\sd` such that the same parameter can be represented in several domains. In the table below we show a few parameters and their domain transformations:
+
++------------------------+----------------------------------------------------+---------------------------------------------------+-----------------------------------------------------+
+| Name                   | Electrical                                         | Mechanical                                        | Acoustical                                          |
++========================+====================================================+===================================================+=====================================================+
+| Voice coil resistance  | :math:`\re`                                        | :math:`R_\mathrm{ME} = \frac{\bls}{\re}`          | :math:`R_\mathrm{AE} = \frac{R_\mathrm{ME}}{\sd^2}` |
++------------------------+----------------------------------------------------+---------------------------------------------------+-----------------------------------------------------+
+| Suspension resistance  | :math:`\res = \frac{\bls}{\rms}`                   | :math:`\rms`                                      | :math:`R_\mathrm{AS} = \frac{\rms}{\sd^2}`          |
++------------------------+----------------------------------------------------+---------------------------------------------------+-----------------------------------------------------+
+| Enclosure Air Leakage  | :math:`R_\mathrm{EL} = \frac{\bls}{R_\mathrm{ML}}` | :math:`R_\mathrm{ML} = \sd^2 \cdot R_\mathrm{AL}` | :math:`R_\mathrm{AL}`                               |
++------------------------+----------------------------------------------------+---------------------------------------------------+-----------------------------------------------------+
+
+The transformation between the mechanical and acoustical domain is straightforward with :math:`\sd^2` whereas the transformation between the electrical and mechanical domain with :math:`\bls` brings the parameter in the denominator (inverting). For resistance this remains a resistance, but for masses (represented by inductors in mechanical equivalent circuits) they transform into capacitors in the electrical domain, and for compliance (represented by capacitors in mechanical equivalent circuits) they transform into inductors in the electrical domain:
+
++------------------------+------------------------------------------+-----------------------------------+--------------------------------------------+
+| Name                   | Electrical                               | Mechanical                        | Acoustical                                 |
++========================+==========================================+===================================+============================================+
+| Driver moving mass     | :math:`\cmes = \frac{\mms}{\bls}`        | :math:`\mms`                      | :math:`M_\mathrm{AS} = \frac{\mms}{\sd^2}` |
++------------------------+------------------------------------------+-----------------------------------+--------------------------------------------+
+| Suspension compliance  | :math:`\lces = \bls \cdot \cms`          | :math:`\cms`                      | :math:`\cas = \cms \cdot \sd^2`            |
++------------------------+------------------------------------------+-----------------------------------+--------------------------------------------+
+| Enclosure compliance   | :math:`L_\mathrm{CEB} = \bls \cdot \cmb` | :math:`\cmb = \frac{\cab}{\sd^2}` | :math:`\cab`                               |
++------------------------+------------------------------------------+-----------------------------------+--------------------------------------------+
+
+For the electrical equivalents of these reactive components, we add additional letters in the subscript indicating their origin.

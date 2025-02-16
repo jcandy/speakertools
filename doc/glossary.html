@@ -73,7 +73,10 @@
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">Sample Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="youtube.html">YouTube</a></li>
 <li class="toctree-l1"><a class="reference internal" href="json-docs.html">JSON Datafile Definitions</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Glossary of symbols</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Glossary of symbols</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#converting-between-domains">Converting between domains</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="zreferences.html">References</a></li>
 </ul>
 
@@ -264,7 +267,7 @@
 <td><p>Mass of air radiation load on rear side of driver diaphragm when mounted in a box</p></td>
 </tr>
 <tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\mmp\)</span></p></td>
-<td><p>Mass of port air slug</p></td>
+<td><p>Mass of port air slug <span class="math notranslate nohighlight">\(= M_\mathrm{AP} \sd^2\)</span></p></td>
 </tr>
 <tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\cmb\)</span></p></td>
 <td><p>Box mechanical compliance</p></td>
@@ -283,6 +286,64 @@
 </tr>
 </tbody>
 </table>
+<section id="converting-between-domains">
+<h2>Converting between domains<a class="headerlink" href="#converting-between-domains" title="Link to this heading"></a></h2>
+<p>In loudspeaker theory, it is common to represent the parameters in electrical equivalent circuits and convert between the electrical, the mechanical and the acoustical domains by transformation with <span class="math notranslate nohighlight">\(\bl\)</span> and <span class="math notranslate nohighlight">\(\sd\)</span> such that the same parameter can be represented in several domains. In the table below we show a few parameters and their domain transformations:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Electrical</p></th>
+<th class="head"><p>Mechanical</p></th>
+<th class="head"><p>Acoustical</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Voice coil resistance</p></td>
+<td><p><span class="math notranslate nohighlight">\(\re\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(R_\mathrm{ME} = \frac{\bls}{\re}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(R_\mathrm{AE} = \frac{R_\mathrm{ME}}{\sd^2}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Suspension resistance</p></td>
+<td><p><span class="math notranslate nohighlight">\(\res = \frac{\bls}{\rms}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\rms\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(R_\mathrm{AS} = \frac{\rms}{\sd^2}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Enclosure Air Leakage</p></td>
+<td><p><span class="math notranslate nohighlight">\(R_\mathrm{EL} = \frac{\bls}{R_\mathrm{ML}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(R_\mathrm{ML} = \sd^2 \cdot R_\mathrm{AL}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(R_\mathrm{AL}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>The transformation between the mechanical and acoustical domain is straightforward with <span class="math notranslate nohighlight">\(\sd^2\)</span> whereas the transformation between the electrical and mechanical domain with <span class="math notranslate nohighlight">\(\bls\)</span> brings the parameter in the denominator (inverting). For resistance this remains a resistance, but for masses (represented by inductors in mechanical equivalent circuits) they transform into capacitors in the electrical domain, and for compliance (represented by capacitors in mechanical equivalent circuits) they transform into inductors in the electrical domain:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Electrical</p></th>
+<th class="head"><p>Mechanical</p></th>
+<th class="head"><p>Acoustical</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Driver moving mass</p></td>
+<td><p><span class="math notranslate nohighlight">\(\cmes = \frac{\mms}{\bls}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mms\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(M_\mathrm{AS} = \frac{\mms}{\sd^2}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Suspension compliance</p></td>
+<td><p><span class="math notranslate nohighlight">\(\lces = \bls \cdot \cms\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\cms\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\cas = \cms \cdot \sd^2\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Enclosure compliance</p></td>
+<td><p><span class="math notranslate nohighlight">\(L_\mathrm{CEB} = \bls \cdot \cmb\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\cmb = \frac{\cab}{\sd^2}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\cab\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>For the electrical equivalents of these reactive components, we add additional letters in the subscript indicating their origin.</p>
+</section>
 </section>
 
 
@@ -297,7 +358,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2020-2025 | C. Futtrup and J. Candy.
-      <span class="lastupdated">Last updated on Feb 09, 2025.
+      <span class="lastupdated">Last updated on Feb 16, 2025.
       </span></p>
   </div>
 

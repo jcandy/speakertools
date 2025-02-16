@@ -219,7 +219,7 @@ x(t) &amp;=&amp; \int_0^t d\tp \, \xim(\tp) f(t-\tp) \; , \\
 <p>The problem of numerical inversion of the Laplace transform has been an active area of research since the 1960s <span id="id9">[<a class="reference internal" href="zreferences.html#id7" title="R.E. Bellman, H.H. Kagiwada, and R.E. Kalaba. Numerical inversion of laplace transforms and some inverse problems in radiative transfer. J. Atmos. Sci., 23:555, 1966.">BKK66</a>]</span>, with an important method developed by Talbot in 1979 <span id="id10">[<a class="reference internal" href="zreferences.html#id55" title="A. Talbot. The Accurate Numerical Inversion of Laplace Transforms. J. Inst. Math. Appl., 23:97, 1979.">Tal79</a>]</span>.  There is no single best method; rather, the most suitable method will in general depend on the nature of the problem. To illustrate the convergence issues associated with inversion of the transform, consider again the example of Eq. <a class="reference internal" href="#equation-eq-simple">(16)</a>.  As a straightforward attempt to evaluate the Bromwich integral directly, one can put the integration contour on the imaginary axis <span class="math notranslate nohighlight">\(s=iy\)</span>.  In this case the Bromwich integral, Eq. <a class="reference internal" href="#equation-eq-simple">(16)</a>, reduces to the inverse Fourier transform</p>
 <div class="math notranslate nohighlight" id="equation-eq-ift">
 <span class="eqno">(18)<a class="headerlink" href="#equation-eq-ift" title="Link to this equation"></a></span>\[\xs(t) = \frac{1}{2\pi} \int_{-\infty}^\infty dy \, e^{i y t} \, \frac{iy}{(iy)^2 + 2iy + 1} \; .\]</div>
-<p>The conversion of the Bromwich integral to a Fourier integral is always possible when the singularities of the transfer function lie in the left half-plane (i.e., when the linear system is textit{stable}).  This integral can be performed analytically to yield</p>
+<p>The conversion of the Bromwich integral to a Fourier integral is always possible when the singularities of the transfer function lie in the left half-plane (i.e., when the linear system is <em>stable</em>).  This integral can be performed analytically to yield</p>
 <div class="math notranslate nohighlight" id="equation-eq-direct">
 <span class="eqno">(19)<a class="headerlink" href="#equation-eq-direct" title="Link to this equation"></a></span>\[\begin{split}\begin{eqnarray}
 \xs(t)
@@ -479,7 +479,7 @@ be implemented in only a few lines of code.  The complete algorithm is summarize
 
   <div role="contentinfo">
     <p>&#169; Copyright 2020-2025 | C. Futtrup and J. Candy.
-      <span class="lastupdated">Last updated on Feb 09, 2025.
+      <span class="lastupdated">Last updated on Feb 16, 2025.
       </span></p>
   </div>
 

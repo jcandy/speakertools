@@ -142,7 +142,7 @@ The problem of numerical inversion of the Laplace transform has been an active a
 
    \xs(t) = \frac{1}{2\pi} \int_{-\infty}^\infty dy \, e^{i y t} \, \frac{iy}{(iy)^2 + 2iy + 1} \; .
 
-The conversion of the Bromwich integral to a Fourier integral is always possible when the singularities of the transfer function lie in the left half-plane (i.e., when the linear system is \textit{stable}).  This integral can be performed analytically to yield
+The conversion of the Bromwich integral to a Fourier integral is always possible when the singularities of the transfer function lie in the left half-plane (i.e., when the linear system is *stable*).  This integral can be performed analytically to yield
 
 .. math::
    :label: eq.direct
