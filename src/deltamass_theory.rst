@@ -266,7 +266,7 @@ Next, with the computed data for :math:`\zms`, we use Eq. :eq:`eq.blw` to estima
    .. image:: images/deltamass_paper/bl.png
    .. image:: images/deltamass_paper/blzoom.png
 
-   (**left**) Estimate of :math:`\bl` via average over fitting range (shaded) :math:`0.8 \fs \le f \le 1.2 \fs` (left), where :math:`\fs = 45.5\hz`. The horizontal black line denotes the average value :math:`\bl=7.007`.
+   (**left**) Estimate of :math:`\bl` via average over fitting range (shaded) :math:`0.8 \fs \leq f \leq 1.2 \fs` (left), where :math:`\fs = 45.5\hz`. The horizontal black line denotes the average value :math:`\bl=7.007`.
    (**right**) Zoomed-in view of left image. As before, the shaded area indicates the averaging window used to compute :math:`\bl`.
 
 Calculation of :math:`\mms`
