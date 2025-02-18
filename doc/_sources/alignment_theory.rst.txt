@@ -11,7 +11,7 @@ Classic Vented Alignments
 
 In classical loudspeaker theory from the 1960s and onwards, the concept of alignments was developed to provide a systematic prescription for choosing box volume and port tuning to yield a target low-frequency response function. The theory is not exact, but offers insight into the choice between low frequency extension versus group delay (phase distortion).
 
-For an overview of the alignments discussed here and supported in Speakerbench, please scroll down to the **last** section ('Summary') in this chapter.
+For an overview of the alignments discussed here and supported in Speakerbench, please scroll down to the **last** section (:ref:`Summary`) in this chapter.
 
 History and framework
 ---------------------
@@ -125,7 +125,7 @@ The Linkwitz-Riley filter response was described by Siegfried H. Linkwitz in 197
    h = 1
    alpha = 1/4 * (1/Qt - 1/Ql)^2
 
-We describe this alignment in a bit more detail in its own section :ref:`The LR4 Bass Reflex Alignment`.
+We describe this alignment in a bit more detail in its own section: :ref:`The LR4 Bass Reflex Alignment`.
 
 Critically damped CD4
 .....................
@@ -138,14 +138,12 @@ A critically damped filter response poses the desirable feature of no overshoot,
 
 .. code-block:: python
 
-   import numpy as np
-
    Ql = 10
    Qt = 1/(4-1/Ql)
    h = 1
    alpha = 4 - 1/(Ql * Qt)
 
-We describe this alignment in a bit more detail in its own section :ref:`The CD4 Bass Reflex Alignment`.
+We describe this alignment in a bit more detail in its own section: :ref:`The CD4 Bass Reflex Alignment`.
 
 Inter-Order Butterworth IB4
 ...........................
@@ -179,7 +177,7 @@ The fourth-order Inter-Order Butterworth high-pass filter is defined by A. N. Th
 
    alpha = S * h - (1 + h**2)
 
-We describe this alignment in a bit more detail in its own section :ref:`The IB4 Bass Reflex Alignment`.
+We describe this alignment in a bit more detail in its own section: :ref:`The IB4 Bass Reflex Alignment`.
 
 Comparison
 ..........
@@ -417,18 +415,13 @@ Finally, note that by setting :math:`\epsilon=0` above we obtain the lossless so
   0.390  0.7927 1.0819  0.9374 1.4130  1.0175 1.2571
   0.400  0.7694 0.9727  0.9130 1.2957  0.9955 1.1389
 
-In Speakerbench, when we apply this method, the alignment acronym is
-followed by a 'Q' as in B4Q, LR4Q and BL4Q. Be aware, the B4Q in
-Speakerbench is the same as what is known in classical theory as the QB3
-alignment.
+In Speakerbench, when we apply this method, the alignment acronym is followed by a 'Q' as in B4Q, LR4Q and BL4Q. Be aware, the B4Q in Speakerbench is the same as what is known in classical theory as the QB3 alignment.
 
-Note: Bullock defines SQB3 as a continuation of the QB3 alignment, but
-for drivers with :math:`Q_T > 0.4` and up to 0.56.
+Note: Bullock defines SQB3 as a continuation of the QB3 alignment, but for drivers with :math:`Q_T > 0.4` and up to 0.56.
 
-A special (discrete) alignment named the Inter-Order Butterworth (IB4)
-alignment was described by Thiele. This is a special case of the B4Q
-alignments, and we describe this in its own section:
-:ref:`The IB4 Bass Reflex Alignment`.
+This particular implementation of the Quasi algorithm was first presented in Voice Coil Magazine, January 2025.
+
+A special (discrete) alignment named the Inter-Order Butterworth (IB4) alignment was described by Thiele. This is a special case of the B4Q alignments, and we describe this in its own section: :ref:`The IB4 Bass Reflex Alignment`.
 
 .. toctree::
    :caption: Quasi Alignment Resources
@@ -448,7 +441,7 @@ If you can accept deviation from your target alignment, consider studying what y
 Alignment families
 ------------------
 
-When a response is non-discrete, then these responses are not defined by one explicit set of polynomial coefficients. Such a type of response function can utilize a range of driver :math:`\qt` values, and it is called an **Alignment family**.
+When a response is non-discrete, then these responses are not defined by one explicit set of polynomial coefficients. Such a type of response function can utilize a range of driver :math:`\qt` values, and it is called an **Alignment family**. The B4Q (QB3-SQB3) quasi-alignment described above is in the loudspeaker industry considered an alignment family.
 
 Chebyshev
 .........
@@ -559,7 +552,8 @@ The Boombox family of alignments is home to at least two discrete alignments, th
 Transitional Alignments
 .......................
 
-To the best of our knowledge, the concept of Transitional Alignments was never explored in relation to loudspeaker (Bass Reflex) boxes until it was presented in the Voice Coil Magazine, September 2024.
+To the best of our knowledge, the concept of Transitional Alignments was never explored in relation to loudspeaker (Bass Reflex) boxes until it was presented in the Voice Coil Magazine, September 2024. Later the article became Open Access when AudioXpress released an
+`online version December 2024 <https://audioxpress.com/article/transitional-bass-reflex-alignments>`_.
 
 Notably, R. M. Golden and J. F. Kaiser [1] described the roots of normalized Butterworth and Bessel-Thomson low-pass transfer functions, from which Richard Small [2] derived the polynomial coefficients of the fourth-order highpass Bessel alignment. Golden and Kaiser also described a transitional filter design where a chosen balance between the two is realized.
 
@@ -620,12 +614,12 @@ where :math:`a_1` is 2 x the damping ratio :math:`\zeta`, which means :math:`a_1
 Without a port tuning frequency, a closed box system only has one free design parameter :math:`\alpha = \cms / \cmb = \vas / \vb`. Ignoring leakage loss, we may write :math:`\qtc = \qt \sqrt{\alpha + 1}` and :math:`\fcb = \fs \sqrt{\alpha + 1}`. There are two factors, which can affect the resulting system Q, one is any electrical resistance :math:`R_\mathrm{S}` in series with the driver, the other is leakage loss :math:`Q_\mathrm{L}`.
 
 .. math::
-   Q_\mathrm{TS,R_S} = \frac{\ws \cdot \mms}{\frac{\bls}{\re + R_\mathrm{S}} + \rms}
+   Q_\mathrm{T,R_S} = \frac{\ws \cdot \mms}{\frac{\bls}{\re + R_\mathrm{S}} + \rms}
 
-The :math:`Q_\mathrm{TS,R_S}` value is calculated in Speakerbench and you can see the value in the INFO tab. It is affected when you enable the filter and apply a series resistance. The :math:`Q_\mathrm{TS,R_S}` value is what Speakerbench uses for response calculations (and in the alignment chart). The second-order response function becomes:
+The :math:`Q_\mathrm{T,R_S}` value is calculated in Speakerbench and you can see the value in the INFO tab. It is affected when you enable the filter and apply a series resistance. The :math:`Q_\mathrm{T,R_S}` value is what Speakerbench uses for response calculations (and in the alignment chart). The second-order response function becomes:
 
 .. math::
-   G_\mathrm{H}(s) = \frac{s^2}{s^2 + \frac{1}{Q_\mathrm{TS,R_S}} s + 1 + \alpha} \; .
+   G_\mathrm{H}(s) = \frac{s^2}{s^2 + \frac{1}{Q_\mathrm{T,R_S}} s + 1 + \alpha} \; .
 
 The leakage loss :math:`Q_\mathrm{L}` is normally not treated in classical alignment analysis for closed box systems, because leakage is typically kept insignificant when building a decent quality box, i.e., it does not affect the SPL response in a significant way. It is different for vented systems because in classical alignment analysis for vented box systems, :math:`Q_\mathrm{L}` is treated as a lumped parameter for several different losses. Nevertheless, whatever you have entered in :math:`Q_\mathrm{L}` in Speakerbench will be included in the response calculation. Therefore, you should set this fairly high, e.g. 30-50 or higher, when calculating a closed or vented box in Speakerbench. Since you can adjust losses separately in Speakerbench, also for vented systems, we recommend that you always set :math:`Q_\mathrm{L}` to its real physical value (a fairly high value). This will give you the most accurate prediction of the response (SPL and impedance, etc.).
 

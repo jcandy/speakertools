@@ -141,7 +141,7 @@
   <section id="classic-vented-alignments">
 <span id="alignment-theory"></span><h1>Classic Vented Alignments<a class="headerlink" href="#classic-vented-alignments" title="Link to this heading"></a></h1>
 <p>In classical loudspeaker theory from the 1960s and onwards, the concept of alignments was developed to provide a systematic prescription for choosing box volume and port tuning to yield a target low-frequency response function. The theory is not exact, but offers insight into the choice between low frequency extension versus group delay (phase distortion).</p>
-<p>For an overview of the alignments discussed here and supported in Speakerbench, please scroll down to the <strong>last</strong> section (‘Summary’) in this chapter.</p>
+<p>For an overview of the alignments discussed here and supported in Speakerbench, please scroll down to the <strong>last</strong> section (<a class="reference internal" href="#summary"><span class="std std-ref">Summary</span></a>) in this chapter.</p>
 <section id="history-and-framework">
 <h2>History and framework<a class="headerlink" href="#history-and-framework" title="Link to this heading"></a></h2>
 <p>To facilitate choosing the box volume and vent tuning, Speakerbench will propose values based on standard 4th-order bass-reflex alignments. These alignments are particular types of 4th-order high-pass filters. Following Small <span id="id1">[<a class="reference internal" href="zreferences.html#id52" title="R.H. Small. Vented-Box Loudspeaker Systems Part IV: Appendices. J. Audio. Eng. Soc., 21:635, 1973. URL: https://www.aes.org/e-lib/browse.cfm?elib=1941.">Sma73b</a>]</span> (Eq. 57) we can write the normalized response function as</p>
@@ -257,22 +257,20 @@ A_3 &amp;=&amp; a_3^2-2 a_2 \; .
 <span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">Qt</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="n">Ql</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span>
 </pre></div>
 </div>
-<p>We describe this alignment in a bit more detail in its own section <a class="reference internal" href="lr4.html#the-lr4-bass-reflex-alignment"><span class="std std-ref">The LR4 Bass Reflex Alignment</span></a>.</p>
+<p>We describe this alignment in a bit more detail in its own section: <a class="reference internal" href="lr4.html#the-lr4-bass-reflex-alignment"><span class="std std-ref">The LR4 Bass Reflex Alignment</span></a>.</p>
 </section>
 <section id="critically-damped-cd4">
 <h3>Critically damped CD4<a class="headerlink" href="#critically-damped-cd4" title="Link to this heading"></a></h3>
 <p>A critically damped filter response poses the desirable feature of no overshoot, not even to a step function input (a worst-case scenario), and with this constraint obtains the most extended frequency response. We obtain this by placing all the poles on the real axis. The CD4 alignment is defined as two cascaded second-order Linkwitz-Riley filters. In relation to bass reflex, this alignment is not commonly used due to the early roll-off in the frequency response. The response function is:</p>
 <div class="math notranslate nohighlight">
 \[G_\mathrm{H}(s) = \frac{s^4}{s^4 + 4 s^3 + 6 s^2 + 4 s + 1} \; ,\]</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="n">Ql</span> <span class="o">=</span> <span class="mi">10</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Ql</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">Qt</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">4</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">Ql</span><span class="p">)</span>
 <span class="n">h</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">alpha</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">Ql</span> <span class="o">*</span> <span class="n">Qt</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>We describe this alignment in a bit more detail in its own section <a class="reference internal" href="cd4.html#the-cd4-bass-reflex-alignment"><span class="std std-ref">The CD4 Bass Reflex Alignment</span></a>.</p>
+<p>We describe this alignment in a bit more detail in its own section: <a class="reference internal" href="cd4.html#the-cd4-bass-reflex-alignment"><span class="std std-ref">The CD4 Bass Reflex Alignment</span></a>.</p>
 </section>
 <section id="inter-order-butterworth-ib4">
 <h3>Inter-Order Butterworth IB4<a class="headerlink" href="#inter-order-butterworth-ib4" title="Link to this heading"></a></h3>
@@ -301,7 +299,7 @@ A_3 &amp;=&amp; a_3^2-2 a_2 \; .
 <span class="n">alpha</span> <span class="o">=</span> <span class="n">S</span> <span class="o">*</span> <span class="n">h</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>We describe this alignment in a bit more detail in its own section <a class="reference internal" href="ib4.html#the-ib4-bass-reflex-alignment"><span class="std std-ref">The IB4 Bass Reflex Alignment</span></a>.</p>
+<p>We describe this alignment in a bit more detail in its own section: <a class="reference internal" href="ib4.html#the-ib4-bass-reflex-alignment"><span class="std std-ref">The IB4 Bass Reflex Alignment</span></a>.</p>
 </section>
 <section id="comparison">
 <h3>Comparison<a class="headerlink" href="#comparison" title="Link to this heading"></a></h3>
@@ -501,16 +499,10 @@ h &amp;=&amp; \frac{q^2}{2G + A_1-\epsilon^2 q^2 h}
 <span class="mf">0.400</span>  <span class="mf">0.7694</span> <span class="mf">0.9727</span>  <span class="mf">0.9130</span> <span class="mf">1.2957</span>  <span class="mf">0.9955</span> <span class="mf">1.1389</span>
 </pre></div>
 </div>
-<p>In Speakerbench, when we apply this method, the alignment acronym is
-followed by a ‘Q’ as in B4Q, LR4Q and BL4Q. Be aware, the B4Q in
-Speakerbench is the same as what is known in classical theory as the QB3
-alignment.</p>
-<p>Note: Bullock defines SQB3 as a continuation of the QB3 alignment, but
-for drivers with <span class="math notranslate nohighlight">\(Q_T &gt; 0.4\)</span> and up to 0.56.</p>
-<p>A special (discrete) alignment named the Inter-Order Butterworth (IB4)
-alignment was described by Thiele. This is a special case of the B4Q
-alignments, and we describe this in its own section:
-<a class="reference internal" href="ib4.html#the-ib4-bass-reflex-alignment"><span class="std std-ref">The IB4 Bass Reflex Alignment</span></a>.</p>
+<p>In Speakerbench, when we apply this method, the alignment acronym is followed by a ‘Q’ as in B4Q, LR4Q and BL4Q. Be aware, the B4Q in Speakerbench is the same as what is known in classical theory as the QB3 alignment.</p>
+<p>Note: Bullock defines SQB3 as a continuation of the QB3 alignment, but for drivers with <span class="math notranslate nohighlight">\(Q_T &gt; 0.4\)</span> and up to 0.56.</p>
+<p>This particular implementation of the Quasi algorithm was first presented in Voice Coil Magazine, January 2025.</p>
+<p>A special (discrete) alignment named the Inter-Order Butterworth (IB4) alignment was described by Thiele. This is a special case of the B4Q alignments, and we describe this in its own section: <a class="reference internal" href="ib4.html#the-ib4-bass-reflex-alignment"><span class="std std-ref">The IB4 Bass Reflex Alignment</span></a>.</p>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -523,7 +515,7 @@ alignments, and we describe this in its own section:
 </section>
 <section id="alignment-families">
 <h2>Alignment families<a class="headerlink" href="#alignment-families" title="Link to this heading"></a></h2>
-<p>When a response is non-discrete, then these responses are not defined by one explicit set of polynomial coefficients. Such a type of response function can utilize a range of driver <span class="math notranslate nohighlight">\(\qt\)</span> values, and it is called an <strong>Alignment family</strong>.</p>
+<p>When a response is non-discrete, then these responses are not defined by one explicit set of polynomial coefficients. Such a type of response function can utilize a range of driver <span class="math notranslate nohighlight">\(\qt\)</span> values, and it is called an <strong>Alignment family</strong>. The B4Q (QB3-SQB3) quasi-alignment described above is in the loudspeaker industry considered an alignment family.</p>
 <section id="chebyshev">
 <h3>Chebyshev<a class="headerlink" href="#chebyshev" title="Link to this heading"></a></h3>
 <p>Should we write something about this?</p>
@@ -605,7 +597,8 @@ alignments, and we describe this in its own section:
 </section>
 <section id="transitional-alignments">
 <h3>Transitional Alignments<a class="headerlink" href="#transitional-alignments" title="Link to this heading"></a></h3>
-<p>To the best of our knowledge, the concept of Transitional Alignments was never explored in relation to loudspeaker (Bass Reflex) boxes until it was presented in the Voice Coil Magazine, September 2024.</p>
+<p>To the best of our knowledge, the concept of Transitional Alignments was never explored in relation to loudspeaker (Bass Reflex) boxes until it was presented in the Voice Coil Magazine, September 2024. Later the article became Open Access when AudioXpress released an
+<a class="reference external" href="https://audioxpress.com/article/transitional-bass-reflex-alignments">online version December 2024</a>.</p>
 <p>Notably, R. M. Golden and J. F. Kaiser [1] described the roots of normalized Butterworth and Bessel-Thomson low-pass transfer functions, from which Richard Small [2] derived the polynomial coefficients of the fourth-order highpass Bessel alignment. Golden and Kaiser also described a transitional filter design where a chosen balance between the two is realized.</p>
 <p>Speakerbench supports a transitional alignment family, which transitions between Butterworth and Linkwitz-Riley, named B4-LR4.</p>
 <p><strong>How it works</strong></p>
@@ -650,10 +643,10 @@ distinct poles of the response function lie on the unit circle at
 <p>where <span class="math notranslate nohighlight">\(a_1\)</span> is 2 x the damping ratio <span class="math notranslate nohighlight">\(\zeta\)</span>, which means <span class="math notranslate nohighlight">\(a_1\)</span> is the inverse of the Q-factor, for the second-order system.</p>
 <p>Without a port tuning frequency, a closed box system only has one free design parameter <span class="math notranslate nohighlight">\(\alpha = \cms / \cmb = \vas / \vb\)</span>. Ignoring leakage loss, we may write <span class="math notranslate nohighlight">\(\qtc = \qt \sqrt{\alpha + 1}\)</span> and <span class="math notranslate nohighlight">\(\fcb = \fs \sqrt{\alpha + 1}\)</span>. There are two factors, which can affect the resulting system Q, one is any electrical resistance <span class="math notranslate nohighlight">\(R_\mathrm{S}\)</span> in series with the driver, the other is leakage loss <span class="math notranslate nohighlight">\(Q_\mathrm{L}\)</span>.</p>
 <div class="math notranslate nohighlight">
-\[Q_\mathrm{TS,R_S} = \frac{\ws \cdot \mms}{\frac{\bls}{\re + R_\mathrm{S}} + \rms}\]</div>
-<p>The <span class="math notranslate nohighlight">\(Q_\mathrm{TS,R_S}\)</span> value is calculated in Speakerbench and you can see the value in the INFO tab. It is affected when you enable the filter and apply a series resistance. The <span class="math notranslate nohighlight">\(Q_\mathrm{TS,R_S}\)</span> value is what Speakerbench uses for response calculations (and in the alignment chart). The second-order response function becomes:</p>
+\[Q_\mathrm{T,R_S} = \frac{\ws \cdot \mms}{\frac{\bls}{\re + R_\mathrm{S}} + \rms}\]</div>
+<p>The <span class="math notranslate nohighlight">\(Q_\mathrm{T,R_S}\)</span> value is calculated in Speakerbench and you can see the value in the INFO tab. It is affected when you enable the filter and apply a series resistance. The <span class="math notranslate nohighlight">\(Q_\mathrm{T,R_S}\)</span> value is what Speakerbench uses for response calculations (and in the alignment chart). The second-order response function becomes:</p>
 <div class="math notranslate nohighlight">
-\[G_\mathrm{H}(s) = \frac{s^2}{s^2 + \frac{1}{Q_\mathrm{TS,R_S}} s + 1 + \alpha} \; .\]</div>
+\[G_\mathrm{H}(s) = \frac{s^2}{s^2 + \frac{1}{Q_\mathrm{T,R_S}} s + 1 + \alpha} \; .\]</div>
 <p>The leakage loss <span class="math notranslate nohighlight">\(Q_\mathrm{L}\)</span> is normally not treated in classical alignment analysis for closed box systems, because leakage is typically kept insignificant when building a decent quality box, i.e., it does not affect the SPL response in a significant way. It is different for vented systems because in classical alignment analysis for vented box systems, <span class="math notranslate nohighlight">\(Q_\mathrm{L}\)</span> is treated as a lumped parameter for several different losses. Nevertheless, whatever you have entered in <span class="math notranslate nohighlight">\(Q_\mathrm{L}\)</span> in Speakerbench will be included in the response calculation. Therefore, you should set this fairly high, e.g. 30-50 or higher, when calculating a closed or vented box in Speakerbench. Since you can adjust losses separately in Speakerbench, also for vented systems, we recommend that you always set <span class="math notranslate nohighlight">\(Q_\mathrm{L}\)</span> to its real physical value (a fairly high value). This will give you the most accurate prediction of the response (SPL and impedance, etc.).</p>
 <p>In the Speakerbench alignment chart, there are two dots shown at <span class="math notranslate nohighlight">\(h = 0\)</span>, which are representing the second-order Bessel (<span class="math notranslate nohighlight">\(Q = 1 / \sqrt{3} \approx 0.577\)</span>) and Butterworth (<span class="math notranslate nohighlight">\(Q = 1 / \sqrt{2} \approx 0.707\)</span>), respectively. These are useful when designing vented box systems, in which the user may plug the port, essentially converting the system into a closed box design. In principle, one could also show other known alignments, e.g., the second-order Linkwitz-Riley (<span class="math notranslate nohighlight">\(Q = 0.5\)</span>), but targets outside the range between Bessel and Butterworth are rarely used when designing vented box systems. In other words, the box volume of a vented box system (<span class="math notranslate nohighlight">\(\alpha\)</span>) is typically chosen such that the driver in box <span class="math notranslate nohighlight">\(Q\)</span> is between the Bessel and the Butterworth second-order alignment. This observation is almost valid even for the extreme case of a CD4 alignment, where in practice the box volume when the port is closed will give a system <span class="math notranslate nohighlight">\(Q \approx 0.55\)</span> (the exact value depend on leakage <span class="math notranslate nohighlight">\(Q_\mathrm{L}\)</span>). Any second order response where the system <span class="math notranslate nohighlight">\(Q &gt; 0.707\)</span> is considered a Chebyshev C2 alignment, even if there is not any ‘equal’ ripple since a second-order response will just have a peak.</p>
 <p>In classical theory, a closed box is considered of the acoustic suspension type when <span class="math notranslate nohighlight">\(\cmb\)</span> dominates over <span class="math notranslate nohighlight">\(\cms\)</span> such that <span class="math notranslate nohighlight">\(\fcb \geq 2 \fs\)</span>, which gives <span class="math notranslate nohighlight">\(\alpha \geq 3\)</span>.</p>
