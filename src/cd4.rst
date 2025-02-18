@@ -55,17 +55,17 @@ by the equations because the CD4 alignment is a discrete alignment.
 
 Please note that, in a reflex box, setting the driver in box
 :math:`Q_{TC} = 0.5` does not provide the correct filter Q, but rather,
-for the lossless case, :math:`Q_{TC} = Q_T \cdot \sqrt(\alpha + 1) = 0.559`.
+for the lossless case, :math:`Q_{TC} = Q_T \cdot \sqrt{\alpha + 1} = 0.559`.
 For a design with leakage loss, you may recalculate :math:`Q_T` and
 :math:`\alpha`. Leakage loss results in a smaller :math:`\alpha` and
 consequently a larger box, which means :math:`Q_{TC}` is reduced. To
-arrive at :math:`Q_{TC} = 0.5`, one must set :math:`Q_L = 1.5`
+arrive at :math:`Q_{TC} = 0.5`, one must set :math:`Q_\mathrm{L} = 1.5`
 (:math:`Q_T = 0.3`). This is awfully lossy, and we conclude that, in
 practice, for a CD4 reflex box with a plugged (stuffed or covered) port,
 :math:`Q_{TC}` will always be larger than 0.5.
 
 With :math:`h = 1`, we imply that the driver's resonant frequency and
-the port tuning coincide. With :math:`Q_L = 10`, the required
+the port tuning coincide. With :math:`Q_\mathrm{L} = 10`, the required
 :math:`Q_T` value is 0.2564, and in the lossless case, we get driver
 :math:`Q_T = 0.25`. Remember to compensate for all electrical resistance
 in series with the driver.

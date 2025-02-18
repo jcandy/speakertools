@@ -12,7 +12,7 @@
   <title>Speakerbench JSON Docs &mdash; Speakerbench 0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
-      <link rel="stylesheet" type="text/css" href="_static/contentui.css" />
+      <link rel="stylesheet" type="text/css" href="_static/contentui.css?v=4cf5b151" />
       <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=a0fb6060" />
 
   
@@ -22,7 +22,7 @@
       <script src="_static/documentation_options.js?v=2709fde1"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script src="_static/contentui.js"></script>
+      <script src="_static/contentui.js?v=9ee86694"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -66,7 +66,6 @@
 <p class="caption" role="heading"><span class="caption-text">Theory Notes</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="deltamass_theory.html">Dual-Added-Mass Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="box_theory.html">Speakerbench Box Theory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="alignment_theory.html">Classic Vented Alignments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="time_theory.html">Time-domain Analysis</a></li>
 </ul>
@@ -233,7 +232,7 @@
 </pre></div>
 </div>
 <p>The ‘sd’ input is required and must be entered by the user. Brand and Model are also required and must be entered by the user, conveniently stored at the beginning of the file so that you can open a SBD file in a text editor and identify the test object. The listed temp, pres and ah (air temperature, air pressure and relative air humidity) are defaults but you can change this to reflect your actual measurement conditions.</p>
-<p>Some inputs are optional, for example xmax is optional (set xmax = 0.0 if the information is not available). Specifying xmax adds additional functionality to Speakerbench. See below description for the Thiele/Small Datasheet for details.</p>
+<p>Some inputs are optional, for example xmax is optional (set xmax = 0.0 if the information is not available). Specifying xmax adds additional functionality to Speakerbench. See below description for the Thiele/Small Datasheet for details. In the SBD-file all numbers are stored as strings.</p>
 <p>Note the distinction between manufacturer and brand. For example brand name SB Acoustics are manufactured by Sinar Baja Electric Co. Ltd. Some brands have several manufacturing sites.</p>
 <p>All JSON files are ‘escaped’ such that a space is replaced by an underscore.</p>
 </section>
@@ -327,7 +326,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2020-2025 | C. Futtrup and J. Candy.
-      <span class="lastupdated">Last updated on Jan 04, 2025.
+      <span class="lastupdated">Last updated on Feb 01, 2025.
       </span></p>
   </div>
 

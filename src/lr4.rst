@@ -29,7 +29,7 @@ function becomes:
 .. math::
     G(s) = \frac{ s^4 } { (s^2 + 2 \cdot \zeta \cdot s + 1)^2 }
 
-where :math:`\zeta = 1/\sqrt(2) \approx 0.707` is the damping ratio. The
+where :math:`\zeta = 1/\sqrt{2} \approx 0.707` is the damping ratio. The
 filter-Q of each second-order Butterworth section is
 :math:`Q = 1/(2 \cdot \zeta) \approx 0.707`.
 
@@ -48,18 +48,18 @@ where :math:`Q_T` is not something you can specify yourself but is given
 by the equations because the LR4 alignment is a discrete alignment.
 
 The classic Thiele-Small (T-S) theory prescribes that the loudspeaker
-designer should account for losses by setting :math:`Q_L` in the range
+designer should account for losses by setting :math:`Q_\mathrm{L}` in the range
 of 5 to 20, typically set conservatively to 7, but no matter what value
 is chosen, it is arbitrary and not based on physical leakage. In the
-shown code, :math:`Q_L` is set to 10, a round number. An even higher
-:math:`Q_L` value could be chosen, calculating a larger :math:`\alpha`
+shown code, :math:`Q_\mathrm{L}` is set to 10, a round number. An even higher
+:math:`Q_\mathrm{L}` value could be chosen, calculating a larger :math:`\alpha`
 value (smaller box volume), with a slightly increased risk that the box
 you build becomes a bit too small. You are welcome to change the
-:math:`Q_L` value as you see fit.
+:math:`Q_\mathrm{L}` value as you see fit.
 
-For leakage :math:`Q_L = \infty`, the driver :math:`Q_T` that matches
-the Linkwitz-Riley response function is: :math:`1/\sqrt(8) \approx 0.354`.
-If :math:`Q_L = 10`, as in the code example, then :math:`Q_T = 0.367`.
+For leakage :math:`Q_\mathrm{L} = \infty`, the driver :math:`Q_T` that matches
+the Linkwitz-Riley response function is: :math:`1/\sqrt{8} \approx 0.354`.
+If :math:`Q_\mathrm{L} = 10`, as in the code example, then :math:`Q_T = 0.367`.
 When aiming for these :math:`Q_T`-values, remember that the driver
 specification from the datasheet should be a bit lower to allow for some
 series resistance.

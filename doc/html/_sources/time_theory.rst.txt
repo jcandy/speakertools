@@ -1,5 +1,5 @@
 .. _time_theory:
-		    
+		
 Time-domain Analysis
 ====================
 
@@ -17,9 +17,9 @@ Consider the driven linear system
 
 .. math::
    :label: eq.basic
-	   
+	
    {\cal D} \, x(t) = f(t) \; ,
-   
+
 where :math:`x` is a generalized displacement, :math:`f` is a generalized force, and :math:`{\cal D}` is a linear operator.  We remark that :math:`{\cal D}` can contain integrals, derivatives or fractional derivatives.   Taking the Laplace transform of Eq. :eq:`eq.basic` and solving for :math:`X(s)` yields the response function form of the linear system:
 
 .. math::
@@ -33,7 +33,7 @@ Here, :math:`X(s)` and :math:`F(s)` are the Laplace transforms of :math:`x(t)` a
    F(s) & = & {\cal L}[f] \doteq \int_0^\infty dt \, e^{-st} f(t) \; .
    \end{eqnarray}
 
-   
+
 and :math:`R(s)` is the response function.  One can solve for :math:`x(t)` by inverting the Laplace transform
 
 .. math::
@@ -43,7 +43,7 @@ where the inverse is defined in terms of the Bromwich integral
 
 .. math::
    :label: eq.brom
-	   
+	
    x(t) = {\cal L}^{-1} \left[ X \right] \doteq \frac{1}{2 \pi i} \int_{\sigma-i\infty}^{\sigma+i\infty} ds \, e^{st} X(s) \; .
 
 Here, :math:`\sigma` is chosen so that the contour lies to the right of all singularities of the integrand, as illustrated in :numref:`zplane`.  So long as the contour remains to the right of these singularities, the Cauchy integral theorem :cite:`greene:2006` guarantees that the value of the integral is independent of the path of integration.
@@ -52,7 +52,7 @@ Here, :math:`\sigma` is chosen so that the contour lies to the right of all sing
    :width: 50%
    :name: zplane
    :align: center
-	  
+	
    .. image:: images/time_paper/zplane.png
 
    Complex plane illustrating Bromwich inversion contour (dashed line) for a hypothetical case.  The contour must lie to the right of all poles and branch cuts.  Also shown is the unit circle, poles typical of a 4th order Butterworth filter, and a branch cut (wavy curve) at :math:`s=0`.
@@ -91,7 +91,7 @@ where this formula is rigorously justified in terms of generalized functions :ci
 General system response
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Using the convolution property of the inverse transform, it is easy to show that 
+Using the convolution property of the inverse transform, it is easy to show that
 
 .. math::
    \begin{eqnarray}
@@ -113,7 +113,7 @@ In the present paper, we choose to formulate the inverse problem using a dimensi
 
 .. math::
    :label: eq.hp2
-	   
+	
    R(s) = \frac{s^2}{\displaystyle s^2 + \frac{s}{\qt} + 1 + \alpha} \; ,
 
 where :math:`\alpha \doteq \cms/\cmb` is the compliance ratio and :math:`\qt` is the driver total :math:`Q`.  In these expressions, :math:`\cms` is the mechanical compliance of the driver suspension, and :math:`\cmb` is the equivalent mechanical compliance of the interior of the closed box.  Further, :math:`1/\qt = 1/\qes + 1/\qms`, where :math:`\qes` and :math:`\qms` are the electrical and mechanical :math:`Q` factors of the driver.
@@ -122,17 +122,17 @@ For the special choice of :math:`\alpha=0` (i.e., the infinite baffle limit :mat
 
 .. math::
    :label: eq.simple
-	   
+	
    \xs(t) = \frac{1}{2 \pi i} \int_{\sigma-i\infty}^{\sigma+i\infty} ds \, e^{st}
    \, \frac{s}{s^2 + 2s + 1} \; .
-   
+
 The integrand contains a pole of order 2 at :math:`s=-1`, in which case we can close the contour to the left and use the residue theorem to give
 
 .. math::
    :label: eq.residue
-	   
+	
    \xs(t) = \frac{\partial}{\partial s}\left. \left(s e^{st}\right) \right|_{s = -1} = e^{-t} (1-t) \; .
- 
+
 In the more realistic case of vented and damped enclosures, the same method based on analytic contour integration will work in principle, although locating the poles and computing residues may become tedious and complicated.  In practical cases, the residue calculation is done numerically by computing eigenvalues of the *companion matrix* :cite:`edelman:1995`.  Importantly, the residue-based methods described above are applicable only to rational functions, and fail in the general case for which the driver circuit model contains semi-inductance :cite:`thorborg:2011` or viscoelastic creep :cite:`knudsen:1993,thorborg:2010,thorborg:2013,novak:2016`. In this case the frequency-domain response function will contain elements described by functions with branch points -- for example, :math:`\sqrt{s}` or :math:`\ln(s)`.  One must then return to the Bromwich integral in Eq. :eq:`eq.brom` and perform the contour integration numerically.
 
 The problem of numerical inversion of the Laplace transform has been an active area of research since the 1960s :cite:`bellman:1966`, with an important method developed by Talbot in 1979 :cite:`talbot:1979`.  There is no single best method; rather, the most suitable method will in general depend on the nature of the problem. To illustrate the convergence issues associated with inversion of the transform, consider again the example of Eq. :eq:`eq.simple`.  As a straightforward attempt to evaluate the Bromwich integral directly, one can put the integration contour on the imaginary axis :math:`s=iy`.  In this case the Bromwich integral, Eq. :eq:`eq.simple`, reduces to the inverse Fourier transform
@@ -148,7 +148,7 @@ The conversion of the Bromwich integral to a Fourier integral is always possible
    :label: eq.direct
 
    \begin{eqnarray}
-   \xs(t) 
+   \xs(t)
    & = &~ \frac{1}{\pi} \int_0^\infty dy \, \frac{2y^2 \cos(yt) + (y^3-y) \sin(yt)}{(1+y^2)^2} \; , \\
    & = &~ e^{-t} (1-t) \; .
    \end{eqnarray}
@@ -158,25 +158,25 @@ As required, the analytic solution in Eq. :eq:`eq.direct`, obtained by directvin
 .. math::
   \frac{2y^2 \cos(yt) + (y^3-y) \sin(yt)}{(1+y^2)^2} \sim \frac{\sin(yt)}{y}
   \; \text{as}\; y \rightarrow \infty \; .
-  
+
 Thus, at small times :math:`t \ll 1`, extremely large values of :math:`y` (i.e., very high frequencies in the Fourier sense) must be retained to accurately evaluate the integral.  This is in contrast to the previous contour integration, which can determine the integral exactly via any closed contour surrounding the pole at :math:`s = iy = -1`.  The implication is that a numerical method based on integration along a vertical contour will be fundamentally inefficient, quite independent of the numerical quadrature method.  Let us take this illustration further by explicitly constructing a numerical inversion, via *inverse discrete Fourier transform* (iDFT), and rewrite the integral as
 
 .. math::
    :label: eq.cont
-	   
-   \xs(t) = \int_{-\wm}^{\wm} dy \, e^{iyt} \frac{R(iy)}{iy} + E(\wm) \; . 
-  
-Above, :math:`E(\wm)` is the error resulting from truncation of the limits of integration, and, as before, :math:`R(s) = s^2/(s^2+2s+1)`.  If we let :math:`t_n = n \Delta t` and :math:`y_k = k \Delta y` then
+	
+   \xs(t) = \int_{-\wmax}^{\wmax} dy \, e^{iyt} \frac{R(iy)}{iy} + E(\wmax) \; .
+
+Above, :math:`E(\wmax)` is the error resulting from truncation of the limits of integration, and, as before, :math:`R(s) = s^2/(s^2+2s+1)`.  If we let :math:`t_n = n \Delta t` and :math:`y_k = k \Delta y` then
 
 .. math::
    :label: eq.dft
-	   
+
    x_n = \sum_{k=-N/2}^{N/2-1} e^{2\pi i kn/N} \, G_k \; , \quad n = 0, \ldots, N-1 \; ,
 
-where :math:`x_n` is an approximation to :math:`\xs(t_n)`, :math:`G_k = R(ik\Delta y)/(ik)`, :math:`\wm = N \Delta y/2`, and :math:`\Delta y \Delta t = 2\pi/ N`.  Eq. :eq:`eq.dft` thus expresses :math:`x_n` as the
-iDFT of :math:`G_k`.  In the limit :math:`N \rightarrow \infty`, :math:`x_n` will exactly recover the finite integral in Eq. :eq:`eq.cont`, but will always differ from :math:`\xs(t_n)` by the truncation error :math:`E(\wm)`. To illustrate the poor accuracy obtained in a typical case, consider a transducer with :math:`f_s = 100` Hz and choose :math:`f_\mathrm{max} = 32` kHz and :math:`n=8000`. Then
+where :math:`x_n` is an approximation to :math:`\xs(t_n)`, :math:`G_k = R(ik\Delta y)/(ik)`, :math:`\wmax = N \Delta y/2`, and :math:`\Delta y \Delta t = 2\pi/ N`.  Eq. :eq:`eq.dft` thus expresses :math:`x_n` as the
+iDFT of :math:`G_k`.  In the limit :math:`N \rightarrow \infty`, :math:`x_n` will exactly recover the finite integral in Eq. :eq:`eq.cont`, but will always differ from :math:`\xs(t_n)` by the truncation error :math:`E(\wmax)`. To illustrate the poor accuracy obtained in a typical case, consider a transducer with :math:`f_s = 100` Hz and choose :math:`f_\mathrm{max} = 32` kHz and :math:`n=8000`. Then
 
-.. math:: |\xs(t_n) - x_n| \sim E(\wm) \sim 1.5 \times 10^{-3} \; ,
+.. math:: |\xs(t_n) - x_n| \sim E(\wmax) \sim 1.5 \times 10^{-3} \; ,
 
 when :math:`t_n \sim 0.1`.  Considering the very high resolution, this is a surprisingly large truncation error.  The error is not a consequence of any particular deficiency of the iDFT itself, but rather of the vertical Fourier contour.  This issue is well-recognized in the literature and numerous methods to overcome the poor convergence have been developed.
 
@@ -189,9 +189,9 @@ Weideman treats both a parabolic and hyperbolic contour, but we consider only th
 
 .. math::
    :label: eq.parabola
-	   
+	
    s(u) = \mu \left( i u + 1 \right)^2 \, , \quad - \infty < u < \infty \; .
-  
+
 The integration rule is trapezoidal
 
 .. math::
@@ -204,7 +204,7 @@ Eq. :eq:`eq.trap` provides a discrete approximation to the integral for any valu
 
 .. math::
    :label: eq.hmu
-	   
+	
    \Delta_\mathrm{opt} = \frac{3}{N} \quad \text{and} \quad \mu_\mathrm{opt} = \frac{\pi}{12} \frac{N}{t} \; .
 
 So long as the contour is acceptable (not passing through singularities during deformation into the parabola), the method is remarkably accurate.  We remark that the algorithm can be applied for any value of :math:`t > 0`, and the optimal parameters must be recomputed for every value of :math:t$ according to Eq. :eq:`eq.hmu`. In Ref. :cite:`weideman:2007`, the emphasis is on solving problems for which singularities lie on the negative real axis, in which case there are no restrictions on the smallness of :math:`\mu`.  For :math:`t` sufficiently large, however, the magnitude of :math:`\mu_\mathrm{opt}` will shrink so much that a pole is crossed.  Since we expect poles approximately in the range :math:`|s| \sim 1` (for example, a Butterworth filter has all poles on the left half of the unit circle), we must ensure that :math:`2 \mu > y_\mathrm{max}`, where :math:`y_\mathrm{max}` is the maximum height of a pole, and :math:`2 \mu` is the point at which upper-half of the parabola intersects the imaginary axis.  To see this, note from Eq. :eq:`eq.parabola` that :math:`s(1) = \mu (1+i)^2 = 2i\mu`.
@@ -223,7 +223,7 @@ special cases -- most notably when the denominator coincides with the 4th-order 
 
 .. math::
    :label: eq.but
-	   
+	
    \begin{eqnarray}
    h^2 & = & 1 , \; \alpha = \sqrt{2} \\
    1/\qt & = & 2\cos(\pi/8)+2\cos(3\pi/8) \doteq 1/Q_4 \; .
@@ -234,7 +234,7 @@ Note that :math:`Q_4 \simeq 0.382683`. Then the poles occur on the unit circle a
 .. math::
    \theta_k = \left\{ \frac{5\pi}{8} , \frac{7\pi}{8} , \frac{9\pi}{8} , \frac{11\pi}{8}\right\} \; .
 
-In the general case, the poles can be computed using a numerical root-finding method.  In :numref:`butter` we show the root locus for different parameter variations away from the Butterworth case. 
+In the general case, the poles can be computed using a numerical root-finding method.  In :numref:`butter` we show the root locus for different parameter variations away from the Butterworth case.
 
 .. subfigure:: ABC
    :gap: 6px
@@ -261,16 +261,16 @@ If :math:`t < t_c`, set
 
 .. math::
    :label: eq.m2
-	   
+	
    \mu = \frac{\pi N_0}{12 \, t} \;, \quad N = N_0 \; , \quad \Delta = \frac{3}{N}
-   
+
 Otherwise, for :math:`t \geq t_c`, choose
 
 .. math::
    :label: eq.m3
 
    \mu = \mu_c \; , \quad N = \left\lceil N_0 \, \frac{t}{t_c} \, \right\rceil \; , \quad \Delta = \frac{3}{N} \; ,
- 
+
 where :math:`\lceil \cdot \rceil` is the ceiling function (i.e., the smallest integer greater than or equal to the argument). In other words, when :math:`t < t_c`, we decrease :math:`\mu` at fixed :math:`N` to stay on the optimal contour.  When :math:`t > t_c`, we must increase :math:`N` to stay on the optimal contour for fixed :math:`\mu_c`. In practice, the method is conservative insofar as :math:`N` increases more rapidly than necessary to maintain accuracy.  For more complicated response functions, some method to determine the maximum height of the pole should be used, and that value should replace :math:`h` in the previous formulae. Since the minimum height of the parabolic contour in the left half-plane is :math:`y = 2 \mu`, the method above is conservative in that it ensures the contour is at least *double* the height of the highest pole.  To justify this choice, refer again to :numref:`butter` c.  The plot shows that not only will the choice :math:`\mu=1` fail when :math:`h > 2`, but that as the pole nears the contour, the integrand will vary rapidly, giving a large error in the trapezoidal integration scheme.  Thus, the choice :math:`\mu_c \doteq \max\left(1,h\right)` will ensure the contour is well-above the highest pole.
 
 Result with viscoelastic suspension
@@ -280,7 +280,7 @@ To test the accuracy of the method for a more realistic case, we consider the pr
 
 .. math::
    :label: eq.3pc
-	   
+	
    \cms \longrightarrow C_0 \left[ 1-\beta \ln \left( \frac{s}{s+s_0} \right) \right] \; .
 
 The 3PC model includes both logarithmic creep and frequency-dependent damping. It is a generalization of the earlier LOG model of suspension creep :cite:`knudsen:1993`, and introduces a parameter :math:`s_0` to ensure that the frequency-dependent compliance :math:`\cms(s)` is nonnegative at high frequency. The form of the compliance in Eq. :eq:`eq.3pc` is equivalent to the original form given in Ref. :cite:`ritter:2010`, but written more compactly.  Some aspects of the algebra required to establish the equivalence is given in the Appendix.  We further remark that in Eq. :eq:`eq.3pc`, :math:`\beta` is the parameter of viscoelasticity (the creep parameter), which in the work by Ritter and Agerkvist (and the original work by Knudsen and Jensen) was represented by :math:`\lambda`. The conversion between the representations is clarified in Appendix A.4 of Ref. :cite:`candy:2017`.
@@ -296,14 +296,14 @@ Proceeding, the vented box response function can be modified to include the effe
 
    .. image:: images/time_paper/error.png
 
-   Left plot shows time-domain step response :math:`\xs(t)` corresponding to :math:`R(s)` given in Eq. :eq:`eq.pcreep` with :math:`h`, :math:`\qt` and :math:`\alpha` corresponding to the Butterworth values.  Time dependence is shown with creep (solid curve, :math:`\beta=0.5`) and without creep (dotted curve, :math:`\beta=0`. Right plot shows absolute error, :math:`\Delta x_\mathrm{S} = | x_\mathrm{S}^{(N_0)}- x_\mathrm{S}^{(32)}|`, in inverse calculation for undamped vented box response function :math:`R(z)`.  Here, :math:`x_\mathrm{S}^{(N_0)}` refers to a numerical calculation with the given starting value :math:`N_0`. 
+   Left plot shows time-domain step response :math:`\xs(t)` corresponding to :math:`R(s)` given in Eq. :eq:`eq.pcreep` with :math:`h`, :math:`\qt` and :math:`\alpha` corresponding to the Butterworth values.  Time dependence is shown with creep (solid curve, :math:`\beta=0.5`) and without creep (dotted curve, :math:`\beta=0`. Right plot shows absolute error, :math:`\Delta x_\mathrm{S} = | x_\mathrm{S}^{(N_0)}- x_\mathrm{S}^{(32)}|`, in inverse calculation for undamped vented box response function :math:`R(z)`.  Here, :math:`x_\mathrm{S}^{(N_0)}` refers to a numerical calculation with the given starting value :math:`N_0`.
 
 .. math::
    :label: eq.pcreep
-	   
+	
    R(s) = \frac{s^4}{\displaystyle \left(s^2+h^2\right) \left( \frac{1}{c(s)} + \frac{s}{\qt} + s^2\right) + \alpha s^2} \; ,
 
-where :math:`c(s)` is an analytic function 
+where :math:`c(s)` is an analytic function
 
 .. math:: c(s) \doteq 1-\beta \ln \frac{s}{s+2} \; ,
 
@@ -320,14 +320,14 @@ To illustrate how the present inversion method can be applied to time-domain sim
 
 .. math::
    :label: eq.i
-	   
+	
    \begin{eqnarray}
    V(\tau) &=& R_\mathrm{E} + L_\mathrm{E} \frac{dI}{d\tau} + \bl(x) \frac{dx}{d\tau} \; , \\
    \bl(x) \, I &=& \mms \frac{d^2 x}{d\tau^2} + \rms \frac{dx}{d\tau} + \frac{x}{\cms} \; .
    \end{eqnarray}
 
 Here, the unknown functions are :math:`x(\tau)` and :math:`I(\tau)`, with :math:`V(\tau)` a known driving voltage.  Also, :math:`R_\mathrm{E}` and :math:`L_\mathrm{E}` are the voice coil resistance and inductance, :math:`\mms` is the moving mass, :math:`\rms` is the suspension damping, and :math:`\cms` the suspension compliance.  In these equations, the force-factor :math:`\bl(x)` can be considered to be a nonlinear
-function of :math:`x`.  Normally, viscoelastic compliance is not modeled because of the difficulty in treating the rightmost compliance term above. However, according to the present formulation, we should replace the term :math:`x/\cms` with 
+function of :math:`x`.  Normally, viscoelastic compliance is not modeled because of the difficulty in treating the rightmost compliance term above. However, according to the present formulation, we should replace the term :math:`x/\cms` with
 
 .. math:: {\cal L}^{-1} \left[  \frac{X(s)}{C_0} \frac{1}{1+\beta\ln(1+s_0/s)} \right] \; ,
 
@@ -343,7 +343,7 @@ According to the convolution theorem, the time domain response can be written ex
 
 .. math::
    :label: eq.conv
-	   
+	
    \frac{x(t)}{C_0} - \frac{\beta}{C_0} \int_0^t d\tp \, g(t-\tp) x(\tp) \; ,
 
 where :math:`g(t) = {\cal L}^{-1} [G(s)]`.  Thus, the original differential equations describing :math:`x(\tau)` and :math:`I(\tau)` are transformed into integro-differential form.  For completeness, we note that the modified equation for the transducer motion is
@@ -355,7 +355,7 @@ integral above.  The integral samples the entire time history :math:`x(\tp)` for
 
 .. math:: g(t) \sim {\cal L}^{-1} \left[ \ln(1+s_0/s) \right] = \frac{1-e^{-s_0 t}}{t} \; .
 
-The addition of the convolution to the time-domain formulation is analogous to the more formal state-space approach of King :cite:`king:2015` that focuses exclusively on a fractional derivative model of compliance.  In the case of fractional derivatives, however, the inverse transform :math:`g(t)` can be computed analytically, and the convolution written as a Riemann-Liouville fractional integral.  
+The addition of the convolution to the time-domain formulation is analogous to the more formal state-space approach of King :cite:`king:2015` that focuses exclusively on a fractional derivative model of compliance.  In the case of fractional derivatives, however, the inverse transform :math:`g(t)` can be computed analytically, and the convolution written as a Riemann-Liouville fractional integral.
 
 .. subfigure:: A
    :width: 50%
@@ -365,8 +365,8 @@ The addition of the convolution to the time-domain formulation is analogous to t
    .. image:: images/time_paper/ft.png
 
    Convolution kernel function :math:`g(t) = {\cal L}^{-1} [G(s)]` of Eq. :eq:`eq.conv` as computed by the Weideman inversion method. Plots are shown for :math:`s_0=2` and four values of :math:`\beta`.
-  
-Summary of inversion method 
+
+Summary of inversion method
 ---------------------------
 
 In these notes we have outlined a modification to the Weideman method for numerical calculation of the inverse Laplace transform.  The modified method is suitable for calculating the time-domain loudspeaker response and can
@@ -390,7 +390,7 @@ Next, using the identities
 
 .. math::
    \sin\beta = \frac{\omega/s_0}{\sqrt{1+\omega^2/s_0^2}} \; ,
-   \quad 
+   \quad
    \cos\beta = \frac{1}{\sqrt{1+\omega^2/s_0^2}} \; ,
 
 which follow from :math:`\tan\beta = \omega/s_0`, we can write the argument as
@@ -399,7 +399,7 @@ which follow from :math:`\tan\beta = \omega/s_0`, we can write the argument as
    \log_{10} \left[ \frac{(s/s_0) \left( 1-s/s_0 \right)}{1-s^2/s_0^2} \right] =
    \log_{10} \left( \frac{s}{s+s_0} \right) \; ,
 
-which is the argument used in Eq. :eq:`eq.3pc`.  
+which is the argument used in Eq. :eq:`eq.3pc`.
 
 Sample Python code for inverse transform
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
