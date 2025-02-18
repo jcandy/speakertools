@@ -29,7 +29,7 @@ as well as the effective piston **driver area** (or diameter)
 
 |
 
-It is customary to add the driver excursion, :math:`X_\mathrm{max}`, which is available under the Simple tab, but it is not required by Speakerbench. Once these additional parameters are added, the data object will be sufficient for box modeling. Beyond the necessary input data, you can provide additional information for the datasheet which may be useful in extreme environments; for example, air parameters (air temperature, barometric pressure, relative humidity) which are used for calculating :math:`V_{AS}`.
+It is customary to add the driver excursion, :math:`\xmax`, which is available under the Simple tab, but it is not required by Speakerbench. Once these additional parameters are added, the data object will be sufficient for box modeling. Beyond the necessary input data, you can provide additional information for the datasheet which may be useful in extreme environments; for example, air parameters (air temperature, barometric pressure, relative humidity) which are used for calculating :math:`\vas`.
 
 .. note::
    When you hover your mouse over a parameter, a tooltip appears and provides a brief explanation.
