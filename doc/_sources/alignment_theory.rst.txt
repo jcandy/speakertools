@@ -572,7 +572,7 @@ Studying the poles of the polynomial transfer function in the s-plane, we know t
 We can write a one-parameter family of alignments that contains both B4 and LR4 as specific cases. Consider:
 
 .. math::
-   a_1 &= 2 \cdot \sqrt(2) \cdot \cos(\epsilon) \\
+   a_1 &= 2 \cdot \sqrt{2} \cdot \cos(\epsilon) \\
    a_2 &= 4 \cdot (\cos(\epsilon))^2 \\
    a_3 &= a_1
 

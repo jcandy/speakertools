@@ -9,7 +9,7 @@ Create datasheet
 .. note::
    **STEP 3**: In this section you'll create a complete datasheet (SBD-file) for your driver, suitable for importing in the box model app.
 
-The **Import** tab ('page') in the Datasheet Creator application is a simple way to load one of a few predefined drivers into the creator. The import tab is not needed When working with your own measurements.
+The **Import** tab ('page') in the Datasheet Creator application is a simple way to load one of a few predefined drivers into the creator. The import tab is not needed when working with your own measurements.
 
 The datasheet creator takes input from the fitter. The purpose of the creator is to add information to your dataset such that it becomes enough information to constitute a *complete datasheet* for the driver (but without frequency response graphs or other pictures). This complete dataset may be filed on your computer locally and/or shared with others. To be able to save the data, you must add the **Brand** and **Model number**.
 

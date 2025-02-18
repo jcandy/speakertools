@@ -166,16 +166,16 @@ response function becomes:</p>
 by the equations because the CD4 alignment is a discrete alignment.</p>
 <p>Please note that, in a reflex box, setting the driver in box
 <span class="math notranslate nohighlight">\(Q_{TC} = 0.5\)</span> does not provide the correct filter Q, but rather,
-for the lossless case, <span class="math notranslate nohighlight">\(Q_{TC} = Q_T \cdot \sqrt(\alpha + 1) = 0.559\)</span>.
+for the lossless case, <span class="math notranslate nohighlight">\(Q_{TC} = Q_T \cdot \sqrt{\alpha + 1} = 0.559\)</span>.
 For a design with leakage loss, you may recalculate <span class="math notranslate nohighlight">\(Q_T\)</span> and
 <span class="math notranslate nohighlight">\(\alpha\)</span>. Leakage loss results in a smaller <span class="math notranslate nohighlight">\(\alpha\)</span> and
 consequently a larger box, which means <span class="math notranslate nohighlight">\(Q_{TC}\)</span> is reduced. To
-arrive at <span class="math notranslate nohighlight">\(Q_{TC} = 0.5\)</span>, one must set <span class="math notranslate nohighlight">\(Q_L = 1.5\)</span>
+arrive at <span class="math notranslate nohighlight">\(Q_{TC} = 0.5\)</span>, one must set <span class="math notranslate nohighlight">\(Q_\mathrm{L} = 1.5\)</span>
 (<span class="math notranslate nohighlight">\(Q_T = 0.3\)</span>). This is awfully lossy, and we conclude that, in
 practice, for a CD4 reflex box with a plugged (stuffed or covered) port,
 <span class="math notranslate nohighlight">\(Q_{TC}\)</span> will always be larger than 0.5.</p>
 <p>With <span class="math notranslate nohighlight">\(h = 1\)</span>, we imply that the driver’s resonant frequency and
-the port tuning coincide. With <span class="math notranslate nohighlight">\(Q_L = 10\)</span>, the required
+the port tuning coincide. With <span class="math notranslate nohighlight">\(Q_\mathrm{L} = 10\)</span>, the required
 <span class="math notranslate nohighlight">\(Q_T\)</span> value is 0.2564, and in the lossless case, we get driver
 <span class="math notranslate nohighlight">\(Q_T = 0.25\)</span>. Remember to compensate for all electrical resistance
 in series with the driver.</p>
@@ -201,7 +201,7 @@ different.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2020-2025 | C. Futtrup and J. Candy.
-      <span class="lastupdated">Last updated on Feb 16, 2025.
+      <span class="lastupdated">Last updated on Feb 18, 2025.
       </span></p>
   </div>
 

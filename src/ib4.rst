@@ -28,8 +28,8 @@ filters:
 
 For our application, the polynomial must be manipulated into a suitable
 normalized form for identification of the polynomial coefficients, which
-is achieved when :math:`\kappa = \sqrt(2 \cdot (\sqrt(3) - 1))` and
-:math:`\lambda = \sqrt(3)`. With the mentioned special coefficients, the
+is achieved when :math:`\kappa = \sqrt{2 \cdot (\sqrt{3} - 1)}` and
+:math:`\lambda = \sqrt{3}`. With the mentioned special coefficients, the
 polynomial coefficients :math:`a_1`, :math:`a_2`, and :math:`a_3` and
 the normalized response function can be calculated. The reader is
 reminded that the generalized expression for the response function is:
@@ -64,7 +64,7 @@ we may calculate the IB4 alignment as follows:
 
    Ql = 10
    K = np.sqrt(2 * (np.sqrt(3) - 1))
-   L = sqrt(3)
+   L = np.sqrt(3)
    a1 = (2 + K) / L**0.25
    a2 = (1 + 2 * K + L) / np.sqrt(L)
    a3 = (K + 2 * L) / L**0.75
@@ -76,13 +76,13 @@ we may calculate the IB4 alignment as follows:
 where :math:`Q_T` is not something you can specify yourself but is given
 by the equations because the IB4 alignment is a discrete alignment.
 
-For leakage :math:`Q_L = \infty`, the driver :math:`Q_T` that matches
+For leakage :math:`Q_\mathrm{L} = \infty`, the driver :math:`Q_T` that matches
 the Inter-Order Butterworth response function is :math:`0.3398 \approx 0.34`.
 
 **Summary**
 
 The IB4 alignment is a specific case of the B4Q (=QB3) alignment, when
-:math:`a_2 = 2.5004995097549222 + \sqrt(2)`. Pick any table of QB3
+:math:`a_2 = 2.5004995097549222 + \sqrt{2}`. Pick any table of QB3
 alignments and select the one for the specific driver :math:`Q_T` value
 that matches IB4, and you shall have the IB4 response function. This
 way, there is nothing special about IB4; it is just a specific instance

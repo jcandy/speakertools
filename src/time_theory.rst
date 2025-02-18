@@ -406,6 +406,6 @@ Sample Python code for inverse transform
 
 The following Python code implements the algorithm of Eq. :eq:`eq.trap` as applied to the closed box response function of Eq. :eq:`eq.hp2`.
 
-.. literalinclude:: example_code/wiedeman.py
+.. literalinclude:: example_code/weideman.py
    :linenos:
 

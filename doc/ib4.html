@@ -140,8 +140,8 @@ filters:</p>
 \[G(s) = \frac{ s^4 } { (s^2 + 2 \cdot \kappa \cdot s + \lambda) \cdot (s + 1)^2 }\]</div>
 <p>For our application, the polynomial must be manipulated into a suitable
 normalized form for identification of the polynomial coefficients, which
-is achieved when <span class="math notranslate nohighlight">\(\kappa = \sqrt(2 \cdot (\sqrt(3) - 1))\)</span> and
-<span class="math notranslate nohighlight">\(\lambda = \sqrt(3)\)</span>. With the mentioned special coefficients, the
+is achieved when <span class="math notranslate nohighlight">\(\kappa = \sqrt{2 \cdot (\sqrt{3} - 1)}\)</span> and
+<span class="math notranslate nohighlight">\(\lambda = \sqrt{3}\)</span>. With the mentioned special coefficients, the
 polynomial coefficients <span class="math notranslate nohighlight">\(a_1\)</span>, <span class="math notranslate nohighlight">\(a_2\)</span>, and <span class="math notranslate nohighlight">\(a_3\)</span> and
 the normalized response function can be calculated. The reader is
 reminded that the generalized expression for the response function is:</p>
@@ -171,7 +171,7 @@ we may calculate the IB4 alignment as follows:</p>
 
 <span class="n">Ql</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">K</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
-<span class="n">L</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">L</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">a1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="n">K</span><span class="p">)</span> <span class="o">/</span> <span class="n">L</span><span class="o">**</span><span class="mf">0.25</span>
 <span class="n">a2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">K</span> <span class="o">+</span> <span class="n">L</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
 <span class="n">a3</span> <span class="o">=</span> <span class="p">(</span><span class="n">K</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">L</span><span class="p">)</span> <span class="o">/</span> <span class="n">L</span><span class="o">**</span><span class="mf">0.75</span>
@@ -183,11 +183,11 @@ we may calculate the IB4 alignment as follows:</p>
 </div>
 <p>where <span class="math notranslate nohighlight">\(Q_T\)</span> is not something you can specify yourself but is given
 by the equations because the IB4 alignment is a discrete alignment.</p>
-<p>For leakage <span class="math notranslate nohighlight">\(Q_L = \infty\)</span>, the driver <span class="math notranslate nohighlight">\(Q_T\)</span> that matches
+<p>For leakage <span class="math notranslate nohighlight">\(Q_\mathrm{L} = \infty\)</span>, the driver <span class="math notranslate nohighlight">\(Q_T\)</span> that matches
 the Inter-Order Butterworth response function is <span class="math notranslate nohighlight">\(0.3398 \approx 0.34\)</span>.</p>
 <p><strong>Summary</strong></p>
 <p>The IB4 alignment is a specific case of the B4Q (=QB3) alignment, when
-<span class="math notranslate nohighlight">\(a_2 = 2.5004995097549222 + \sqrt(2)\)</span>. Pick any table of QB3
+<span class="math notranslate nohighlight">\(a_2 = 2.5004995097549222 + \sqrt{2}\)</span>. Pick any table of QB3
 alignments and select the one for the specific driver <span class="math notranslate nohighlight">\(Q_T\)</span> value
 that matches IB4, and you shall have the IB4 response function. This
 way, there is nothing special about IB4; it is just a specific instance
@@ -217,7 +217,7 @@ the IB4CA as well as IB4i still uniquely exist.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2020-2025 | C. Futtrup and J. Candy.
-      <span class="lastupdated">Last updated on Feb 16, 2025.
+      <span class="lastupdated">Last updated on Feb 18, 2025.
       </span></p>
   </div>
 

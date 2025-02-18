@@ -142,7 +142,7 @@ cascaded second-order Butterworth filters. The normalized response
 function becomes:</p>
 <div class="math notranslate nohighlight">
 \[G(s) = \frac{ s^4 } { (s^2 + 2 \cdot \zeta \cdot s + 1)^2 }\]</div>
-<p>where <span class="math notranslate nohighlight">\(\zeta = 1/\sqrt(2) \approx 0.707\)</span> is the damping ratio. The
+<p>where <span class="math notranslate nohighlight">\(\zeta = 1/\sqrt{2} \approx 0.707\)</span> is the damping ratio. The
 filter-Q of each second-order Butterworth section is
 <span class="math notranslate nohighlight">\(Q = 1/(2 \cdot \zeta) \approx 0.707\)</span>.</p>
 <p>Using Python, we may calculate the LR4 alignment as follows:</p>
@@ -157,17 +157,17 @@ filter-Q of each second-order Butterworth section is
 <p>where <span class="math notranslate nohighlight">\(Q_T\)</span> is not something you can specify yourself but is given
 by the equations because the LR4 alignment is a discrete alignment.</p>
 <p>The classic Thiele-Small (T-S) theory prescribes that the loudspeaker
-designer should account for losses by setting <span class="math notranslate nohighlight">\(Q_L\)</span> in the range
+designer should account for losses by setting <span class="math notranslate nohighlight">\(Q_\mathrm{L}\)</span> in the range
 of 5 to 20, typically set conservatively to 7, but no matter what value
 is chosen, it is arbitrary and not based on physical leakage. In the
-shown code, <span class="math notranslate nohighlight">\(Q_L\)</span> is set to 10, a round number. An even higher
-<span class="math notranslate nohighlight">\(Q_L\)</span> value could be chosen, calculating a larger <span class="math notranslate nohighlight">\(\alpha\)</span>
+shown code, <span class="math notranslate nohighlight">\(Q_\mathrm{L}\)</span> is set to 10, a round number. An even higher
+<span class="math notranslate nohighlight">\(Q_\mathrm{L}\)</span> value could be chosen, calculating a larger <span class="math notranslate nohighlight">\(\alpha\)</span>
 value (smaller box volume), with a slightly increased risk that the box
 you build becomes a bit too small. You are welcome to change the
-<span class="math notranslate nohighlight">\(Q_L\)</span> value as you see fit.</p>
-<p>For leakage <span class="math notranslate nohighlight">\(Q_L = \infty\)</span>, the driver <span class="math notranslate nohighlight">\(Q_T\)</span> that matches
-the Linkwitz-Riley response function is: <span class="math notranslate nohighlight">\(1/\sqrt(8) \approx 0.354\)</span>.
-If <span class="math notranslate nohighlight">\(Q_L = 10\)</span>, as in the code example, then <span class="math notranslate nohighlight">\(Q_T = 0.367\)</span>.
+<span class="math notranslate nohighlight">\(Q_\mathrm{L}\)</span> value as you see fit.</p>
+<p>For leakage <span class="math notranslate nohighlight">\(Q_\mathrm{L} = \infty\)</span>, the driver <span class="math notranslate nohighlight">\(Q_T\)</span> that matches
+the Linkwitz-Riley response function is: <span class="math notranslate nohighlight">\(1/\sqrt{8} \approx 0.354\)</span>.
+If <span class="math notranslate nohighlight">\(Q_\mathrm{L} = 10\)</span>, as in the code example, then <span class="math notranslate nohighlight">\(Q_T = 0.367\)</span>.
 When aiming for these <span class="math notranslate nohighlight">\(Q_T\)</span>-values, remember that the driver
 specification from the datasheet should be a bit lower to allow for some
 series resistance.</p>
@@ -186,7 +186,7 @@ series resistance.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2020-2025 | C. Futtrup and J. Candy.
-      <span class="lastupdated">Last updated on Feb 16, 2025.
+      <span class="lastupdated">Last updated on Feb 18, 2025.
       </span></p>
   </div>
 
