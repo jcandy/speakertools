@@ -351,7 +351,7 @@ where :math:`g(t) = {\cal L}^{-1} [G(s)]`.  Thus, the original differential equa
 .. math:: f(t) = \ddot{x} + \frac{\dot{x}}{\qms} + x - \beta \displaystyle \int_0^t d\tp \, g(t-\tp) x(\tp) \; .
 
 where :math:`f = C_0 \bl(x) I(t)` is a normalized force (with the same units as the displacement), and a dot denotes a time derivative, as in Sec.~1. The effect of viscoelasticity is reflected in the convolution
-integral above.  The integral samples the entire time history :math:`x(\tp)` for :math:`0 \le \tp \le t`, which reflects the memory effect inherent to viscoelastic materials.  The memory is controlled by the kernel :math:`g`; systems with weak memory will have :math:`g` that decays rapidly. With the proposed modified Weideman contour method, the inverse transform :math:`g(t)` can be computed to machine precision at any desired values of :math:`t`.  Sample plots of :math:`g(t)` for different values of :math:`\beta` are shown in :numref:`ft`. Finally, it is worth noting that in the limit :math:`\beta \rightarrow 0` we can carry out the inverse transform exactly according to
+integral above.  The integral samples the entire time history :math:`x(\tp)` for :math:`0 \leq \tp \leq t`, which reflects the memory effect inherent to viscoelastic materials.  The memory is controlled by the kernel :math:`g`; systems with weak memory will have :math:`g` that decays rapidly. With the proposed modified Weideman contour method, the inverse transform :math:`g(t)` can be computed to machine precision at any desired values of :math:`t`.  Sample plots of :math:`g(t)` for different values of :math:`\beta` are shown in :numref:`ft`. Finally, it is worth noting that in the limit :math:`\beta \rightarrow 0` we can carry out the inverse transform exactly according to
 
 .. math:: g(t) \sim {\cal L}^{-1} \left[ \ln(1+s_0/s) \right] = \frac{1-e^{-s_0 t}}{t} \; .
 
@@ -408,4 +408,3 @@ The following Python code implements the algorithm of Eq. :eq:`eq.trap` as appli
 
 .. literalinclude:: example_code/weideman.py
    :linenos:
-
