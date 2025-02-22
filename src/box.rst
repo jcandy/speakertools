@@ -16,7 +16,7 @@ Box Simulation
 
 The purpose of measuring the driver impedance (STEP 0) and determining the advanced parameters (STEPS 1-3) is to accurately predict the behavior in a box before it is built. Speakerbench offers a powerful box simulator that can calculate various quantities of interest using the advanced parameter model, or with the legacy Thiele-Small model.
 
-To load parameters for a driver into the box simulator, you need to use the :doc:`Datasheet Creator <create>`. When the data visible in the Datasheet Creator generates a JSON output, the data is stored in your local browser memory and automagically shows up in the box simulator. Thereafter, box parameters can be varied in the *Settings* tab to simulate the system behavior.
+To load parameters for a driver into the box simulator, you need to use the :doc:`Datasheet Creator <create>`. When the data visible in the Datasheet Creator generates a JSON output, the data is stored in your local browser memory and automagically shows up in the box simulator. Thereafter, box parameters can be varied in the *Settings* tab to simulate the system behavior. A detailed description of the underlying theory is also summarized in the :ref:`box_theory` section.
 
 Enclosure Options
 -----------------
