@@ -1,3 +1,8 @@
+.. meta::
+   :author: Jeff Candy and Claus Futtrup
+   :keywords: speakerbench,loudspeaker,driver,parameter,json,design,calculator,impedance,measurement,simulation,software,free,audio
+   :description: Speakerbench Documentation
+
 ===================
 Glossary of symbols
 ===================
@@ -32,7 +37,7 @@ Glossary of symbols
    ":math:`\bl`", "Motor strength force factor in N/A (or Tm)"
    ":math:`\fs`", "Effective free air resonant frequency of the loudspeaker driver, in :math:`\hz`"
    ":math:`\ws`", "Resonant frequency of the loudspeaker driver :math:`= 2 \pi\fs`, in rad/s"
-   ":math:`\qt`", "Driver total :math:`Q` (Thiele/Small parameter)"
+   ":math:`\qts`", "Driver total :math:`Q` (Thiele/Small parameter)"
    ":math:`\qes`","Driver electrical :math:`Q` (T/S parameter)"
    ":math:`\qms`", "Driver mechanical :math:`Q` (T/S parameter)"
    ":math:`\mms`", "Moving mass of driver, including air load in free air"
@@ -58,13 +63,15 @@ Glossary of symbols
    ":math:`B`", "Beranek mass loading factor"
    ":math:`\wp`", "Resonant frequency of the loudspeaker (ported) system :math:`= 2 \pi\fp`, in rad/s"
    ":math:`h`", "System tuning ratio :math:`= \wp/\ws` or :math:`= \omega_B/\ws`"
+   ":math:`R_\mathrm{S}`", "Electrical series resistance"
    ":math:`M_A`", "Unit of acoustic mass :math:`= \rho_0 \, l_z/\sb`"
-   ":math:`\qa`", "Box fill :math:`Q`"
+   ":math:`\qa`", "Box fill absorption loss :math:`Q`"
+   ":math:`\ql`", "Box leakage loss :math:`Q`"
    ":math:`\mmf`", "Mass of air radiation load on front side of driver diaphragm when mounted in a box"
    ":math:`\mmr`", "Mass of air radiation load on rear side of driver diaphragm when mounted in a box"
    ":math:`\mmp`", "Mass of port air slug :math:`= M_\mathrm{AP} \sd^2`"
-   ":math:`\cmb`", "Box mechanical compliance"
-   ":math:`\cab`", "Acoustical compliance of box :math:`= \vb/(\rho_0 \, c^2)`"
+   ":math:`\cmb`", "Box mechanical compliance from air in the box"
+   ":math:`\cab`", "Acoustical compliance of air in the box :math:`= \vb/(\rho_0 \, c^2)`"
    ":math:`\fcb`", "Resonant frequency of the loudspeaker driver in closed box, in :math:`\hz`"
    ":math:`\qtc`", "Total :math:`Q` of driver in closed box"
    ":math:`\alpha`", "Compliance ratio :math:`=\cas / \cab = \vas / \vb`"

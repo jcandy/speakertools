@@ -3,6 +3,7 @@
    :keywords: speakerbench,loudspeaker,driver,parameter,json,design,calculator,impedance,measurement,simulation,software,free,audio
    :description: Speakerbench Documentation
 
+============
 Speakerbench
 ============
 
@@ -85,3 +86,8 @@ Speakerbench doesn't do the actual impedance measurements for you; rather, you w
    json-docs
    glossary
    zreferences
+
+**Powered by** |inpics|
+
+.. |inpics| image:: images/0x0-1116x323.png
+   :width: 15 %

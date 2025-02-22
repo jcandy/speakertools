@@ -1,5 +1,11 @@
+.. meta::
+   :author: Jeff Candy and Claus Futtrup
+   :keywords: speakerbench,loudspeaker,driver,parameter,json,design,calculator,impedance,measurement,simulation,software,free,audio
+   :description: Speakerbench Documentation
+
 .. _time_theory:
-		
+
+====================
 Time-domain Analysis
 ====================
 
@@ -59,7 +65,7 @@ Here, :math:`\sigma` is chosen so that the contour lies to the right of all sing
 
 
 Impulse response
-^^^^^^^^^^^^^^^^
+................
 
 The impulse response is generated using the Dirac delta function :math:`\delta(t)` as the driving force:
 
@@ -72,7 +78,8 @@ The required inverse transform is thus
 In the solution of inhomogeneous differential equations, when :math:`\cal{D}` is a linear differential operator, the impulse response :math:`\xim` is equivalently called the *Green's function* for :eq:`eq.basic`.
 
 Step response
-^^^^^^^^^^^^^
+.............
+
 The step response is generated using the Heaviside step function :math:`H(t)` as the driving force:
 
 .. math:: f(t) = H(t) \Longleftrightarrow F(s) = 1/s
@@ -89,7 +96,7 @@ The step and delta functions are related according to
 where this formula is rigorously justified in terms of generalized functions :cite:`zemanian:1965`.  Note that, in this paper, a dot denotes a time derivative.
 
 General system response
-^^^^^^^^^^^^^^^^^^^^^^^
+.......................
 
 Using the convolution property of the inverse transform, it is easy to show that
 
@@ -109,16 +116,16 @@ A simple example outlining the calculation of impulse and step responses for a s
 Application to transducer response
 ----------------------------------
 
-In the present paper, we choose to formulate the inverse problem using a dimensionless time :math:`t = \omega_s \tau`, where :math:`\tau` is the physical time, and :math:`\omega_s = 2 \pi f_s` is the resonant frequency of the loudspeaker driver.  To illustrate the inversion process for a simple case, we consider the steady-state pressure response for an undamped, closed box :cite:`benson:1993`. In this case, the response function takes the form of a 2nd-order high-pass filter
+In the present paper, we choose to formulate the inverse problem using a dimensionless time :math:`t = \ws \tau`, where :math:`\tau` is the physical time, and :math:`\ws = 2 \pi \fs` is the resonant frequency of the loudspeaker driver.  To illustrate the inversion process for a simple case, we consider the steady-state pressure response for an undamped, closed box :cite:`benson:1993`. In this case, the response function takes the form of a 2nd-order high-pass filter
 
 .. math::
    :label: eq.hp2
 	
-   R(s) = \frac{s^2}{\displaystyle s^2 + \frac{s}{\qt} + 1 + \alpha} \; ,
+   R(s) = \frac{s^2}{\displaystyle s^2 + \frac{s}{\qts} + 1 + \alpha} \; ,
 
-where :math:`\alpha \doteq \cms/\cmb` is the compliance ratio and :math:`\qt` is the driver total :math:`Q`.  In these expressions, :math:`\cms` is the mechanical compliance of the driver suspension, and :math:`\cmb` is the equivalent mechanical compliance of the interior of the closed box.  Further, :math:`1/\qt = 1/\qes + 1/\qms`, where :math:`\qes` and :math:`\qms` are the electrical and mechanical :math:`Q` factors of the driver.
+where :math:`\alpha \doteq \cms/\cmb` is the compliance ratio and :math:`\qts` is the driver total :math:`Q`.  In these expressions, :math:`\cms` is the mechanical compliance of the driver suspension, and :math:`\cmb` is the equivalent mechanical compliance of the interior of the closed box.  Further, :math:`1/\qts = 1/\qes + 1/\qms`, where :math:`\qes` and :math:`\qms` are the electrical and mechanical :math:`Q` factors of the driver.
 
-For the special choice of :math:`\alpha=0` (i.e., the infinite baffle limit :math:`\cmb \rightarrow \infty`) and :math:`\qt = 0.5`, we can write the inversion integral for the step response as
+For the special choice of :math:`\alpha=0` (i.e., the infinite baffle limit :math:`\cmb \rightarrow \infty`) and :math:`\qts = 0.5`, we can write the inversion integral for the step response as
 
 .. math::
    :label: eq.simple
@@ -174,7 +181,7 @@ Above, :math:`E(\wmax)` is the error resulting from truncation of the limits of 
    x_n = \sum_{k=-N/2}^{N/2-1} e^{2\pi i kn/N} \, G_k \; , \quad n = 0, \ldots, N-1 \; ,
 
 where :math:`x_n` is an approximation to :math:`\xs(t_n)`, :math:`G_k = R(ik\Delta y)/(ik)`, :math:`\wmax = N \Delta y/2`, and :math:`\Delta y \Delta t = 2\pi/ N`.  Eq. :eq:`eq.dft` thus expresses :math:`x_n` as the
-iDFT of :math:`G_k`.  In the limit :math:`N \rightarrow \infty`, :math:`x_n` will exactly recover the finite integral in Eq. :eq:`eq.cont`, but will always differ from :math:`\xs(t_n)` by the truncation error :math:`E(\wmax)`. To illustrate the poor accuracy obtained in a typical case, consider a transducer with :math:`f_s = 100` Hz and choose :math:`f_\mathrm{max} = 32` kHz and :math:`n=8000`. Then
+iDFT of :math:`G_k`.  In the limit :math:`N \rightarrow \infty`, :math:`x_n` will exactly recover the finite integral in Eq. :eq:`eq.cont`, but will always differ from :math:`\xs(t_n)` by the truncation error :math:`E(\wmax)`. To illustrate the poor accuracy obtained in a typical case, consider a transducer with :math:`\fs = 100` Hz and choose :math:`f_\mathrm{max} = 32` kHz and :math:`n=8000`. Then
 
 .. math:: |\xs(t_n) - x_n| \sim E(\wmax) \sim 1.5 \times 10^{-3} \; ,
 
@@ -215,10 +222,10 @@ Application to box response
 To modify the Weideman algorithm to prevent pole crossing, it is instructive to consider in detail the behaviour of the response function for an undamped, vented box.  This is written as
 
 .. math::
-   R(s) = \frac{s^4}{\displaystyle \left(s^2+h^2\right) \left( 1 + \frac{s}{\qt} + s^2\right)
+   R(s) = \frac{s^4}{\displaystyle \left(s^2+h^2\right) \left( 1 + \frac{s}{\qts} + s^2\right)
     + \alpha s^2} \; .
 
-The new parameter :math:`h=\omega_p/\omega_s`, where :math:`\omega_p` is resonant frequency of the vented enclosure, transforms the response into a 4th-order filter with four poles in the left half-plane.   Small :cite:`small:1973b` refers to :math:`h` as the *system tuning ratio*.  Typical vented alignments choose :math:`h \sim 1`. The pole locations for this response function can be computed analytically in some
+The new parameter :math:`h = \wp / \ws`, where :math:`\wp` is resonant frequency of the vented enclosure, transforms the response into a 4th-order filter with four poles in the left half-plane.   Small :cite:`small:1973b` refers to :math:`h` as the *system tuning ratio*.  Typical vented alignments choose :math:`h \sim 1`. The pole locations for this response function can be computed analytically in some
 special cases -- most notably when the denominator coincides with the 4th-order Butterworth polynomial:
 
 .. math::
@@ -226,7 +233,7 @@ special cases -- most notably when the denominator coincides with the 4th-order 
 	
    \begin{eqnarray}
    h^2 & = & 1 , \; \alpha = \sqrt{2} \\
-   1/\qt & = & 2\cos(\pi/8)+2\cos(3\pi/8) \doteq 1/Q_4 \; .
+   1/\qts & = & 2\cos(\pi/8)+2\cos(3\pi/8) \doteq 1/Q_4 \; .
    \end{eqnarray}
 
 Note that :math:`Q_4 \simeq 0.382683`. Then the poles occur on the unit circle at :math:`s_k = \exp(i\theta_k)`, where
@@ -247,7 +254,7 @@ In the general case, the poles can be computed using a numerical root-finding me
 
    .. image:: images/time_paper/root-h.png
 
-   Complex plane illustrating parabolic Weideman inversion contour for :math:`\mu=1` and poles of the response function.  Baseline parameter values are those for the Butterworth filter, as defined in Eqs. :eq:`eq.but`.  Starting from the baseline values, we scan :math:`\qt` in (a), :math:`\alpha` in (b) and :math:`h` in (c).  Plot (c) shows that large values of :math:`h` can give rise to a pole crossing, which must be avoided.  Darker circles indicate larger values of the scanned parameter.
+   Complex plane illustrating parabolic Weideman inversion contour for :math:`\mu=1` and poles of the response function.  Baseline parameter values are those for the Butterworth filter, as defined in Eqs. :eq:`eq.but`.  Starting from the baseline values, we scan :math:`\qts` in (a), :math:`\alpha` in (b) and :math:`h` in (c).  Plot (c) shows that large values of :math:`h` can give rise to a pole crossing, which must be avoided.  Darker circles indicate larger values of the scanned parameter.
 
 The root loci illustrate that, for a Butterworth filter, :math:`\mu > 1` would be more than adequate to ensure that the parabolic contour always passes over the poles. However, in the limit of large tuning ratio, :math:`h \gg 1`, which corresponds to port tuning much higher than the driver resonant frequency, the two poles associated with the port resonance can be shown to occur at :math:`s \sim \pm i h -\alpha/(2h)`.  This behaviour is illustrated in :numref:`butter`.c.  Thus we would want to ensure that :math:`\mu > \max\left(1,h\right)`. Bearing these observations in mind, we can specify the required modifications to
 Weideman's algorithm as follows: choose a value of :math:`N_0` to give desired integration accuracy at short time. Using this value of :math:`N_0`, define the critical parameters
@@ -281,7 +288,7 @@ To test the accuracy of the method for a more realistic case, we consider the pr
 .. math::
    :label: eq.3pc
 	
-   \cms \longrightarrow C_0 \left[ 1-\beta \ln \left( \frac{s}{s+s_0} \right) \right] \; .
+   \cms \longrightarrow \clog \left[ 1-\beta \ln \left( \frac{s}{s+s_0} \right) \right] \; .
 
 The 3PC model includes both logarithmic creep and frequency-dependent damping. It is a generalization of the earlier LOG model of suspension creep :cite:`knudsen:1993`, and introduces a parameter :math:`s_0` to ensure that the frequency-dependent compliance :math:`\cms(s)` is nonnegative at high frequency. The form of the compliance in Eq. :eq:`eq.3pc` is equivalent to the original form given in Ref. :cite:`ritter:2010`, but written more compactly.  Some aspects of the algebra required to establish the equivalence is given in the Appendix.  We further remark that in Eq. :eq:`eq.3pc`, :math:`\beta` is the parameter of viscoelasticity (the creep parameter), which in the work by Ritter and Agerkvist (and the original work by Knudsen and Jensen) was represented by :math:`\lambda`. The conversion between the representations is clarified in Appendix A.4 of Ref. :cite:`candy:2017`.
 
@@ -296,18 +303,18 @@ Proceeding, the vented box response function can be modified to include the effe
 
    .. image:: images/time_paper/error.png
 
-   Left plot shows time-domain step response :math:`\xs(t)` corresponding to :math:`R(s)` given in Eq. :eq:`eq.pcreep` with :math:`h`, :math:`\qt` and :math:`\alpha` corresponding to the Butterworth values.  Time dependence is shown with creep (solid curve, :math:`\beta=0.5`) and without creep (dotted curve, :math:`\beta=0`. Right plot shows absolute error, :math:`\Delta x_\mathrm{S} = | x_\mathrm{S}^{(N_0)}- x_\mathrm{S}^{(32)}|`, in inverse calculation for undamped vented box response function :math:`R(z)`.  Here, :math:`x_\mathrm{S}^{(N_0)}` refers to a numerical calculation with the given starting value :math:`N_0`.
+   Left plot shows time-domain step response :math:`\xs(t)` corresponding to :math:`R(s)` given in Eq. :eq:`eq.pcreep` with :math:`h`, :math:`\qts` and :math:`\alpha` corresponding to the Butterworth values.  Time dependence is shown with creep (solid curve, :math:`\beta=0.5`) and without creep (dotted curve, :math:`\beta=0`. Right plot shows absolute error, :math:`\Delta x_\mathrm{S} = | x_\mathrm{S}^{(N_0)}- x_\mathrm{S}^{(32)}|`, in inverse calculation for undamped vented box response function :math:`R(z)`.  Here, :math:`x_\mathrm{S}^{(N_0)}` refers to a numerical calculation with the given starting value :math:`N_0`.
 
 .. math::
    :label: eq.pcreep
 	
-   R(s) = \frac{s^4}{\displaystyle \left(s^2+h^2\right) \left( \frac{1}{c(s)} + \frac{s}{\qt} + s^2\right) + \alpha s^2} \; ,
+   R(s) = \frac{s^4}{\displaystyle \left(s^2+h^2\right) \left( \frac{1}{c(s)} + \frac{s}{\qts} + s^2\right) + \alpha s^2} \; ,
 
 where :math:`c(s)` is an analytic function
 
 .. math:: c(s) \doteq 1-\beta \ln \frac{s}{s+2} \; ,
 
-that multiplies the static suspension compliance, :math:`C_0`.  In this example, we have chosen :math:`s_0=2`, corresponding to a transition frequency that is double the resonant frequency, but in practical cases other values may apply.  Note that when replacing the static compliance with the 3PC model, the meaning of :math:`\rms` will change in response to the frequency-dependent damping effect (originating from the imaginary part of the logarithm). We emphasize that due to the branch cut :math:`s \in [-2,0]`, the inverse transform of :math:`R(s)/s` *cannot* be computed by traditional transform tables or a straightforward integration. :numref:`fig.perror` shows the time-domain step response as computed using the method of the present paper. The solid and dashed curves, respectively, show the response with and without the creep function.  We can also give
+that multiplies the static suspension compliance, :math:`\clog`.  In this example, we have chosen :math:`s_0=2`, corresponding to a transition frequency that is double the resonant frequency, but in practical cases other values may apply.  Note that when replacing the static compliance with the 3PC model, the meaning of :math:`\rms` will change in response to the frequency-dependent damping effect (originating from the imaginary part of the logarithm). We emphasize that due to the branch cut :math:`s \in [-2,0]`, the inverse transform of :math:`R(s)/s` *cannot* be computed by traditional transform tables or a straightforward integration. :numref:`fig.perror` shows the time-domain step response as computed using the method of the present paper. The solid and dashed curves, respectively, show the response with and without the creep function.  We can also give
 an indication of the resolution required to give acceptable results.  Also in :numref:`fig.perror` we plot the absolute inversion error as a function of the initial number of nodes, :math:`N_0`.  We remark that eventually all curves overlap at sufficiently large :math:`t` for which :math:`\mu = 1`. These results show that the present method can compute the inverse efficiently to nearly machine precision.  In fact, in generating :numref:`fig.perror`, it was sufficient to use :math:`N_0 \leq 32`.  This is surprising given the apparent computational complexity of the integral in Eq. :eq:`eq.direct`.
 
 Although the Fourier approach of Eq. :eq:`eq.dft` can be modified to give some accuracy improvement, it is manifestly less computationally efficient than the more elegant contour method. The latter with :math:`N = 2 N_0 + 1 = 17` gives better accuracy than the Fourier method with :math:`N = 8000`, and with :math:`N = 65` points, the modified Weideman contour method returns an answer correct to nearly the full machine precision!
@@ -322,18 +329,17 @@ To illustrate how the present inversion method can be applied to time-domain sim
    :label: eq.i
 	
    \begin{eqnarray}
-   V(\tau) &=& R_\mathrm{E} + L_\mathrm{E} \frac{dI}{d\tau} + \bl(x) \frac{dx}{d\tau} \; , \\
+   V(\tau) &=& \re + \le \frac{dI}{d\tau} + \bl(x) \frac{dx}{d\tau} \; , \\
    \bl(x) \, I &=& \mms \frac{d^2 x}{d\tau^2} + \rms \frac{dx}{d\tau} + \frac{x}{\cms} \; .
    \end{eqnarray}
 
-Here, the unknown functions are :math:`x(\tau)` and :math:`I(\tau)`, with :math:`V(\tau)` a known driving voltage.  Also, :math:`R_\mathrm{E}` and :math:`L_\mathrm{E}` are the voice coil resistance and inductance, :math:`\mms` is the moving mass, :math:`\rms` is the suspension damping, and :math:`\cms` the suspension compliance.  In these equations, the force-factor :math:`\bl(x)` can be considered to be a nonlinear
-function of :math:`x`.  Normally, viscoelastic compliance is not modeled because of the difficulty in treating the rightmost compliance term above. However, according to the present formulation, we should replace the term :math:`x/\cms` with
+Here, the unknown functions are :math:`x(\tau)` and :math:`I(\tau)`, with :math:`V(\tau)` a known driving voltage.  Also, :math:`\re` and :math:`\le` are the voice coil resistance and inductance, :math:`\mms` is the moving mass, :math:`\rms` is the suspension damping, and :math:`\cms` the suspension compliance.  In these equations, the force-factor :math:`\bl(x)` can be considered to be a nonlinear function of :math:`x`.  Normally, viscoelastic compliance is not modeled because of the difficulty in treating the rightmost compliance term above. However, according to the present formulation, we should replace the term :math:`x/\cms` with
 
-.. math:: {\cal L}^{-1} \left[  \frac{X(s)}{C_0} \frac{1}{1+\beta\ln(1+s_0/s)} \right] \; ,
+.. math:: {\cal L}^{-1} \left[  \frac{X(s)}{\clog} \frac{1}{1+\beta\ln(1+s_0/s)} \right] \; ,
 
-where :math:`C_0` is a new constant compliance, :math:`\beta` is a measure of the strength of the viscoelastic behaviour, and :math:`s_0` is a parameter that characterizes the transition frequency between viscoelastic :math:`(s < s_0)` and simple elastic :math:`(s \gg s_0)` behaviour.  Here, we have introduced the Laplace variable :math:`s` corresponding to the dimensionless time :math:`t = \omega_s \tau`, such that :math:`\omega_s \doteq 1/\sqrt{\mms C_0}` is the resonant frequency of the system in the limit :math:`\beta \rightarrow 0`. We can rearrange terms slightly to write the required inverse transform as
+where :math:`\clog` is a new constant compliance, :math:`\beta` is a measure of the strength of the viscoelastic behaviour, and :math:`s_0` is a parameter that characterizes the transition frequency between viscoelastic :math:`(s < s_0)` and simple elastic :math:`(s \gg s_0)` behaviour.  Here, we have introduced the Laplace variable :math:`s` corresponding to the dimensionless time :math:`t = \ws \tau`, such that :math:`\ws \doteq 1/\sqrt{\mms \clog}` is the resonant frequency of the system in the limit :math:`\beta \rightarrow 0`. We can rearrange terms slightly to write the required inverse transform as
 
-.. math:: \frac{x(t)}{C_0} - \frac{\beta}{C_0} {\cal L}^{-1} \left[ G(s) X(s) \right] \; ,
+.. math:: \frac{x(t)}{\clog} - \frac{\beta}{\clog} {\cal L}^{-1} \left[ G(s) X(s) \right] \; ,
 
 where
 
@@ -344,14 +350,13 @@ According to the convolution theorem, the time domain response can be written ex
 .. math::
    :label: eq.conv
 	
-   \frac{x(t)}{C_0} - \frac{\beta}{C_0} \int_0^t d\tp \, g(t-\tp) x(\tp) \; ,
+   \frac{x(t)}{\clog} - \frac{\beta}{\clog} \int_0^t d\tp \, g(t-\tp) x(\tp) \; ,
 
 where :math:`g(t) = {\cal L}^{-1} [G(s)]`.  Thus, the original differential equations describing :math:`x(\tau)` and :math:`I(\tau)` are transformed into integro-differential form.  For completeness, we note that the modified equation for the transducer motion is
 
 .. math:: f(t) = \ddot{x} + \frac{\dot{x}}{\qms} + x - \beta \displaystyle \int_0^t d\tp \, g(t-\tp) x(\tp) \; .
 
-where :math:`f = C_0 \bl(x) I(t)` is a normalized force (with the same units as the displacement), and a dot denotes a time derivative, as in Sec.~1. The effect of viscoelasticity is reflected in the convolution
-integral above.  The integral samples the entire time history :math:`x(\tp)` for :math:`0 \leq \tp \leq t`, which reflects the memory effect inherent to viscoelastic materials.  The memory is controlled by the kernel :math:`g`; systems with weak memory will have :math:`g` that decays rapidly. With the proposed modified Weideman contour method, the inverse transform :math:`g(t)` can be computed to machine precision at any desired values of :math:`t`.  Sample plots of :math:`g(t)` for different values of :math:`\beta` are shown in :numref:`ft`. Finally, it is worth noting that in the limit :math:`\beta \rightarrow 0` we can carry out the inverse transform exactly according to
+where :math:`f = \clog \bl(x) I(t)` is a normalized force (with the same units as the displacement), and a dot denotes a time derivative, as in Sec.~1. The effect of viscoelasticity is reflected in the convolution integral above.  The integral samples the entire time history :math:`x(\tp)` for :math:`0 \leq \tp \leq t`, which reflects the memory effect inherent to viscoelastic materials.  The memory is controlled by the kernel :math:`g`; systems with weak memory will have :math:`g` that decays rapidly. With the proposed modified Weideman contour method, the inverse transform :math:`g(t)` can be computed to machine precision at any desired values of :math:`t`.  Sample plots of :math:`g(t)` for different values of :math:`\beta` are shown in :numref:`ft`. Finally, it is worth noting that in the limit :math:`\beta \rightarrow 0` we can carry out the inverse transform exactly according to
 
 .. math:: g(t) \sim {\cal L}^{-1} \left[ \ln(1+s_0/s) \right] = \frac{1-e^{-s_0 t}}{t} \; .
 
@@ -369,14 +374,13 @@ The addition of the convolution to the time-domain formulation is analogous to t
 Summary of inversion method
 ---------------------------
 
-In these notes we have outlined a modification to the Weideman method for numerical calculation of the inverse Laplace transform.  The modified method is suitable for calculating the time-domain loudspeaker response and can
-be implemented in only a few lines of code.  The complete algorithm is summarized by Eqs. :eq:`eq.trap`, :eq:`eq.m1`, :eq:`eq.m2` and :eq:`eq.m3`.  Importantly, it can be applied to nonstandard frequency-domain response functions containing branch cuts, as encountered in advanced transducer models with semi-inductance in the motor or viscoelasticity in the suspension. Alternatively, this method can be used as a simple and rapid method to compute the time-domain response for simple polynomial response functions.
+In these notes we have outlined a modification to the Weideman method for numerical calculation of the inverse Laplace transform.  The modified method is suitable for calculating the time-domain loudspeaker response and can be implemented in only a few lines of code.  The complete algorithm is summarized by Eqs. :eq:`eq.trap`, :eq:`eq.m1`, :eq:`eq.m2` and :eq:`eq.m3`.  Importantly, it can be applied to nonstandard frequency-domain response functions containing branch cuts, as encountered in advanced transducer models with semi-inductance in the motor or viscoelasticity in the suspension. Alternatively, this method can be used as a simple and rapid method to compute the time-domain response for simple polynomial response functions.
 
 Appendices
 ----------
 
 Simplification of the Ritter 3PC compliance model
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.................................................
 
 In Eq. (13) of a paper by Ritter and Agerkvist :cite:`ritter:2010`, the viscoelastic compliance contains a logarithmic term that is expressed as
 
@@ -402,7 +406,7 @@ which follow from :math:`\tan\beta = \omega/s_0`, we can write the argument as
 which is the argument used in Eq. :eq:`eq.3pc`.
 
 Sample Python code for inverse transform
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+........................................
 
 The following Python code implements the algorithm of Eq. :eq:`eq.trap` as applied to the closed box response function of Eq. :eq:`eq.hp2`.
 

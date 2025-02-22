@@ -1,5 +1,11 @@
+.. meta::
+   :author: Jeff Candy and Claus Futtrup
+   :keywords: speakerbench,loudspeaker,driver,parameter,json,design,calculator,impedance,measurement,simulation,software,free,audio
+   :description: Speakerbench Documentation
+
 .. _deltamass_theory:
 
+======================
 Dual-Added-Mass Method
 ======================
 
@@ -14,7 +20,7 @@ A Dual-Added-Mass Technique
 ---------------------------
 
 Model-free extraction of motional impedance
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...........................................
 
 The measurement of total (electrical) impedance of an electro-dynamic transducer consists of the *blocked electrical* plus *mechano-acoustic* contributions
 
@@ -113,7 +119,7 @@ Using the model-free motional impedance, we can estimate the resonant frequency 
 A strict definition of the resonant frequency based purely on data is not necessary insofar as it will be derivable from motional fit parameters to be determined in the sections that follows.  We remark that the resonant frequency as defined in Eq. :eq:`eq.fs_estimated` does not exactly coincide with the location of :math:`\mathrm{Im}\,\zms = 0` due to the frequency-dependence of the effective damping (i.e., the real part of :math:`\fr`).  Thus there is potential ambiguity with respect to the definition of :math:`\ws` in viscoelastic systems. To provide a noticeable shift in the resonant frequency and thereby detect the viscoelastic properties with optimal accuracy, we generally recommend that :math:`m_2` is close to the transducer's moving mass, and that :math:`m_1` is approximately half the moving mass.  These choices will produce shifts of about 40\% and 20\%, respectively, in the resonant frequency :math:`\ws`.
 
 Estimation of :math:`\bl`
-^^^^^^^^^^^^^^^^^^^^^^^^^
+.........................
 
 Based on Eqs. :eq:`eq.deltac` and :eq:`eq.omegadeltac`, :math:`\bl` is calculated as
 
@@ -122,53 +128,53 @@ Based on Eqs. :eq:`eq.deltac` and :eq:`eq.omegadeltac`, :math:`\bl` is calculate
 
    \bls = \frac{m_1}{\Delta C_1} = m_1 \, \mathrm{Re} \left\langle \frac{i \omega \zms ( \zms - \Delta Z_1)}{\Delta Z_1} \right\rangle_{\omega_1}^{\omega_2} \; ,
 
-where the angle brackets denote an average.  For each measurement point in frequency, a :math:`\bl` value can be extracted and hence it is possible to plot a :math:`\bl(\omega)` curve.  An example of this curve is shown in Fig. :numref:`fig.bl`.  Of course, :math:`\bl` in the model does not change with frequency, so it remains to select a suitable frequency range for the average in Eq. :eq:`eq.blw`.  We recommend :math:`\omega_1 = 0.8 \omega_s` and :math:`\omega_2 = 1.2 \omega_s`, where :math:`\ws` is determined by Eq. :eq:`eq.fs_estimated`.  For the average to be meaningful, a flat area of the :math:`\bl(\omega)` curve must be found. Typically, provided the measurements are good, this occurs in the vicinity of the free-air resonant frequency of the driver.  In this way, :math:`\bl` may be determined *without* any model assumptions about :math:`\fr(\omega)`.
+where the angle brackets denote an average.  For each measurement point in frequency, a :math:`\bl` value can be extracted and hence it is possible to plot a :math:`\bl(\omega)` curve.  An example of this curve is shown in Fig. :numref:`fig.bl`.  Of course, :math:`\bl` in the model does not change with frequency, so it remains to select a suitable frequency range for the average in Eq. :eq:`eq.blw`.  We recommend :math:`\omega_1 = 0.8 \ws` and :math:`\omega_2 = 1.2 \ws`, where :math:`\ws` is determined by Eq. :eq:`eq.fs_estimated`.  For the average to be meaningful, a flat area of the :math:`\bl(\omega)` curve must be found. Typically, provided the measurements are good, this occurs in the vicinity of the free-air resonant frequency of the driver.  In this way, :math:`\bl` may be determined *without* any model assumptions about :math:`\fr(\omega)`.
 
 Accurate determination of :math:`\bl` is crucial in order to ensure we can reliably transform parameters from the mechanical to the electrical domain.
 
 Estimation of :math:`\mms`
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+..........................
 
 We will now describe a method to deduce the moving mass :math:`\mms`, along with other motional fit parameters, from motional data :math:`(\zms)_j`.  For this we need to choose a specific lumped-parameter model. In what follows, all fitting results will be based on the LOG compliance model :cite:`knudsen:1993` for the motional impedance
 
 .. math::
    :label: eq.glog
 
-   g(\omega) \doteq \frac{1}{\rlog} + \frac{\ql(\omega)}{i \omega \llog}\; ,
+   g(\omega) \doteq \frac{1}{\rlog} + \frac{\sigma(\omega)}{i \omega \llog}\; ,
 
-where :math:`\ql` is a complex factor that describes viscoelastic creep and frequency-dependent damping
+where :math:`\sigma` is a complex factor that describes viscoelastic creep and frequency-dependent damping
 
 .. math::
    :label: eq.blog
 
-   \ql = \frac{1}{1-\beta \ln(i\omega)} \; .
+   \sigma = \frac{1}{1-\beta \ln(i\omega)} \; .
 
-Note that the traditional Thiele-Small form is obtained by setting :math:`\beta = 0` so that :math:`\ql = 1`. The LOG model has recently been used by Hiebel to describe creep in miniature loudspeakers :cite:`hiebel:2012`.  The Klippel system also adopts a form of the LOG model, but approximates :math:`\ln(i\omega)` with :math:`\ln(\omega)` :cite:`seidel:2001`, thereby neglecting the frequency-dependent damping effect. If, for a moment, we consider that the value of :math:`\beta` is known, then we can write a linear equation for the motional parameters,
+Note that the traditional Thiele-Small form is obtained by setting :math:`\beta = 0` so that :math:`\sigma = 1`. The LOG model has recently been used by Hiebel to describe creep in miniature loudspeakers :cite:`hiebel:2012`.  The Klippel system also adopts a form of the LOG model, but approximates :math:`\ln(i\omega)` with :math:`\ln(\omega)` :cite:`seidel:2001`, thereby neglecting the frequency-dependent damping effect. If, for a moment, we consider that the value of :math:`\beta` is known, then we can write a linear equation for the motional parameters,
 
-.. math:: \frac{1}{\zms} = i \omega \, a + b + \frac{i \ql(\omega)}{\omega} \, c \; ,
+.. math:: \frac{1}{\zms} = i \omega \, a + b + \frac{i \sigma(\omega)}{\omega} \, c \; ,
 
 where for brevity we have defined :math:`a=\cmes`, :math:`b=1/\rlog` and :math:`c=-1/\llog`.  This simple form implies that we can obtain a coefficient solution by linear least squares.  To do this, we define the error functional (the squared norm of the residual)
 
 .. math::
    :label: eq.errorm
 
-   \varepsilon_\beta(a,b,c) \doteq \sum_j \left[ \left( b - \frac{\ql_I(\omega)}{\omega_j} \, c - \mathrm{Re}\,Y_j \right)^2 + \left( \omega_j a + \frac{\ql_R(\omega_j)}{\omega_j} \, c - \mathrm{Im}\, Y_j \right)^2 \right] \; ,
+   \varepsilon_\beta(a,b,c) \doteq \sum_j \left[ \left( b - \frac{\sigma_I(\omega)}{\omega_j} \, c - \mathrm{Re}\,Y_j \right)^2 + \left( \omega_j a + \frac{\sigma_R(\omega_j)}{\omega_j} \, c - \mathrm{Im}\, Y_j \right)^2 \right] \; ,
 
 where
 
 .. math:: Y_j \doteq \frac{1}{(\zms)_j}
 
-is the motional admittance.  Here, :math:`\ql_R = \mathrm{Re}\,\ql` and :math:`\ql_I = \mathrm{Im} \,\ql`. The summation variable :math:`j` denotes a suitable subdomain of the frequency range. For the analysis in the present paper, we choose values of :math:`j` for which :math:`0.8 \ws < \omega_j < 1.2 \ws`. Taking the partial derivatives of :math:`\varepsilon` with respect to :math:`a,b,c` yields the following linear equations for the minimum norm of the residual:
+is the motional admittance.  Here, :math:`\sigma_R = \mathrm{Re}\,\sigma` and :math:`\sigma_I = \mathrm{Im} \,\sigma`. The summation variable :math:`j` denotes a suitable subdomain of the frequency range. For the analysis in the present paper, we choose values of :math:`j` for which :math:`0.8 \ws < \omega_j < 1.2 \ws`. Taking the partial derivatives of :math:`\varepsilon` with respect to :math:`a,b,c` yields the following linear equations for the minimum norm of the residual:
 
 .. math::
    :label: eq.lsq
 
    \left[
    \begin{array}{>{\displaystyle}c >{\quad\displaystyle}c >{\quad\displaystyle}c}
-   \displaystyle \sum_j \omega_j^2      &     0    & \displaystyle \sum_j \ql_R(\omega_j) \\
-   0                     & \displaystyle \sum_j 1 &  \displaystyle -\sum_j \frac{\ql_I(\omega_j)}{\omega_j} \\
-   \displaystyle \sum_j \ql_R(\omega_j) & \displaystyle -\sum_j \frac{\ql_I(\omega_j)}{\omega_j} &
-   \displaystyle \sum_j \frac{\ql_R^2+\ql_I^2}{\omega_j^2}
+   \displaystyle \sum_j \omega_j^2      &     0    & \displaystyle \sum_j \sigma_R(\omega_j) \\
+   0                     & \displaystyle \sum_j 1 &  \displaystyle -\sum_j \frac{\sigma_I(\omega_j)}{\omega_j} \\
+   \displaystyle \sum_j \sigma_R(\omega_j) & \displaystyle -\sum_j \frac{\sigma_I(\omega_j)}{\omega_j} &
+   \displaystyle \sum_j \frac{\sigma_R^2+\sigma_I^2}{\omega_j^2}
    \end{array}
    \right]
    \left[ \begin{array}{*1{>{\displaystyle}c}}
@@ -179,7 +185,7 @@ is the motional admittance.  Here, :math:`\ql_R = \mathrm{Re}\,\ql` and :math:`\
    \left[ \begin{array}{*1{>{\displaystyle}c}}
    \displaystyle \sum_j \omega_j \, \mathrm{Im}\, Y_j \\
    \displaystyle \sum_j \mathrm{Re} \, Y_j \\
-   \displaystyle \sum_j \frac{\ql_R \, \mathrm{Im}\, Y_j - \ql_I \, \mathrm{Re}\, Y_j}{\omega_j}
+   \displaystyle \sum_j \frac{\sigma_R \, \mathrm{Im}\, Y_j - \sigma_I \, \mathrm{Re}\, Y_j}{\omega_j}
    \end{array}
    \right]
 
@@ -188,7 +194,7 @@ More precisely, :math:`\varepsilon_\beta \left[ a_0(\beta),b_0(\beta),c_0(\beta)
 To be clear, we repeat that for a given :math:`\beta`, the inputs to Eq. :eq:`eq.lsq` are :math:`Y_j` and the frequencies :math:`\omega_j`, whereas the outputs are :math:`\cmes`, :math:`\rlog` and :math:`\llog`.  We use :math:`\beta` for viscoelasticity expressed using a natural logarithm, but this may be easily converted to classical :math:`\lambda` values utilizing the base-10 LOG representation.
 
 Equivalent :math:`\res` and :math:`\lces`
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.........................................
 
 It is of some interest to determine equivalent values for :math:`\res` and :math:`\lces` in the LOG model that can be compared with traditional Thiele-Small parameters. Although the correspondence is not unique, a simple method approach is to set
 
@@ -203,7 +209,7 @@ Then, some algebra shows that
    \end{eqnarray}
 
 Mass-consistency check
-^^^^^^^^^^^^^^^^^^^^^^
+......................
 
 We propose a type of consistency check that can provide a critical assessment of the data quality. First, using the model-free impedance :math:`\zms`, we can check for mass consistency using
 
@@ -238,7 +244,7 @@ According to preliminary linear parameter measurements (LPM) on a Klippel DA1 sy
 The setup used in the WTPro is a steady-state sine wave signal, which is stepped 384 times in the frequency range :math:`10\hz \leq f \leq 20\khz`, giving a sufficiently high resolution (about 35 points per octave) even for weakly-damped drivers. The use of multitone signals was not considered because the steady-state sine was the recommended WTPro mode for high-accuracy applications. The output was chosen to be approximately :math:`242\mv` (the WTPro monitors and shows a voltage range of :math:`237\mv` to :math:`247\mv` within the measured frequency range).  Our understanding is that this small variation in voltage is corrected for and thus does not affect the accuracy of :math:`Z(\omega)`.  Note that, into a :math:`6\,\Omega` load, this voltage setting is equivalent to approximately :math:`10\mw`. Choosing a suitable drive level for the measurements is typically a trade-off between good signal-to-noise ratio (which favors high voltage) and low nonlinearity (which favors low voltage).  By selecting :math:`242\mv`, we achieve a good tradeoff between the two and the data appears to be both low-noise and free of significant nonlinear effects.  Although the dual-added-mass method could be used for scanning at higher power levels, such analysis is not discussed in this note.
 
 Calculation of :math:`\zms`
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...........................
 
 The added masses were kept in line with the Klippel estimate of :math:`\mms` by choosing :math:`m_2 \simeq 16.048\gr` and :math:`m_1 \simeq 8.017\gr`.  These were carefully measured *a posteriori* on a precision scale with :math:`1\mg` resolution.  These choices are consistent with our guidelines of :math:`m_2 \simeq \mms` and :math:`m_1 \simeq \mms/2`.  The masses are mounted in 4 pieces so that diagonally one can remove a pair and then remeasure with 2 pieces.  This procedure keeps the overall moving mass in balance to prevent rocking modes. The masses are further kept within about 1\% of each other, and the location of each mass on the cone registered individually.  The masses are attached onto the cone near the dust cap for close proximity to the voice coil and to minimize the dynamic load on the cone (i.e., to minimize bending). This process is illustrated in :numref:`fig.3mass`. The care one must take in doing added-mass measurements is well known in the industry and certainly applies for the present dual-added-mass method.  In particular, it is important to avoid moving the cone excessively so that the viscoelastic suspension is not stretched between the three impedance measurements. Doing so would adversely affect the compliance, especially at low frequency, due to the memory effect. This is most important for drivers with a highly viscoelastic suspension (such as the Vifa P17WJ00-08) and less important for those with less viscoelastic suspension (like the present L16RNX).
 
@@ -254,7 +260,7 @@ The added masses were kept in line with the Klippel estimate of :math:`\mms` by 
 Measurements with 385 data points were resampled with spline interpolation so that a total of 1200 data points were available for processing and to ensure all plotted curves are smooth.  Thus, we measure :math:`Z^{(2)}` (with :math:`m_2`), then :math:`Z^{(1)}` (with :math:`m_1`), and finally the unweighted driver to obtain :math:`Z^{(0)}`.  With these measurements, we compute :math:`\Delta Z_1` and :math:`\Delta Z_2`.  Then, using Eq. :eq:`eq.zms`, we compute the model-free estimate :math:`\zms` for the motional impedance.  The three measurements together with the calculated :math:`\zms` are illustrated in :numref:`fig.zms`.  From Eq. :eq:`eq.fs_estimated`, we find :math:`\fs = 45.5\hz`.
 
 Calculation of :math:`\bl`
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+..........................
 
 Next, with the computed data for :math:`\zms`, we use Eq. :eq:`eq.blw` to estimate :math:`\bl`. For the purpose of averaging, we set :math:`\omega_1 = 0.8\,\ws` and :math:`\omega_2 = 1.2\,\ws`, where :math:`\ws = 2\pi \fs`.  The computed average, :math:`\bl \simeq 7.007`, is illustrated with a horizontal black line in Fig. :numref:`fig.bl` superimposed on the frequency-dependent function :math:`\bl(\omega)`.  The shaded area indicates the averaging region. A more detailed view of the same data is given on the right in :numref:`fig.bl`.
 
@@ -270,7 +276,7 @@ Next, with the computed data for :math:`\zms`, we use Eq. :eq:`eq.blw` to estima
    (**right**) Zoomed-in view of left image. As before, the shaded area indicates the averaging window used to compute :math:`\bl`.
 
 Calculation of :math:`\mms`
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...........................
 
 Solving the linear system in Eq. :eq:`eq.lsq`, based on the Knudsen LOG model as defined in Eq. :eq:`eq.glog`, we find :math:`\mms \simeq 15.05\gr`. The solution of the system of linear equations also yields :math:`\beta \simeq 0.059` with :math:`\rlog \simeq 32.20\,\Omega` and :math:`\llog \simeq 60.24\,\mh`. According to the conversion formula, these (approximately) correspond to traditional Thiele-Small values of :math:`\res \simeq 23.2\,\Omega` and :math:`\lces \simeq 40.8 \mh`. A comparison between the fit :math:`\zm` and the original model-free function :math:`\zms` is shown in :numref:`fig.zmfit`.  The fit is exceptional in the shaded fit region.  Outside the fit region, it may appear as though the fit is poor, but a more reasonable interpretation is that the quality of :math:`\zms` -- as we have emphasized repeatedly -- diminishes rapidly away from the vicinity of resonance.
 
@@ -284,7 +290,7 @@ Solving the linear system in Eq. :eq:`eq.lsq`, based on the Knudsen LOG model as
    Comparison of :math:`\zms` with fit function :math:`\zm^{(0)}`. Fit parameters were computed using the least-squares minimization of Eq. :eq:`eq.lsq` over the shaded region.
 
 Mass consistency
-^^^^^^^^^^^^^^^^
+................
 
 We can examine the quality of the present results using the :ref:`Mass-consistency check`. :numref:`fig.mrat` show a calculation of the model-free mass ratio :math:`m_1^*/m_1` as well as the model-dependent mass ratios.  The latter are computed using :math:`\zm^\mathrm{fit}` as fit to the LOG model.  In all cases we get a broad range of consistency in the vicinity of :math:`\fs`.  As we have remarked previously, the validity of :math:`\zms` is limited to a narrow frequency range around :math:`\fs`, and this corroborated by :numref:`fig.mrat`. The plot is also strong evidence for the LOG model fit to :math:`\zm` being more accurate than :math:`\zms` far from resonance.  More specifically, the fit consistency is very good over a wide region (up to at least :math:`100\hz`).  On the other hand, below :math:`\fs`, the mass consistency is not as good.  We speculate that this is caused by the term :math:`i \omega C_k` in Eq. :eq:`eq.ck` becoming progressively smaller in the low-frequency range and thus more sensitive to errors in compliance.
 
@@ -306,7 +312,7 @@ A classical method to evaluate the quality of a measurement procedure, such as t
 Four people were asked to perform five measurements each, so that the driver was measured 21 times in total. For the most part, one or occasionally two measurements were performed each day, and the equipment was turned off and disconnected between each measurement.  The added masses were remeasured following each measurement.  Sometimes, but not always, they would be refreshed with new Blu-Tack.  Because the masses are measured each time, the statistical analysis reflects the true statistical variation.  A single, complete measurement (that includes three impedance sweeps with mass recording) takes about 40-60 minutes.  Those who wish to employ the presented dual-added-mass technique are encouraged to perform a Gage R&R analysis with their own equipment to verify the measurement setup.  This section presents the results as performed at SEAS Fabrikker AS in Norway using available in-house equipment.
 
 MSA Results
-^^^^^^^^^^^
+...........
 
 A list of all 21 measurements is shown in :numref:`tab.msa`, including date of measurement, added-mass values, and computed :math:`\bl` and :math:`\mms`.
 
