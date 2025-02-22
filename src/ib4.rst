@@ -3,6 +3,7 @@
    :keywords: speakerbench,loudspeaker,driver,parameter,json,design,calculator,impedance,measurement,simulation,software,free,audio
    :description: Speakerbench Documentation
 
+=============================
 The IB4 Bass Reflex Alignment
 =============================
 
@@ -73,26 +74,26 @@ we may calculate the IB4 alignment as follows:
    A2 = a2**2 + 2 - 2 * a1 * a3
    h, alpha = quasi(Ql, Qt_IB4, A1, A2)
 
-where :math:`Q_T` is not something you can specify yourself but is given
+where :math:`\qt` is not something you can specify yourself but is given
 by the equations because the IB4 alignment is a discrete alignment.
 
-For leakage :math:`Q_\mathrm{L} = \infty`, the driver :math:`Q_T` that matches
+For leakage :math:`\ql = \infty`, the driver :math:`\qt` that matches
 the Inter-Order Butterworth response function is :math:`0.3398 \approx 0.34`.
 
 **Summary**
 
 The IB4 alignment is a specific case of the B4Q (=QB3) alignment, when
 :math:`a_2 = 2.5004995097549222 + \sqrt{2}`. Pick any table of QB3
-alignments and select the one for the specific driver :math:`Q_T` value
+alignments and select the one for the specific driver :math:`\qt` value
 that matches IB4, and you shall have the IB4 response function. This
 way, there is nothing special about IB4; it is just a specific instance
 of the QB3 alignments, but it is the specific one Thiele derived by
 replacing a second-order polynomial with two (identical) first-order
 polynomials, which places two of the poles on the real axis.
 
-When :math:`Q_T` is not matching the IB4 case exactly and given the
+When :math:`\qt` is not matching the IB4 case exactly and given the
 intimate relationship to the QB3 alignment, a simple solution is to use
-the QB3 (=B4Q) alignment, where :math:`Q_T` may be chosen freely.
+the QB3 (=B4Q) alignment, where :math:`\qt` may be chosen freely.
 
 We have previously discussed three approaches to dealing with discrete
 alignments; the quasi-method, the compliance alteration method, as

@@ -3,6 +3,7 @@
    :keywords: speakerbench,loudspeaker,driver,parameter,json,design,calculator,impedance,measurement,simulation,software,free,audio
    :description: Speakerbench Documentation
 
+=============================
 The CD4 Bass Reflex Alignment
 =============================
 
@@ -50,24 +51,24 @@ Using Python, we may calculate the CD4 alignment as follows:
    h = 1
    alpha = 4 - 1/(Ql * Qt)
 
-where :math:`Q_T` is not something you can specify yourself but is given
+where :math:`\qt` is not something you can specify yourself but is given
 by the equations because the CD4 alignment is a discrete alignment.
 
 Please note that, in a reflex box, setting the driver in box
 :math:`Q_{TC} = 0.5` does not provide the correct filter Q, but rather,
-for the lossless case, :math:`Q_{TC} = Q_T \cdot \sqrt{\alpha + 1} = 0.559`.
-For a design with leakage loss, you may recalculate :math:`Q_T` and
+for the lossless case, :math:`Q_{TC} = \qt \cdot \sqrt{\alpha + 1} = 0.559`.
+For a design with leakage loss, you may recalculate :math:`\qt` and
 :math:`\alpha`. Leakage loss results in a smaller :math:`\alpha` and
 consequently a larger box, which means :math:`Q_{TC}` is reduced. To
-arrive at :math:`Q_{TC} = 0.5`, one must set :math:`Q_\mathrm{L} = 1.5`
-(:math:`Q_T = 0.3`). This is awfully lossy, and we conclude that, in
+arrive at :math:`Q_{TC} = 0.5`, one must set :math:`\ql = 1.5`
+(:math:`\qt = 0.3`). This is awfully lossy, and we conclude that, in
 practice, for a CD4 reflex box with a plugged (stuffed or covered) port,
 :math:`Q_{TC}` will always be larger than 0.5.
 
 With :math:`h = 1`, we imply that the driver's resonant frequency and
-the port tuning coincide. With :math:`Q_\mathrm{L} = 10`, the required
-:math:`Q_T` value is 0.2564, and in the lossless case, we get driver
-:math:`Q_T = 0.25`. Remember to compensate for all electrical resistance
+the port tuning coincide. With :math:`\ql = 10`, the required
+:math:`\qt` value is 0.2564, and in the lossless case, we get driver
+:math:`\qt = 0.25`. Remember to compensate for all electrical resistance
 in series with the driver.
 
 The CD4 alignment is a special case of the (S)BB4 alignments, similar to
@@ -75,6 +76,6 @@ LR4, but in this case targeting no overshoot in the time domain.
 Therefore, the equations are similar, and it is a 1-parameter alignment,
 but with our requirement of being critically damped and consequently
 having all four poles on the real axis (at -1), it follows that the
-calculation of the required :math:`Q_T` and :math:`\alpha` are a bit
+calculation of the required :math:`\qt` and :math:`\alpha` are a bit
 different.
 

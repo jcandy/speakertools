@@ -3,11 +3,16 @@
    :keywords: speakerbench,loudspeaker,driver,parameter,impedance,measurement,simulation,port
    :description: Speakerbench Documentation
 
+==============
 Box Simulation
 ==============
 
 .. note::
-   **STEP 4**: You can perform box simulations using data created (or imported) in :doc:`STEP 3 <create>`. You can also import data from the massive `Loudspeaker Database <https://loudspeakerdatabase.com>`_!
+   **STEP 4**: You can perform box simulations using data created (or imported) in :doc:`STEP 3 <create>`. You can also import data from the massive |speakerdata|!
+
+.. |speakerdata| raw:: html
+
+   <a href="https://loudspeakerdatabase.com" target="_blank">Loudspeaker Database</a>
 
 The purpose of measuring the driver impedance (STEP 0) and determining the advanced parameters (STEPS 1-3) is to accurately predict the behavior in a box before it is built. Speakerbench offers a powerful box simulator that can calculate various quantities of interest using the advanced parameter model, or with the legacy Thiele-Small model.
 
@@ -31,7 +36,7 @@ Port Options
 
 For bass reflex simulation, Speakerbench supports two port models
 
-**classic**
+**Simple**
    The classic series mass-resistance model for vent impedance as described by Small, Benson and others.
 
 **T-line**
@@ -40,10 +45,9 @@ For bass reflex simulation, Speakerbench supports two port models
 Alignments
 ----------
 
-To facilitate choosing the box volume and vent tuning, Speakerbench will propose values based on standard 4th-order bass-reflex alignments :cite:`small:1973c`. These alignments are particular types of 4th-order high-pass filters. A comprehensive description is given in the :ref:`alignment_theory` section.
+To facilitate choosing the box volume and vent tuning, Speakerbench will propose values based on standard 4th-order bass-reflex alignments :cite:`small:1973c`. These alignments are particular types of 4th-order high-pass filters. A comprehensive description is given in the :ref:`Classic Vented Alignments` section.
 
 Transient Response
 ------------------
 
 In addition to the usual frequency-domain plots of SPL, velocity and displacement, Speakerbench can also calculate the step response, enabled by switching on the *Time domain* toggle in the Settings tab. This is more computationally intensive, so we recommend to leave it off until the step response is desired. Two plots are given: (1) the step response and (2) the contour map of the transfer function. Since Speakerbench implements an advanced transducer model, with viscoelasticity and semi-inductance, the time domain response is calculated with a contour integral algorithm as documented in :cite:`candy:2018`.
-

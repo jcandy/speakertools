@@ -3,6 +3,7 @@
    :keywords: speakerbench,loudspeaker,driver,parameter,json,design,calculator,impedance,measurement,simulation,software,free,audio
    :description: Speakerbench Documentation
 
+=====================
 Impedance Data Object
 =====================
 
@@ -25,21 +26,3 @@ The comment field is the first entry in the data object such that if you open up
 
 .. important::
    All three measurements in the ZMA files must contain the same number of datapoints at the same measurement frequencies.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

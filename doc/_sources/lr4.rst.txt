@@ -3,6 +3,7 @@
    :keywords: speakerbench,loudspeaker,driver,parameter,json,design,calculator,impedance,measurement,simulation,software,free,audio
    :description: Speakerbench Documentation
 
+=============================
 The LR4 Bass Reflex Alignment
 =============================
 
@@ -44,22 +45,22 @@ Using Python, we may calculate the LR4 alignment as follows:
    h = 1
    alpha = 1/4 * (1/Qt - 1/Ql)**2
 
-where :math:`Q_T` is not something you can specify yourself but is given
+where :math:`\qt` is not something you can specify yourself but is given
 by the equations because the LR4 alignment is a discrete alignment.
 
 The classic Thiele-Small (T-S) theory prescribes that the loudspeaker
-designer should account for losses by setting :math:`Q_\mathrm{L}` in the range
+designer should account for losses by setting :math:`\ql` in the range
 of 5 to 20, typically set conservatively to 7, but no matter what value
 is chosen, it is arbitrary and not based on physical leakage. In the
-shown code, :math:`Q_\mathrm{L}` is set to 10, a round number. An even higher
-:math:`Q_\mathrm{L}` value could be chosen, calculating a larger :math:`\alpha`
+shown code, :math:`\ql` is set to 10, a round number. An even higher
+:math:`\ql` value could be chosen, calculating a larger :math:`\alpha`
 value (smaller box volume), with a slightly increased risk that the box
 you build becomes a bit too small. You are welcome to change the
-:math:`Q_\mathrm{L}` value as you see fit.
+:math:`\ql` value as you see fit.
 
-For leakage :math:`Q_\mathrm{L} = \infty`, the driver :math:`Q_T` that matches
+For leakage :math:`\ql = \infty`, the driver :math:`\qt` that matches
 the Linkwitz-Riley response function is: :math:`1/\sqrt{8} \approx 0.354`.
-If :math:`Q_\mathrm{L} = 10`, as in the code example, then :math:`Q_T = 0.367`.
-When aiming for these :math:`Q_T`-values, remember that the driver
+If :math:`\ql = 10`, as in the code example, then :math:`\qt = 0.367`.
+When aiming for these :math:`\qt`-values, remember that the driver
 specification from the datasheet should be a bit lower to allow for some
 series resistance.
