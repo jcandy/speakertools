@@ -12,27 +12,27 @@ The CD4 alignment was first presented in the Voice Coil Magazine, August
 `online version October 2024 <https://audioxpress.com/article/the-cd4-bass-reflex-alignment>`_.
 
 A critically damped loudspeaker is a system that has no overshoot to a
-step function input. A critically damped 2nd-order closed box is known
+step function input. A critically damped 2\ :sup:`nd`-order closed box is known
 from theory and implies that the box is designed such that the system
 :math:`Q_{TC} = 0.5`. In this article, we describe the Critically Damped
-4th-order (CD4) bass reflex alignment.
+4\ :sup:`th`-order (CD4) bass reflex alignment.
 
 The Calculation of CD4 Including Leakage Loss
 ---------------------------------------------
 
 In a bass reflex design, we achieve no overshoot to a step function with
-a 4th-order polynomial if the response has all poles on the real axis.
+a 4\ :sup:`th`-order polynomial if the response has all poles on the real axis.
 If we limit ourselves to :math:`h = 1`, with all poles on the unit
 circle, this becomes a special case of the (Sub-) Boombox alignment,
 where the damping ratio :math:`\zeta = 1`, which is equivalent to each
 second-order filter :math:`Q = 1/(2 \cdot \zeta) = 0.5`. We remind ourselves that a
 bass reflex system consists of two oscillators: 1) the driver in the
-box, and 2) the port in the box, and each of these two 2nd-order systems
+box, and 2) the port in the box, and each of these two 2\ :sup:`nd`-order systems
 must be critically damped, i.e., have a filter :math:`Q = 0.5`, which means they
-are 2nd-order Linkwitz-Riley filter functions. Since a 2nd-order
-Linkwitz-Riley filter is composed of two cascaded 1st-order
-(Butterworth) filters, you can also say the 4th-order critically damped
-system consists of four cascaded 1st-order filters. The normalized
+are 2\ :sup:`nd`-order Linkwitz-Riley filter functions. Since a 2\ :sup:`nd`-order
+Linkwitz-Riley filter is composed of two cascaded 1\ :sup:`st`-order
+(Butterworth) filters, you can also say the 4\ :sup:`th`-order critically damped
+system consists of four cascaded 1\ :sup:`st`-order filters. The normalized
 response function becomes:
 
 .. math::
@@ -78,4 +78,3 @@ but with our requirement of being critically damped and consequently
 having all four poles on the real axis (at -1), it follows that the
 calculation of the required :math:`\qt` and :math:`\alpha` are a bit
 different.
-

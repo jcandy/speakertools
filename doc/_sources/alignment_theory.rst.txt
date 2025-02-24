@@ -14,7 +14,7 @@ For an overview of the alignments discussed here and supported in Speakerbench, 
 History and framework
 ---------------------
 
-To facilitate choosing the box volume and vent tuning, Speakerbench will propose values based on standard 4th-order bass-reflex alignments. These alignments are particular types of 4th-order high-pass filters. Following Small :cite:`small:1973c` (Eq. 57) we can write the normalized response function as
+To facilitate choosing the box volume and vent tuning, Speakerbench will propose values based on standard 4\ :sup:`th`-order bass-reflex alignments. These alignments are particular types of 4\ :sup:`th`-order high-pass filters. Following Small :cite:`small:1973c` (Eq. 57) we can write the normalized response function as
 
 .. math::
    G_\mathrm{H}(s) = \frac{s^4}{s^4 + a_1 s^3 + a_2 s^2 + a_3 s + 1} \; ,
@@ -146,7 +146,7 @@ We describe this alignment in a bit more detail in its own section: :ref:`The CD
 Inter-Order Butterworth IB4
 ...........................
 
-The fourth-order Inter-Order Butterworth high-pass filter is defined by A. N. Thiele as a combination of a second-order and two identical first-order filters. Two cascaded first-order 'Butterworth' filters become a second-order Linkwitz-Riley filter function. The other second-order term is defined by targeting a maximally flat 4th-order response. When compared to the LR4 response, an IB4 alignment will have a bit more extended response, then a sharper knee and faster roll-off (similar to a maximally flat response, but within what's obtainable with the constraint of two first-order filters). The two first-order filters place two of the poles on the real axis. The response function is:
+The fourth-order Inter-Order Butterworth high-pass filter is defined by A. N. Thiele as a combination of a second-order and two identical first-order filters. Two cascaded first-order 'Butterworth' filters become a second-order Linkwitz-Riley filter function. The other second-order term is defined by targeting a maximally flat 4\ :sup:`th`-order response. When compared to the LR4 response, an IB4 alignment will have a bit more extended response, then a sharper knee and faster roll-off (similar to a maximally flat response, but within what's obtainable with the constraint of two first-order filters). The two first-order filters place two of the poles on the real axis. The response function is:
 
 .. math::
 
@@ -415,7 +415,7 @@ Finally, note that by setting :math:`\epsilon=0` above we obtain the lossless so
 
 In Speakerbench, when we apply this method, the alignment acronym is followed by a 'Q' as in B4Q, LR4Q and BL4Q. Be aware, the B4Q in Speakerbench is the same as what is known in classical theory as the QB3 alignment.
 
-Note: Bullock defines SQB3 as a continuation of the QB3 alignment, but for drivers with :math:`\qt > 0.4` and up to 0.56.
+Note: Bullock :cite:`bullock:1981` defines SQB3 as a continuation of the QB3 alignment, but for drivers with :math:`\qt > 0.4` and up to 0.56.
 
 This particular implementation of the Quasi algorithm was first presented in Voice Coil Magazine, January 2025.
 
@@ -430,7 +430,7 @@ A special (discrete) alignment named the Inter-Order Butterworth (IB4) alignment
 Discrete Alignments Summary
 ---------------------------
 
-We have presented three methods to cope with the (quite normal) situation that the :math:`\qts` for your driver does not match the target response exactly. For example, consider the 4th order Butterworth, we have the B4i, B4Q (=QB3), as well as the B4CA method. With the three methods in mind, you can study their location in the Alignment Chart. The three methods will converge to a single point as your driver :math:`\qts` approaches the :math:`\qts` value for the target response. On the other hand, when your driver :math:`\qts` is far away from the :math:`\qts` for the target response, the three methods will be far away from each other.
+We have presented three methods to cope with the (quite normal) situation that the :math:`\qts` for your driver does not match the target response exactly. For example, consider the 4\ :sup:`th`-order Butterworth, we have the B4i, B4Q (=QB3), as well as the B4CA method. With the three methods in mind, you can study their location in the Alignment Chart. The three methods will converge to a single point as your driver :math:`\qts` approaches the :math:`\qts` value for the target response. On the other hand, when your driver :math:`\qts` is far away from the :math:`\qts` for the target response, the three methods will be far away from each other.
 
 If you wish to target something rather exact, then choose an alignment where the three methods are close, ideally they overlap.
 
@@ -514,7 +514,7 @@ In a typical situation, the designer has picked a driver with a specific :math:`
 Boombox
 .......
 
-The Boombox family of alignments was first described by W.J.J. Hoge (1976). This alignment is incredibly simple. The simplicity stems from the definition that the 4th-order polynomial, which describes the response function, is defined as two **identical** cascaded 2nd-order polynomials. This reduces the math to a 1-parameter family of responses, and it is equally as simple as calculating a closed box. The response function:
+The Boombox family of alignments was first described by W.J.J. Hoge (1976). This alignment is incredibly simple. The simplicity stems from the definition that the 4\ :sup:`th`-order polynomial, which describes the response function, is defined as two **identical** cascaded 2\ :sup:`nd`-order polynomials. This reduces the math to a 1-parameter family of responses, and it is equally as simple as calculating a closed box. The response function:
 
 .. math::
    G(s) = \frac{ s^4 } { (s^2 + 2 \cdot \zeta \cdot s + 1)^2 }
@@ -530,11 +530,11 @@ where :math:`\zeta` is the damping ratio, which is a value that depends on the d
 
 In the above code, insert whatever :math:`\ql` and :math:`\qts` values you wish to compute for. The :math:`h` output parameter is always 1 for the boombox alignment, by definition.
 
-It is worth noting that if :math:`\qts = \ql`, then we have a discontinuity (:math:`\alpha = 0`). A low :math:`\ql`-value equivalent to a driver :math:`\qts` value seems quite inappropriate for bass reflex, and in practice, it is reasonable to expect that :math:`\ql` is always much larger than :math:`\qts`. The lowest :math:`\ql`-value that Bullock (1) presents is 3, but even that is border-lining exceptionally bad; meanwhile, one would be hard-pressed to find a driver with :math:`\qts = 3` (it could be reached with significant DC resistance in series with the driver, but only if the driver's :math:`\qms`-value is even higher).
+It is worth noting that if :math:`\qts = \ql`, then we have a discontinuity (:math:`\alpha = 0`). A low :math:`\ql`-value equivalent to a driver :math:`\qts` value seems quite inappropriate for bass reflex, and in practice, it is reasonable to expect that :math:`\ql` is always much larger than :math:`\qts`. The lowest :math:`\ql`-value that Bullock :cite:`bullock:1981` presents is 3, but even that is border-lining exceptionally bad; meanwhile, one would be hard-pressed to find a driver with :math:`\qts = 3` (it could be reached with significant DC resistance in series with the driver, but only if the driver's :math:`\qms`-value is even higher).
 
-Hoge was focused on a suitable alignment for instrument loudspeakers, e.g., for electric guitars, and was seeking a better bass reflex alignment option for the high :math:`\qts`-drivers of the time than the classical Chebyshev C4-alignment. Choosing to cascade two identical 2nd-order polynomials gives double poles and therefore a nicer group delay with a reasonably fast settling time for an impulse. Unfortunately, this alignment always creates a peak before roll-off, and Hoge, who is a witty person, named it the Boombox alignment, or BB4.
+Hoge was focused on a suitable alignment for instrument loudspeakers, e.g., for electric guitars, and was seeking a better bass reflex alignment option for the high :math:`\qts`-drivers of the time than the classical Chebyshev C4-alignment. Choosing to cascade two identical 2\ :sup:`nd`-order polynomials gives double poles and therefore a nicer group delay with a reasonably fast settling time for an impulse. Unfortunately, this alignment always creates a peak before roll-off, and Hoge, who is a witty person, named it the Boombox alignment, or BB4.
 
-Hoge only defined the BB4 alignment for driver :math:`\qts` above ca. 0.37, and he identified the peak with :math:`\ql = 7` for a driver :math:`\qts = 0.72` to be around +6 dB. For high :math:`\qts` drivers, the peak becomes large, which you might accept in favor of the impulse stopping quicker than a similar peaky Chebyshev response. Besides, the single peak of a BB4 alignment is easier to equalize electronically, than the ripples of a Chebyshev alignment. On the other hand, a Chebyshev alignment with a similar driver Qt results in 1.3 - 1.4 dB ripple. Finally, when driver :math:`\qts` is this high, one may consider a large closed box.
+Hoge only defined the BB4 alignment for driver :math:`\qts` above ca. 0.37, and he identified the peak with :math:`\ql = 7` for a driver :math:`\qts = 0.72` to be around +6 dB. For high :math:`\qts` drivers, the peak becomes large, which you might accept in favor of the impulse stopping quicker than a similar peaky Chebyshev response. Besides, the single peak of a BB4 alignment is easier to equalize electronically, than the ripples of a Chebyshev alignment. On the other hand, a Chebyshev alignment with a similar driver :math:`\qt` results in 1.3 - 1.4 dB ripple. Finally, when driver :math:`\qts` is this high, one may consider a large closed box.
 
 Bullock realized that the equations also work well for drivers with lower :math:`\qts`, and in this case there is no peak in the frequency response. He coined the term Sub-Boombox for these alignments, or SBB4, and his tables go as low as :math:`\qts = 0.20`. It is therefore reasonable to say that the BB4-SBB4 alignment works for driver :math:`\qts` in the range of 0.20-0.72, although mathematically you are free to calculate outside these limits.
 
@@ -553,7 +553,7 @@ Transitional Alignments
 To the best of our knowledge, the concept of Transitional Alignments was never explored in relation to loudspeaker (Bass Reflex) boxes until it was presented in the Voice Coil Magazine, September 2024. Later the article became Open Access when AudioXpress released an
 `online version December 2024 <https://audioxpress.com/article/transitional-bass-reflex-alignments>`_.
 
-Notably, R. M. Golden and J. F. Kaiser [1] described the roots of normalized Butterworth and Bessel-Thomson low-pass transfer functions, from which Richard Small [2] derived the polynomial coefficients of the fourth-order highpass Bessel alignment. Golden and Kaiser also described a transitional filter design where a chosen balance between the two is realized.
+Notably, R. M. Golden and J. F. Kaiser :cite:`golden:1971` described the roots of normalized Butterworth and Bessel-Thomson low-pass transfer functions, from which Richard Small :cite:`small:1973c` derived the polynomial coefficients of the fourth-order highpass Bessel alignment. Golden and Kaiser also described a transitional filter design where a chosen balance between the two is realized.
 
 Speakerbench supports a transitional alignment family, which transitions between Butterworth and Linkwitz-Riley, named B4-LR4.
 
@@ -593,7 +593,7 @@ distinct poles of the response function lie on the unit circle at
 
 **Summary**
 
-With the calculated transition from LR4 to B4, we have obtained a subtle improvement over continuing with the Boombox alignment. For drivers with :math:`\qts` values above the LR4-Qt, the Boombox alignment will have a (small) peak in its frequency response before roll-off. By transitioning towards the B4 alignment, we avoid this peak, and the frequency response remains monotonic.
+With the calculated transition from LR4 to B4, we have obtained a subtle improvement over continuing with the Boombox alignment. For drivers with :math:`\qts` values above the LR4-:math:`\qt`, the Boombox alignment will have a (small) peak in its frequency response before roll-off. By transitioning towards the B4 alignment, we avoid this peak, and the frequency response remains monotonic.
 
 Note: Transitioning between B4 and LR4 is only relevant for drivers with :math:`\qts`-values between the two alignment, i.e., ca. :math:`0.37 < \qts < 0,40`. This implies that Speakerbench only shows this option if your driver's :math:`\qts`-value is within this range.
 

@@ -61,7 +61,7 @@ Here, :math:`\sigma` is chosen so that the contour lies to the right of all sing
 	
    .. image:: images/time_paper/zplane.png
 
-   Complex plane illustrating Bromwich inversion contour (dashed line) for a hypothetical case.  The contour must lie to the right of all poles and branch cuts.  Also shown is the unit circle, poles typical of a 4th order Butterworth filter, and a branch cut (wavy curve) at :math:`s=0`.
+   Complex plane illustrating Bromwich inversion contour (dashed line) for a hypothetical case.  The contour must lie to the right of all poles and branch cuts.  Also shown is the unit circle, poles typical of a 4\ :sup:`th`-order Butterworth filter, and a branch cut (wavy curve) at :math:`s=0`.
 
 
 Impulse response
@@ -116,7 +116,7 @@ A simple example outlining the calculation of impulse and step responses for a s
 Application to transducer response
 ----------------------------------
 
-In the present paper, we choose to formulate the inverse problem using a dimensionless time :math:`t = \ws \tau`, where :math:`\tau` is the physical time, and :math:`\ws = 2 \pi \fs` is the resonant frequency of the loudspeaker driver.  To illustrate the inversion process for a simple case, we consider the steady-state pressure response for an undamped, closed box :cite:`benson:1993`. In this case, the response function takes the form of a 2nd-order high-pass filter
+In the present paper, we choose to formulate the inverse problem using a dimensionless time :math:`t = \ws \tau`, where :math:`\tau` is the physical time, and :math:`\ws = 2 \pi \fs` is the resonant frequency of the loudspeaker driver.  To illustrate the inversion process for a simple case, we consider the steady-state pressure response for an undamped, closed box :cite:`benson:1993`. In this case, the response function takes the form of a 2\ :sup:`nd`-order high-pass filter
 
 .. math::
    :label: eq.hp2
@@ -225,8 +225,7 @@ To modify the Weideman algorithm to prevent pole crossing, it is instructive to 
    R(s) = \frac{s^4}{\displaystyle \left(s^2+h^2\right) \left( 1 + \frac{s}{\qts} + s^2\right)
     + \alpha s^2} \; .
 
-The new parameter :math:`h = \wp / \ws`, where :math:`\wp` is resonant frequency of the vented enclosure, transforms the response into a 4th-order filter with four poles in the left half-plane.   Small :cite:`small:1973b` refers to :math:`h` as the *system tuning ratio*.  Typical vented alignments choose :math:`h \sim 1`. The pole locations for this response function can be computed analytically in some
-special cases -- most notably when the denominator coincides with the 4th-order Butterworth polynomial:
+The new parameter :math:`h = \wp / \ws`, where :math:`\wp` is resonant frequency of the vented enclosure, transforms the response into a 4\ :sup:`th`-order filter with four poles in the left half-plane.   Small :cite:`small:1973b` refers to :math:`h` as the *system tuning ratio*.  Typical vented alignments choose :math:`h \sim 1`. The pole locations for this response function can be computed analytically in some special cases -- most notably when the denominator coincides with the 4\ :sup:`th`-order Butterworth polynomial:
 
 .. math::
    :label: eq.but

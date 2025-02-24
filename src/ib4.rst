@@ -8,7 +8,7 @@ The IB4 Bass Reflex Alignment
 =============================
 
 The Inter-Order Butterworth (IB4) alignment is rarely talked about. It
-was mentioned briefly by Richard Small [2]. Bullock [3] published a
+was mentioned briefly by Richard Small :cite:`small:1973c`. Bullock :cite:`bullock:1981` published a
 table for this discrete alignment, and the tables are reproduced in The
 Loudspeaker Design Cookbook by Vance Dickason.
 
@@ -100,4 +100,3 @@ alignments; the quasi-method, the compliance alteration method, as
 well as the pure igorance method. Although IB4 is an instance of B4Q,
 the three methods still apply. The quasi-approach will overlap B4Q, and
 the IB4CA as well as IB4i still uniquely exist.
-
