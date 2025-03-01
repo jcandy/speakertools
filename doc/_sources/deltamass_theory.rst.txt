@@ -128,7 +128,7 @@ Based on Eqs. :eq:`eq.deltac` and :eq:`eq.omegadeltac`, :math:`\bl` is calculate
 
    \bls = \frac{m_1}{\Delta C_1} = m_1 \, \mathrm{Re} \left\langle \frac{i \omega \zms ( \zms - \Delta Z_1)}{\Delta Z_1} \right\rangle_{\omega_1}^{\omega_2} \; ,
 
-where the angle brackets denote an average.  For each measurement point in frequency, a :math:`\bl` value can be extracted and hence it is possible to plot a :math:`\bl(\omega)` curve.  An example of this curve is shown in Fig. :numref:`fig.bl`.  Of course, :math:`\bl` in the model does not change with frequency, so it remains to select a suitable frequency range for the average in Eq. :eq:`eq.blw`.  We recommend :math:`\omega_1 = 0.8 \ws` and :math:`\omega_2 = 1.2 \ws`, where :math:`\ws` is determined by Eq. :eq:`eq.fs_estimated`.  For the average to be meaningful, a flat area of the :math:`\bl(\omega)` curve must be found. Typically, provided the measurements are good, this occurs in the vicinity of the free-air resonant frequency of the driver.  In this way, :math:`\bl` may be determined *without* any model assumptions about :math:`\fr(\omega)`.
+where the angle brackets denote an average.  For each measurement point in frequency, a :math:`\bl` value can be extracted and hence it is possible to plot a :math:`\bl(\omega)` curve.  An example of this curve is shown in :numref:`fig.bl`.  Of course, :math:`\bl` in the model does not change with frequency, so it remains to select a suitable frequency range for the average in Eq. :eq:`eq.blw`.  We recommend :math:`\omega_1 = 0.8 \, \ws` and :math:`\omega_2 = 1.2 \, \ws`, where :math:`\ws` is determined by Eq. :eq:`eq.fs_estimated`.  For the average to be meaningful, a flat area of the :math:`\bl(\omega)` curve must be found. Typically, provided the measurements are good, this occurs in the vicinity of the free-air resonant frequency of the driver.  In this way, :math:`\bl` may be determined *without* any model assumptions about :math:`\fr(\omega)`.
 
 Accurate determination of :math:`\bl` is crucial in order to ensure we can reliably transform parameters from the mechanical to the electrical domain.
 
@@ -164,7 +164,7 @@ where
 
 .. math:: Y_j \doteq \frac{1}{(\zms)_j}
 
-is the motional admittance.  Here, :math:`\sigma_R = \mathrm{Re}\,\sigma` and :math:`\sigma_I = \mathrm{Im} \,\sigma`. The summation variable :math:`j` denotes a suitable subdomain of the frequency range. For the analysis in the present paper, we choose values of :math:`j` for which :math:`0.8 \ws < \omega_j < 1.2 \ws`. Taking the partial derivatives of :math:`\varepsilon` with respect to :math:`a,b,c` yields the following linear equations for the minimum norm of the residual:
+is the motional admittance.  Here, :math:`\sigma_R = \mathrm{Re}\,\sigma` and :math:`\sigma_I = \mathrm{Im} \,\sigma`. The summation variable :math:`j` denotes a suitable subdomain of the frequency range. For the analysis in the present paper, we choose values of :math:`j` for which :math:`0.8 \, \ws < \omega_j < 1.2 \, \ws`. Taking the partial derivatives of :math:`\varepsilon` with respect to :math:`a,b,c` yields the following linear equations for the minimum norm of the residual:
 
 .. math::
    :label: eq.lsq
