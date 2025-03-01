@@ -20,10 +20,10 @@ $ make (this will generate html files)
 
 To *publish* webpages:
 
-$ make sync  (to copy html files to doc directory)
-$ make clean (to remove temporary files
-$ cd .. (change to doc directory)
-$ git add . ; git commit -m <message> (add/commit changes)
+$ make sync  (to copy html files to doc directory)\
+$ make clean (to remove temporary files\
+$ cd .. (change to doc directory)\
+$ git add . ; git commit -m <message> (add/commit changes)\
 $ git push
 
 NOTES: Currently,
