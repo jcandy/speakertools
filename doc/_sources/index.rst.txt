@@ -28,7 +28,7 @@ Speakerbench provides a new framework for **higher-accuracy** driver simulation.
             The Speakerbench advanced model (magenta) correctly predicts the impedance peak offset for
 	    a woofer in a vented box. Classical Thiele-Small theory (black) misses this effect.
 
-With a physically accurate specification of impedance and losses, you can build a loudspeaker and precisely verify the performance and power dissipation versus applied voltage. With the traditional model, losses that originate in the loudspeaker suspension are typically **misattributed** to ficticuous box leakage or port losses. With the advanced model, once can obtain a correct physical attribution of the losses.
+With a physically accurate specification of impedance and losses, you can build a loudspeaker and precisely verify the performance and power dissipation versus applied voltage. With the traditional model, losses that originate in the loudspeaker suspension are typically **misattributed** to ficticuous box leakage or port losses. With the advanced model, one can obtain a correct physical attribution of the losses.
 
 Speakerbench workflows are separated into 4 apps:
 
@@ -74,6 +74,7 @@ Speakerbench doesn't do the actual impedance measurements for you; rather, you w
    :hidden:
 	
    deltamass_theory
+   box_theory
    alignment_theory
    time_theory
 
