@@ -26,6 +26,11 @@ def coef(align):
       a1 = (2+a)/b**0.25
       a2 = (1+2*a+b)/b**0.5
       a3 = (a+2*b)/b**0.75
+   elif align == 'CD4':
+      # Critically damped CD4
+      a1 = 4.0
+      a2 = 6.0
+      a3 = 4.0
 
    return a1,a2,a3
 
@@ -59,21 +64,35 @@ def solve(a1,a2,a3,ql):
       
    return Qt,h,alpha
 
-Ql_vec = [100,50,10,7]
+Ql_vec = ['inf',100,50,10,7]
 
-print('             BL4                   LR4                   B4')
-print(' Ql     Qt    h    alpha      Qt    h    alpha      Qt    h    alpha ')
-print('---  --------------------  --------------------  --------------------')
+print('             B4                    LR4                   IB4                   BL4                   CD4        ' )
+print(' Ql     Qt    h    alpha      Qt    h    alpha      Qt    h    alpha      Qt    h    alpha      Qt    h    alpha ')
+print('---  --------------------  --------------------  --------------------  --------------------  --------------------')
 
 for Ql in Ql_vec:
-   a1,a2,a3 = coef('BL4')
-   Qt_BL4,h_BL4,alpha_BL4 = solve(a1,a2,a3,1/Ql)
-   a1,a2,a3 = coef('LR4')
-   Qt_LR4,h_LR4,alpha_LR4 = solve(a1,a2,a3,1/Ql)
+   if Ql == 'inf':
+      ql = 0.0
+   else:
+      ql = 1/Ql
+
    a1,a2,a3 = coef('B4')
-   Qt_B4,h_B4,alpha_B4    = solve(a1,a2,a3,1/Ql)
+   Qt1,h1,alpha1 = solve(a1,a2,a3,ql)
+   a1,a2,a3 = coef('LR4')
+   Qt2,h2,alpha2 = solve(a1,a2,a3,ql)
+   a1,a2,a3 = coef('IB4')
+   Qt3,h3,alpha3 = solve(a1,a2,a3,ql)
+   a1,a2,a3 = coef('BL4')
+   Qt4,h4,alpha4 = solve(a1,a2,a3,ql)
+   a1,a2,a3 = coef('CD4')
+   Qt5,h5,alpha5 = solve(a1,a2,a3,ql)
   
-   print('{:3}  {:.4f} {:.4f} {:.4f}  {:.4f} {:.4f} {:.4f}  {:.4f} {:.4f} {:.4f}'.
-         format(Ql,Qt_BL4,h_BL4,alpha_BL4,
-                Qt_LR4,h_LR4,alpha_LR4,
-                Qt_B4,h_B4,alpha_B4))
+   print('{:3}  {:.4f} {:.4f} {:.4f}  {:.4f} {:.4f} {:.4f}  {:.4f} {:.4f} {:.4f}  {:.4f} {:.4f} {:.4f}  {:.4f} {:.4f} {:.4f}'.
+         format(Ql,
+                Qt1,h1,alpha1,
+                Qt2,h2,alpha2,
+                Qt3,h3,alpha3,
+                Qt4,h4,alpha4,
+                Qt5,h5,alpha5
+                ))
+                
