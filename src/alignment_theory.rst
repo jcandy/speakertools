@@ -296,7 +296,7 @@ Thus, in the region :math:`x \leq 1` the properties of polynomial ensure that th
 .. math::
    \frac{1}{1+\varepsilon^2} \leq \left| G_\mathrm{H}(i \omega) \right|^2 \leq 1 \; .
 
-Thus, :math:`\varepsilon` is a measure of the passband ripple, and the is the degree of freedom required for drivers of varying :math:`\qts`. Note however that the response functions above are not yet written in the canonical form of Eq. :eq:`eq.response`. Using the properties of the Chebyshev polynomials one can determine the locations of the poles :math:`u = i x = i \cos\phi` (the analog of :math:`s = i\omega`) by finding the roots of
+Thus, :math:`\varepsilon` is a measure of the passband ripple. It provides the degree of freedom required for drivers of varying :math:`\qts`. Note however that the response functions above are not yet written in the canonical form of Eq. :eq:`eq.response`. Using the properties of the Chebyshev polynomials one can determine the locations of the poles :math:`u = i x = i \cos\phi` (the analog of :math:`s = i\omega`) by finding the roots of
 
 .. math::
    1+\varepsilon^2 \cos\left(4\phi\right)^2 = 0
