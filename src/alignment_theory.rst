@@ -52,6 +52,16 @@ A *discrete* bass reflex alignment means we need to select a driver with a speci
 Butterworth B4
 ^^^^^^^^^^^^^^
 
+.. subfigure:: A
+   :width: 40%
+   :gap: 6px
+   :align: center
+   :name: fig.B4
+
+   .. image:: example_code/B4-poles.png
+
+   B4 poles.
+
 The Butterworth filter response was first described by Stephen Butterworth around 1930. This filter offers a maximally-flat frequency response (with no ripple in the passband) offers the sharpest knee point towards the roll-off region and thus the most extended bandwidth. In relation to bass reflex loudspeakers, B4 was a very popular target response for many years, and several (non-discrete) alignment *families* ultimately develops from B4. The amplitude response function 
 
 .. math::
