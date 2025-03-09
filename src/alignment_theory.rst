@@ -43,6 +43,18 @@ where
   A_2 & = a_2^2+2-2 a_1 a_3 \; , \\
   A_3 & = a_3^2-2 a_2 \; .
 
+Alignment source code
+^^^^^^^^^^^^^^^^^^^^^
+
+All the plots and data output shown on this page were generated using the Speakerbench python alignment library.
+
+.. collapse:: CLICK HERE to expand alignment library code
+   
+   .. literalinclude::
+      example_code/libalignment.py
+
+Additional links to specific source code are given in the relevant sections below.
+
 A note about series resistance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

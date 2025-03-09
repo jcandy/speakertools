@@ -1,4 +1,4 @@
-# libalign.py
+# libalignment.py
 # Library for calculation of alignments used in Speakerbench
 
 import numpy as np
