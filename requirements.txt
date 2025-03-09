@@ -6,3 +6,5 @@ sphinxcontrib.contentui
 sphinxcontrib.youtube
 sphinx_rtd_theme
 sphinx_subfigure
+fluiddyn
+
