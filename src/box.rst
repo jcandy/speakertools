@@ -21,13 +21,13 @@ To load parameters for a driver into the box simulator, you need to use the :doc
 Enclosure Options
 -----------------
 
-The enclosure options supported by Speakerbench are:
+Two enclosure options supported by Speakerbench are:
 
 **classic**
-     A simple (classic) series resistance-compliance model for the enclosure as described by Small, Benson and others.
+     The classic series resistance-compliance model for the enclosure as described by Small :cite:`small:1972a`, Benson :cite:`benson:1993` and others.
 
-**2-port**
-   A low-frequency 2-port model for the enclosure matrix that includes rigorous acoustic mass elements derived by solving the Helmholtz equation. Losses and volume expansion due to fill are also treated including theoretical estimates from the theory of Futtrup :cite:`futtrup:2011`. Different damping materials, from Polyester or PET fiber, or from Glass wool, are treated. Significant effort has gone in to experimental validation of the methods.
+**Beranek**
+   A low-frequency 2-port model for the enclosure matrix that includes rigorous acoustic mass elements derived by solving the Helmholtz equation. Losses and volume expansion due to fill are included. The mass elements computed by this model depend on the box geometry.
 
 The Beranek-Mellow transmission matrix formulation :cite:`beranek:2012` is used to implement both options. The calculated results are reliable only for the low-frequency range, below the first box resonance.
 
@@ -36,7 +36,7 @@ Port Options
 
 For bass reflex simulation, Speakerbench supports two port models
 
-**Simple**
+**classic**
    The classic series mass-resistance model for vent impedance as described by Small, Benson and others.
 
 **T-line**
@@ -45,7 +45,7 @@ For bass reflex simulation, Speakerbench supports two port models
 Alignments
 ----------
 
-To facilitate choosing the box volume and vent tuning, Speakerbench will propose values based on standard 4\ :sup:`th`-order bass-reflex alignments :cite:`small:1973c`. These alignments are particular types of 4\ :sup:`th`-order high-pass filters. A comprehensive description is given in the :ref:`Classic Vented Alignments` section.
+To facilitate choosing the box volume and vent tuning, Speakerbench will propose values based on standard 4th-order bass-reflex alignments :cite:`small:1973c`. A comprehensive description is given in the :ref:`Classic Vented Alignments` section.
 
 Transient Response
 ------------------
