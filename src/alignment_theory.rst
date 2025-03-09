@@ -57,16 +57,16 @@ Here, we have the electrical and mechanical Q values
    \qms & = \frac{\mms}{\rms} \, \ws \\
    \qes & = \frac{\mms}{\rme} \, \ws
    
-where the value of :math:`\rme` depends on the electrical resistance of the driver voice coil :math:`\re` as well as the series any electrical series resistance :math:`R_\mathrm{S}` in series with the driver 
+where the value of :math:`\rme` depends on the electrical resistance of the driver voice coil :math:`\re` as well as any added electrical resistance :math:`R_\mathrm{S}` in series with the driver 
 
 .. math::
-   \rme = \frac{\bl^2}{\re + R_\mathrm{S}} \; .
+   \rme = \frac{\bls}{\re + R_\mathrm{S}} \; .
 
-When you enable the optional filter in the Speakerbench box mode, and apply a series resistance, the modified value :math:`Q_\mathrm{T,R_S}` is calculated in Speakerbench and displayed in the INFO tab. This value is what Speakerbench uses for response calculations (and in the alignment chart). The second-order response function becomes:
+When you enable the optional filter in the Speakerbench box mode, and apply a series resistance, the modified value :math:`Q_\mathrm{T,R_S}` is calculated in Speakerbench and displayed in the INFO tab. This value is what Speakerbench uses for response calculations (and in the alignment chart). The second-order response function (see :ref:`Second-order alignments`) becomes:
 
 .. math::
-   G_\mathrm{H}(u) = \frac{u^2}{\displaystyle u^2 + \frac{1}{Q_\mathrm{T,R_S}} u + 1 + \alpha} \; .
-  
+   G_\mathrm{H}(u) = \frac{u^2}{\displaystyle u^2 + \frac{u}{Q_\mathrm{T,R_S}} + 1 + \alpha} \; .
+   
 Discrete alignments
 -------------------
 
@@ -291,10 +291,10 @@ Note: These graphs are **not** normalized relative to the driver's resonance fre
 .. collapse:: CLICK HERE to expand discrete alignment source code
    
    .. literalinclude::
-      example_code/qtsolve.py
+      example_code/print_qt.py
 
 .. literalinclude::
-   example_code/qtsolve.txt
+   example_code/print_qt.txt
 
    
 Modification of discrete alignments 
@@ -328,10 +328,10 @@ In Speakerbench, when we apply this method, the alignment acronym is followed by
 .. collapse:: CLICK HERE to expand quasi source code
    
    .. literalinclude::
-      example_code/casolve.py
+      example_code/print_ca.py
 
 .. literalinclude::
-   example_code/casolve.txt
+   example_code/print_ca.txt
 
 Compliance Alteration was first presented in Voice Coil Magazine from October 2024. Later, the article became Open Access when AudioXpress released an `Compliance Alteration article <https://audioxpress.com/article/bass-reflex-alignments-compliance-alteration>`_. The method can be applied to any desired discrete target alignment. This method is particularly interesting if your driver :math:`\qts` is a bit too high, because with the compliance alteration technique, the box calculation is then treated as if the suspension is a bit too stiff. Fortunately, the driver suspension will experience aging (or burn-in) over time and will soften. When this happens, the provided equations dictate that your system will, over time, move toward the desired target response, and if softened enough to reach :math:`Q_\mathrm{TS,ref}`, the system response will match the target without any error. If the softening does not happen, the system response will deviate slightly from the target.
 
@@ -370,10 +370,10 @@ Finally, note that by setting :math:`\epsilon=0` above we obtain the lossless so
 .. collapse:: CLICK HERE to expand quasi source code
    
    .. literalinclude::
-      example_code/quasi.py
+      example_code/print_quasi.py
 
 .. literalinclude::
-   example_code/quasi.txt
+   example_code/print_quasi.txt
 
 In Speakerbench, when we apply this method, the alignment acronym is followed by Q as in B4Q, LR4Q and BL4Q. Thus, B4Q in Speakerbench is the same as what is known in classical theory as the QB3 alignment. We remark that Bullock :cite:`bullock:1981` defines SQB3 as a subset of QB3 for drivers with :math:`0.56 > \qts > 0.4`.
 
@@ -486,10 +486,10 @@ Evidenty, these functions can be analytically continued triivally to the region 
 .. collapse:: CLICK HERE to expand C4 source code
    
    .. literalinclude::
-      example_code/c4solve.py
+      example_code/print_c4.py
 
 .. literalinclude::
-   example_code/c4solve.txt
+   example_code/print_c4.txt
 
 Second-order alignments
 -----------------------
@@ -497,9 +497,9 @@ Second-order alignments
 As :math:`h \rightarrow 0` in :eq:`eq.a`, we can recover the limit of a closed box. However, there is a subtlety related to :math:`\ql` which is apparent from the definition
 
 .. math::
-   \ql \doteq \frac{h}{\alpha} \rml \cms \, \ws
+   \ql \doteq \frac{h}{\alpha} \rml \cms \, \ws \; .
 
-To retain loss in a sealed enclosure we introduce :math:`\qlc` via :math:`\ql \doteq h \, \qlc`. After some algebra, and using :math:`\qlc` to describe losses, we can derive the 3rd-order leaky-sealed-box response 
+To properly retain loss in a sealed enclosure we introduce :math:`\qlc` via :math:`\ql \doteq h \, \qlc`. After some algebra, and using :math:`\qlc` in place of :math:`\ql`, we can derive the 3rd-order leaky-sealed-box response 
 
 .. math::
    \frac{u^3}{\displaystyle u^3

@@ -3,40 +3,7 @@ import numpy.polynomial as poly
 import sys
 import matplotlib.pyplot as plt
 from matplotlib import rc
-
-def coef(align):
-
-   if align == 'BL4':
-      # Bessel BL4
-      a1 = 105/105**0.75  
-      a2 = 45/105**0.5
-      a3 = 10/105**0.25
-   elif align == 'B4':
-      # Butterworth B4
-      t1 = np.pi/8 ; t2 = 3*np.pi/8
-      a1 = 2*(np.cos(t1)+np.cos(t2))
-      a2 = 2+4*np.cos(t1)*np.cos(t2)
-      a3 = a1
-   elif align == 'LR4':
-      # Linkwitz-Riley LR4
-      t1 = t2 = np.pi/4
-      a1 = 2*(np.cos(t1)+np.cos(t2))
-      a2 = 2+4*np.cos(t1)*np.cos(t2)
-      a3 = a1
-   elif align == 'IB4':
-      # Inter-order Butterworth IB4 
-      b = np.sqrt(3)
-      a = np.sqrt(2*(b-1))
-      a1 = (2+a)/b**0.25
-      a2 = (1+2*a+b)/b**0.5
-      a3 = (a+2*b)/b**0.75
-   elif align == 'CD4':
-      # Critically damped CD4
-      a1 = 4.0
-      a2 = 6.0
-      a3 = 4.0
-
-   return a1,a2,a3
+from libalignment import *
 
 def poles(align):
 
@@ -59,22 +26,15 @@ def poles(align):
 
    return r0,ang0,r1,ang1
 
-#for align in ['BL4','B4','LR4','IB4','CD4']:
-#   r0,ang0,r1,ang1 = poles(align)
-#   print('{:<3} {:.3f} {:.3f} {:.3f} {:.3f}'.format(align,r0,ang0/np.pi,r1,ang1/np.pi))
-
 rc('font',size=16)
 rc('text',usetex=True)
-
-x0 = 3.0
-
-# Laplace freq 
-s = 1j*np.logspace(np.log10(1/x0),np.log10(x0),64)
-w = abs(s)
 
 # Angle
 t = np.linspace(0.0,2*np.pi,128)
 
+#--------------------------------------------
+# Pole plots
+#--------------------------------------------
 for align in ['B4','LR4','IB4','BL4','CD4']:
 
    fig = plt.figure(figsize=(6,6))
@@ -113,6 +73,9 @@ for align in ['B4','LR4','IB4','BL4','CD4']:
    plt.savefig(out)
    fig.clear()
 
+#--------------------------------------------
+# Individual amplitude plots
+#--------------------------------------------
 for align in ['B4','LR4','IB4','BL4','CD4']:
 
    fig = plt.figure(figsize=(6,6))
@@ -121,15 +84,15 @@ for align in ['B4','LR4','IB4','BL4','CD4']:
    out = align+'-amp.png'
 
    a1,a2,a3 = coef(align)
-   h = abs(s**4)/abs(s**4+a1*s**3+a2*s**2+a3*s+1)
+   w,spl,delay = response(a1,a2,a3)
    if align == 'B4':
-      spl0 = 20*np.log10(h)
+      spl0 = spl
       ax.plot(w,spl0,label=r'B4')
    else:
-      spl = 20*np.log10(h)
       ax.plot(w,spl0,label=r'B4')
       ax.plot(w,spl,label=align)
 
+   ax.set_ylim(-36,2)
    ax.set_xlabel(r'$\omega/\omega_0$')
    ax.set_ylabel(r'$\left| G_\mathrm{H}(i\omega) \right| \mathrm{[dB]}$')
    ax.legend()
@@ -138,7 +101,9 @@ for align in ['B4','LR4','IB4','BL4','CD4']:
    fig.clear()
 
 
-# amp
+#--------------------------------------------
+# All-amplitude plots
+#--------------------------------------------
 fig = plt.figure(figsize=(6,6))
 ax = fig.add_subplot(111)
 ax.set_xscale('log')
@@ -146,10 +111,10 @@ out = 'all-amp.png'
 
 for align in ['B4','LR4','IB4','BL4','CD4']:
    a1,a2,a3 = coef(align)
-   h = abs(s**4)/abs(s**4+a1*s**3+a2*s**2+a3*s+1)
-   spl = 20*np.log10(h)
+   w,spl,gd = response(a1,a2,a3)
    ax.plot(w,spl,label=align)
 
+ax.set_ylim(-36,2)
 ax.set_xlabel(r'$\omega/\omega_0$')
 ax.set_ylabel(r'$\left| G_\mathrm{H}(i\omega) \right| \mathrm{[dB]}$')
 ax.legend()
@@ -157,7 +122,9 @@ plt.tight_layout()
 plt.savefig(out)
 fig.clear()
 
-# delay
+#--------------------------------------------
+# All-delay plots
+#--------------------------------------------
 fig = plt.figure(figsize=(6,6))
 ax = fig.add_subplot(111)
 ax.set_xscale('log')
@@ -165,13 +132,12 @@ out = 'all-delay.png'
 
 for align in ['B4','LR4','IB4','BL4','CD4']:
    a1,a2,a3 = coef(align)
-   h = s**4/(s**4+a1*s**3+a2*s**2+a3*s+1)
-   p = np.unwrap(np.angle(h))
-   gd = -np.gradient(p,w) # Group Delay
+   w,spl,gd = response(a1,a2,a3)
    ax.plot(w,gd,label=align)
 
+ax.set_ylim(0,4)
 ax.set_xlabel(r'$\omega/\omega_0$')
-ax.set_ylabel(r'$\omega_0 \tau_g$')
+ax.set_ylabel(r'$\omega_0 \, \tau_g$')
 ax.legend()
 plt.tight_layout()
 plt.savefig(out)

@@ -1,0 +1,9 @@
+all:
+	python plot_discrete.py
+	python print_c4.py > print_c4.txt
+	python print_ca.py > print_ca.txt
+	python print_qt.py > print_qt.txt
+	python print_quasi.py > print_quasi.txt
+
+clean:
+	rm *-amp.png *-delay.png *-poles.png *txt
