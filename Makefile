@@ -8,3 +8,6 @@ sync:
 clean:
 	cd src ; make clean
 
+distclean:
+	make clean
+	rm -rf doc/*
