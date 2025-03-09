@@ -66,7 +66,16 @@ def poles(align):
 rc('font',size=16)
 rc('text',usetex=True)
 
-for align in ['BL4','B4','LR4','IB4','CD4']:
+x0 = 3.0
+
+# Laplace freq 
+s = 1j*np.logspace(np.log10(1/x0),np.log10(x0),64)
+w = abs(s)
+
+# Angle
+t = np.linspace(0.0,2*np.pi,128)
+
+for align in ['B4','LR4','IB4','BL4','CD4']:
 
    fig = plt.figure(figsize=(6,6))
    ax = fig.add_subplot(111)
@@ -78,7 +87,6 @@ for align in ['BL4','B4','LR4','IB4','CD4']:
    c = ['k','r']
    u = 1
 
-   t = np.linspace(0.0,2*np.pi,128)
    ax.plot(r0*np.cos(t),r0*np.sin(t),alpha=0.3,linewidth=1,color='k')
 
    r0,ang0,r1,ang1 = poles(align)
@@ -101,26 +109,73 @@ for align in ['BL4','B4','LR4','IB4','CD4']:
    ax.set_xlabel(r'$\mathrm{Re(s)}$')
    ax.set_ylabel(r'$\mathrm{Im(s)}$')
 
-   #ax.legend()
    plt.tight_layout()
    plt.savefig(out)
    fig.clear()
-   
+
+for align in ['B4','LR4','IB4','BL4','CD4']:
+
    fig = plt.figure(figsize=(6,6))
    ax = fig.add_subplot(111)
-   ax.set_aspect('equal')
+   ax.set_xscale('log')
    out = align+'-amp.png'
 
-   # Butterworth
-   s = 1j*np.logspace(0,3,16)
-   h = abs(s^4)/abs(1+a1*s**3+a2*s**2+a3*s+1)
-   spl = 20*np.log10(h)
-   ax.plot(abs(s),spl,label=r'Butterworth (B4)')
+   a1,a2,a3 = coef(align)
+   h = abs(s**4)/abs(s**4+a1*s**3+a2*s**2+a3*s+1)
+   if align == 'B4':
+      spl0 = 20*np.log10(h)
+      ax.plot(w,spl0,label=r'B4')
+   else:
+      spl = 20*np.log10(h)
+      ax.plot(w,spl0,label=r'B4')
+      ax.plot(w,spl,label=align)
 
+   ax.set_xlabel(r'$\omega/\omega_0$')
+   ax.set_ylabel(r'$\left| G_\mathrm{H}(i\omega) \right| \mathrm{[dB]}$')
    ax.legend()
    plt.tight_layout()
    plt.savefig(out)
    fig.clear()
+
+
+# amp
+fig = plt.figure(figsize=(6,6))
+ax = fig.add_subplot(111)
+ax.set_xscale('log')
+out = 'all-amp.png'
+
+for align in ['B4','LR4','IB4','BL4','CD4']:
+   a1,a2,a3 = coef(align)
+   h = abs(s**4)/abs(s**4+a1*s**3+a2*s**2+a3*s+1)
+   spl = 20*np.log10(h)
+   ax.plot(w,spl,label=align)
+
+ax.set_xlabel(r'$\omega/\omega_0$')
+ax.set_ylabel(r'$\left| G_\mathrm{H}(i\omega) \right| \mathrm{[dB]}$')
+ax.legend()
+plt.tight_layout()
+plt.savefig(out)
+fig.clear()
+
+# delay
+fig = plt.figure(figsize=(6,6))
+ax = fig.add_subplot(111)
+ax.set_xscale('log')
+out = 'all-delay.png'
+
+for align in ['B4','LR4','IB4','BL4','CD4']:
+   a1,a2,a3 = coef(align)
+   h = s**4/(s**4+a1*s**3+a2*s**2+a3*s+1)
+   p = np.unwrap(np.angle(h))
+   gd = -np.gradient(p,w) # Group Delay
+   ax.plot(w,gd,label=align)
+
+ax.set_xlabel(r'$\omega/\omega_0$')
+ax.set_ylabel(r'$\omega_0 \tau_g$')
+ax.legend()
+plt.tight_layout()
+plt.savefig(out)
+fig.clear()
 
 
 

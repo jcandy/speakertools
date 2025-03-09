@@ -45,6 +45,7 @@ Glossary of symbols
    ":math:`\cas`", "Effective acoustical compliance of driver suspension :math:`=\cms \, \sd^2`"
    ":math:`\vas`", "Acoustical volume of air, equivalent to driver suspension compliance :math:`=\rho_0 \, c^2 \, \cms \, \sd^2`"
    ":math:`\rms`", "Effective mechanical damping resistance"
+   ":math:`\rml`", "Effective mechanical resistance due to enclosure leak"
    ":math:`\lambda_K`", "Mechanical viscoelastic log-model (base 10) parameter used by many (e.g. Knudsen, Klippel)"
    ":math:`\beta`", "Mechanical viscoelastic log-model (base e) parameter used in Speakerbench (advanced parameter)"
    ":math:`\clog`", "Mechanical viscoelastic compliance parameter of driver (advanced parameter)"

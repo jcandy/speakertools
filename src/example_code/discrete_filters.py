@@ -1,9 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import rc
-GFONTSIZE=18
+
 rc('text',usetex=True)
-rc('font',size=GFONTSIZE)
+rc('font',size=16)
 
 def filter(s,name):
     if name == 'bw4':
@@ -29,7 +29,7 @@ def filter(s,name):
         # h = 1.0/(1.0+a3*s+a2*s**2+a1*s**3+s**4)
     return h
 
-fig = plt.figure(figsize=(10,6))
+fig = plt.figure(figsize=(6,6))
 fig.set_tight_layout(True)
 ax = fig.add_subplot(111)
 
@@ -82,8 +82,8 @@ gd_ib4 = -np.gradient(p,w) # Group Delay
 ax.set_xlim([0.1,10])
 ax.set_ylim([-25,3])
 ax.set_xscale('log')
-ax.set_xlabel(r'$\omega_n = \omega / \omega_0$')
-ax.set_ylabel(r'$\vert H(\omega_n) \vert$')
+ax.set_xlabel(r'$\omega / \omega_0$')
+ax.set_ylabel(r'$\left| G_\mathrm{H}(i\omega) \right| \mathrm{[dB]}$')
 plt.grid(which='both')
 ax.legend()
 
@@ -91,7 +91,7 @@ plt.savefig('discrete_spl.png')
 plt.show()
 
 # Plot Group Delay
-fig = plt.figure(figsize=(10,6))
+fig = plt.figure(figsize=(6,6))
 fig.set_tight_layout(True)
 ax = fig.add_subplot(111)
 ax.plot(w[62::],gd_b4[62::],label=r'Butterworth (B4)')
@@ -102,8 +102,8 @@ ax.plot(w[62::],gd_ib4[62::],label=r'Inter-Order (IB4)')
 ax.set_xlim([0.1,10])
 ax.set_ylim([0,5])
 ax.set_xscale('log')
-ax.set_xlabel(r'$\omega_n = \omega / \omega_0$')
-ax.set_ylabel(r'$\tau(\omega_n)$')
+ax.set_xlabel(r'$\omega / \omega_0$')
+ax.set_ylabel(r'$\tau_g(\omega/\omega_0)$')
 plt.grid(which='both')
 ax.legend()
 plt.savefig('discrete_gd.png')
