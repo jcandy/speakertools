@@ -1,20 +1,30 @@
 import numpy as np
 from libalignment import *
 
-Ql=10
-Qtvec=[0.31,0.32,0.33,0.34,0.35,0.36,0.37,0.38,0.39,0.40]
+Ql = 10
+Qt_vec = [0.30,0.32,0.34,0.36,0.38,0.40]
 
-print('            QBL4           QLR4           QB4')
-print(' Qt      h    alpha     h    alpha     h    alpha ')
-print('-----  -------------  -------------  -------------')
+h0     = {}
+alpha0 = {}
 
-for Qt in Qtvec:
-   h1,alpha1 = quasi(Ql,Qt,1.464,1.286)
-   h2,alpha2 = quasi(Ql,Qt,0.0,2.0)
-   h3,alpha3 = quasi(Ql,Qt,0.0,0.0)
+print('             B4Q                  LR4Q                  IB4Q                 BL4Q                   CD4Q         ')
+print(' Ql     Qt    h    alpha      Qt    h    alpha      Qt    h    alpha      Qt    h    alpha      Qt    h    alpha ')
+print('---  --------------------  --------------------  --------------------  --------------------  --------------------')
 
-   print('{:.3f}  {:.4f} {:.4f}  {:.4f} {:.4f}  {:.4f} {:.4f}  '
-         .format(Qt,h1,alpha1,h2,alpha2,h3,alpha3))
-
-
-
+ql = 1/Ql
+for Qt in Qt_vec:
+   for align in ['B4','LR4','IB4','BL4','CD4']:
+      a1,a2,a3 = coef(align)
+      A1 = a1**2-2*a2
+      A2 = a2**2+2-2*a1*a3
+      h0[align],alpha0[align] = quasi(Ql,Qt,A1,A2)
+ 
+   print('{:3}  {:.4f} {:.4f} {:.4f}  {:.4f} {:.4f} {:.4f}  {:.4f} {:.4f} {:.4f}  {:.4f} {:.4f} {:.4f}  {:.4f} {:.4f} {:.4f}'.
+         format(Ql,
+                Qt,h0['B4'],alpha0['B4'],
+                Qt,h0['LR4'],alpha0['LR4'],
+                Qt,h0['IB4'],alpha0['IB4'],
+                Qt,h0['BL4'],alpha0['BL4'],
+                Qt,h0['CD4'],alpha0['CD4'],
+                ))
+                
