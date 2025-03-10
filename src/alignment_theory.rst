@@ -9,6 +9,23 @@ Classic Vented Alignments
 
 In classical loudspeaker theory from the 1960s onwards, the concept of alignments was developed to provide a systematic prescription for choosing box volume and port tuning to yield a target low-frequency response. While the theory is not exact, it offers numerous benefits including insight into the choice between low frequency extension versus group delay (phase distortion). A brief overview of the alignments discussed here and supported in Speakerbench is given in the :ref:`Summary` section at end of this page.
 
+Alignment source code
+---------------------
+
+All the plots and data output shown on this page were generated using the **Speakerbench python alignment library**. That library and all software (including these webpages) is freely-available
+
+- Source code at `GitHub speakerbench repository <https://github.com/jcandy/speakertools/tree/master/src/example_code>`_.
+- Download :download:`ZIP archive <example_code/libalignment.zip>`
+- Download :download:`TGZ archive <example_code/libalignment.zip>`
+
+.. code-block:: bash
+		
+   $ unzip libalignment.zip
+   $ python print_qt.py
+   $ python print_c4.py
+   $ python print_qa.py
+   $ python print_quasi.py
+
 General framework
 -----------------
 
@@ -19,7 +36,7 @@ To facilitate choosing the box volume and vent tuning, Speakerbench will propose
 	   
    G_\mathrm{H}(s) = \frac{s^4}{s^4 + a_1 s^3 + a_2 s^2 + a_3 s + 1} \; ,
 
-where :math:`s = j \omega / \omega_0` is the dimensionless complex frequency variable normalized to :math:`\omega_0 \doteq \sqrt{\omega_B \, \ws}`. In the first part of his article series, Small :cite:`small:1973c` (Eqs. 22--24) writes the lossy box filter coefficients as
+where :math:`s = j \omega / \omega_0` is the dimensionless complex frequency variable normalized to :math:`\omega_0 \doteq \sqrt{\wb\ws} = \sqrt{h} \, \ws`. In the first part of his article series, Small :cite:`small:1973c` (Eqs. 22-24) writes the lossy box filter coefficients as
 
 .. math::
    :label: eq.a
@@ -29,9 +46,9 @@ where :math:`s = j \omega / \omega_0` is the dimensionless complex frequency var
    a_2 & = \frac{h + (\alpha + 1 + h^2) \: \ql \: \qts}{h \: \ql \: \qts} \\
    a_3 & = \frac{h \: \ql + \qts}{\sqrt{h} \: \ql \: \qts} \; ,
 
-where :math:`\ql` is the leakage-loss :math:`Q` of the box and :math:`\qts` is the total :math:`Q` of the driver. Here, :math:`h = \omega_B/\ws` is the system tuning ratio and :math:`\alpha = V_{AS} / V_B` is the ratio of the compliance volume to the box volume. We remark that the coefficients are approximate and neglect myriad other terms which appear in a more comprehensive model of a vented box. These missing terms would represent more complex losses in the box and in the driver suspension system, driver inductance and semi-inductance, and so on. It is generally accepted that :math:`\ql` does not represent a true leakage loss. Rather it is an approximate *total loss* which is dominated by driver losses not accounted for in the standard Thiele-Small theory. These losses are included in the advanced model and thus we recommend setting :math:`\ql > 100` in this case.
+where :math:`\ql` is the leakage-loss :math:`Q` of the box and :math:`\qts` is the total :math:`Q` of the driver. Here, :math:`h = \wb/\ws` is the system tuning ratio and :math:`\alpha =\vas/\vb` is the ratio of the compliance volume to the box volume. We remark that the coefficients are approximate and neglect myriad other terms which appear in a more comprehensive model of a vented box. These missing terms would represent more complex losses in the box and in the driver suspension system, driver inductance and semi-inductance, and so on. It is generally accepted that :math:`\ql` does not represent a true leakage loss. Rather it is an approximate *total loss* which is dominated by driver losses not accounted for in the standard Thiele-Small theory. These losses are included in the advanced model and thus we recommend setting :math:`\ql > 100` in this case.
 
-In the definition of :math:`\omega_0`, :math:`\ws` is the driver resonant frequency and :math:`\omega_B` is the vent resonant frequency. This normalization is equivalent to setting :math:`T_0=1` in Small's expressions. The magnitude-versus-frequency behavior is also given in Small :cite:`small:1973c` (Eqs. 58 and 59), which we reproduce here as
+In the definition of :math:`\omega_0`, :math:`\ws` is the driver resonant frequency and :math:`\wb` is the vent resonant frequency. This normalization is equivalent to setting :math:`T_0=1` in Small's expressions. The magnitude-versus-frequency behavior is also given in Small :cite:`small:1973c` (Eqs. 58 and 59), which we reproduce here as
 
 .. math::
    \left| G_\mathrm{H}(i\omega) \right|^2 = \frac{\omega^8}{\omega^8 + A_1 \omega^6 + A_2 \omega^4 + A_3 \omega^2 + 1} \; ,
@@ -42,18 +59,6 @@ where
   A_1 & = a_1^2-2 a_2 \; , \\
   A_2 & = a_2^2+2-2 a_1 a_3 \; , \\
   A_3 & = a_3^2-2 a_2 \; .
-
-Alignment source code
-^^^^^^^^^^^^^^^^^^^^^
-
-All the plots and data output shown on this page were generated using the Speakerbench python alignment library.
-
-.. collapse:: CLICK HERE to expand alignment library code
-   
-   .. literalinclude::
-      example_code/libalignment.py
-
-Additional links to specific source code are given in the relevant sections below.
 
 A note about series resistance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -93,8 +98,8 @@ Butterworth B4
    :align: center
    :name: fig.B4
 
-   .. image:: example_code/B4-amp.png
-   .. image:: example_code/B4-poles.png
+   .. image:: images/alignment/B4-amp.png
+   .. image:: images/alignment/B4-poles.png
 
    B4 amplitude and poles.
 
@@ -129,8 +134,8 @@ Linkwitz-Riley LR4
    :align: center
    :name: fig.LR4
 
-   .. image:: example_code/LR4-amp.png
-   .. image:: example_code/LR4-poles.png
+   .. image:: images/alignment/LR4-amp.png
+   .. image:: images/alignment/LR4-poles.png
 
    LR4 amplitude and poles.
 
@@ -166,8 +171,8 @@ Inter-Order Butterworth IB4
    :align: center
    :name: fig.IB4
 
-   .. image:: example_code/IB4-amp.png
-   .. image:: example_code/IB4-poles.png
+   .. image:: images/alignment/IB4-amp.png
+   .. image:: images/alignment/IB4-poles.png
 
    IB4 amplitude and poles.
 
@@ -218,8 +223,8 @@ Bessel BL4
    :align: center
    :name: fig.BL4
 
-   .. image:: example_code/BL4-amp.png
-   .. image:: example_code/BL4-poles.png
+   .. image:: images/alignment/BL4-amp.png
+   .. image:: images/alignment/BL4-poles.png
 
    BL4 amplitude and poles.
 
@@ -257,8 +262,8 @@ Critically damped CD4
    :align: center
    :name: fig.CD4
 
-   .. image:: example_code/CD4-amp.png
-   .. image:: example_code/CD4-poles.png
+   .. image:: images/alignment/CD4-amp.png
+   .. image:: images/alignment/CD4-poles.png
 
    CD4 amplitude and poles.
 
@@ -292,8 +297,8 @@ Comparison
    :align: center
    :name: fig.all
 
-   .. image:: example_code/all-amp.png
-   .. image:: example_code/all-delay.png
+   .. image:: images/alignment/all-amp.png
+   .. image:: images/alignment/all-delay.png
 
    The normalized amplitude response :math:`|G_\mathrm{H}|` (left) and group delay :math:`\omega_0 \tau_g = -d\phi/d\omega` (right) of the five discrete alignments.
 
@@ -306,7 +311,7 @@ Note: These graphs are **not** normalized relative to the driver's resonance fre
       example_code/print_qt.py
 
 .. literalinclude::
-   example_code/print_qt.txt
+   images/alignment/print_qt.txt
 
    
 Modification of discrete alignments 
@@ -337,13 +342,13 @@ A second and better approach to handling misalignment (i.e., approximating a des
 In Speakerbench, when we apply this method, the alignment acronym is followed by CA as in B4CA, LR4CA and BL4CA. Below we tabulate sample alignments for :math:`\ql = 10`
 
 
-.. collapse:: CLICK HERE to expand quasi source code
+.. collapse:: CLICK HERE to expand compliance alteration source code
    
    .. literalinclude::
       example_code/print_ca.py
 
 .. literalinclude::
-   example_code/print_ca.txt
+   images/alignment/print_ca.txt
 
 Compliance Alteration was first presented in Voice Coil Magazine from October 2024. Later, the article became Open Access when AudioXpress released an `Compliance Alteration article <https://audioxpress.com/article/bass-reflex-alignments-compliance-alteration>`_. The method can be applied to any desired discrete target alignment. This method is particularly interesting if your driver :math:`\qts` is a bit too high, because with the compliance alteration technique, the box calculation is then treated as if the suspension is a bit too stiff. Fortunately, the driver suspension will experience aging (or burn-in) over time and will soften. When this happens, the provided equations dictate that your system will, over time, move toward the desired target response, and if softened enough to reach :math:`Q_\mathrm{TS,ref}`, the system response will match the target without any error. If the softening does not happen, the system response will deviate slightly from the target.
 
@@ -379,13 +384,13 @@ Once converged, we can obtain :math:`\alpha` according to
 
 Finally, note that by setting :math:`\epsilon=0` above we obtain the lossless solution explicitly.
 
-.. collapse:: CLICK HERE to expand quasi source code
+.. collapse:: CLICK HERE to expand quasi-alignment source code
    
    .. literalinclude::
       example_code/print_quasi.py
 
 .. literalinclude::
-   example_code/print_quasi.txt
+   images/alignment/print_quasi.txt
 
 In Speakerbench, when we apply this method, the alignment acronym is followed by Q as in B4Q, LR4Q and BL4Q. Thus, B4Q in Speakerbench is the same as what is known in classical theory as the QB3 alignment. We remark that Bullock :cite:`bullock:1981` defines SQB3 as a subset of QB3 for drivers with :math:`0.56 > \qts > 0.4`.
 
@@ -495,23 +500,23 @@ where :math:`c_0 = \sqrt{4+\sqrt{8}}`. Finally we can renormalize to find the fo
 
 Evidenty, these functions can be analytically continued triivally to the region :math:`k \geq 1`. The region :math:`k < 1` has passband ripple, the special case :math:`k = 1` is the B4 alignment, and the region :math:`k > 1` is monotonic.
 
-.. collapse:: CLICK HERE to expand C4 source code
+.. collapse:: CLICK HERE to expand Chebyshev C4 source code
    
    .. literalinclude::
       example_code/print_c4.py
 
 .. literalinclude::
-   example_code/print_c4.txt
+   images/alignment/print_c4.txt
 
 Second-order alignments
 -----------------------
 
-As :math:`h \rightarrow 0` in :eq:`eq.a`, we can recover the limit of a closed box. However, there is a subtlety related to :math:`\ql` which is apparent from the definition
+One can take the limit :math:`h \rightarrow 0` in :eq:`eq.a` to recover the limit of a closed box. However, there is a subtlety related to :math:`\ql` which is apparent from the definition
 
 .. math::
    \ql \doteq \frac{h}{\alpha} \rml \cms \, \ws \; .
 
-To properly retain loss in a sealed enclosure we introduce :math:`\qlc` via :math:`\ql \doteq h \, \qlc`. After some algebra, and using :math:`\qlc` in place of :math:`\ql`, we can derive the 3rd-order leaky-sealed-box response 
+This definition is unsuitable for the case of small :math:`h` and, arguably, unsuitable in general. To properly retain loss in a sealed enclosure we introduce :math:`\qlc` via :math:`\ql \doteq h \, \qlc`. After some algebra, and using :math:`\qlc` in place of :math:`\ql`, we can derive the 3rd-order leaky-sealed-box response 
 
 .. math::
    \frac{u^3}{\displaystyle u^3
@@ -526,7 +531,7 @@ where :math:`u = i \omega/\ws`. In reality, the actual leakage loss :math:`\ql` 
       
    G_\mathrm{H}(u) = \frac{u^2}{\displaystyle u^2 + \frac{u}{\qts} + \left( \alpha+1 \right)} \; .
 
-Speakerbench triggers the simulation of a closed boxes by zeroing the port tuning frequency: :math:`\fp = 0`. Losses in this case will vanish because Speakerbench accepts input for :math:`\ql` rather than :math:`\qlc`. Finally, to arrive at the canonical form for a closed box, we write :math:`u = \sqrt{\alpha+1} \, s` to find
+Simulation of a closed box in Speakerbench in triggered by zeroing the port tuning frequency: :math:`\fp = 0`. Losses in this case will vanish because Speakerbench accepts input for :math:`\ql` rather than :math:`\qlc`. To arrive at the canonical form for a closed box, we write :math:`u = \sqrt{\alpha+1} \, s` to find
 
 .. math::
    :label: eq.closed
@@ -541,9 +546,7 @@ where
 
 where :math:`s = i \omega/\wcb`. A closed box system has one free design parameter :math:`\alpha = \cms / \cmb = \vas / \vb`. In the Speakerbench alignment chart, there are two dots shown at :math:`h = 0`. These represent the second-order Bessel (:math:`\qtc = 1 / \sqrt{3} \simeq 0.577`) and Butterworth (:math:`\qtc = 1 / \sqrt{2} \simeq 0.707`) responses, respectively. A critically damped 2nd-order closed box would require :math:`\qtc = 0.5`. 
 
-JC: I do not understand the discussion below:
-
-These are useful when designing vented box systems, in which the user may plug the port, essentially converting the system into a closed box design. In principle, one could also show other known alignments, e.g., the second-order Linkwitz-Riley (:math:`\qtc = 0.5`), but targets outside the range between Bessel and Butterworth are rarely used when designing vented box systems. In other words, the volume of a vented box system (:math:`\alpha`) is typically chosen such that the driver in box :math:`Q` is between the Bessel and the Butterworth second-order alignment. This observation is almost valid even for the extreme case of a CD4 alignment, where in practice the box volume when the port is closed will give a system :math:`Q \approx 0.55` (the exact value depend on leakage :math:`\ql`). Any second order response where the system :math:`Q > 0.707` is considered a Chebyshev C2 alignment, even if there is not any equal ripple since a second-order response will just have a peak.
+These 2nd-order results are useful when designing vented box systems, in which the user may plug the port, essentially converting the system into a closed box design. In principle, one could also show other known alignments, e.g., the second-order Linkwitz-Riley (:math:`\qtc = 0.5`), but targets outside the range between Bessel and Butterworth are rarely used when designing vented box systems. In other words, the volume of a vented box system (:math:`\alpha`) is typically chosen such that the driver in box :math:`Q` is between the Bessel and the Butterworth second-order alignment. This observation is almost valid even for the extreme case of a CD4 alignment, where in practice the box volume when the port is closed will give a system :math:`Q \approx 0.55` (the exact value depend on leakage :math:`\ql`). Any second order response where the system :math:`Q > 0.707` is considered a Chebyshev C2 alignment, even if there is not any equal ripple since a second-order response will just have a peak.
 
 In classical theory, a closed box is considered of the acoustic suspension type when :math:`\cmb` dominates over :math:`\cms` such that :math:`\fcb \geq 2 \fs`, which gives :math:`\alpha \geq 3`.
 

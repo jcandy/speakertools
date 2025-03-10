@@ -89,7 +89,7 @@ def casolve(Qt,Qtref,href,aref):
 
 
 #------------------------------------------------------------------------
-# Function to compute Chebyshev alignment
+# Functions to compute Chebyshev alignment
 #------------------------------------------------------------------------
 
 # Find k in the Ql=inf limit
@@ -144,9 +144,8 @@ def c4(Ql,Qt):
    return k,h,alpha
 
 #------------------------------------------------------------------------
-# Function to compute quasialignments
+# Function to compute quasi-alignments
 #------------------------------------------------------------------------
-
 def quasi(Ql,Qt,A1,A2):
 
    q   = 1/Qt
@@ -164,10 +163,14 @@ def quasi(Ql,Qt,A1,A2):
 
    return h,alpha
 
-def response(a1,a2,a3,x0=3.1):
+#------------------------------------------------------------------------
+# Convenience function to generate SPL and group delay
+# given polynomial coefficients (a1,a2,a3) 
+#------------------------------------------------------------------------
+def response(a1,a2,a3,x0=3.1,n=64):
 
    # frequency 
-   w = np.logspace(np.log10(1/x0),np.log10(x0),64)
+   w = np.logspace(np.log10(1/x0),np.log10(x0),n)
    s = 1j*w
 
    # complex response function
