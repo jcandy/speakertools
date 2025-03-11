@@ -1,0 +1,322 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Speakerbench Box Theory &mdash; Speakerbench 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/contentui.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=a0fb6060" />
+
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/contentui.js"></script>
+      <script>window.MathJax = {"tex": {"macros": {"qfilt": "{\\mathcal{Q}}", "qts": "{Q_\\mathrm{TS}}", "qtc": "{Q_\\mathrm{TC}}", "qes": "{Q_\\mathrm{ES}}", "qms": "{Q_\\mathrm{MS}}", "qa": "{Q_\\mathrm{{\\hspace -1pt} A}}", "bl": "{B\\ell}", "bls": "{(B\\ell)^2}", "mms": "{M_\\mathrm{MS}}", "mmp": "{M_\\mathrm{MP}}", "cms": "{C_\\mathrm{MS}}", "rms": "{R_\\mathrm{MS}}", "rme": "{R_\\mathrm{ME}}", "rml": "{R_\\mathrm{ML}}", "cmb": "{C_\\mathrm{MB}}", "wmin": "{\\omega_\\mathrm{min}}", "wmax": "{\\omega_\\mathrm{max}}", "tp": "{t^\\prime}", "dmn": "{\\Delta_{mn}}", "vb": "{V_\\mathrm{B}}", "vas": "{V_\\mathrm{AS}}", "vp": "{V_\\mathrm{P}}", "cab": "{C_\\mathrm{AB}}", "map": "{M_\\mathrm{AP}}", "ma": "{M_\\mathrm{A}}", "sd": "{S_\\mathrm{D}}", "ad": "{a_\\mathrm{D}}", "sp": "{S_\\mathrm{P}}", "ap": "{a_\\mathrm{P}}", "sb": "{S_\\mathrm{B}}", "caf": "{C_\\mathrm{af}}", "cth": "{C_\\mathrm{th}}", "cua": "{C_\\mathrm{ua}}", "raf": "{R_\\mathrm{af}}", "rth": "{R_\\mathrm{th}}", "cfu": "{C^*_\\mathrm{AB}}", "rfu": "{R^*_\\mathrm{AB}}", "ws": "{\\omega_\\mathrm{S}}", "wp": "{\\omega_\\mathrm{P}}", "wb": "{\\omega_\\mathrm{B}}", "wcb": "{\\omega_\\mathrm{CB}}", "fs": "{f_\\mathrm{S}}", "fp": "{f_\\mathrm{P}}", "fcb": "{f_\\mathrm{CB}}", "lp": "{l_\\mathrm{P}}", "deltv": "{\\delta_v}", "xs": "{x_\\mathrm{S}}", "xim": "{x_\\mathrm{I}}", "xmax": "{X_\\mathrm{max}}", "re": "{R_\\mathrm{E}}", "leb": "{L_\\mathrm{EB}}", "le": "{L_\\mathrm{E}}", "ke": "{K_\\mathrm{E}}", "rss": "{R_\\mathrm{SS}}", "zm": "{Z_\\mathrm{M}}", "zms": "{Z_{\\mathrm{M}*}}", "zin": "{Z}", "ze": "{Z_\\mathrm{E}}", "cmes": "{C_\\mathrm{MES}}", "res": "{R_\\mathrm{ES}}", "lces": "{L_\\mathrm{CES}}", "cas": "{C_\\mathrm{AS}}", "fr": "{g}", "ql": "{Q_\\mathrm{L}}", "qlc": "{Q_\\mathrm{LC}}", "rlog": "{R_0}", "clog": "{C_0}", "llog": "{L_0}", "flog": "{f_0}", "ssa": "{\\mathrm{SS}_A}", "sse": "{\\mathrm{SS}_E}", "msa": "{\\mathrm{MS}_A}", "mse": "{\\mathrm{MS}_E}", "mmf": "{M_\\mathrm{MF}}", "mmr": "{M_\\mathrm{MR}}", "hz": "{\\textrm{Hz}}", "khz": "{\\textrm{kHz}}", "cm": "{\\textrm{cm}}", "gr": "{\\textrm{g}}", "mg": "{\\textrm{mg}}", "mv": "{\\textrm{mV}}", "mw": "{\\textrm{mW}}", "mh": "{\\textrm{mH}}", "tm": "{\\textrm{Tm}}", "kgm": "{\\textrm{kg/m}^3 \\,}", "mps": "{\\textrm{m/s}}", "heatcap": "{\\textrm{J/(kg K)}}", "taue": "{\\tau_e}", "tauv": "{\\tau_v}"}}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Classic Vented Alignments" href="alignment_theory.html" />
+    <link rel="prev" title="Dual-Added-Mass Method" href="deltamass_theory.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Speakerbench
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Impedance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="measure.html">Impedance Measurement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collect.html">Impedance Data Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fit.html">Advanced Model Fit</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Box Modeling</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="create.html">Create Datasheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="box.html">Box Simulation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Theory Notes</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="deltamass_theory.html">Dual-Added-Mass Method</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Speakerbench Box Theory</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#history-of-enclosure-models">History of enclosure models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#acoustical-impedances-for-unfilled-box">Acoustical impedances for unfilled box</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#connection-to-beranek-factor">Connection to Beranek factor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#end-correction-due-to-box-mass">End correction due to box mass</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#summary-of-acoustic-masses">Summary of acoustic masses</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#futtrup-leach-model-of-enclosure-fill">Futtrup-Leach model of enclosure fill</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#porous-media-model-of-fill">Porous media model of fill</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="alignment_theory.html">Classic Vented Alignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time_theory.html">Time-domain Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Sample Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="youtube.html">YouTube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="json-docs.html">JSON Datafile Definitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary of symbols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zreferences.html">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Speakerbench</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Speakerbench Box Theory</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/box_theory.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+  .ss-layout-default-A { grid-template-areas: 'A'; }
+</style>
+<section id="speakerbench-box-theory">
+<span id="box-theory"></span><h1>Speakerbench Box Theory<a class="headerlink" href="#speakerbench-box-theory" title="Link to this heading"></a></h1>
+<section id="history-of-enclosure-models">
+<h2>History of enclosure models<a class="headerlink" href="#history-of-enclosure-models" title="Link to this heading"></a></h2>
+<p>The standard theory of loudspeaker enclosures was popularized by Small <span id="id1">[<a class="reference internal" href="zreferences.html#id59" title="R.H. Small. Closed-Box Loudspeaker Systems-Part 1: Analysis. J. Audio. Eng. Soc., 20:798, 1972.">Sma72a</a>, <a class="reference internal" href="zreferences.html#id58" title="R.H. Small. Direct Radiator Loudspeaker System Analysis. J. Audio. Eng. Soc., 20:383, 1972.">Sma72b</a>, <a class="reference internal" href="zreferences.html#id60" title="R.H. Small. Vented-Box Loudspeaker Systems Part 1: Small-Signal Analysis. J. Audio. Eng. Soc., 21:363, 1973. URL: http://www.aes.org/e-lib/browse.cfm?elib=1967.">Sma73a</a>]</span>, although the equivalent theory was presented by Benson in greater detail in his series of articles <em>Theory and Design of Loudspeaker Enclosures</em> <span id="id2">[<a class="reference internal" href="zreferences.html#id8" title="J.E. Benson. Theory and Design of Loudspeaker Enclosures. Synergetic Audio Concepts (with permission from Dr. J.E. Benson and Amalgamated Wireless Australasia Technical Review), 1993.">Ben93</a>]</span></p>
+<figure class="align-center" id="id11">
+<a class="reference internal image-reference" href="_images/small_vented.png"><img alt="small_vented" src="_images/small_vented.png" style="width: 50%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Circuit diagram for vented loudspeaker as presented by Small in Ref. <span id="id3">[<a class="reference internal" href="zreferences.html#id60" title="R.H. Small. Vented-Box Loudspeaker Systems Part 1: Small-Signal Analysis. J. Audio. Eng. Soc., 21:363, 1973. URL: http://www.aes.org/e-lib/browse.cfm?elib=1967.">Sma73a</a>]</span>.</span><a class="headerlink" href="#id11" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="acoustical-impedances-for-unfilled-box">
+<h2>Acoustical impedances for unfilled box<a class="headerlink" href="#acoustical-impedances-for-unfilled-box" title="Link to this heading"></a></h2>
+<p>In Eq. (7.131) of Beranek <span id="id4">[<a class="reference internal" href="zreferences.html#id11" title="L.L. Beranek and T.J. Mellow. Acoustics: Sound Fields, Transducers and Vibration. Elsevier – Academic Press, 2019.">BM19</a>]</span>, the acoustical impedances for an unfilled enclosure are derived by solving the Helmholtz equation in an unfilled rectangular enclosure. Although Beranek attempts to treat the effect of back-wall lining, we consider infinite (rigid) back-wall impedance. To extract the effective compliance and mass, we expand <span class="math notranslate nohighlight">\(Z_{pq}\)</span> in powers of <span class="math notranslate nohighlight">\(s\)</span> to obtain</p>
+<div class="math notranslate nohighlight" id="equation-eq-zpq">
+<span class="eqno">(13)<a class="headerlink" href="#equation-eq-zpq" title="Link to this equation"></a></span>\[Z_{pq} = \frac{1}{s \cab } + s \ma \, \epsilon_{pq} \; .\]</div>
+<p>In this expression we have ignored terms of order <span class="math notranslate nohighlight">\(s^2\)</span> and higher. By ignoring these terms we limit the applicability of the theory to the frequency range where the neglected terms are small. Note that in this section, all masses and compliances are assumed to be in acoustic units. When mechanical units are used, a lower-case <span class="math notranslate nohighlight">\(m\)</span> subscript will be added. The quantity <span class="math notranslate nohighlight">\(\epsilon_{pq}\)</span> is a dimensionless <span class="math notranslate nohighlight">\(2\!\times\!2\)</span> array</p>
+<div class="math notranslate nohighlight" id="equation-eq-eps">
+<span class="eqno">(14)<a class="headerlink" href="#equation-eq-eps" title="Link to this equation"></a></span>\[\begin{equation}
+\epsilon_{pq} = \frac{1}{3} + \frac{4}{\pi} \sum_{m,n} \gamma_{mn} \frac{\coth(\pi \dmn)}{\dmn} \cos\left(\theta_p\right) \cos\left(\theta_q\right) \frac{J_1\left(\beta_p \right)}{\beta_p}  \frac{J_1\left(\beta_q \right)}{\beta_q} \; ,
+\end{equation}\]</div>
+<p>where in Eq. <a class="reference internal" href="#equation-eq-eps">(14)</a> we have defined</p>
+<div class="math notranslate nohighlight" id="equation-eq-defs">
+<span class="eqno">(15)<a class="headerlink" href="#equation-eq-defs" title="Link to this equation"></a></span>\[\begin{split}\begin{align}
+        \theta_p = &amp;~ \frac{n \pi y_p}{l_y} \\
+        \beta_p = &amp;~ \frac{\pi a_p}{l_z}\dmn \\
+        \dmn^2 = &amp;~ \left( \frac{m l_z}{l_x} \right)^2 + \left( \frac{n l_z}{l_y} \right)^2 . \\
+        \gamma_{mn} = &amp;~ 4-2 \left( \delta_{m0}+\delta_{n0} \right)
+\end{align}\end{split}\]</div>
+<p>The index <span class="math notranslate nohighlight">\(p=1\)</span> corresponds to the driver (subscript <span class="math notranslate nohighlight">\(D\)</span>) and <span class="math notranslate nohighlight">\(p=2\)</span> corresponds to the port (subscript <span class="math notranslate nohighlight">\(P\)</span>). We have chosen simple normalizing acoustic compliance and mass,</p>
+<div class="math notranslate nohighlight" id="equation-eq-units">
+<span class="eqno">(16)<a class="headerlink" href="#equation-eq-units" title="Link to this equation"></a></span>\[\begin{split}        \begin{align}
+        \cab = &amp;~ \frac{\vb}{\rho c^2} = C_\mathrm{MB} \sd^2 \; , \\
+        \ma = &amp;~ \frac{\rho \, l_z}{\sb} \; ,
+        \end{align}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\sb = l_x \, l_y\)</span> is the baffle area, <span class="math notranslate nohighlight">\(l_z\)</span> is the enclosure depth, <span class="math notranslate nohighlight">\(\sd = \pi \ad^2\)</span> is the driver area, and <span class="math notranslate nohighlight">\(V= l_x \, l_y \, l_z\)</span> is the enclosure volume. The circuit diagram for a low-frequency T-network system for an undamped vented box (box connected to a tube) is illustrated in Fig. fig.genbox.</p>
+<figure class="align-center" id="id12">
+<a class="reference internal image-reference" href="_images/box_port_q.png"><img alt="circuit" src="_images/box_port_q.png" style="width: 60%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Circuit diagram for low-frequency unfilled box (BOX) connected to
+transmission-line tube (PORT), which radiates into free air.</span><a class="headerlink" href="#id12" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="connection-to-beranek-factor">
+<h3>Connection to Beranek factor<a class="headerlink" href="#connection-to-beranek-factor" title="Link to this heading"></a></h3>
+<p>The end-correction factor <span class="math notranslate nohighlight">\(B\)</span>, first introduced by Beranek in his 1954 book <span id="id5">[<a class="reference internal" href="zreferences.html#id9" title="L.L. Beranek. Acoustics. McGraw-Hill, New York, 1954.">Ber54</a>]</span>, is related to the piston self-interaction coefficient <span class="math notranslate nohighlight">\(\epsilon_{11}\)</span> and defines the acoustic mass <span class="math notranslate nohighlight">\(M\)</span> when the port is blocked:</p>
+<div class="math notranslate nohighlight">
+\[M_{11} \doteq \epsilon_{11} \ma =  \frac{B \rho}{\pi \, \ad} \; .\]</div>
+<p>Thus, we can define <span class="math notranslate nohighlight">\(B\)</span> in terms of <span class="math notranslate nohighlight">\(\epsilon_{11}\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[B = \pi \epsilon_{11} \frac{l_z \ad}{l_x l_y} \; .\]</div>
+</section>
+<section id="end-correction-due-to-box-mass">
+<h3>End correction due to box mass<a class="headerlink" href="#end-correction-due-to-box-mass" title="Link to this heading"></a></h3>
+<p>Because there is no precise theory for the effective port length, <span class="math notranslate nohighlight">\(\lp\)</span>, in terms of the physical port length, <span class="math notranslate nohighlight">\(l_\mathrm{phys}\)</span>, it is customary to first define the effective length in terms of the resonant frequency <span class="math notranslate nohighlight">\(\wp\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[\wp^2 = \frac{1}{\cab \map} = \frac{\sp c^2}{\vb \lp} \; .\]</div>
+<p>To derive this result we have used</p>
+<div class="math notranslate nohighlight">
+\[\map = \frac{\mmp}{\sp^2} = \frac{\rho\vp}{\sp^2} = \frac{\rho \,\lp}{\sp} \; .\]</div>
+<p>The interior of the box provides an end correction to the port mass. In the case where the port is <em>external</em> to the box (internal flange), the exterior end correction is the usual unflanged value</p>
+<div class="math notranslate nohighlight">
+\[l_\mathrm{out} = 0.6 \, \ap\]</div>
+<p>whereas the internal correction is</p>
+<div class="math notranslate nohighlight">
+\[l_\mathrm{in} = \frac{\epsilon_{22}-\epsilon_{21}}{\sb} \sp \, l_z\]</div>
+</section>
+<section id="summary-of-acoustic-masses">
+<h3>Summary of acoustic masses<a class="headerlink" href="#summary-of-acoustic-masses" title="Link to this heading"></a></h3>
+<p>The identification and calculation of acoustic masses is complicated and depends strongly on geometry. In an effort to clarify the physical interpretation, we tabulate the relevant acoustic masses in <a class="reference internal" href="#tab-mass"><span class="std std-numref">Table 2</span></a> below.</p>
+<table class="docutils align-center" id="tab-mass">
+<caption><span class="caption-number">Table 2 </span><span class="caption-text"><strong>Box and vent acoustic masses</strong></span><a class="headerlink" href="#tab-mass" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p><em>outer</em></p></th>
+<th class="head"><p><em>intrinsic</em></p></th>
+<th class="head"><p><em>inner</em></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>port</p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle \left(0.6\ap\right)\frac{\rho}{\sp}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle \frac{\rho \, \vp}{\sp^2}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle \left(\epsilon_{22}-\epsilon_{12}\right)\,\ma\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>box</p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle \left(0.6\ad\right) \frac{\rho}{\sd}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle \frac{\mms}{\sd^2}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle \epsilon_{11} \, \ma\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>outer</strong> masses result from radiation into free space. For both the driver and port, the coefficient of 0.6 applies to unflanged radiation. Note that for flanged radiation (infinite baffle) the coefficient is 0.85. The <strong>intrinsic</strong> box and port masses are the moving masses of the driver, and port air plug, respectively. For the driver, it is assumed that the outer mass is already contained in the advanced model <span class="math notranslate nohighlight">\(\mms\)</span> whereas for the port, we assume it is mounted externally to justify the unflanged assumption. The <strong>inner</strong> masses, finally, require numerical evaluation of the Helmholtz matrix elements <span class="math notranslate nohighlight">\(\epsilon_{pq}\)</span> via Eq. <a class="reference internal" href="#equation-eq-eps">(14)</a>.</p>
+</section>
+</section>
+<section id="futtrup-leach-model-of-enclosure-fill">
+<h2>Futtrup-Leach model of enclosure fill<a class="headerlink" href="#futtrup-leach-model-of-enclosure-fill" title="Link to this heading"></a></h2>
+<p>To incorporate box absorption, we consider the parallel circuit treated by Futtrup <span id="id6">[<a class="reference internal" href="zreferences.html#id23" title="C. Futtrup. Losses in loudspeaker enclosures. In Audio Engineering Society Convention 130. May 2011. URL: http://www.aes.org/e-lib/browse.cfm?elib=15791.">Fut11</a>]</span> based on the earlier work by Leach <span id="id7">[<a class="reference internal" href="zreferences.html#id41" title="W.M. Leach. Electroacoustic-Analogous Circuit Models for Filled Enclosures. J. Audio. Eng. Soc., 37:586, 1989.">Lea89</a>]</span></p>
+<figure class="align-center" id="id13">
+<a class="reference internal image-reference" href="_images/q_futtrup.png"><img alt="fillq" src="_images/q_futtrup.png" style="width: 60%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Reproduction of Fig. 3 from <span id="id8">[<a class="reference internal" href="zreferences.html#id23" title="C. Futtrup. Losses in loudspeaker enclosures. In Audio Engineering Society Convention 130. May 2011. URL: http://www.aes.org/e-lib/browse.cfm?elib=15791.">Fut11</a>]</span>.</span><a class="headerlink" href="#id13" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>To extract the essential acoustic compliance and resistance of this circuit, we short the masses and take <span class="math notranslate nohighlight">\(R_\mathrm{mf} \gg R_\mathrm{af}\)</span>. By Taylor-expanding the impedance, we can calculate the series combination of compliance <span class="math notranslate nohighlight">\(\cfu\)</span> and resistance <span class="math notranslate nohighlight">\(\rfu\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\cfu =&amp;~ \caf + \cth + \cua \\
+\rfu =&amp;~ \raf \left(\frac{\caf+\cth}{\cfu}\right)^2 + \rth \left(\frac{\cth}{\cfu} \right)^2
+\end{align}\end{split}\]</div>
+<p>These results suggest that we can describe the effect of fill with two empirical parameters: <span class="math notranslate nohighlight">\(\qa\)</span> and <span class="math notranslate nohighlight">\(\deltv\)</span>. <span class="math notranslate nohighlight">\(\qa\)</span> is an analog of the box absorption of the classical Benson/Small theory, and <span class="math notranslate nohighlight">\(\deltv\)</span> is an effective volume expansion coefficient which is normally expected to lie in the range <span class="math notranslate nohighlight">\(1.0 &lt; \deltv &lt; 1.4\)</span>. The precise definitions are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\deltv \doteq &amp;~ \frac{\cfu}{\cab} \; , \\
+\qa \doteq &amp;~ \frac{1}{\ws \cab \rfu} \; .
+\end{align}\end{split}\]</div>
+<p>Thus we can generalize the classic theory with only a single new added parameter, <span class="math notranslate nohighlight">\(\deltv\)</span>, which characterizes the volume expansion due the conversion from adiabatic to isothermal expansion. The Futtrup theory provides estimates for <span class="math notranslate nohighlight">\(\deltv\)</span> and <span class="math notranslate nohighlight">\(\qa\)</span> for different materials and fill percentages, as illustrated in <a class="reference internal" href="#fig-fill1"><span class="std std-numref">Fig. 14</span></a>. Further, in <a class="reference internal" href="#fig-fill2"><span class="std std-numref">Fig. 15</span></a>, we compare the predicted relationship of <span class="math notranslate nohighlight">\(\qa\)</span> versus <span class="math notranslate nohighlight">\(\deltv\)</span> against experimental measurement in a real filled box.</p>
+<figure class="sphinx-subfigure align-center" id="fig-fill1" style="width: 66%">
+<div class="sphinx-subfigure-grid ss-layout-default-A" style="display: grid;">
+<div class="sphinx-subfigure-area" style="display: flex; flex-direction: column; justify-content: center; align-items: center; grid-area: A;">
+<img alt="_images/fill1.png" src="_images/fill1.png" />
+</div>
+</div>
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Theoretical <span class="math notranslate nohighlight">\(\qa\)</span> and <span class="math notranslate nohighlight">\(\deltv\)</span> versus amount of fill inside a test box.</span><a class="headerlink" href="#fig-fill1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="sphinx-subfigure align-center" id="fig-fill2" style="width: 66%">
+<div class="sphinx-subfigure-grid ss-layout-default-A" style="display: grid;">
+<div class="sphinx-subfigure-area" style="display: flex; flex-direction: column; justify-content: center; align-items: center; grid-area: A;">
+<img alt="_images/fill2.png" src="_images/fill2.png" />
+</div>
+</div>
+<figcaption>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Theoretical <span class="math notranslate nohighlight">\(\qa\)</span> versus <span class="math notranslate nohighlight">\(\deltv\)</span> compared with measured data.</span><a class="headerlink" href="#fig-fill2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="porous-media-model-of-fill">
+<h2>Porous media model of fill<a class="headerlink" href="#porous-media-model-of-fill" title="Link to this heading"></a></h2>
+<p>We begin by rewriting Eq. <a class="reference internal" href="#equation-eq-zpq">(13)</a> in terms of a generalized density and sound speed</p>
+<div class="math notranslate nohighlight" id="equation-eq-zpq2">
+<span class="eqno">(17)<a class="headerlink" href="#equation-eq-zpq2" title="Link to this equation"></a></span>\[Z_{pq} = \rho c \left[ \frac{1}{l_x l_y (i k l_z)} + \frac{(i k l_z)}{l_x l_y} \epsilon_{pq} \right] \; .\]</div>
+<p>Use the porous media theory described by Wilson <span id="id9">[<a class="reference internal" href="zreferences.html#id79" title="D. Wilson. Relaxation-matched modeling of propagation through porous media, including fractal pore structure. J. Acoust. Soc. Am., 94:1136, 1993.">Wil93</a>]</span>, Tarnow <span id="id10">[<a class="reference internal" href="zreferences.html#id66" title="V. Tarnow. Measured anisotropic air flow resistivity and sound attenuation of glass wool. J. Acoust. Soc. Am., 111:2735, 2002. doi:doi.org/10.1121/1.1476686.">Tar02</a>]</span> and others, we first write the generalized density and compressibility as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\rho = &amp;~\rho_0 \left[ \frac{\sqrt{1+s\tauv}}{\sqrt{1+s\tauv}-1} \right] \; , \\
+\beta = &amp;~ \frac{1}{\gamma P_0} \left[ 1 + \frac{\gamma-1}{\sqrt{1+s\taue}} \right] \; ,
+\end{align}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\taue\)</span> is the decay time of the <em>entropy mode</em> and <span class="math notranslate nohighlight">\(\tauv\)</span> is the decay time of the <em>vorticity mode</em>. <span class="math notranslate nohighlight">\(c = 1/\sqrt{\beta\rho}\)</span> and <span class="math notranslate nohighlight">\(k = \omega \sqrt{\beta\rho}\)</span>. Taking the limit <span class="math notranslate nohighlight">\(\taue, \tauv \rightarrow \infty\)</span> gives the result for an unfilled enclosure. Substituting these expressions into Eq. <a class="reference internal" href="#equation-eq-zpq2">(17)</a> gives</p>
+<div class="math notranslate nohighlight">
+\[Z_{pq} = \frac{1}{s \cab \displaystyle \left[ 1 + \frac{\gamma-1}{\sqrt{1+s\taue}} \right]} + s \ma \epsilon_{pq} \left[ \frac{\sqrt{1+s\tauv}}{\sqrt{1+s\tauv}-1} \right] \; .\]</div>
+<p>Testing shows that this form of the impedance gives unphysical results. Instead, a modified form that preserves the undamped mass loading on the port performs much better:</p>
+<div class="math notranslate nohighlight">
+\[Z_{pq} = \frac{1}{s \cab \displaystyle \left[ 1 + \frac{\gamma-1}{\sqrt{1+s\taue}} \right]} + \frac{s \ma \epsilon_{11}}{\sqrt{1+s\tauv}-1} + s \ma \epsilon_{pq} \; .\]</div>
+<p>Note that <span class="math notranslate nohighlight">\(Z_{11}\)</span> is unmodified, whereas the port loading <span class="math notranslate nohighlight">\(Z_{22}-Z_{21}\)</span> recovers the unfilled value.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="deltamass_theory.html" class="btn btn-neutral float-left" title="Dual-Added-Mass Method" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="alignment_theory.html" class="btn btn-neutral float-right" title="Classic Vented Alignments" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020-2025 | C. Futtrup and J. Candy.
+      <span class="lastupdated">Last updated on Mar 11, 2025.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

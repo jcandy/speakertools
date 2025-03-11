@@ -1,0 +1,786 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="Jeff Candy and Claus Futtrup" name="author" />
+<meta content="speakerbench,loudspeaker,driver,parameter,json,design,calculator,impedance,measurement,simulation,software,free,audio" name="keywords" />
+<meta content="Speakerbench Documentation" name="description" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Classic Vented Alignments &mdash; Speakerbench 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/contentui.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=a0fb6060" />
+
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/contentui.js"></script>
+      <script>window.MathJax = {"tex": {"macros": {"qfilt": "{\\mathcal{Q}}", "qts": "{Q_\\mathrm{TS}}", "qtc": "{Q_\\mathrm{TC}}", "qes": "{Q_\\mathrm{ES}}", "qms": "{Q_\\mathrm{MS}}", "qa": "{Q_\\mathrm{{\\hspace -1pt} A}}", "bl": "{B\\ell}", "bls": "{(B\\ell)^2}", "mms": "{M_\\mathrm{MS}}", "mmp": "{M_\\mathrm{MP}}", "cms": "{C_\\mathrm{MS}}", "rms": "{R_\\mathrm{MS}}", "rme": "{R_\\mathrm{ME}}", "rml": "{R_\\mathrm{ML}}", "cmb": "{C_\\mathrm{MB}}", "wmin": "{\\omega_\\mathrm{min}}", "wmax": "{\\omega_\\mathrm{max}}", "tp": "{t^\\prime}", "dmn": "{\\Delta_{mn}}", "vb": "{V_\\mathrm{B}}", "vas": "{V_\\mathrm{AS}}", "vp": "{V_\\mathrm{P}}", "cab": "{C_\\mathrm{AB}}", "map": "{M_\\mathrm{AP}}", "ma": "{M_\\mathrm{A}}", "sd": "{S_\\mathrm{D}}", "ad": "{a_\\mathrm{D}}", "sp": "{S_\\mathrm{P}}", "ap": "{a_\\mathrm{P}}", "sb": "{S_\\mathrm{B}}", "caf": "{C_\\mathrm{af}}", "cth": "{C_\\mathrm{th}}", "cua": "{C_\\mathrm{ua}}", "raf": "{R_\\mathrm{af}}", "rth": "{R_\\mathrm{th}}", "cfu": "{C^*_\\mathrm{AB}}", "rfu": "{R^*_\\mathrm{AB}}", "ws": "{\\omega_\\mathrm{S}}", "wp": "{\\omega_\\mathrm{P}}", "wb": "{\\omega_\\mathrm{B}}", "wcb": "{\\omega_\\mathrm{CB}}", "fs": "{f_\\mathrm{S}}", "fp": "{f_\\mathrm{P}}", "fcb": "{f_\\mathrm{CB}}", "lp": "{l_\\mathrm{P}}", "deltv": "{\\delta_v}", "xs": "{x_\\mathrm{S}}", "xim": "{x_\\mathrm{I}}", "xmax": "{X_\\mathrm{max}}", "re": "{R_\\mathrm{E}}", "leb": "{L_\\mathrm{EB}}", "le": "{L_\\mathrm{E}}", "ke": "{K_\\mathrm{E}}", "rss": "{R_\\mathrm{SS}}", "zm": "{Z_\\mathrm{M}}", "zms": "{Z_{\\mathrm{M}*}}", "zin": "{Z}", "ze": "{Z_\\mathrm{E}}", "cmes": "{C_\\mathrm{MES}}", "res": "{R_\\mathrm{ES}}", "lces": "{L_\\mathrm{CES}}", "cas": "{C_\\mathrm{AS}}", "fr": "{g}", "ql": "{Q_\\mathrm{L}}", "qlc": "{Q_\\mathrm{LC}}", "rlog": "{R_0}", "clog": "{C_0}", "llog": "{L_0}", "flog": "{f_0}", "ssa": "{\\mathrm{SS}_A}", "sse": "{\\mathrm{SS}_E}", "msa": "{\\mathrm{MS}_A}", "mse": "{\\mathrm{MS}_E}", "mmf": "{M_\\mathrm{MF}}", "mmr": "{M_\\mathrm{MR}}", "hz": "{\\textrm{Hz}}", "khz": "{\\textrm{kHz}}", "cm": "{\\textrm{cm}}", "gr": "{\\textrm{g}}", "mg": "{\\textrm{mg}}", "mv": "{\\textrm{mV}}", "mw": "{\\textrm{mW}}", "mh": "{\\textrm{mH}}", "tm": "{\\textrm{Tm}}", "kgm": "{\\textrm{kg/m}^3 \\,}", "mps": "{\\textrm{m/s}}", "heatcap": "{\\textrm{J/(kg K)}}", "taue": "{\\tau_e}", "tauv": "{\\tau_v}"}}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Time-domain Analysis" href="time_theory.html" />
+    <link rel="prev" title="Speakerbench Box Theory" href="box_theory.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Speakerbench
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Impedance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="measure.html">Impedance Measurement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collect.html">Impedance Data Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fit.html">Advanced Model Fit</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Box Modeling</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="create.html">Create Datasheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="box.html">Box Simulation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Theory Notes</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="deltamass_theory.html">Dual-Added-Mass Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="box_theory.html">Speakerbench Box Theory</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Classic Vented Alignments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#alignment-source-code">Alignment source code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#general-framework">General framework</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#a-note-about-series-resistance">A note about series resistance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#discrete-alignments">Discrete alignments</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#butterworth-b4">Butterworth B4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linkwitz-riley-lr4">Linkwitz-Riley LR4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inter-order-butterworth-ib4">Inter-Order Butterworth IB4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bessel-bl4">Bessel BL4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#critically-damped-cd4">Critically damped CD4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comparison">Comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#modification-of-discrete-alignments">Modification of discrete alignments</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#method-1-ignorance">Method 1: Ignorance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#method-2-compliance-alteration">Method 2: Compliance alteration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#method-3-generalized-quasi-alignment">Method 3: Generalized quasi-alignment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#alignment-families">Alignment families</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#boombox-bb4">Boombox BB4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#transitional-b4-lr4">Transitional B4-LR4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#chebyshev-c4">Chebyshev C4</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#second-order-alignments">Second-order alignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="time_theory.html">Time-domain Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Sample Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="youtube.html">YouTube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="json-docs.html">JSON Datafile Definitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary of symbols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zreferences.html">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Speakerbench</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Classic Vented Alignments</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/alignment_theory.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+  .ss-layout-default-AB { grid-template-areas: 'A B'; }
+</style>
+<section id="classic-vented-alignments">
+<h1>Classic Vented Alignments<a class="headerlink" href="#classic-vented-alignments" title="Link to this heading"></a></h1>
+<p>In classical loudspeaker theory from the 1960s onwards, the concept of alignments was developed to provide a systematic prescription for choosing box volume and port tuning to yield a target low-frequency response. While the theory is not exact, it offers numerous benefits including insight into the choice between low frequency extension versus group delay (phase distortion). A brief overview of the alignments discussed here and supported in Speakerbench is given in the <a class="reference internal" href="#summary"><span class="std std-ref">Summary</span></a> section at end of this page.</p>
+<section id="alignment-source-code">
+<h2>Alignment source code<a class="headerlink" href="#alignment-source-code" title="Link to this heading"></a></h2>
+<p>All the plots and data output shown on this page were generated using the <strong>Speakerbench python alignment library</strong>. That library and all software (including these webpages) is freely-available</p>
+<ul class="simple">
+<li><p>Source code at <a class="reference external" href="https://github.com/jcandy/speakertools/tree/master/src/example_code">GitHub speakerbench repository</a>.</p></li>
+<li><p>Download <a class="reference download internal" download="" href="_downloads/8ef38945df9a56df461610c67176d8c3/libalignment.zip"><code class="xref download docutils literal notranslate"><span class="pre">ZIP</span> <span class="pre">archive</span></code></a></p></li>
+<li><p>Download <a class="reference download internal" download="" href="_downloads/8ef38945df9a56df461610c67176d8c3/libalignment.zip"><code class="xref download docutils literal notranslate"><span class="pre">TGZ</span> <span class="pre">archive</span></code></a></p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>unzip<span class="w"> </span>libalignment.zip
+$<span class="w"> </span>python<span class="w"> </span>print_qt.py
+$<span class="w"> </span>python<span class="w"> </span>print_c4.py
+$<span class="w"> </span>python<span class="w"> </span>print_qa.py
+$<span class="w"> </span>python<span class="w"> </span>print_quasi.py
+</pre></div>
+</div>
+<p>Within the ZIP file is a Python library of functions (libalignment.py), which is used in code samples throughout this chapter.</p>
+</section>
+<section id="general-framework">
+<h2>General framework<a class="headerlink" href="#general-framework" title="Link to this heading"></a></h2>
+<p>To facilitate choosing the box volume and vent tuning, Speakerbench will propose values based on standard 4<sup>th</sup>-order bass-reflex alignments. These alignments are particular types of 4<sup>th</sup>-order high-pass filters. Following Small <span id="id1">[<a class="reference internal" href="zreferences.html#id61" title="R.H. Small. Vented-Box Loudspeaker Systems Part IV: Appendices. J. Audio. Eng. Soc., 21:635, 1973. URL: https://www.aes.org/e-lib/browse.cfm?elib=1941.">Sma73b</a>]</span> (Eq. 57) we can write the normalized response function as</p>
+<div class="math notranslate nohighlight" id="equation-eq-response">
+<span class="eqno">(18)<a class="headerlink" href="#equation-eq-response" title="Link to this equation"></a></span>\[G_\mathrm{H}(s) = \frac{s^4}{s^4 + a_1 s^3 + a_2 s^2 + a_3 s + 1} \; ,\]</div>
+<p>where <span class="math notranslate nohighlight">\(s = j \omega / \omega_0\)</span> is the dimensionless complex frequency variable normalized to <span class="math notranslate nohighlight">\(\omega_0 \doteq \sqrt{\wb\ws} = \sqrt{h} \, \ws\)</span>. In the first part of his article series, Small <span id="id2">[<a class="reference internal" href="zreferences.html#id61" title="R.H. Small. Vented-Box Loudspeaker Systems Part IV: Appendices. J. Audio. Eng. Soc., 21:635, 1973. URL: https://www.aes.org/e-lib/browse.cfm?elib=1941.">Sma73b</a>]</span> (Eqs. 22-24) writes the lossy box filter coefficients as</p>
+<div class="math notranslate nohighlight" id="equation-eq-a">
+<span class="eqno">(19)<a class="headerlink" href="#equation-eq-a" title="Link to this equation"></a></span>\[\begin{split}\displaystyle
+a_1 &amp; = \frac{\ql + h \: \qts}{\sqrt{h} \: \ql \: \qts}  \\
+a_2 &amp; = \frac{h + (\alpha + 1 + h^2) \: \ql \: \qts}{h \: \ql \: \qts} \\
+a_3 &amp; = \frac{h \: \ql + \qts}{\sqrt{h} \: \ql \: \qts} \; ,\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\ql\)</span> is the leakage-loss <span class="math notranslate nohighlight">\(Q\)</span> of the box and <span class="math notranslate nohighlight">\(\qts\)</span> is the total <span class="math notranslate nohighlight">\(Q\)</span> of the driver. Here, <span class="math notranslate nohighlight">\(h = \wb/\ws\)</span> is the system tuning ratio and <span class="math notranslate nohighlight">\(\alpha =\vas/\vb\)</span> is the ratio of the compliance volume to the box volume. We remark that the coefficients are approximate and neglect myriad other terms which appear in a more comprehensive model of a vented box. These missing terms would represent more complex losses in the box and in the driver suspension system, driver inductance and semi-inductance, and so on. It is generally accepted that <span class="math notranslate nohighlight">\(\ql\)</span> does not represent a true leakage loss. Rather it is an approximate <em>total loss</em> which is dominated by driver losses not accounted for in the standard Thiele-Small theory. These losses are included in the advanced model and thus we recommend setting <span class="math notranslate nohighlight">\(\ql &gt; 100\)</span> in this case.</p>
+<p>In the definition of <span class="math notranslate nohighlight">\(\omega_0\)</span>, <span class="math notranslate nohighlight">\(\ws\)</span> is the driver resonant frequency and <span class="math notranslate nohighlight">\(\wb\)</span> is the vent resonant frequency. This normalization is equivalent to setting <span class="math notranslate nohighlight">\(T_0=1\)</span> in Small’s expressions. The magnitude-versus-frequency behavior is also given in Small <span id="id3">[<a class="reference internal" href="zreferences.html#id61" title="R.H. Small. Vented-Box Loudspeaker Systems Part IV: Appendices. J. Audio. Eng. Soc., 21:635, 1973. URL: https://www.aes.org/e-lib/browse.cfm?elib=1941.">Sma73b</a>]</span> (Eqs. 58 and 59) facilitated by the use of the squared modulus technique, which we reproduce here as</p>
+<div class="math notranslate nohighlight">
+\[\left| G_\mathrm{H}(i\omega) \right|^2 = \frac{\omega^8}{\omega^8 + A_1 \omega^6 + A_2 \omega^4 + A_3 \omega^2 + 1} \; ,\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A_1 &amp; = a_1^2-2 a_2 \; , \\
+A_2 &amp; = a_2^2+2-2 a_1 a_3 \; , \\
+A_3 &amp; = a_3^2-2 a_2 \; .\end{split}\]</div>
+<section id="a-note-about-series-resistance">
+<h3>A note about series resistance<a class="headerlink" href="#a-note-about-series-resistance" title="Link to this heading"></a></h3>
+<p>The driver Q is given by</p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{\qts} = \frac{1}{\qms} + \frac{1}{\qes} \; .\]</div>
+<p>Here, we have the electrical and mechanical Q values</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\qms &amp; = \frac{\mms}{\rms} \, \ws \\
+\qes &amp; = \frac{\mms}{\rme} \, \ws\end{split}\]</div>
+<p>where the value of <span class="math notranslate nohighlight">\(\rme\)</span> depends on the electrical resistance of the driver voice coil <span class="math notranslate nohighlight">\(\re\)</span> as well as any added electrical resistance <span class="math notranslate nohighlight">\(R_\mathrm{S}\)</span> in series with the driver</p>
+<div class="math notranslate nohighlight">
+\[\rme = \frac{\bls}{\re + R_\mathrm{S}} \; .\]</div>
+<p>When you enable the optional filter in the Speakerbench box mode, and apply a series resistance, the modified value <span class="math notranslate nohighlight">\(Q_\mathrm{T,R_S}\)</span> is calculated in Speakerbench and displayed in the INFO tab. This value is what Speakerbench uses for response calculations (and in the alignment chart). The second-order response function (see <a class="reference internal" href="#second-order-alignments"><span class="std std-ref">Second-order alignments</span></a>) becomes:</p>
+<div class="math notranslate nohighlight">
+\[G_\mathrm{H}(u) = \frac{u^2}{\displaystyle u^2 + \frac{u}{Q_\mathrm{T,R_S}} + 1 + \alpha} \; .\]</div>
+</section>
+</section>
+<section id="discrete-alignments">
+<h2>Discrete alignments<a class="headerlink" href="#discrete-alignments" title="Link to this heading"></a></h2>
+<p>A <em>discrete</em> bass reflex alignment means we need to select a driver with a specific <span class="math notranslate nohighlight">\(\qts\)</span> value and match that with a specific box volume and port tuning frequency to obtain the unique discrete alignment. Two popular classic discrete alignments are the Butterworth (B4) and Bessel (BL4) ones. In addition, Thiele <span id="id4">[<a class="reference internal" href="zreferences.html#id69" title="A.N. Thiele. Inter-Order Response Characteristics for Simplified Active Filters. Proceedings of the IREE, 0:57, 1974.">Thi74</a>]</span> defined the Inter-Order Butterworth (IB4) discrete alignment around 1974. In these notes we further discuss the so-called Linkwitz-Riley (LR4) and Critically Damped (CD4) discrete alignments. Each discrete alignment defines a specific 4<sup>th</sup>-order filter with fixed coefficients <span class="math notranslate nohighlight">\((a_1,a_2,a_3)\)</span> along with properties that are broadly suitable for vented aligments. The coefficients are</p>
+<section id="butterworth-b4">
+<h3>Butterworth B4<a class="headerlink" href="#butterworth-b4" title="Link to this heading"></a></h3>
+<figure class="sphinx-subfigure align-center" id="fig-b4" style="width: 80%">
+<div class="sphinx-subfigure-grid ss-layout-default-AB" style="display: grid; gap: 6px; grid-gap: 6px;">
+<div class="sphinx-subfigure-area" style="display: flex; flex-direction: column; justify-content: center; align-items: center; grid-area: A;">
+<img alt="_images/B4-amp.png" src="_images/B4-amp.png" />
+</div>
+<div class="sphinx-subfigure-area" style="display: flex; flex-direction: column; justify-content: center; align-items: center; grid-area: B;">
+<img alt="_images/B4-poles.png" src="_images/B4-poles.png" />
+</div>
+</div>
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">B4 amplitude and poles.</span><a class="headerlink" href="#fig-b4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>In the limit of no losses, the Butterworth (B4) response corresponds to</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\qts   &amp; = \cos\frac{3\pi}{8} \simeq 0.3827 \\
+h      &amp; = 1 \\
+\alpha &amp; = \sqrt{2} \simeq 1.414\end{split}\]</div>
+<p>The Butterworth filter was introduced in 1930 by Stephen Butterworth <span id="id5">[<a class="reference internal" href="zreferences.html#id15" title="S. Butterworth. On the Theory of Filter Amplifiers. Experimental Wireless and the Wireless Engineer, 7:536, 1930.">But30</a>]</span>. It offers a maximally-flat frequency response (with no ripple in the passband) with the sharpest knee point towards the roll-off region and thus the most extended bandwidth. In relation to bass reflex loudspeakers, B4 was a very popular target response for many years, and several (non-discrete) alignment <em>families</em> ultimately develops from B4. The filter coefficients depend on cosines of the pole locations, and have the exact values</p>
+<div class="math notranslate nohighlight">
+\[a_1 = 2 \cos\frac{\pi}{8} + 2 \cos\frac{3\pi}{8}
+\qquad
+a_2 = 2+4 \cos\frac{\pi}{8} \cos\frac{3\pi}{8}
+\qquad
+a_3 = a_1\]</div>
+<p>The remarkable vanishing of all coefficients <span class="math notranslate nohighlight">\((A_1,A_2,A_3)\)</span> when calculating the squared modulus demonstrates the maximally-flat property via</p>
+<div class="math notranslate nohighlight">
+\[\left| G_\mathrm{H}(i\omega) \right|^2 = \frac{\omega^8}{\omega^8 + 1} \; ,\]</div>
+</section>
+<section id="linkwitz-riley-lr4">
+<h3>Linkwitz-Riley LR4<a class="headerlink" href="#linkwitz-riley-lr4" title="Link to this heading"></a></h3>
+<figure class="sphinx-subfigure align-center" id="fig-lr4" style="width: 80%">
+<div class="sphinx-subfigure-grid ss-layout-default-AB" style="display: grid; gap: 6px; grid-gap: 6px;">
+<div class="sphinx-subfigure-area" style="display: flex; flex-direction: column; justify-content: center; align-items: center; grid-area: A;">
+<img alt="_images/LR4-amp.png" src="_images/LR4-amp.png" />
+</div>
+<div class="sphinx-subfigure-area" style="display: flex; flex-direction: column; justify-content: center; align-items: center; grid-area: B;">
+<img alt="_images/LR4-poles.png" src="_images/LR4-poles.png" />
+</div>
+</div>
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">LR4 amplitude and poles (two double poles).</span><a class="headerlink" href="#fig-lr4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>In the limit of no losses, the Linkwitz-Riley (LR4) response corresponds to</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\qts   &amp; = 1/\sqrt{8} \simeq 0.3536 \\
+h      &amp; = 1 \\
+\alpha &amp; = 2\end{split}\]</div>
+<p>In 1976, some years after Thiele’s work, Linkwitz-Riley filters for use in electronic crossover design were described by Siegfried H. Linkwitz in a series of articles <span id="id6">[<a class="reference internal" href="zreferences.html#id43" title="S.H. Linkwitz. Active crossover networks for noncoincident drivers. J. Audio. Eng. Soc., 24(1):2–8, Jan./Feb. 1976. https://www.aes.org/e-lib/browse.cfm?elib=2649.">Lin76</a>, <a class="reference internal" href="zreferences.html#id44" title="S.H. Linkwitz. Passive crossover networks for noncoincident drivers. J. Audio. Eng. Soc., 26(3):149–150, Mar. 1978. https://www.aes.org/e-lib/browse.cfm?elib=3287.">Lin78</a>]</span>. Linkwitz obtained the 2<sup>nd</sup>- and 4<sup>th</sup>-order filters by squaring the 1<sup>st</sup>- and 2<sup>nd</sup>-order Butterworth filters, respectively. In the 4<sup>th</sup>-order case,</p>
+<div class="math notranslate nohighlight">
+\[G_\mathrm{H}(s) = \frac{ s^4 } { \left(s^2 + \sqrt{2} s + 1 \right)^2 } \; .\]</div>
+<p>An important property of the combined high-pass and low-pass sections is that the resulting crossover sums to unit magnitude, with the outputs in phase at the crossover frequency. Linkwitz originally proposed filters with these characteristic for solving lobing issues with noncoincident transducers. Of course, the application to crossovers is unrelated to bass-reflex design, which may partly explain why the literature seems to contain no recorded use of the Linkwitz-Riley filter as a discrete target alignment. In relation to bass reflex alignment, LR4 exhibits desirable features like fast settling time (controlled impulse response) similar to <a class="reference internal" href="#bessel-bl4"><span class="std std-ref">Bessel BL4</span></a> but with a more extended frequency response. The response coefficients are</p>
+<div class="math notranslate nohighlight">
+\[a_1 = \sqrt{8} \simeq 2.828
+\qquad
+a_2 = 4
+\qquad
+a_3 = a_1 \; .\]</div>
+<p>Although the Linkwitz-Riley alignment was never explicitly mentioned anywhere prior to the article in Voice Coil Magazine, it is a specific instance of the <a class="reference internal" href="#boombox-bb4"><span class="std std-ref">Boombox BB4</span></a> family of alignments for <span class="math notranslate nohighlight">\(\zeta = 1/\sqrt{2}\)</span>.  The LR4 alignment was first presented in the Voice Coil Magazine, June 2024. Later the article became Open Access when AudioXpress released an <a class="reference external" href="https://audioxpress.com/article/the-lr4-bass-reflex-alignment">LR4 article</a>.</p>
+</section>
+<section id="inter-order-butterworth-ib4">
+<h3>Inter-Order Butterworth IB4<a class="headerlink" href="#inter-order-butterworth-ib4" title="Link to this heading"></a></h3>
+<figure class="sphinx-subfigure align-center" id="fig-ib4" style="width: 80%">
+<div class="sphinx-subfigure-grid ss-layout-default-AB" style="display: grid; gap: 6px; grid-gap: 6px;">
+<div class="sphinx-subfigure-area" style="display: flex; flex-direction: column; justify-content: center; align-items: center; grid-area: A;">
+<img alt="_images/IB4-amp.png" src="_images/IB4-amp.png" />
+</div>
+<div class="sphinx-subfigure-area" style="display: flex; flex-direction: column; justify-content: center; align-items: center; grid-area: B;">
+<img alt="_images/IB4-poles.png" src="_images/IB4-poles.png" />
+</div>
+</div>
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">IB4 amplitude and poles (the pole on the x-axis is a double pole).</span><a class="headerlink" href="#fig-ib4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>In the limit of no losses, the Inter-order Butterworth (IB4) response corresponds to</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\qts   &amp; \simeq 0.3398 \\
+h      &amp; \simeq 1.106 \\
+\alpha &amp; \simeq 2.107\end{split}\]</div>
+<p>Thiele defined IB4 as a combination of a general second-order filter and two identical first-order filters <span id="id7">[<a class="reference internal" href="zreferences.html#id69" title="A.N. Thiele. Inter-Order Response Characteristics for Simplified Active Filters. Proceedings of the IREE, 0:57, 1974.">Thi74</a>]</span></p>
+<div class="math notranslate nohighlight">
+\[G_\mathrm{H}(s) = \frac{ s^4 } { \left( s^2 + \lambda s + \beta \right) \left(s + 1\right)^2 } \; ,\]</div>
+<p>where <span class="math notranslate nohighlight">\(\lambda\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> are free parameters to be chosen according to the flatness condition</p>
+<div class="math notranslate nohighlight" id="equation-eq-flat">
+<span class="eqno">(20)<a class="headerlink" href="#equation-eq-flat" title="Link to this equation"></a></span>\[\left\| \left( s^2 + \lambda s + \beta \right) \left(s + 1\right)^2 \right\|^2
+= 1 + 4 \omega^6 + 3 \omega^8 \; .\]</div>
+<p>In these equations, <span class="math notranslate nohighlight">\(s = i\omega\)</span> and <span class="math notranslate nohighlight">\(\omega\)</span> are not yet properly normalized. Note that on the righthand side of <a class="reference internal" href="#equation-eq-flat">(20)</a>, the coefficients of <span class="math notranslate nohighlight">\(\omega^2\)</span> and <span class="math notranslate nohighlight">\(\omega^4\)</span> have been set to zero. This implies that IB4 is a special case of QB3 (referred to in this work as B4Q). By solving <a class="reference internal" href="#equation-eq-flat">(20)</a> we can deduce the required coefficients</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\lambda &amp; = \sqrt{2 \left(\sqrt{3} - 1\right)} \; , \\
+\beta   &amp; = \sqrt{3} \; . \\\end{split}\]</div>
+<p>Then, bringing the high-pass filter into canonical form, the polynomial coefficients <span class="math notranslate nohighlight">\(a_1\)</span>, <span class="math notranslate nohighlight">\(a_2\)</span>, and <span class="math notranslate nohighlight">\(a_3\)</span> are expressed as</p>
+<div class="math notranslate nohighlight">
+\[a_1 = \frac{2+\lambda}{\beta^{1/4}}
+\qquad
+a_2 = \frac{1+2\lambda+\beta}{\beta^{1/2}}
+\qquad
+a_3 = \frac{\lambda+2\beta}{\beta^{3/4}}\]</div>
+<p>The Inter-Order Butterworth (IB4) alignment is rarely talked about. It was mentioned briefly by Richard Small <span id="id8">[<a class="reference internal" href="zreferences.html#id61" title="R.H. Small. Vented-Box Loudspeaker Systems Part IV: Appendices. J. Audio. Eng. Soc., 21:635, 1973. URL: https://www.aes.org/e-lib/browse.cfm?elib=1941.">Sma73b</a>]</span>. Bullock <span id="id9">[<a class="reference internal" href="zreferences.html#id14" title="R.M. Bullock III. Thiele, Small and Vented Loudspeaker Design, Part IV, Alternative Alignments. Speaker Builder Magazine, 81:18, 1981.">BullockIII81</a>]</span> published a table for this discrete alignment, and the tables are reproduced in The Loudspeaker Design Cookbook by Vance Dickason. The IB4 alignment was first presented in Voice Coil Magazine, July 2024. Later the article became Open Access when AudioXpress released an <a class="reference external" href="https://audioxpress.com/article/the-ib4-bass-reflex-alignment">IB4 article</a>.</p>
+</section>
+<section id="bessel-bl4">
+<h3>Bessel BL4<a class="headerlink" href="#bessel-bl4" title="Link to this heading"></a></h3>
+<figure class="sphinx-subfigure align-center" id="fig-bl4" style="width: 80%">
+<div class="sphinx-subfigure-grid ss-layout-default-AB" style="display: grid; gap: 6px; grid-gap: 6px;">
+<div class="sphinx-subfigure-area" style="display: flex; flex-direction: column; justify-content: center; align-items: center; grid-area: A;">
+<img alt="_images/BL4-amp.png" src="_images/BL4-amp.png" />
+</div>
+<div class="sphinx-subfigure-area" style="display: flex; flex-direction: column; justify-content: center; align-items: center; grid-area: B;">
+<img alt="_images/BL4-poles.png" src="_images/BL4-poles.png" />
+</div>
+</div>
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">BL4 amplitude and poles.</span><a class="headerlink" href="#fig-bl4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>In the limit of no losses, the Bessel response corresponds to</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\qts   &amp; \simeq 0.3162 \\
+h      &amp; \simeq 0.9759 \\
+\alpha &amp; \simeq 2.333\end{split}\]</div>
+<p>The filter coefficients can be written in terms of Bessel polynomial</p>
+<div class="math notranslate nohighlight">
+\[y_4(x) = 105 x^4 + 105 x^3 + 45 x^2 + 10 x + 1 \; .\]</div>
+<p>Bringing the high-pass response function into the canonical form <a class="reference internal" href="#equation-eq-response">(18)</a> shows that</p>
+<div class="math notranslate nohighlight">
+\[a_1 = \frac{105}{105^{3/4}} \qquad a_2 = \frac{45}{105^{1/2}} \qquad a_3 = \frac{10}{105^{1/4}} \; .\]</div>
+<p>Bessel polynomials arise in the theory of Bessel functions and are named after Friedrich Wilhelm Bessel (1784-1846) in tribute to his systematic study of Bessel’s differential equation. The practical application to filters was worked out by W.E. Thomson in 1949 in a scientific article titled <em>Delay Networks Having Maximally Flat Frequency Characteristics</em>. Thomson described this filter function applied to delay lines. A frequency range with flat group delay implies nearly linear phase response and hence minimal phase distortion of the signal. Low-pass Bessel filters are characterized by the fastest settling time and maximally flat group delay of the form</p>
+<div class="math notranslate nohighlight">
+\[\tau_g = -\frac{d\phi}{d\omega} \sim 1 + O(\omega^8)\]</div>
+</section>
+<section id="critically-damped-cd4">
+<h3>Critically damped CD4<a class="headerlink" href="#critically-damped-cd4" title="Link to this heading"></a></h3>
+<figure class="sphinx-subfigure align-center" id="fig-cd4" style="width: 80%">
+<div class="sphinx-subfigure-grid ss-layout-default-AB" style="display: grid; gap: 6px; grid-gap: 6px;">
+<div class="sphinx-subfigure-area" style="display: flex; flex-direction: column; justify-content: center; align-items: center; grid-area: A;">
+<img alt="_images/CD4-amp.png" src="_images/CD4-amp.png" />
+</div>
+<div class="sphinx-subfigure-area" style="display: flex; flex-direction: column; justify-content: center; align-items: center; grid-area: B;">
+<img alt="_images/CD4-poles.png" src="_images/CD4-poles.png" />
+</div>
+</div>
+<figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">CD4 amplitude and poles (one quadruple pole).</span><a class="headerlink" href="#fig-cd4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>In the limit of no losses, the critically damped response corresponds to</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\qts   &amp; \simeq 0.25 \\
+h      &amp; \simeq 1 \\
+\alpha &amp; \simeq 4\end{split}\]</div>
+<p>A critically-damped response has all 4 poles at <span class="math notranslate nohighlight">\(s=-1\)</span>, such that the response function is</p>
+<div class="math notranslate nohighlight">
+\[G_\mathrm{H}(s) = \frac{ s^4 } { (s + 1)^4 } = \frac{s^4}{s^4 + 4 s^3 + 6 s^2 + 4 s + 1} \; .\]</div>
+<p>Because of the reality of the poles, the step response for a CD4 aligment is non-oscillatory (no overshoot). Thus, CD4 is the most extended frequency response of all alignments with no overshoot. In relation to bass reflex design, however, this alignment is not commonly used due to the early roll-off in the frequency response. We remark that CD4 is also a special case of the <a class="reference internal" href="#boombox-bb4"><span class="std std-ref">Boombox BB4</span></a> family for <span class="math notranslate nohighlight">\(\zeta = 1\)</span>. CD4 is also equivalent to two cascaded 2<sup>nd</sup>-order filters each with <span class="math notranslate nohighlight">\(\qfilt = 0.5\)</span>, where <span class="math notranslate nohighlight">\(\qfilt\)</span> is the filter-Q</p>
+<div class="math notranslate nohighlight">
+\[s^2+s/\qfilt+1 \; .\]</div>
+<p>In the lossless case <span class="math notranslate nohighlight">\(\ql \rightarrow \infty\)</span>, the CD4 alignment corresponds to a driver with <span class="math notranslate nohighlight">\(\qts = 0.25\)</span>.  A discussion of the CD4 alignment was presented in Voice Coil Magazine in August 2024. Later the article became Open Access when AudioXpress released a <a class="reference external" href="https://audioxpress.com/article/the-cd4-bass-reflex-alignment">CD4 article</a>.</p>
+</section>
+<section id="comparison">
+<h3>Comparison<a class="headerlink" href="#comparison" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="#fig-all"><span class="std std-numref">Fig. 21</span></a> shows the (normalized) amplitude response and group delay of the above mentioned discrete alignments.</p>
+<figure class="sphinx-subfigure align-center" id="fig-all" style="width: 80%">
+<div class="sphinx-subfigure-grid ss-layout-default-AB" style="display: grid; gap: 6px; grid-gap: 6px;">
+<div class="sphinx-subfigure-area" style="display: flex; flex-direction: column; justify-content: center; align-items: center; grid-area: A;">
+<img alt="_images/all-amp.png" src="_images/all-amp.png" />
+</div>
+<div class="sphinx-subfigure-area" style="display: flex; flex-direction: column; justify-content: center; align-items: center; grid-area: B;">
+<img alt="_images/all-delay.png" src="_images/all-delay.png" />
+</div>
+</div>
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">The normalized amplitude response <span class="math notranslate nohighlight">\(|G_\mathrm{H}|\)</span> (left) and group delay <span class="math notranslate nohighlight">\(\omega_0 \tau_g = -d\phi/d\omega\)</span> (right) of the five discrete alignments.</span><a class="headerlink" href="#fig-all" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Note: These graphs are <strong>not</strong> normalized relative to the driver’s resonance frequency, but <span class="math notranslate nohighlight">\(\omega_0 \doteq \sqrt{\omega_B \, \ws} = \sqrt{h} \, \ws\)</span>. Below, we tabulate each of the five discrete alignments as a function of the enclosure loss <span class="math notranslate nohighlight">\(\ql\)</span>. The python source code used is also shown.</p>
+<details class="summary-click-here-to-expand-discrete-alignment-source-code">
+<summary>CLICK HERE to expand discrete alignment source code</summary><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">libalignment</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">Ql_vec</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;inf&#39;</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;             B4                    LR4                   IB4                   BL4                   CD4        &#39;</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39; Ql     Qt    h    alpha      Qt    h    alpha      Qt    h    alpha      Qt    h    alpha      Qt    h    alpha &#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---  --------------------  --------------------  --------------------  --------------------  --------------------&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">Ql</span> <span class="ow">in</span> <span class="n">Ql_vec</span><span class="p">:</span>
+   <span class="k">if</span> <span class="n">Ql</span> <span class="o">==</span> <span class="s1">&#39;inf&#39;</span><span class="p">:</span>
+      <span class="n">ql</span> <span class="o">=</span> <span class="mf">0.0</span>
+   <span class="k">else</span><span class="p">:</span>
+      <span class="n">ql</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">Ql</span>
+
+   <span class="n">a1</span><span class="p">,</span><span class="n">a2</span><span class="p">,</span><span class="n">a3</span> <span class="o">=</span> <span class="n">coef</span><span class="p">(</span><span class="s1">&#39;B4&#39;</span><span class="p">)</span>
+   <span class="n">Qt1</span><span class="p">,</span><span class="n">h1</span><span class="p">,</span><span class="n">alpha1</span> <span class="o">=</span> <span class="n">qtsolve</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span><span class="n">a2</span><span class="p">,</span><span class="n">a3</span><span class="p">,</span><span class="n">ql</span><span class="p">)</span>
+   <span class="n">a1</span><span class="p">,</span><span class="n">a2</span><span class="p">,</span><span class="n">a3</span> <span class="o">=</span> <span class="n">coef</span><span class="p">(</span><span class="s1">&#39;LR4&#39;</span><span class="p">)</span>
+   <span class="n">Qt2</span><span class="p">,</span><span class="n">h2</span><span class="p">,</span><span class="n">alpha2</span> <span class="o">=</span> <span class="n">qtsolve</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span><span class="n">a2</span><span class="p">,</span><span class="n">a3</span><span class="p">,</span><span class="n">ql</span><span class="p">)</span>
+   <span class="n">a1</span><span class="p">,</span><span class="n">a2</span><span class="p">,</span><span class="n">a3</span> <span class="o">=</span> <span class="n">coef</span><span class="p">(</span><span class="s1">&#39;IB4&#39;</span><span class="p">)</span>
+   <span class="n">Qt3</span><span class="p">,</span><span class="n">h3</span><span class="p">,</span><span class="n">alpha3</span> <span class="o">=</span> <span class="n">qtsolve</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span><span class="n">a2</span><span class="p">,</span><span class="n">a3</span><span class="p">,</span><span class="n">ql</span><span class="p">)</span>
+   <span class="n">a1</span><span class="p">,</span><span class="n">a2</span><span class="p">,</span><span class="n">a3</span> <span class="o">=</span> <span class="n">coef</span><span class="p">(</span><span class="s1">&#39;BL4&#39;</span><span class="p">)</span>
+   <span class="n">Qt4</span><span class="p">,</span><span class="n">h4</span><span class="p">,</span><span class="n">alpha4</span> <span class="o">=</span> <span class="n">qtsolve</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span><span class="n">a2</span><span class="p">,</span><span class="n">a3</span><span class="p">,</span><span class="n">ql</span><span class="p">)</span>
+   <span class="n">a1</span><span class="p">,</span><span class="n">a2</span><span class="p">,</span><span class="n">a3</span> <span class="o">=</span> <span class="n">coef</span><span class="p">(</span><span class="s1">&#39;CD4&#39;</span><span class="p">)</span>
+   <span class="n">Qt5</span><span class="p">,</span><span class="n">h5</span><span class="p">,</span><span class="n">alpha5</span> <span class="o">=</span> <span class="n">qtsolve</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span><span class="n">a2</span><span class="p">,</span><span class="n">a3</span><span class="p">,</span><span class="n">ql</span><span class="p">)</span>
+  
+   <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:3}</span><span class="s1">  </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1">  </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1">  </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1">  </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1">  </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span>
+         <span class="nb">format</span><span class="p">(</span><span class="n">Ql</span><span class="p">,</span>
+                <span class="n">Qt1</span><span class="p">,</span><span class="n">h1</span><span class="p">,</span><span class="n">alpha1</span><span class="p">,</span>
+                <span class="n">Qt2</span><span class="p">,</span><span class="n">h2</span><span class="p">,</span><span class="n">alpha2</span><span class="p">,</span>
+                <span class="n">Qt3</span><span class="p">,</span><span class="n">h3</span><span class="p">,</span><span class="n">alpha3</span><span class="p">,</span>
+                <span class="n">Qt4</span><span class="p">,</span><span class="n">h4</span><span class="p">,</span><span class="n">alpha4</span><span class="p">,</span>
+                <span class="n">Qt5</span><span class="p">,</span><span class="n">h5</span><span class="p">,</span><span class="n">alpha5</span>
+                <span class="p">))</span>
+                
+</pre></div>
+</div>
+</details><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>             <span class="n">B4</span>                    <span class="n">LR4</span>                   <span class="n">IB4</span>                   <span class="n">BL4</span>                   <span class="n">CD4</span>        
+ <span class="n">Ql</span>     <span class="n">Qt</span>    <span class="n">h</span>    <span class="n">alpha</span>      <span class="n">Qt</span>    <span class="n">h</span>    <span class="n">alpha</span>      <span class="n">Qt</span>    <span class="n">h</span>    <span class="n">alpha</span>      <span class="n">Qt</span>    <span class="n">h</span>    <span class="n">alpha</span>      <span class="n">Qt</span>    <span class="n">h</span>    <span class="n">alpha</span> 
+<span class="o">---</span>  <span class="o">--------------------</span>  <span class="o">--------------------</span>  <span class="o">--------------------</span>  <span class="o">--------------------</span>  <span class="o">--------------------</span>
+<span class="n">inf</span>  <span class="mf">0.3827</span> <span class="mf">1.0000</span> <span class="mf">1.4142</span>  <span class="mf">0.3536</span> <span class="mf">1.0000</span> <span class="mf">2.0000</span>  <span class="mf">0.3398</span> <span class="mf">1.1064</span> <span class="mf">2.1071</span>  <span class="mf">0.3162</span> <span class="mf">0.9759</span> <span class="mf">2.3333</span>  <span class="mf">0.2500</span> <span class="mf">1.0000</span> <span class="mf">4.0000</span>
+<span class="mi">100</span>  <span class="mf">0.3842</span> <span class="mf">1.0000</span> <span class="mf">1.3882</span>  <span class="mf">0.3548</span> <span class="mf">1.0000</span> <span class="mf">1.9718</span>  <span class="mf">0.3409</span> <span class="mf">1.1072</span> <span class="mf">2.0759</span>  <span class="mf">0.3172</span> <span class="mf">0.9757</span> <span class="mf">2.3022</span>  <span class="mf">0.2506</span> <span class="mf">1.0000</span> <span class="mf">3.9601</span>
+ <span class="mi">50</span>  <span class="mf">0.3856</span> <span class="mf">1.0000</span> <span class="mf">1.3624</span>  <span class="mf">0.3561</span> <span class="mf">1.0000</span> <span class="mf">1.9438</span>  <span class="mf">0.3421</span> <span class="mf">1.1079</span> <span class="mf">2.0450</span>  <span class="mf">0.3182</span> <span class="mf">0.9756</span> <span class="mf">2.2713</span>  <span class="mf">0.2513</span> <span class="mf">1.0000</span> <span class="mf">3.9204</span>
+ <span class="mi">10</span>  <span class="mf">0.3979</span> <span class="mf">1.0000</span> <span class="mf">1.1629</span>  <span class="mf">0.3665</span> <span class="mf">1.0000</span> <span class="mf">1.7272</span>  <span class="mf">0.3518</span> <span class="mf">1.1146</span> <span class="mf">1.8042</span>  <span class="mf">0.3266</span> <span class="mf">0.9743</span> <span class="mf">2.0311</span>  <span class="mf">0.2564</span> <span class="mf">1.0000</span> <span class="mf">3.6100</span>
+  <span class="mi">7</span>  <span class="mf">0.4048</span> <span class="mf">1.0000</span> <span class="mf">1.0613</span>  <span class="mf">0.3724</span> <span class="mf">1.0000</span> <span class="mf">1.6163</span>  <span class="mf">0.3572</span> <span class="mf">1.1185</span> <span class="mf">1.6803</span>  <span class="mf">0.3312</span> <span class="mf">0.9735</span> <span class="mf">1.9076</span>  <span class="mf">0.2593</span> <span class="mf">1.0000</span> <span class="mf">3.4490</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="modification-of-discrete-alignments">
+<h2>Modification of discrete alignments<a class="headerlink" href="#modification-of-discrete-alignments" title="Link to this heading"></a></h2>
+<p>For the five discrete alignments described above, <span class="math notranslate nohighlight">\(\qts\)</span> is not a free parameter. This suggests that a particular alignment cannot be achieved with an arbitrary driver. Thus we are faced with the problem of <em>misalignment</em>.</p>
+<div class="admonition-misalignment admonition">
+<p class="admonition-title">misalignment</p>
+<p>If the driver <span class="math notranslate nohighlight">\(\qts\)</span> does not match that required by your desired target alignment, the driver is said to be <em>misaligned</em>.</p>
+</div>
+<p>In the sections below we will describe three approaches to deal with misalignment.</p>
+<section id="method-1-ignorance">
+<h3>Method 1: Ignorance<a class="headerlink" href="#method-1-ignorance" title="Link to this heading"></a></h3>
+<p>The simplest solution is to ignore the fact that the driver <span class="math notranslate nohighlight">\(\qts\)</span> is far from the target <span class="math notranslate nohighlight">\(\qts\)</span>. This we call the method of ignorance, because you ignore the fact that <span class="math notranslate nohighlight">\(\qts\)</span> is wrong. Speakerbench denotes this approach by adding a trailing ‘i’ to the name: B4i, LR4i and BL4i. In this case, the suggested <span class="math notranslate nohighlight">\(h\)</span> and <span class="math notranslate nohighlight">\(\alpha\)</span> are <strong>unaffected</strong> by the driver <span class="math notranslate nohighlight">\(\qts\)</span> (the fact that <span class="math notranslate nohighlight">\(\qts\)</span> is not correct is ignored). The method of ignorance <strong>is not recommended for actual use</strong>, but is included for reference. Despite the name, we suspect the method was commonly used in the past.</p>
+</section>
+<section id="method-2-compliance-alteration">
+<h3>Method 2: Compliance alteration<a class="headerlink" href="#method-2-compliance-alteration" title="Link to this heading"></a></h3>
+<p>A second and better approach to handling misalignment (i.e., approximating a desired discrete alignment for which the driver <span class="math notranslate nohighlight">\(\qts\)</span> does not match the alignment <span class="math notranslate nohighlight">\(\qts\)</span>) is <strong>compliance alteration</strong>. In this case we imagine that the driver compliance starts out at a value for which the driver <span class="math notranslate nohighlight">\(\qts\)</span> matches the alignment <span class="math notranslate nohighlight">\(\qts\)</span>. A box and port are designed with the required <span class="math notranslate nohighlight">\(h\)</span> and <span class="math notranslate nohighlight">\(\alpha\)</span>. We call these the <em>reference values</em>: <span class="math notranslate nohighlight">\(Q_\mathrm{TS,ref}\)</span>, <span class="math notranslate nohighlight">\(\alpha_\mathrm{ref}\)</span> and <span class="math notranslate nohighlight">\(h_\mathrm{ref}\)</span>. Then, overnight, the suspension softens or hardens such that the driver obtains the value <span class="math notranslate nohighlight">\(\qts\)</span>. Compliance alteration then shifts <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(h\)</span> according to</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\alpha &amp; = \alpha_\mathrm{ref} \left( \frac{Q_\mathrm{TS,ref}}{\qts} \right)^2 \; , \\
+h      &amp; = h_\mathrm{ref} \left( \frac{Q_\mathrm{TS,ref}}{\qts} \right) \; .\end{split}\]</div>
+<p>In Speakerbench, when we apply this method, the alignment acronym is followed by CA as in B4CA, LR4CA and BL4CA. Below we tabulate sample alignments for <span class="math notranslate nohighlight">\(\ql = 10\)</span></p>
+<details class="summary-click-here-to-expand-compliance-alteration-source-code">
+<summary>CLICK HERE to expand compliance alteration source code</summary><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">libalignment</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">Ql</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">Qt_vec</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.30</span><span class="p">,</span><span class="mf">0.32</span><span class="p">,</span><span class="mf">0.34</span><span class="p">,</span><span class="mf">0.36</span><span class="p">,</span><span class="mf">0.38</span><span class="p">,</span><span class="mf">0.40</span><span class="p">]</span>
+
+<span class="n">h0</span>     <span class="o">=</span> <span class="p">{}</span>
+<span class="n">alpha0</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;            B4CA                  LR4CA                 IB4CA                 BL4CA                 CD4CA        &#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39; Ql     Qt    h    alpha      Qt    h    alpha      Qt    h    alpha      Qt    h    alpha      Qt    h    alpha &#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---  --------------------  --------------------  --------------------  --------------------  --------------------&#39;</span><span class="p">)</span>
+
+<span class="n">ql</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">Ql</span>
+<span class="k">for</span> <span class="n">Qt</span> <span class="ow">in</span> <span class="n">Qt_vec</span><span class="p">:</span>
+   <span class="k">for</span> <span class="n">align</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;B4&#39;</span><span class="p">,</span><span class="s1">&#39;LR4&#39;</span><span class="p">,</span><span class="s1">&#39;IB4&#39;</span><span class="p">,</span><span class="s1">&#39;BL4&#39;</span><span class="p">,</span><span class="s1">&#39;CD4&#39;</span><span class="p">]:</span>
+      <span class="n">a1</span><span class="p">,</span><span class="n">a2</span><span class="p">,</span><span class="n">a3</span> <span class="o">=</span> <span class="n">coef</span><span class="p">(</span><span class="n">align</span><span class="p">)</span>
+      <span class="n">Qtref</span><span class="p">,</span><span class="n">href</span><span class="p">,</span><span class="n">aref</span> <span class="o">=</span> <span class="n">qtsolve</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span><span class="n">a2</span><span class="p">,</span><span class="n">a3</span><span class="p">,</span><span class="n">ql</span><span class="p">)</span>
+      <span class="n">h0</span><span class="p">[</span><span class="n">align</span><span class="p">],</span><span class="n">alpha0</span><span class="p">[</span><span class="n">align</span><span class="p">]</span> <span class="o">=</span> <span class="n">casolve</span><span class="p">(</span><span class="n">Qt</span><span class="p">,</span><span class="n">Qtref</span><span class="p">,</span><span class="n">href</span><span class="p">,</span><span class="n">aref</span><span class="p">)</span>
+ 
+   <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:3}</span><span class="s1">  </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1">  </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1">  </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1">  </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1">  </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span>
+         <span class="nb">format</span><span class="p">(</span><span class="n">Ql</span><span class="p">,</span>
+                <span class="n">Qt</span><span class="p">,</span><span class="n">h0</span><span class="p">[</span><span class="s1">&#39;B4&#39;</span><span class="p">],</span><span class="n">alpha0</span><span class="p">[</span><span class="s1">&#39;B4&#39;</span><span class="p">],</span>
+                <span class="n">Qt</span><span class="p">,</span><span class="n">h0</span><span class="p">[</span><span class="s1">&#39;LR4&#39;</span><span class="p">],</span><span class="n">alpha0</span><span class="p">[</span><span class="s1">&#39;LR4&#39;</span><span class="p">],</span>
+                <span class="n">Qt</span><span class="p">,</span><span class="n">h0</span><span class="p">[</span><span class="s1">&#39;IB4&#39;</span><span class="p">],</span><span class="n">alpha0</span><span class="p">[</span><span class="s1">&#39;IB4&#39;</span><span class="p">],</span>
+                <span class="n">Qt</span><span class="p">,</span><span class="n">h0</span><span class="p">[</span><span class="s1">&#39;BL4&#39;</span><span class="p">],</span><span class="n">alpha0</span><span class="p">[</span><span class="s1">&#39;BL4&#39;</span><span class="p">],</span>
+                <span class="n">Qt</span><span class="p">,</span><span class="n">h0</span><span class="p">[</span><span class="s1">&#39;CD4&#39;</span><span class="p">],</span><span class="n">alpha0</span><span class="p">[</span><span class="s1">&#39;CD4&#39;</span><span class="p">],</span>
+                <span class="p">))</span>
+                
+</pre></div>
+</div>
+</details><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>            <span class="n">B4CA</span>                  <span class="n">LR4CA</span>                 <span class="n">IB4CA</span>                 <span class="n">BL4CA</span>                 <span class="n">CD4CA</span>        
+ <span class="n">Ql</span>     <span class="n">Qt</span>    <span class="n">h</span>    <span class="n">alpha</span>      <span class="n">Qt</span>    <span class="n">h</span>    <span class="n">alpha</span>      <span class="n">Qt</span>    <span class="n">h</span>    <span class="n">alpha</span>      <span class="n">Qt</span>    <span class="n">h</span>    <span class="n">alpha</span>      <span class="n">Qt</span>    <span class="n">h</span>    <span class="n">alpha</span> 
+<span class="o">---</span>  <span class="o">--------------------</span>  <span class="o">--------------------</span>  <span class="o">--------------------</span>  <span class="o">--------------------</span>  <span class="o">--------------------</span>
+ <span class="mi">10</span>  <span class="mf">0.3000</span> <span class="mf">1.3264</span> <span class="mf">2.0458</span>  <span class="mf">0.3000</span> <span class="mf">1.2217</span> <span class="mf">2.5779</span>  <span class="mf">0.3000</span> <span class="mf">1.3070</span> <span class="mf">2.4808</span>  <span class="mf">0.3000</span> <span class="mf">1.0605</span> <span class="mf">2.4066</span>  <span class="mf">0.3000</span> <span class="mf">0.8547</span> <span class="mf">2.6372</span>
+ <span class="mi">10</span>  <span class="mf">0.3200</span> <span class="mf">1.2435</span> <span class="mf">1.7981</span>  <span class="mf">0.3200</span> <span class="mf">1.1453</span> <span class="mf">2.2657</span>  <span class="mf">0.3200</span> <span class="mf">1.2253</span> <span class="mf">2.1804</span>  <span class="mf">0.3200</span> <span class="mf">0.9943</span> <span class="mf">2.1152</span>  <span class="mf">0.3200</span> <span class="mf">0.8013</span> <span class="mf">2.3178</span>
+ <span class="mi">10</span>  <span class="mf">0.3400</span> <span class="mf">1.1703</span> <span class="mf">1.5928</span>  <span class="mf">0.3400</span> <span class="mf">1.0780</span> <span class="mf">2.0070</span>  <span class="mf">0.3400</span> <span class="mf">1.1532</span> <span class="mf">1.9314</span>  <span class="mf">0.3400</span> <span class="mf">0.9358</span> <span class="mf">1.8736</span>  <span class="mf">0.3400</span> <span class="mf">0.7541</span> <span class="mf">2.0531</span>
+ <span class="mi">10</span>  <span class="mf">0.3600</span> <span class="mf">1.1053</span> <span class="mf">1.4207</span>  <span class="mf">0.3600</span> <span class="mf">1.0181</span> <span class="mf">1.7902</span>  <span class="mf">0.3600</span> <span class="mf">1.0892</span> <span class="mf">1.7228</span>  <span class="mf">0.3600</span> <span class="mf">0.8838</span> <span class="mf">1.6712</span>  <span class="mf">0.3600</span> <span class="mf">0.7123</span> <span class="mf">1.8314</span>
+ <span class="mi">10</span>  <span class="mf">0.3800</span> <span class="mf">1.0471</span> <span class="mf">1.2751</span>  <span class="mf">0.3800</span> <span class="mf">0.9645</span> <span class="mf">1.6067</span>  <span class="mf">0.3800</span> <span class="mf">1.0318</span> <span class="mf">1.5462</span>  <span class="mf">0.3800</span> <span class="mf">0.8373</span> <span class="mf">1.4999</span>  <span class="mf">0.3800</span> <span class="mf">0.6748</span> <span class="mf">1.6437</span>
+ <span class="mi">10</span>  <span class="mf">0.4000</span> <span class="mf">0.9948</span> <span class="mf">1.1508</span>  <span class="mf">0.4000</span> <span class="mf">0.9163</span> <span class="mf">1.4501</span>  <span class="mf">0.4000</span> <span class="mf">0.9803</span> <span class="mf">1.3954</span>  <span class="mf">0.4000</span> <span class="mf">0.7954</span> <span class="mf">1.3537</span>  <span class="mf">0.4000</span> <span class="mf">0.6410</span> <span class="mf">1.4834</span>
+</pre></div>
+</div>
+<p>Compliance Alteration was first presented in Voice Coil Magazine from October 2024. Later, the article became Open Access when AudioXpress released an <a class="reference external" href="https://audioxpress.com/article/bass-reflex-alignments-compliance-alteration">Compliance Alteration article</a>. The method can be applied to any desired discrete target alignment. This method is particularly interesting if your driver <span class="math notranslate nohighlight">\(\qts\)</span> is a bit too high, because with the compliance alteration technique, the box calculation is then treated as if the suspension is a bit too stiff. Fortunately, the driver suspension will experience aging (or burn-in) over time and will soften. When this happens, the provided equations dictate that your system will, over time, move toward the desired target response, and if softened enough to reach <span class="math notranslate nohighlight">\(Q_\mathrm{TS,ref}\)</span>, the system response will match the target without any error. If the softening does not happen, the system response will deviate slightly from the target.</p>
+</section>
+<section id="method-3-generalized-quasi-alignment">
+<h3>Method 3: Generalized quasi-alignment<a class="headerlink" href="#method-3-generalized-quasi-alignment" title="Link to this heading"></a></h3>
+<p>In a design process based on alignments, we consider <span class="math notranslate nohighlight">\((\ql,\qts)\)</span> as given inputs and <span class="math notranslate nohighlight">\((\alpha,h)\)</span> as output parameters to be computed by the alignment. Since we have two free parameters, it follows that we can specify only two of the three values <span class="math notranslate nohighlight">\((A_1,A_2,A_3)\)</span>. The approach taken is to relax (i.e., ignore) the condition on <span class="math notranslate nohighlight">\(A_3\)</span>; that is, we match the behaviour in the pass-band <span class="math notranslate nohighlight">\((A_1)\)</span> and mid-band <span class="math notranslate nohighlight">\((A_2)\)</span> but <strong>not</strong> the stop-band <span class="math notranslate nohighlight">\((A_3)\)</span>. This is described in more detail for so-called QB3 (although we prefer B4Q because the order of the filter is 4) lossless case by Benson <span id="id10">[<a class="reference internal" href="zreferences.html#id8" title="J.E. Benson. Theory and Design of Loudspeaker Enclosures. Synergetic Audio Concepts (with permission from Dr. J.E. Benson and Amalgamated Wireless Australasia Technical Review), 1993.">Ben93</a>]</span> (page 188).</p>
+<p>By defining <span class="math notranslate nohighlight">\(G = \left( \alpha+1+h^2 \right)/h\)</span>, we can rewrite these two conditions as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray}
+A_1 &amp;=&amp; \frac{q^2}{h} - 2G + \epsilon^2 q^2 h \; , \\
+A_2 &amp;=&amp; \left( G + \epsilon q^2 \right)^2 + 2-2q^2\left[ 1+\epsilon^2+\epsilon (h+1/h) \right] \; .
+\end{eqnarray}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(q = 1/\qts\)</span> and <span class="math notranslate nohighlight">\(\epsilon = \qts/\ql \ll 1\)</span> is a small parameter.</p>
+<p><strong>Recursive solution</strong></p>
+<p>In the limit <span class="math notranslate nohighlight">\(\epsilon = 0\)</span>, we can solve explicitly for <span class="math notranslate nohighlight">\((G,h)\)</span>, and this uniquely determines <span class="math notranslate nohighlight">\((\alpha,h)\)</span>. However, an explicit solution is not possible in the case <span class="math notranslate nohighlight">\(\epsilon &gt;  0\)</span>. But since <span class="math notranslate nohighlight">\(\epsilon\)</span> is small, we expect the following recursion to converge in a few iterations:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray}
+G &amp;=&amp; -\epsilon q^2 + \sqrt{A_2-2+2q^2 \left[ 1+\epsilon^2+\epsilon\left(h+1/h\right)\right]} \\
+h &amp;=&amp; \frac{q^2}{2G + A_1-\epsilon^2 q^2 h}
+\end{eqnarray}\end{split}\]</div>
+<p>Once converged, we can obtain <span class="math notranslate nohighlight">\(\alpha\)</span> according to</p>
+<div class="math notranslate nohighlight">
+\[\alpha = Gh-\left(1+h^2\right)\]</div>
+<p>Finally, note that by setting <span class="math notranslate nohighlight">\(\epsilon=0\)</span> above we obtain the lossless solution explicitly.</p>
+<details class="summary-click-here-to-expand-quasi-alignment-source-code">
+<summary>CLICK HERE to expand quasi-alignment source code</summary><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">libalignment</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">Ql</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">Qt_vec</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.30</span><span class="p">,</span><span class="mf">0.32</span><span class="p">,</span><span class="mf">0.34</span><span class="p">,</span><span class="mf">0.36</span><span class="p">,</span><span class="mf">0.38</span><span class="p">,</span><span class="mf">0.40</span><span class="p">]</span>
+
+<span class="n">h0</span>     <span class="o">=</span> <span class="p">{}</span>
+<span class="n">alpha0</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;             B4Q                  LR4Q                  IB4Q                 BL4Q                   CD4Q         &#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39; Ql     Qt    h    alpha      Qt    h    alpha      Qt    h    alpha      Qt    h    alpha      Qt    h    alpha &#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---  --------------------  --------------------  --------------------  --------------------  --------------------&#39;</span><span class="p">)</span>
+
+<span class="n">ql</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">Ql</span>
+<span class="k">for</span> <span class="n">Qt</span> <span class="ow">in</span> <span class="n">Qt_vec</span><span class="p">:</span>
+   <span class="k">for</span> <span class="n">align</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;B4&#39;</span><span class="p">,</span><span class="s1">&#39;LR4&#39;</span><span class="p">,</span><span class="s1">&#39;IB4&#39;</span><span class="p">,</span><span class="s1">&#39;BL4&#39;</span><span class="p">,</span><span class="s1">&#39;CD4&#39;</span><span class="p">]:</span>
+      <span class="n">a1</span><span class="p">,</span><span class="n">a2</span><span class="p">,</span><span class="n">a3</span> <span class="o">=</span> <span class="n">coef</span><span class="p">(</span><span class="n">align</span><span class="p">)</span>
+      <span class="n">A1</span> <span class="o">=</span> <span class="n">a1</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">a2</span>
+      <span class="n">A2</span> <span class="o">=</span> <span class="n">a2</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">a1</span><span class="o">*</span><span class="n">a3</span>
+      <span class="n">h0</span><span class="p">[</span><span class="n">align</span><span class="p">],</span><span class="n">alpha0</span><span class="p">[</span><span class="n">align</span><span class="p">]</span> <span class="o">=</span> <span class="n">quasi</span><span class="p">(</span><span class="n">Ql</span><span class="p">,</span><span class="n">Qt</span><span class="p">,</span><span class="n">A1</span><span class="p">,</span><span class="n">A2</span><span class="p">)</span>
+ 
+   <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:3}</span><span class="s1">  </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1">  </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1">  </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1">  </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1">  </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span>
+         <span class="nb">format</span><span class="p">(</span><span class="n">Ql</span><span class="p">,</span>
+                <span class="n">Qt</span><span class="p">,</span><span class="n">h0</span><span class="p">[</span><span class="s1">&#39;B4&#39;</span><span class="p">],</span><span class="n">alpha0</span><span class="p">[</span><span class="s1">&#39;B4&#39;</span><span class="p">],</span>
+                <span class="n">Qt</span><span class="p">,</span><span class="n">h0</span><span class="p">[</span><span class="s1">&#39;LR4&#39;</span><span class="p">],</span><span class="n">alpha0</span><span class="p">[</span><span class="s1">&#39;LR4&#39;</span><span class="p">],</span>
+                <span class="n">Qt</span><span class="p">,</span><span class="n">h0</span><span class="p">[</span><span class="s1">&#39;IB4&#39;</span><span class="p">],</span><span class="n">alpha0</span><span class="p">[</span><span class="s1">&#39;IB4&#39;</span><span class="p">],</span>
+                <span class="n">Qt</span><span class="p">,</span><span class="n">h0</span><span class="p">[</span><span class="s1">&#39;BL4&#39;</span><span class="p">],</span><span class="n">alpha0</span><span class="p">[</span><span class="s1">&#39;BL4&#39;</span><span class="p">],</span>
+                <span class="n">Qt</span><span class="p">,</span><span class="n">h0</span><span class="p">[</span><span class="s1">&#39;CD4&#39;</span><span class="p">],</span><span class="n">alpha0</span><span class="p">[</span><span class="s1">&#39;CD4&#39;</span><span class="p">],</span>
+                <span class="p">))</span>
+                
+</pre></div>
+</div>
+</details><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>             <span class="n">B4Q</span>                  <span class="n">LR4Q</span>                  <span class="n">IB4Q</span>                 <span class="n">BL4Q</span>                   <span class="n">CD4Q</span>         
+ <span class="n">Ql</span>     <span class="n">Qt</span>    <span class="n">h</span>    <span class="n">alpha</span>      <span class="n">Qt</span>    <span class="n">h</span>    <span class="n">alpha</span>      <span class="n">Qt</span>    <span class="n">h</span>    <span class="n">alpha</span>      <span class="n">Qt</span>    <span class="n">h</span>    <span class="n">alpha</span>      <span class="n">Qt</span>    <span class="n">h</span>    <span class="n">alpha</span> 
+<span class="o">---</span>  <span class="o">--------------------</span>  <span class="o">--------------------</span>  <span class="o">--------------------</span>  <span class="o">--------------------</span>  <span class="o">--------------------</span>
+ <span class="mi">10</span>  <span class="mf">0.3000</span> <span class="mf">1.2890</span> <span class="mf">2.9022</span>  <span class="mf">0.3000</span> <span class="mf">1.2294</span> <span class="mf">3.0517</span>  <span class="mf">0.3000</span> <span class="mf">1.2890</span> <span class="mf">2.9022</span>  <span class="mf">0.3000</span> <span class="mf">1.0736</span> <span class="mf">2.6230</span>  <span class="mf">0.3000</span> <span class="mf">0.8032</span> <span class="mf">2.3073</span>
+ <span class="mi">10</span>  <span class="mf">0.3200</span> <span class="mf">1.2146</span> <span class="mf">2.4150</span>  <span class="mf">0.3200</span> <span class="mf">1.1505</span> <span class="mf">2.5657</span>  <span class="mf">0.3200</span> <span class="mf">1.2146</span> <span class="mf">2.4150</span>  <span class="mf">0.3200</span> <span class="mf">0.9972</span> <span class="mf">2.1634</span>  <span class="mf">0.3200</span> <span class="mf">0.7320</span> <span class="mf">1.8855</span>
+ <span class="mi">10</span>  <span class="mf">0.3400</span> <span class="mf">1.1493</span> <span class="mf">2.0109</span>  <span class="mf">0.3400</span> <span class="mf">1.0808</span> <span class="mf">2.1629</span>  <span class="mf">0.3400</span> <span class="mf">1.1493</span> <span class="mf">2.0109</span>  <span class="mf">0.3400</span> <span class="mf">0.9301</span> <span class="mf">1.7839</span>  <span class="mf">0.3400</span> <span class="mf">0.6700</span> <span class="mf">1.5387</span>
+ <span class="mi">10</span>  <span class="mf">0.3600</span> <span class="mf">1.0918</span> <span class="mf">1.6719</span>  <span class="mf">0.3600</span> <span class="mf">1.0188</span> <span class="mf">1.8253</span>  <span class="mf">0.3600</span> <span class="mf">1.0918</span> <span class="mf">1.6719</span>  <span class="mf">0.3600</span> <span class="mf">0.8705</span> <span class="mf">1.4670</span>  <span class="mf">0.3600</span> <span class="mf">0.6155</span> <span class="mf">1.2502</span>
+ <span class="mi">10</span>  <span class="mf">0.3800</span> <span class="mf">1.0409</span> <span class="mf">1.3846</span>  <span class="mf">0.3800</span> <span class="mf">0.9631</span> <span class="mf">1.5396</span>  <span class="mf">0.3800</span> <span class="mf">1.0409</span> <span class="mf">1.3846</span>  <span class="mf">0.3800</span> <span class="mf">0.8172</span> <span class="mf">1.1999</span>  <span class="mf">0.3800</span> <span class="mf">0.5673</span> <span class="mf">1.0079</span>
+ <span class="mi">10</span>  <span class="mf">0.4000</span> <span class="mf">0.9955</span> <span class="mf">1.1389</span>  <span class="mf">0.4000</span> <span class="mf">0.9130</span> <span class="mf">1.2957</span>  <span class="mf">0.4000</span> <span class="mf">0.9955</span> <span class="mf">1.1389</span>  <span class="mf">0.4000</span> <span class="mf">0.7694</span> <span class="mf">0.9728</span>  <span class="mf">0.4000</span> <span class="mf">0.5244</span> <span class="mf">0.8025</span>
+</pre></div>
+</div>
+<p>In Speakerbench, when we apply this method, the alignment acronym is followed by Q as in B4Q, LR4Q and BL4Q. Thus, B4Q in Speakerbench is the same as what is known in classical theory as the QB3 alignment. We remark that Bullock <span id="id11">[<a class="reference internal" href="zreferences.html#id14" title="R.M. Bullock III. Thiele, Small and Vented Loudspeaker Design, Part IV, Alternative Alignments. Speaker Builder Magazine, 81:18, 1981.">BullockIII81</a>]</span> defines SQB3 as a subset of QB3 for drivers with <span class="math notranslate nohighlight">\(0.56 &gt; \qts &gt; 0.4\)</span>.</p>
+</section>
+</section>
+<section id="alignment-families">
+<h2>Alignment families<a class="headerlink" href="#alignment-families" title="Link to this heading"></a></h2>
+<p>Beyond discrete aligments, for which <span class="math notranslate nohighlight">\((a_1,a_2,a_3)\)</span> have explicit numerical values, well-known <strong>alignment families</strong> exist for which <span class="math notranslate nohighlight">\((a_1,a_2,a_3)\)</span> depend upon a free parameter. An alignment family allows one to cover a range of driver <span class="math notranslate nohighlight">\(\qts\)</span> values rather than just a single value. The B4Q quasi-alignment described above is in the loudspeaker industry considered an alignment family. Small and others refer to this family as QB3 (references).</p>
+<section id="boombox-bb4">
+<h3>Boombox BB4<a class="headerlink" href="#boombox-bb4" title="Link to this heading"></a></h3>
+<p>The Boombox family of alignments was first described in a convention article by W.J.J. Hoge in 1976, later in the JAES <span id="id12">[<a class="reference internal" href="zreferences.html#id28" title="W.J.J. Hoge. A new set of vented loudspeaker alignments. J. Audio. Eng. Soc., 25(6):391–393, Jun. 1977. https://www.aes.org/e-lib/browse.cfm?elib=3364.">Hog77</a>]</span>. This alignment is relatively simple, and cascades two identical 2<sup>nd</sup>-order polynomials according to</p>
+<div class="math notranslate nohighlight">
+\[G(s) = \frac{ s^4 } { \left( s^2 + 2 \, \zeta \, s + 1 \right)^2 }\]</div>
+<p>where the free parameter <span class="math notranslate nohighlight">\(\zeta\)</span> is the <strong>damping ratio</strong>, which is directly related to the driver’s <span class="math notranslate nohighlight">\(\qts\)</span>-value. For a chosen <span class="math notranslate nohighlight">\(\qts\)</span> and <span class="math notranslate nohighlight">\(\ql\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\zeta  &amp; = \frac{1}{4} \left( \frac{1}{\qts} + \frac{1}{\ql} \right) \\
+\alpha &amp; = \frac{1}{4} \left( \frac{1}{\qts} - \frac{1}{\ql}\right)^2 \\
+h      &amp; = 1\end{split}\]</div>
+<p>Bullock <span id="id13">[<a class="reference internal" href="zreferences.html#id14" title="R.M. Bullock III. Thiele, Small and Vented Loudspeaker Design, Part IV, Alternative Alignments. Speaker Builder Magazine, 81:18, 1981.">BullockIII81</a>]</span> presents tables for <span class="math notranslate nohighlight">\(\ql \geq 3\)</span>-value, which is exceptionally lossy and seems unlikely for practical use. Hoge was focused on a suitable alignment for instrument loudspeakers, e.g., for electric guitars, and was seeking a bass reflex alignment option for the high <span class="math notranslate nohighlight">\(\qts\)</span> drivers of the time that could provide an alternative to <a class="reference internal" href="#chebyshev-c4"><span class="std std-ref">Chebyshev C4</span></a>. Choosing to cascade two identical 2<sup>nd</sup>-order polynomials gives double poles with reasonably fast settling time for an impulse. Unfortunately, this alignment creates a peak before roll-off which led Hoge to satirically name it the Boombox alignment, or BB4. Hoge only defined the BB4 alignment for driver <span class="math notranslate nohighlight">\(\qts\)</span> above roughly 0.37, and he identified the peak with <span class="math notranslate nohighlight">\(\ql = 7\)</span> for a driver <span class="math notranslate nohighlight">\(\qts = 0.72\)</span> to be around +6 dB. For high <span class="math notranslate nohighlight">\(\qts\)</span> drivers, the peak becomes large, which you might accept in favor of the impulse stopping quicker than a similar peaky Chebyshev response. Besides, the single peak of a BB4 alignment is easier to equalize electronically, than the ripples of a Chebyshev alignment. On the other hand, a Chebyshev alignment with a similar driver <span class="math notranslate nohighlight">\(\qts\)</span> results in 1.3 - 1.4 dB ripple. Finally, when driver <span class="math notranslate nohighlight">\(\qts\)</span> is this high, one may consider a large closed box. Bullock realized that the equations also work well for drivers with lower <span class="math notranslate nohighlight">\(\qts\)</span>, and in this case there is no peak in the frequency response. He coined the term Sub-Boombox for these alignments, or SBB4, and his tables go as low as <span class="math notranslate nohighlight">\(\qts = 0.20\)</span>. It is therefore reasonable to say that the BB4-SBB4 alignment works for driver <span class="math notranslate nohighlight">\(\qts\)</span> in the range of 0.20-0.72, although mathematically it can be applied outside these limits. Note finally that both LR4 and CD4 are special cases of BB4 for <span class="math notranslate nohighlight">\(\zeta = 1/\sqrt{2}\)</span> and <span class="math notranslate nohighlight">\(\zeta = 1\)</span> respectively.</p>
+</section>
+<section id="transitional-b4-lr4">
+<h3>Transitional B4-LR4<a class="headerlink" href="#transitional-b4-lr4" title="Link to this heading"></a></h3>
+<p>Speakerbench supports a so-called Transitional B4-LR4 alignment family, which moves smoothly between Butterworth B4 and Linkwitz-Riley LR4. The construction is fairly trivial by comparing locations of LR4 and B4 poles. We can write a one-parameter family of alignments that contains both B4 and LR4 as specific cases using</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a_1 &amp;= \sqrt{8} \cos\epsilon \\
+a_2 &amp;= 4 \cos^2 \epsilon \\
+a_3 &amp;= a_1\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\epsilon\)</span> is an angle in the range <span class="math notranslate nohighlight">\(0 \leq \epsilon \leq \pi/8\)</span>. Evidently</p>
+<div class="math notranslate nohighlight">
+\[\cos\epsilon = \frac{1}{\sqrt{8}} \left( \frac{1}{\qts} + \frac{1}{\ql} \right)\]</div>
+<p>Importantly, <span class="math notranslate nohighlight">\(\epsilon = 0\)</span> gives LR4 and <span class="math notranslate nohighlight">\(\epsilon = \pi / 8\)</span> gives B4. In general, the four poles of the response function lie on the unit circle at</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\theta &amp; = \frac{3\pi}{4} \pm \epsilon \\
+\theta &amp; = -\frac{3\pi}{4} \pm \epsilon\end{split}\]</div>
+<p>To the best of our knowledge, the concept of Transitional Alignments was never explored in relation to loudspeaker (Bass Reflex) boxes until it was presented in the Voice Coil Magazine, September 2024. Later the article became Open Access when AudioXpress released an online
+<a class="reference external" href="https://audioxpress.com/article/transitional-bass-reflex-alignments">Transitional alignment article</a>. Notably, R.M. Golden and J.F. Kaiser <span id="id14">[<a class="reference internal" href="zreferences.html#id25" title="R.M. Golden and J.F. Kaiser. Root and Delay Parameters for Normalized Bessel and Butterworth Low-Pass Transfer Functions. IEEE Trans. Audio Electroacoust., AU-19:64, 1971.">GK71</a>]</span> described the roots of normalized Butterworth and Bessel-Thomson low-pass transfer functions, from which Small <span id="id15">[<a class="reference internal" href="zreferences.html#id61" title="R.H. Small. Vented-Box Loudspeaker Systems Part IV: Appendices. J. Audio. Eng. Soc., 21:635, 1973. URL: https://www.aes.org/e-lib/browse.cfm?elib=1941.">Sma73b</a>]</span> derived the polynomial coefficients of the fourth-order highpass Bessel alignment. Golden and Kaiser also described a transitional filter design where a chosen balance between the two is realized.</p>
+<p>With the calculated transition from LR4 to B4, we have obtained a subtle improvement over continuing with the Boombox alignment. For drivers with <span class="math notranslate nohighlight">\(\qts\)</span> values above the LR4-<span class="math notranslate nohighlight">\(\qts\)</span>, the Boombox alignment will have a (small) peak in its frequency response before roll-off. By transitioning towards the B4 alignment, we avoid this peak, and the frequency response remains monotonic. Transitioning between B4 and LR4 is only relevant for drivers with <span class="math notranslate nohighlight">\(\qts\)</span> in the approximate range <span class="math notranslate nohighlight">\(0.37 &lt; \qts &lt; 0.40\)</span>. Speakerbench only shows this option if your driver’s <span class="math notranslate nohighlight">\(\qts\)</span>-value is within this range. Although Speakerbench only supports this one transitional alignment, in the Alignment Chart you can click anywhere between known alignments to achieve an effective transitional alignment.</p>
+</section>
+<section id="chebyshev-c4">
+<h3>Chebyshev C4<a class="headerlink" href="#chebyshev-c4" title="Link to this heading"></a></h3>
+<p>Perhaps the most remarkable of all vented alignments is the Chebyshev C4 method because of the systematic way in which it defines an entire family (in the parameter k) that controls ripple and simultaneously connects to B4. Chebyshev-like alignments for loudspeakers were exploited as early as 1956 by F.J. van Leeuwen <span id="id16">[<a class="reference internal" href="zreferences.html#id77" title="F.J. van Leeuwen. De Basreflexstraler in de akoestiek. Tijdschrift van het Nederlands Radiogenootschap, 21:195, 1956.">vL56</a>]</span>. These alignments have also been discussed by Thiele and Small, and in detail by Benson following the treatment by Weinberg (expand). The alignment is named after Pafnuty Chebyshev because the amplitude response is written in terms of the Chebyshev polynomial of the first kind. Consider the 4<sup>th</sup>-order low-pass case,</p>
+<div class="math notranslate nohighlight">
+\[\left| G_\mathrm{H}(i\omega) \right|^2 = \frac{1}{1+\varepsilon^2 T_4^2 (x)}\]</div>
+<p>where <span class="math notranslate nohighlight">\(x = \omega/\omega_c\)</span> and <span class="math notranslate nohighlight">\(\omega_c\)</span> is the critical frequency above which the filter becomes non-oscillatory, and</p>
+<div class="math notranslate nohighlight">
+\[T_4(x) = 8 x^4 - 8 x^2 + 1 \quad \text{such that} \quad T_4(\cos\phi) = \cos(4\phi)\]</div>
+<p>Thus, in the region <span class="math notranslate nohighlight">\(x \leq 1\)</span> the properties of polynomial ensure that the amplitude is bounded by</p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{1+\varepsilon^2} \leq \left| G_\mathrm{H}(i \omega) \right|^2 \leq 1 \; .\]</div>
+<p>Thus, <span class="math notranslate nohighlight">\(\varepsilon\)</span> is a measure of the passband ripple. It provides the degree of freedom required for drivers of varying <span class="math notranslate nohighlight">\(\qts\)</span>. Note however that the response functions above are not yet written in the canonical form of Eq. <a class="reference internal" href="#equation-eq-response">(18)</a>. Using the properties of the Chebyshev polynomials one can determine the locations of the poles <span class="math notranslate nohighlight">\(u = i x = i \cos\phi\)</span> (the analog of <span class="math notranslate nohighlight">\(s = i\omega\)</span>) by finding the roots of</p>
+<div class="math notranslate nohighlight">
+\[1+\varepsilon^2 \cos\left(4\phi\right)^2 = 0\]</div>
+<p>After some algebra we can write the roots as</p>
+<div class="math notranslate nohighlight">
+\[u_m = i\cos\phi_m = - \sinh(\varphi)\sin\theta_m + i \cosh(\varphi)\cos\theta_m \quad\text{for} \quad m = 1,\cdots,4\]</div>
+<p>where <span class="math notranslate nohighlight">\(\theta_m = (2m-1)\pi/8\)</span> and</p>
+<div class="math notranslate nohighlight">
+\[\varphi = \frac{1}{4}\,  \mathrm{arcsinh}\left( \frac{1}{\varepsilon} \right)\]</div>
+<p>We can further simplify by defining <span class="math notranslate nohighlight">\(s = u/\cosh\varphi\)</span> to give</p>
+<div class="math notranslate nohighlight">
+\[s_m = -k \sin\theta_m + i \cos\theta_m\]</div>
+<p>where <span class="math notranslate nohighlight">\(k = \tanh\varphi &lt; 1\)</span>. These are evidently the poles of the B4 alignment, but with the real part multiplied by <span class="math notranslate nohighlight">\(k\)</span>, which is consistent with a comment by Small. The algebra required to simplify is straigthforward but tedious. Some partial steps are illuminating, specifically</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}(s-s_1)(s-s_4) &amp; = s^2 + 2 k s \sin\frac{\pi}{8} + 1 + (k^2-1)\sin^2\frac{\pi}{8} \\
+(s-s_2)(s-s_3) &amp; = s^2 + 2 k s \cos\frac{\pi}{8} + 1 + (k^2-1)\cos^2\frac{\pi}{8} \\\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\prod_{m-1}^4 (s-s_m) = s^4 + k c_0 \, s^3  + \left[ 1+k^2(1+\sqrt{2}) \right] s^2 + k c_0 \left( 1+\frac{k^2-1}{\sqrt{8}} \right) s + D(k)\]</div>
+<p>where <span class="math notranslate nohighlight">\(c_0 = \sqrt{4+\sqrt{8}}\)</span>. Finally we can renormalize to find the forms reported by Small for the high-pass function</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a_3 &amp; = \frac{c_0 k}{D^{1/4}} \\
+a_2 &amp; = \frac{1+k^2(1+\sqrt{2})}{D^{1/2}} \\
+a_1 &amp; = \frac{c_0 k}{D^{3/4}} \left( 1+\frac{k^2-1}{\sqrt{8}} \right)\end{split}\]</div>
+<p>Evidenty, these functions can be analytically continued triivally to the region <span class="math notranslate nohighlight">\(k \geq 1\)</span>. The region <span class="math notranslate nohighlight">\(k &lt; 1\)</span> has passband ripple, the special case <span class="math notranslate nohighlight">\(k = 1\)</span> is the B4 alignment, and the region <span class="math notranslate nohighlight">\(k &gt; 1\)</span> is monotonic.</p>
+<details class="summary-click-here-to-expand-chebyshev-c4-source-code">
+<summary>CLICK HERE to expand Chebyshev C4 source code</summary><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">libalignment</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">Qtvec</span><span class="o">=</span><span class="p">[</span><span class="mf">0.31</span><span class="p">,</span><span class="mf">0.32</span><span class="p">,</span><span class="mf">0.33</span><span class="p">,</span><span class="mf">0.34</span><span class="p">,</span><span class="mf">0.35</span><span class="p">,</span><span class="mf">0.36</span><span class="p">,</span><span class="mf">0.37</span><span class="p">,</span><span class="mf">0.38</span><span class="p">,</span><span class="mf">0.39</span><span class="p">,</span><span class="mf">0.40</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;           Ql=100         Ql=10           Ql=7    &#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39; Qt      h    alpha     h    alpha     h    alpha &#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-----  -------------  -------------  -------------&#39;</span><span class="p">)</span>  
+
+<span class="k">for</span> <span class="n">Qt</span> <span class="ow">in</span> <span class="n">Qtvec</span><span class="p">:</span>
+   <span class="n">k</span><span class="p">,</span><span class="n">h1</span><span class="p">,</span><span class="n">alpha1</span> <span class="o">=</span> <span class="n">c4</span><span class="p">(</span><span class="mf">100.0</span><span class="p">,</span><span class="n">Qt</span><span class="p">)</span>
+   <span class="n">k</span><span class="p">,</span><span class="n">h2</span><span class="p">,</span><span class="n">alpha2</span> <span class="o">=</span> <span class="n">c4</span><span class="p">(</span><span class="mf">10.0</span><span class="p">,</span><span class="n">Qt</span><span class="p">)</span>
+   <span class="n">k</span><span class="p">,</span><span class="n">h3</span><span class="p">,</span><span class="n">alpha3</span> <span class="o">=</span> <span class="n">c4</span><span class="p">(</span><span class="mf">7.0</span><span class="p">,</span><span class="n">Qt</span><span class="p">)</span>
+
+   <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.3f}</span><span class="s1">  </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1">  </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1">  </span><span class="si">{:.4f}</span><span class="s1"> </span><span class="si">{:.4f}</span><span class="s1">&#39;</span>
+         <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Qt</span><span class="p">,</span><span class="n">h1</span><span class="p">,</span><span class="n">alpha1</span><span class="p">,</span><span class="n">h2</span><span class="p">,</span><span class="n">alpha2</span><span class="p">,</span><span class="n">h3</span><span class="p">,</span><span class="n">alpha3</span><span class="p">))</span>
+</pre></div>
+</div>
+</details><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>           <span class="n">Ql</span><span class="o">=</span><span class="mi">100</span>         <span class="n">Ql</span><span class="o">=</span><span class="mi">10</span>           <span class="n">Ql</span><span class="o">=</span><span class="mi">7</span>    
+ <span class="n">Qt</span>      <span class="n">h</span>    <span class="n">alpha</span>     <span class="n">h</span>    <span class="n">alpha</span>     <span class="n">h</span>    <span class="n">alpha</span> 
+<span class="o">-----</span>  <span class="o">-------------</span>  <span class="o">-------------</span>  <span class="o">-------------</span>
+<span class="mf">0.310</span>  <span class="mf">1.0989</span> <span class="mf">3.3233</span>  <span class="mf">1.1051</span> <span class="mf">3.2762</span>  <span class="mf">1.1073</span> <span class="mf">3.2500</span>
+<span class="mf">0.320</span>  <span class="mf">1.0953</span> <span class="mf">3.0275</span>  <span class="mf">1.1048</span> <span class="mf">3.0011</span>  <span class="mf">1.1086</span> <span class="mf">2.9850</span>
+<span class="mf">0.330</span>  <span class="mf">1.0882</span> <span class="mf">2.7388</span>  <span class="mf">1.1012</span> <span class="mf">2.7310</span>  <span class="mf">1.1065</span> <span class="mf">2.7240</span>
+<span class="mf">0.340</span>  <span class="mf">1.0778</span> <span class="mf">2.4595</span>  <span class="mf">1.0942</span> <span class="mf">2.4677</span>  <span class="mf">1.1012</span> <span class="mf">2.4688</span>
+<span class="mf">0.350</span>  <span class="mf">1.0642</span> <span class="mf">2.1917</span>  <span class="mf">1.0840</span> <span class="mf">2.2130</span>  <span class="mf">1.0926</span> <span class="mf">2.2209</span>
+<span class="mf">0.360</span>  <span class="mf">1.0480</span> <span class="mf">1.9372</span>  <span class="mf">1.0708</span> <span class="mf">1.9687</span>  <span class="mf">1.0810</span> <span class="mf">1.9821</span>
+<span class="mf">0.370</span>  <span class="mf">1.0293</span> <span class="mf">1.6980</span>  <span class="mf">1.0550</span> <span class="mf">1.7363</span>  <span class="mf">1.0667</span> <span class="mf">1.7539</span>
+<span class="mf">0.380</span>  <span class="mf">1.0089</span> <span class="mf">1.4755</span>  <span class="mf">1.0368</span> <span class="mf">1.5175</span>  <span class="mf">1.0498</span> <span class="mf">1.5378</span>
+<span class="mf">0.390</span>  <span class="mf">0.9872</span> <span class="mf">1.2706</span>  <span class="mf">1.0168</span> <span class="mf">1.3134</span>  <span class="mf">1.0309</span> <span class="mf">1.3351</span>
+<span class="mf">0.400</span>  <span class="mf">0.9648</span> <span class="mf">1.0838</span>  <span class="mf">0.9955</span> <span class="mf">1.1248</span>  <span class="mf">1.0103</span> <span class="mf">1.1467</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="second-order-alignments">
+<h2>Second-order alignments<a class="headerlink" href="#second-order-alignments" title="Link to this heading"></a></h2>
+<p>One can take the limit <span class="math notranslate nohighlight">\(h \rightarrow 0\)</span> in <a class="reference internal" href="#equation-eq-a">(19)</a> to recover the limit of a closed box. However, there is a subtlety related to <span class="math notranslate nohighlight">\(\ql\)</span> which is apparent from the definition</p>
+<div class="math notranslate nohighlight">
+\[\ql \doteq \frac{h}{\alpha} \rml \cms \, \ws \; .\]</div>
+<p>This definition is unsuitable for the case of small <span class="math notranslate nohighlight">\(h\)</span> and, arguably, unsuitable in general. To properly retain loss in a sealed enclosure we introduce <span class="math notranslate nohighlight">\(\qlc\)</span> via <span class="math notranslate nohighlight">\(\ql \doteq h \, \qlc\)</span>. After some algebra, and using <span class="math notranslate nohighlight">\(\qlc\)</span> in place of <span class="math notranslate nohighlight">\(\ql\)</span>, we can derive the 3rd-order leaky-sealed-box response</p>
+<div class="math notranslate nohighlight">
+\[\frac{u^3}{\displaystyle u^3
++ \left( \frac{1}{\qts} + \frac{1}{\qlc} \right) u^2
++ \left( \alpha+1+\frac{1}{\qts\qlc} \right) u
++ \frac{1}{\qlc}} \; ,\]</div>
+<p>where <span class="math notranslate nohighlight">\(u = i \omega/\ws\)</span>. In reality, the actual leakage loss <span class="math notranslate nohighlight">\(\ql\)</span> is negligible for any reasonably-constructed sealed box. Finite <span class="math notranslate nohighlight">\(\ql\)</span> has historically been used in alignment theory to provide a crude but analytically tractable description of losses, whereas real losses in the system result in corrections that cannot be treated in the context of 4<sup>th</sup>-order filter theory. So, taking <span class="math notranslate nohighlight">\(\qlc \rightarrow \infty\)</span>, we are left with the classic 2<sup>nd</sup>-order box response</p>
+<div class="math notranslate nohighlight" id="equation-eq-closedu">
+<span class="eqno">(21)<a class="headerlink" href="#equation-eq-closedu" title="Link to this equation"></a></span>\[G_\mathrm{H}(u) = \frac{u^2}{\displaystyle u^2 + \frac{u}{\qts} + \left( \alpha+1 \right)} \; .\]</div>
+<p>Simulation of a closed box in Speakerbench in triggered by zeroing the port tuning frequency: <span class="math notranslate nohighlight">\(\fp = 0\)</span>. Losses in this case will vanish because Speakerbench accepts input for <span class="math notranslate nohighlight">\(\ql\)</span> rather than <span class="math notranslate nohighlight">\(\qlc\)</span>. To arrive at the canonical form for a closed box, we write <span class="math notranslate nohighlight">\(u = \sqrt{\alpha+1} \, s\)</span> to find</p>
+<div class="math notranslate nohighlight" id="equation-eq-closed">
+<span class="eqno">(22)<a class="headerlink" href="#equation-eq-closed" title="Link to this equation"></a></span>\[G_\mathrm{H}(s) = \frac{s^2}{\displaystyle s^2 + \frac{s}{\qtc} + 1}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\qtc &amp; \doteq \sqrt{\alpha+1} \, \qts \; , \\
+\wcb &amp; \doteq \sqrt{\alpha+1} \, \ws \; \\\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(s = i \omega/\wcb\)</span>. A closed box system has one free design parameter <span class="math notranslate nohighlight">\(\alpha = \cms / \cmb = \vas / \vb\)</span>. In the Speakerbench alignment chart, there are two dots shown at <span class="math notranslate nohighlight">\(h = 0\)</span>. These represent the second-order Bessel (<span class="math notranslate nohighlight">\(\qtc = 1 / \sqrt{3} \simeq 0.577\)</span>) and Butterworth (<span class="math notranslate nohighlight">\(\qtc = 1 / \sqrt{2} \simeq 0.707\)</span>) responses, respectively. A critically damped 2<sup>nd</sup>-order closed box would require <span class="math notranslate nohighlight">\(\qtc = 0.5\)</span>.</p>
+<p>These 2<sup>nd</sup>-order results are useful when designing vented box systems, in which the user may plug the port, essentially converting the system into a closed box design. In principle, one could also show other known alignments, e.g., the second-order Linkwitz-Riley (<span class="math notranslate nohighlight">\(\qtc = 0.5\)</span>), but targets outside the range between Bessel and Butterworth are rarely used when designing vented box systems. In other words, the volume of a vented box system (<span class="math notranslate nohighlight">\(\alpha\)</span>) is typically chosen such that the driver in box <span class="math notranslate nohighlight">\(Q\)</span> is between the Bessel and the Butterworth second-order alignment. This observation is almost valid even for the extreme case of a CD4 alignment, where in practice the box volume when the port is closed will give a system <span class="math notranslate nohighlight">\(Q \approx 0.55\)</span> (the exact value depend on leakage <span class="math notranslate nohighlight">\(\ql\)</span>). Any second order response where the system <span class="math notranslate nohighlight">\(Q &gt; 0.707\)</span> is considered a Chebyshev C2 alignment, even if there is not any equal ripple since a second-order response will just have a peak.</p>
+<p>In classical theory, closed boxes are divided into the infinite baffle (IB) type and the acoustic suspension (AS) type. It is considered of the acoustic suspension type when <span class="math notranslate nohighlight">\(\cmb\)</span> dominates over <span class="math notranslate nohighlight">\(\cms\)</span> such that <span class="math notranslate nohighlight">\(\fcb \geq 2 \fs\)</span>, which gives <span class="math notranslate nohighlight">\(\alpha \geq 3\)</span>.</p>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h2>
+<table class="docutils align-default" id="id17">
+<caption><span class="caption-number">Table 3 </span><span class="caption-text"><strong>Table of supported discrete alignments and alignment families</strong></span><a class="headerlink" href="#id17" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Tag</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Comments</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>B4i - B4Q - B4CA</p></td>
+<td><p>Butterworth</p></td>
+<td><p>Centered around <span class="math notranslate nohighlight">\(\qts = 0.40\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>LR4Q - LR4CA</p></td>
+<td><p>Linkwitz-Riley</p></td>
+<td><p>Centered around <span class="math notranslate nohighlight">\(\qts = 0.37\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>BL4Q - BL4CA</p></td>
+<td><p>Bessel</p></td>
+<td><p>Centered around <span class="math notranslate nohighlight">\(\qts = 0.33\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>CD4Q - CD4CA</p></td>
+<td><p>Critically damped</p></td>
+<td><p>Centered around <span class="math notranslate nohighlight">\(\qts = 0.26\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>IB4Q - IB4CA</p></td>
+<td><p>Inter-order Butterworth</p></td>
+<td><p>Centered around <span class="math notranslate nohighlight">\(\qts = 0.34\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>C4 - SC4</p></td>
+<td><p>Chebyshev</p></td>
+<td><p>For <span class="math notranslate nohighlight">\(0.236 &lt; \qts &lt; 1.416\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>BB4 - SBB4</p></td>
+<td><p>Boombox</p></td>
+<td><p>For <span class="math notranslate nohighlight">\(0.20 &lt; \qts &lt; 0.75\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>B4-LR4</p></td>
+<td><p>Transitional B4-LR4</p></td>
+<td><p>For <span class="math notranslate nohighlight">\(0.37 &lt; \qts &lt; 0.40\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>B2</p></td>
+<td><p>Butterworth 2<sup>nd</sup> order</p></td>
+<td><p>Closed box, <span class="math notranslate nohighlight">\(\qtc = 0.707\)</span> (requires <span class="math notranslate nohighlight">\(\qts &lt; 0.67)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>BL2</p></td>
+<td><p>Bessel 2<sup>nd</sup> order</p></td>
+<td><p>Closed box, <span class="math notranslate nohighlight">\(\qtc = 0.577\)</span> (requires <span class="math notranslate nohighlight">\(\qts &lt; 0.55)\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Note: In Speakerbench the Quasi IB4 (IB4Q) only shows up if <span class="math notranslate nohighlight">\(\qts\)</span> is close to the target, and since it is identical to B4Q (=QB3), the two will be located at the same spot in the alignment chart. IB4CA is unique and is always shown.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="box_theory.html" class="btn btn-neutral float-left" title="Speakerbench Box Theory" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="time_theory.html" class="btn btn-neutral float-right" title="Time-domain Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020-2025 | C. Futtrup and J. Candy.
+      <span class="lastupdated">Last updated on Mar 11, 2025.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
