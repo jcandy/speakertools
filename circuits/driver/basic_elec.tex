@@ -1,0 +1,17 @@
+\documentclass[crop,tikz]{standalone}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{siunitx}
+
+\begin{document}
+
+\ctikzset{bipoles/length=0.85cm}
+\begin{circuitikz}[scale=1.2]
+\draw (0,0) to [sV=$e_g$, i=$i_\mathrm{vc}$,o-o] (0,2); 
+% ZE
+\draw (0,2) to[generic, l^=$Z_\mathrm{E}$, o-o] (2,2);
+% ZM
+\draw (2,2) to[generic,l^=$Z_\mathrm{mot}$,o-o] (2,0) to[short,o-o] (0,0);
+\end{circuitikz}
+
+\end{document}

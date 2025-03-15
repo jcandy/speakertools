@@ -88,6 +88,6 @@ Speakerbench doesn't do the actual impedance measurements for you; rather, you w
    glossary
    zreferences
 
-.. raw:: html
-
-   <p>Powered by <a href="https://rackhosting.dk/" target="_blank"> <img style="vertical-align:middle" src="_images/0x0-1116x323.png" alt="Rackhosting logo" width="124" height="36"> </a></p>
+.. image:: images/poweredbyrackhosting.png
+   :width: 330px
+   :target: https://rackhosting.dk/  

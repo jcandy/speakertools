@@ -1,0 +1,17 @@
+\documentclass[tikz,crop]{standalone}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{siunitx}
+\usepackage{amsfonts}
+
+\begin{document}
+
+\ctikzset{bipoles/length=0.85cm}
+\begin{circuitikz}[scale=1.2]
+% BOX
+\draw (0,3) to[L, l^=$(\epsilon_{11}-\epsilon_{12})M_A$, o-o] (3,3) to[L, l^=$(\epsilon_{22}-\epsilon_{12})M_A$, o-o] (6,3);
+\draw (3,3) to[L, l^=$\epsilon_{12} M_A$, o-o] (3,2);
+\draw (3,2) to[R, l^=$R_\mathrm{AB}$, o-o] (3,1) to[C,l^=$C^*_\mathrm{AB}$,o-o] (3,0);
+\draw (0,0) to[short,o-o] (3,0) to[short,o-o] (6,0);
+\end{circuitikz}
+\end{document}
