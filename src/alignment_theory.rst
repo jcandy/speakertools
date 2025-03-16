@@ -35,14 +35,14 @@ To facilitate choosing the box volume and vent tuning, Speakerbench will propose
 
 .. math::
    :label: eq.response
-	   
+	
    G_\mathrm{H}(s) = \frac{s^4}{s^4 + a_1 s^3 + a_2 s^2 + a_3 s + 1} \; ,
 
 where :math:`s = j \omega / \omega_0` is the dimensionless complex frequency variable normalized to :math:`\omega_0 \doteq \sqrt{\wb\ws} = \sqrt{h} \, \ws`. In the first part of his article series, Small :cite:`small:1973c` (Eqs. 22-24) writes the lossy box filter coefficients as
 
 .. math::
    :label: eq.a
-	   
+	
    \displaystyle
    a_1 & = \frac{\ql + h \: \qts}{\sqrt{h} \: \ql \: \qts}  \\
    a_2 & = \frac{h + (\alpha + 1 + h^2) \: \ql \: \qts}{h \: \ql \: \qts} \\
@@ -75,17 +75,22 @@ Here, we have the electrical and mechanical Q values
 .. math::
    \qms & = \frac{\mms}{\rms} \, \ws \\
    \qes & = \frac{\mms}{\rme} \, \ws
-   
-where the value of :math:`\rme` depends on the electrical resistance of the driver voice coil :math:`\re` as well as any added electrical resistance :math:`R_\mathrm{S}` in series with the driver 
+
+where the value of :math:`\rme` depends on the electrical resistance of the driver voice coil :math:`\re` as well as any added electrical resistance :math:`R_\mathrm{S}` in series with the driver
 
 .. math::
    \rme = \frac{\bls}{\re + R_\mathrm{S}} \; .
 
-When you enable the optional filter in the Speakerbench box mode, and apply a series resistance, the modified value :math:`Q_\mathrm{T,R_S}` is calculated in Speakerbench and displayed in the INFO tab. This value is what Speakerbench uses for response calculations (and in the alignment chart). The second-order response function (see :ref:`Second-order alignments`) becomes:
+When you enable the optional filter in the Speakerbench box mode, and apply a series resistance, the modified value :math:`Q_\mathrm{T,R_S}` is calculated in Speakerbench and displayed in the INFO tab.
+
+.. math::
+   Q_\mathrm{T,R_S} = \frac{\mms}{\rme + \rms} \, \ws
+
+This value is what Speakerbench uses for response calculations (and in the alignment chart). The second-order response function (see :ref:`Second-order alignments`) becomes:
 
 .. math::
    G_\mathrm{H}(u) = \frac{u^2}{\displaystyle u^2 + \frac{u}{Q_\mathrm{T,R_S}} + 1 + \alpha} \; .
-   
+
 Discrete alignments
 -------------------
 
@@ -110,7 +115,7 @@ In the limit of no losses, the Butterworth (B4) response corresponds to
 .. math::
    \qts   & = \cos\frac{3\pi}{8} \simeq 0.3827 \\
    h      & = 1 \\
-   \alpha & = \sqrt{2} \simeq 1.414 
+   \alpha & = \sqrt{2} \simeq 1.414
 
 The Butterworth filter was introduced in 1930 by Stephen Butterworth :cite:`butterworth:1930`. It offers a maximally-flat frequency response (with no ripple in the passband) with the sharpest knee point towards the roll-off region and thus the most extended bandwidth. In relation to bass reflex loudspeakers, B4 was a very popular target response for many years, and several (non-discrete) alignment *families* ultimately develops from B4. The filter coefficients depend on cosines of the pole locations, and have the exact values
 
@@ -121,8 +126,8 @@ The Butterworth filter was introduced in 1930 by Stephen Butterworth :cite:`butt
    \qquad
    a_3 = a_1
 
-The remarkable vanishing of all coefficients :math:`(A_1,A_2,A_3)` when calculating the squared modulus demonstrates the maximally-flat property via 
- 
+The remarkable vanishing of all coefficients :math:`(A_1,A_2,A_3)` when calculating the squared modulus demonstrates the maximally-flat property via
+
 .. math::
    \left| G_\mathrm{H}(i\omega) \right|^2 = \frac{\omega^8}{\omega^8 + 1} \; ,
 
@@ -145,10 +150,10 @@ In the limit of no losses, the Linkwitz-Riley (LR4) response corresponds to
 
 .. math::
    \qts   & = 1/\sqrt{8} \simeq 0.3536 \\
-   h      & = 1 \\ 
-   \alpha & = 2 
+   h      & = 1 \\
+   \alpha & = 2
 
-In 1976, some years after Thiele’s work, Linkwitz-Riley filters for use in electronic crossover design were described by Siegfried H. Linkwitz in a series of articles :cite:`linkwitz:1976,linkwitz:1978`. Linkwitz obtained the 2\ :sup:`nd`- and 4\ :sup:`th`-order filters by squaring the 1\ :sup:`st`- and 2\ :sup:`nd`-order Butterworth filters, respectively. In the 4\ :sup:`th`-order case, 
+In 1976, some years after Thiele’s work, Linkwitz-Riley filters for use in electronic crossover design were described by Siegfried H. Linkwitz in a series of articles :cite:`linkwitz:1976,linkwitz:1978`. Linkwitz obtained the 2\ :sup:`nd`- and 4\ :sup:`th`-order filters by squaring the 1\ :sup:`st`- and 2\ :sup:`nd`-order Butterworth filters, respectively. In the 4\ :sup:`th`-order case,
 
 .. math::
     G_\mathrm{H}(s) = \frac{ s^4 } { \left(s^2 + \sqrt{2} s + 1 \right)^2 } \; .
@@ -184,7 +189,7 @@ In the limit of no losses, the Inter-order Butterworth (IB4) response correspond
    \qts   & \simeq 0.3398 \\
    h      & \simeq 1.106 \\
    \alpha & \simeq 2.107
- 
+
 Thiele defined IB4 as a combination of a general second-order filter and two identical first-order filters :cite:`thiele:1974`
 
 .. math::
@@ -194,7 +199,7 @@ where :math:`\lambda` and :math:`\beta` are free parameters to be chosen accordi
 
 .. math::
    :label: eq.flat
-	   
+	
    \left\| \left( s^2 + \lambda s + \beta \right) \left(s + 1\right)^2 \right\|^2
    = 1 + 4 \omega^6 + 3 \omega^8 \; .
 
@@ -208,11 +213,11 @@ Then, bringing the high-pass filter into canonical form, the polynomial coeffici
 
 .. math::
    a_1 = \frac{2+\lambda}{\beta^{1/4}}
-   \qquad  
+   \qquad
    a_2 = \frac{1+2\lambda+\beta}{\beta^{1/2}}
    \qquad
    a_3 = \frac{\lambda+2\beta}{\beta^{3/4}}
-   
+
 The Inter-Order Butterworth (IB4) alignment is rarely talked about. It was mentioned briefly by Richard Small :cite:`small:1973c`. Bullock :cite:`bullock:1981` published a table for this discrete alignment, and the tables are reproduced in The Loudspeaker Design Cookbook by Vance Dickason. The IB4 alignment was first presented in Voice Coil Magazine, July 2024. Later the article became Open Access when AudioXpress released an `IB4 article <https://audioxpress.com/article/the-ib4-bass-reflex-alignment>`_.
 
 
@@ -236,7 +241,7 @@ In the limit of no losses, the Bessel response corresponds to
    \qts   & \simeq 0.3162 \\
    h      & \simeq 0.9759 \\
    \alpha & \simeq 2.333
-   
+
 The filter coefficients can be written in terms of Bessel polynomial
 
 .. math::
@@ -246,12 +251,12 @@ Bringing the high-pass response function into the canonical form :eq:`eq.respons
 
 .. math::
    a_1 = \frac{105}{105^{3/4}} \qquad a_2 = \frac{45}{105^{1/2}} \qquad a_3 = \frac{10}{105^{1/4}} \; .
-   
+
 Bessel polynomials arise in the theory of Bessel functions and are named after Friedrich Wilhelm Bessel (1784-1846) in tribute to his systematic study of Bessel's differential equation. The practical application to filters was worked out by W.E. Thomson in 1949 in a scientific article titled *Delay Networks Having Maximally Flat Frequency Characteristics*. Thomson described this filter function applied to delay lines. A frequency range with flat group delay implies nearly linear phase response and hence minimal phase distortion of the signal. Low-pass Bessel filters are characterized by the fastest settling time and maximally flat group delay of the form
 
 .. math::
    \tau_g = -\frac{d\phi}{d\omega} \sim 1 + O(\omega^8)
-   
+
 Critically damped CD4
 ^^^^^^^^^^^^^^^^^^^^^
 
@@ -272,11 +277,11 @@ Critically damped CD4
 In the limit of no losses, the critically damped response corresponds to
 
 .. math::
-   \qts   & \simeq 0.25 \\
-   h      & \simeq 1 \\
-   \alpha & \simeq 4
+   \qts   & = 0.25 \\
+   h      & = 1 \\
+   \alpha & = 4
 
-A critically-damped response has all 4 poles at :math:`s=-1`, such that the response function is 
+A critically-damped response has all 4 poles at :math:`s=-1`, such that the response function is
 
 .. math::
    G_\mathrm{H}(s) = \frac{ s^4 } { (s + 1)^4 } = \frac{s^4}{s^4 + 4 s^3 + 6 s^2 + 4 s + 1} \; .
@@ -308,15 +313,15 @@ Note: These graphs are **not** normalized relative to the driver's resonance fre
 
 
 .. collapse:: CLICK HERE to expand discrete alignment source code
-   
+
    .. literalinclude::
       example_code/print_qt.py
 
 .. literalinclude::
    images/alignment/print_qt.txt
 
-   
-Modification of discrete alignments 
+
+Modification of discrete alignments
 -----------------------------------
 
 For the five discrete alignments described above, :math:`\qts` is not a free parameter. This suggests that a particular alignment cannot be achieved with an arbitrary driver. Thus we are faced with the problem of *misalignment*.
@@ -345,7 +350,7 @@ In Speakerbench, when we apply this method, the alignment acronym is followed by
 
 
 .. collapse:: CLICK HERE to expand compliance alteration source code
-   
+
    .. literalinclude::
       example_code/print_ca.py
 
@@ -387,7 +392,7 @@ Once converged, we can obtain :math:`\alpha` according to
 Finally, note that by setting :math:`\epsilon=0` above we obtain the lossless solution explicitly.
 
 .. collapse:: CLICK HERE to expand quasi-alignment source code
-   
+
    .. literalinclude::
       example_code/print_quasi.py
 
@@ -400,11 +405,11 @@ Alignment families
 ------------------
 
 Beyond discrete aligments, for which :math:`(a_1,a_2,a_3)` have explicit numerical values, well-known **alignment families** exist for which :math:`(a_1,a_2,a_3)` depend upon a free parameter. An alignment family allows one to cover a range of driver :math:`\qts` values rather than just a single value. The B4Q quasi-alignment described above is in the loudspeaker industry considered an alignment family. Small and others refer to this family as QB3 (references).
-   
+
 Boombox BB4
 ^^^^^^^^^^^
 
-The Boombox family of alignments was first described in a convention article by W.J.J. Hoge in 1976, later in the JAES :cite:`hoge:1977`. This alignment is relatively simple, and cascades two identical 2\ :sup:`nd`-order polynomials according to 
+The Boombox family of alignments was first described in a convention article by W.J.J. Hoge in 1976, later in the JAES :cite:`hoge:1977`. This alignment is relatively simple, and cascades two identical 2\ :sup:`nd`-order polynomials according to
 
 .. math::
    G(s) = \frac{ s^4 } { \left( s^2 + 2 \, \zeta \, s + 1 \right)^2 }
@@ -441,8 +446,8 @@ Importantly, :math:`\epsilon = 0` gives LR4 and :math:`\epsilon = \pi / 8` gives
    \theta & = -\frac{3\pi}{4} \pm \epsilon
 
 To the best of our knowledge, the concept of Transitional Alignments was never explored in relation to loudspeaker (Bass Reflex) boxes until it was presented in the Voice Coil Magazine, September 2024. Later the article became Open Access when AudioXpress released an online
-`Transitional alignment article <https://audioxpress.com/article/transitional-bass-reflex-alignments>`_. Notably, R.M. Golden and J.F. Kaiser :cite:`golden:1971` described the roots of normalized Butterworth and Bessel-Thomson low-pass transfer functions, from which Small :cite:`small:1973c` derived the polynomial coefficients of the fourth-order highpass Bessel alignment. Golden and Kaiser also described a transitional filter design where a chosen balance between the two is realized.
-   
+`Transitional alignment <https://audioxpress.com/article/transitional-bass-reflex-alignments>`_ article. Notably, R.M. Golden and J.F. Kaiser :cite:`golden:1971` described the roots of normalized Butterworth and Bessel-Thomson low-pass transfer functions, from which Small :cite:`small:1973c` derived the polynomial coefficients of the fourth-order highpass Bessel alignment. Golden and Kaiser also described a transitional filter design where a chosen balance between the two is realized.
+
 With the calculated transition from LR4 to B4, we have obtained a subtle improvement over continuing with the Boombox alignment. For drivers with :math:`\qts` values above the LR4-:math:`\qts`, the Boombox alignment will have a (small) peak in its frequency response before roll-off. By transitioning towards the B4 alignment, we avoid this peak, and the frequency response remains monotonic. Transitioning between B4 and LR4 is only relevant for drivers with :math:`\qts` in the approximate range :math:`0.37 < \qts < 0.40`. Speakerbench only shows this option if your driver's :math:`\qts`-value is within this range. Although Speakerbench only supports this one transitional alignment, in the Alignment Chart you can click anywhere between known alignments to achieve an effective transitional alignment.
 
 Chebyshev C4
@@ -453,12 +458,12 @@ Perhaps the most remarkable of all vented alignments is the Chebyshev C4 method 
 .. math::
    \left| G_\mathrm{H}(i\omega) \right|^2 = \frac{1}{1+\varepsilon^2 T_4^2 (x)}
 
-where :math:`x = \omega/\omega_c` and :math:`\omega_c` is the critical frequency above which the filter becomes non-oscillatory, and 
+where :math:`x = \omega/\omega_c` and :math:`\omega_c` is the critical frequency above which the filter becomes non-oscillatory, and
 
 .. math::
    T_4(x) = 8 x^4 - 8 x^2 + 1 \quad \text{such that} \quad T_4(\cos\phi) = \cos(4\phi)
 
-Thus, in the region :math:`x \leq 1` the properties of polynomial ensure that the amplitude is bounded by   
+Thus, in the region :math:`x \leq 1` the properties of polynomial ensure that the amplitude is bounded by
 
 .. math::
    \frac{1}{1+\varepsilon^2} \leq \left| G_\mathrm{H}(i \omega) \right|^2 \leq 1 \; .
@@ -478,7 +483,7 @@ where :math:`\theta_m = (2m-1)\pi/8` and
 .. math::
    \varphi = \frac{1}{4}\,  \mathrm{arcsinh}\left( \frac{1}{\varepsilon} \right)
 
-We can further simplify by defining :math:`s = u/\cosh\varphi` to give 
+We can further simplify by defining :math:`s = u/\cosh\varphi` to give
 
 .. math::
 
@@ -489,10 +494,10 @@ where :math:`k = \tanh\varphi < 1`. These are evidently the poles of the B4 alig
 .. math::
    (s-s_1)(s-s_4) & = s^2 + 2 k s \sin\frac{\pi}{8} + 1 + (k^2-1)\sin^2\frac{\pi}{8} \\
    (s-s_2)(s-s_3) & = s^2 + 2 k s \cos\frac{\pi}{8} + 1 + (k^2-1)\cos^2\frac{\pi}{8} \\
-   
+
 .. math::
    \prod_{m-1}^4 (s-s_m) = s^4 + k c_0 \, s^3  + \left[ 1+k^2(1+\sqrt{2}) \right] s^2 + k c_0 \left( 1+\frac{k^2-1}{\sqrt{8}} \right) s + D(k)
-   
+
 where :math:`c_0 = \sqrt{4+\sqrt{8}}`. Finally we can renormalize to find the forms reported by Small for the high-pass function
 
 .. math::
@@ -503,7 +508,7 @@ where :math:`c_0 = \sqrt{4+\sqrt{8}}`. Finally we can renormalize to find the fo
 Evidenty, these functions can be analytically continued triivally to the region :math:`k \geq 1`. The region :math:`k < 1` has passband ripple, the special case :math:`k = 1` is the B4 alignment, and the region :math:`k > 1` is monotonic.
 
 .. collapse:: CLICK HERE to expand Chebyshev C4 source code
-   
+
    .. literalinclude::
       example_code/print_c4.py
 
@@ -518,7 +523,7 @@ One can take the limit :math:`h \rightarrow 0` in :eq:`eq.a` to recover the limi
 .. math::
    \ql \doteq \frac{h}{\alpha} \rml \cms \, \ws \; .
 
-This definition is unsuitable for the case of small :math:`h` and, arguably, unsuitable in general. To properly retain loss in a sealed enclosure we introduce :math:`\qlc` via :math:`\ql \doteq h \, \qlc`. After some algebra, and using :math:`\qlc` in place of :math:`\ql`, we can derive the 3rd-order leaky-sealed-box response 
+This definition is unsuitable for the case of small :math:`h` and, arguably, unsuitable in general. To properly retain loss in a sealed enclosure we introduce :math:`\qlc` via :math:`\ql \doteq h \, \qlc`. After some algebra, and using :math:`\qlc` in place of :math:`\ql`, we can derive the 3rd-order leaky-sealed-box response
 
 .. math::
    \frac{u^3}{\displaystyle u^3
@@ -530,14 +535,14 @@ where :math:`u = i \omega/\ws`. In reality, the actual leakage loss :math:`\ql` 
 
 .. math::
    :label: eq.closedu
-      
+
    G_\mathrm{H}(u) = \frac{u^2}{\displaystyle u^2 + \frac{u}{\qts} + \left( \alpha+1 \right)} \; .
 
 Simulation of a closed box in Speakerbench in triggered by zeroing the port tuning frequency: :math:`\fp = 0`. Losses in this case will vanish because Speakerbench accepts input for :math:`\ql` rather than :math:`\qlc`. To arrive at the canonical form for a closed box, we write :math:`u = \sqrt{\alpha+1} \, s` to find
 
 .. math::
    :label: eq.closed
-      
+
    G_\mathrm{H}(s) = \frac{s^2}{\displaystyle s^2 + \frac{s}{\qtc} + 1}
 
 where
@@ -546,7 +551,7 @@ where
    \qtc & \doteq \sqrt{\alpha+1} \, \qts \; , \\
    \wcb & \doteq \sqrt{\alpha+1} \, \ws \; \\
 
-where :math:`s = i \omega/\wcb`. A closed box system has one free design parameter :math:`\alpha = \cms / \cmb = \vas / \vb`. In the Speakerbench alignment chart, there are two dots shown at :math:`h = 0`. These represent the second-order Bessel (:math:`\qtc = 1 / \sqrt{3} \simeq 0.577`) and Butterworth (:math:`\qtc = 1 / \sqrt{2} \simeq 0.707`) responses, respectively. A critically damped 2\ :sup:`nd`-order closed box would require :math:`\qtc = 0.5`. 
+where :math:`s = i \omega/\wcb`. A closed box system has one free design parameter :math:`\alpha = \cms / \cmb = \vas / \vb`. In the Speakerbench alignment chart, there are two dots shown at :math:`h = 0`. These represent the second-order Bessel (:math:`\qtc = 1 / \sqrt{3} \simeq 0.577`) and Butterworth (:math:`\qtc = 1 / \sqrt{2} \simeq 0.707`) responses, respectively. A critically damped 2\ :sup:`nd`-order closed box would require :math:`\qtc = 0.5`.
 
 These 2\ :sup:`nd`-order results are useful when designing vented box systems, in which the user may plug the port, essentially converting the system into a closed box design. In principle, one could also show other known alignments, e.g., the second-order Linkwitz-Riley (:math:`\qtc = 0.5`), but targets outside the range between Bessel and Butterworth are rarely used when designing vented box systems. In other words, the volume of a vented box system (:math:`\alpha`) is typically chosen such that the driver in box :math:`Q` is between the Bessel and the Butterworth second-order alignment. This observation is almost valid even for the extreme case of a CD4 alignment, where in practice the box volume when the port is closed will give a system :math:`Q \approx 0.55` (the exact value depend on leakage :math:`\ql`). Any second order response where the system :math:`Q > 0.707` is considered a Chebyshev C2 alignment, even if there is not any equal ripple since a second-order response will just have a peak.
 

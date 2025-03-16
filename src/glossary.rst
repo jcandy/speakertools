@@ -40,6 +40,7 @@ Glossary of symbols
    ":math:`\qts`", "Driver total :math:`Q` (Thiele/Small parameter)"
    ":math:`\qes`","Driver electrical :math:`Q` (T/S parameter)"
    ":math:`\qms`", "Driver mechanical :math:`Q` (T/S parameter)"
+   ":math:`\mmd`", "Intrinsic moving mass of driver, without air load"
    ":math:`\mms`", "Moving mass of driver, including air load in free air"
    ":math:`\cms`", "Effective mechanical compliance of driver suspension"
    ":math:`\cas`", "Effective acoustical compliance of driver suspension :math:`=\cms \, \sd^2`"

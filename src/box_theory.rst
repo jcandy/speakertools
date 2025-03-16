@@ -1,11 +1,11 @@
 .. _box_theory:
-		    
+		
 Speakerbench Box Theory
 =======================
 
 History of enclosure models
 ---------------------------
-      
+
 The standard theory of loudspeaker enclosures was popularized by Small :cite:`small:1972a,small:1972b,small:1973b`, although the equivalent theory was presented by Benson in greater detail in his series of articles *Theory and Design of Loudspeaker Enclosures* :cite:`benson:1993`
 
 .. subfigure:: AB
@@ -17,7 +17,7 @@ The standard theory of loudspeaker enclosures was popularized by Small :cite:`sm
 
    .. image:: images/box/small_vented.png
       :alt: Acoustical circuit (Small)
-	    
+	
    .. image:: images/box/benson_vented.png
       :alt: Mechanical circuit (Benson)
 
@@ -30,8 +30,8 @@ The *blocked electrical* and *motional* impedances of the driver are modified fr
 
 .. math::
    :label: eq.oldnew
-	   
-   \begin{align*}	   
+	
+   \begin{align*}	
    \ze & = & \re + s L_3 & \longrightarrow & \re + s \leb + \left( \frac{1}{\rss} + \frac{1}{s \le}
    + \frac{1}{\sqrt{s} \ke} \right)^{-1} \; , \\
    \mathbb{Z}_{\rm mot} &=& s \mms + \rms + \frac{1}{s\cms} & \longrightarrow &
@@ -46,7 +46,7 @@ BOX: T-network enclosure model
 The classic form for the acoustic impedance of enclosure is
 
 .. math::
-   Z_\mathrm{box} =  \frac{1}{s \cab} + \rab 
+   Z_\mathrm{box} =  \frac{1}{s \cab} + \rab
 
 where :math:`\cab` is the acoustic compliance and :math:`\rab` is the box absorption. There is no model for the classical absorption and so it is purely an empirical parameter.
 
@@ -54,15 +54,15 @@ A vented enclosure is represented not by a single circuit element but rather by 
 
 .. math::
    :label: eq.zpq
-	   
+	
    Z_{pq} = \frac{1}{s \cab } + s \ma \, \epsilon_{pq} \; .
 
-In this expression we have ignored terms of order :math:`s^2` and higher. By ignoring these terms we limit the applicability of the theory to the frequency range where the neglected terms are small. Note that in this section, all masses and compliances are assumed to be in acoustic units. When mechanical units are used, a lower-case :math:`m` subscript will be added. The quantity :math:`\epsilon_{pq}` is a dimensionless :math:`2\!\times\!2` array 
+In this expression we have ignored terms of order :math:`s^2` and higher. By ignoring these terms we limit the applicability of the theory to the frequency range where the neglected terms are small. Note that in this section, all masses and compliances are assumed to be in acoustic units. When mechanical units are used, a lower-case :math:`m` subscript will be added. The quantity :math:`\epsilon_{pq}` is a dimensionless :math:`2\!\times\!2` array
 
 .. math::
    :label: eq.eps
-	   
-   \begin{equation}	   
+	
+   \begin{equation}	
    \epsilon_{pq} = \frac{1}{3} + \frac{4}{\pi} \sum_{m,n} \gamma_{mn} \frac{\coth(\pi \dmn)}{\dmn} \cos\left(\theta_p\right) \cos\left(\theta_q\right) \frac{J_1\left(\beta_p \right)}{\beta_p}  \frac{J_1\left(\beta_q \right)}{\beta_q} \; ,
    \end{equation}
 
@@ -70,7 +70,7 @@ where in Eq. :eq:`eq.eps` we have defined
 
 .. math::
    :label: eq.defs
-	   
+	
    \begin{align}
 	   \theta_p = &~ \frac{n \pi y_p}{l_y} \\
 	   \beta_p = &~ \frac{\pi a_p}{l_z}\dmn \\
@@ -82,10 +82,10 @@ The index :math:`p=1` corresponds to the driver (subscript :math:`D`) and :math:
 
 .. math::
    :label: eq.units
-	   
+	
 	   \begin{align}
 	   \cab = &~ \frac{\vb}{\rho c^2} = C_\mathrm{MB} \sd^2 \; , \\
-	   \ma = &~ \frac{\rho \, l_z}{\sb} \; , 
+	   \ma = &~ \frac{\rho \, l_z}{\sb} \; ,
 	   \end{align}
 
 where :math:`\sb = l_x \, l_y` is the baffle area, :math:`l_z` is the enclosure depth, :math:`\sd = \pi \ad^2` is the driver area, and :math:`V= l_x \, l_y \, l_z` is the enclosure volume. The 2-port circuit diagram for a vented box at low frequency is illustrated in :numref:`fig.box`.
@@ -99,12 +99,12 @@ where :math:`\sb = l_x \, l_y` is the baffle area, :math:`l_z` is the enclosure 
 
    .. image:: images/box/box_classic.png
       :alt: T-network diagram for classic box
-	      
+	
    .. image:: images/box/box_q.png
       :alt: T-network diagram for Beranek box
 
    Comparison of classic (left) and Beranek (right) box models.
-	 
+	
 In the model shown in :numref:`fig.box`, we have retained the empirical box absorption which can be equivalently written as an absorption Q:
 
 .. math::
@@ -151,27 +151,27 @@ This model for the port also contains an empirical loss factor :math:`\rap` that
 
    .. image:: images/box/port_classic.png
       :alt: Classic port model
-	    
+	
    .. image:: images/box/port_q.png
       :alt: Transmission line port model
-	      
+	
    T-network diagrams for classic (left) and T-line (right) ports. Here, :math:`\zeta` is a complex propagation constant defined in :eq:`eq.zeta`, and :math:`M_\mathrm{rad}` is the effective radiation mass.
 
 The complex propagation constant used in Speakerbench is
 
 .. math::
    :label: eq.zeta
-	   
+	
    \zeta = \left( s+\frac{\wb}{\qps} \right) \frac{\lpp}{c} \; .
 
 We use a star to denote a modified form of :math:`\qp` used as the Speakerbench input for both classic and transmission line ports. This modified definition is done for convenience and is related to the traditional definition according to
 
 .. math::
    :label: eq.qp
-	   
+	
    \qps \doteq \frac{\lpp}{\lp} \frac{1}{\wb\cab\rap} = \frac{\lpp}{\lp} \qp \; .
 
-   
+
 End corrections
 ^^^^^^^^^^^^^^^
 
@@ -193,13 +193,13 @@ The interior of the box provides an end correction to the port mass. In the case
 The volume velocity through the radiation mass represents the sound exiting the vent, whereas the velocity through the :math:`\mathrm{csch}` branch is associated with reflections and compression in the tube. The internal correction is
 
 .. math::
-  \lpi = \frac{\epsilon_{22}-\epsilon_{21}}{\sb} \sp \, l_z 
+  \lpi = \frac{\epsilon_{22}-\epsilon_{21}}{\sb} \sp \, l_z
 
 Thus, the effective length of the port is given by
 
 .. math::
    \lp = \lpi + \lpp + \lpo
-  
+
 Summary of acoustic masses
 --------------------------
 
@@ -212,6 +212,6 @@ The identification and calculation of acoustic masses is complicated and depends
    :name: tab.mass
 
    port,":math:`\displaystyle \left(0.6\ap\right)\frac{\rho}{\sp}`",":math:`\displaystyle \frac{\rho \, \vp}{\sp^2}`",":math:`\displaystyle \left(\epsilon_{22}-\epsilon_{12}\right)\,\ma`"
-   box,":math:`\displaystyle \left(0.6\ad\right) \frac{\rho}{\sd}`",":math:`\displaystyle \frac{\mms}{\sd^2}`",":math:`\displaystyle \epsilon_{11} \, \ma`"
+   box,":math:`\displaystyle \left(0.6\ad\right) \frac{\rho}{\sd}`",":math:`\displaystyle \frac{\mmd}{\sd^2}`",":math:`\displaystyle \epsilon_{11} \, \ma`"
 
-The **outer** masses result from radiation into free space. For both the driver and port, the coefficient of 0.6 applies to unflanged radiation. Note that for flanged radiation (infinite baffle) the coefficient is 0.85. The **intrinsic** box and port masses are the moving masses of the driver, and port air plug, respectively. For the driver, it is assumed that the outer mass is already contained in the advanced model :math:`\mms` whereas for the port, we assume it is mounted externally to justify the unflanged assumption. The **inner** masses, finally, require numerical evaluation of the Helmholtz matrix elements :math:`\epsilon_{pq}` via Eq. :eq:`eq.eps`.  
+The **outer** masses result from radiation into free space. For both the driver and port, the coefficient of 0.6 applies to unflanged radiation. Note that for flanged radiation (infinite baffle) the coefficient is 0.85. The **intrinsic** box and port masses are the moving masses of the driver, and port air plug, respectively. For the driver, it is assumed that the outer mass is already contained in the advanced model :math:`\mms` whereas for the port, we assume it is mounted externally to justify the unflanged assumption. The **inner** masses, finally, require numerical evaluation of the Helmholtz matrix elements :math:`\epsilon_{pq}` via Eq. :eq:`eq.eps`.
