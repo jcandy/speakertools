@@ -52,7 +52,8 @@ Glossary of symbols
    ":math:`\clog`", "Mechanical viscoelastic compliance parameter of driver (advanced parameter)"
    ":math:`\rlog`", "Mechanical viscoelastic damping parameter of driver (advanced parameter)"
    ":math:`\flog`", "Mechanical viscoelastic resonant frequency parameter of driver (advanced parameter)"
-   ":math:`\sd`", "Effective surface area of driver diaphragm (the shadow area)"
+   ":math:`\ad`", "Effective radius of driver diaphragm (the projected shadow area)"
+   ":math:`\sd`", "Effective surface area of driver diaphragm (the shadow area) :math:`=\pi \, \ad^2`"
    ":math:`\xmax`", "Max peak linear excursion (displacement) of driver diaphragm"
    ":math:`L_3`", "Effective inductance defined at +3dB impedance (half power)"
 
