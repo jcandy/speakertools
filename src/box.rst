@@ -45,7 +45,7 @@ For bass reflex simulation, Speakerbench supports two port models
 Alignments
 ----------
 
-To facilitate choosing the box volume and vent tuning, Speakerbench will propose values based on standard 4th-order bass-reflex alignments :cite:`small:1973c`. A comprehensive description is given in the :ref:`Classic Vented Alignments` section.
+To facilitate choosing the box volume and vent tuning, Speakerbench will propose values based on standard 4\ :sup:`th`-order bass-reflex alignments :cite:`small:1973c`. A comprehensive description is given in the :ref:`Classic Vented Alignments` section.
 
 Transient Response
 ------------------

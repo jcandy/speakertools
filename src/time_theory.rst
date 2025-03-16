@@ -225,7 +225,7 @@ To modify the Weideman algorithm to prevent pole crossing, it is instructive to 
    R(s) = \frac{s^4}{\displaystyle \left(s^2+h^2\right) \left( 1 + \frac{s}{\qts} + s^2\right)
     + \alpha s^2} \; .
 
-The new parameter :math:`h = \wp / \ws`, where :math:`\wp` is resonant frequency of the vented enclosure, transforms the response into a 4\ :sup:`th`-order filter with four poles in the left half-plane.   Small :cite:`small:1973b` refers to :math:`h` as the *system tuning ratio*.  Typical vented alignments choose :math:`h \sim 1`. The pole locations for this response function can be computed analytically in some special cases -- most notably when the denominator coincides with the 4\ :sup:`th`-order Butterworth polynomial:
+The new parameter :math:`h = \wpb / \ws`, where :math:`\wpb` is resonant frequency of the vented enclosure, transforms the response into a 4\ :sup:`th`-order filter with four poles in the left half-plane.   Small :cite:`small:1973b` refers to :math:`h` as the *system tuning ratio*.  Typical vented alignments choose :math:`h \sim 1`. The pole locations for this response function can be computed analytically in some special cases -- most notably when the denominator coincides with the 4\ :sup:`th`-order Butterworth polynomial:
 
 .. math::
    :label: eq.but

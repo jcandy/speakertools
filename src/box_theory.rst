@@ -55,7 +55,7 @@ A vented enclosure is represented not by a single circuit element but rather by 
 .. math::
    :label: eq.zpq
 	
-   Z_{pq} = \frac{1}{s \cab } + s \ma \, \epsilon_{pq} \; .
+   Z_{pq} = \frac{1}{s \cab } + s \mab \, \epsilon_{pq} \; .
 
 In this expression we have ignored terms of order :math:`s^2` and higher. By ignoring these terms we limit the applicability of the theory to the frequency range where the neglected terms are small. Note that in this section, all masses and compliances are assumed to be in acoustic units. When mechanical units are used, a lower-case :math:`m` subscript will be added. The quantity :math:`\epsilon_{pq}` is a dimensionless :math:`2\!\times\!2` array
 
@@ -85,7 +85,7 @@ The index :math:`p=1` corresponds to the driver (subscript :math:`D`) and :math:
 	
 	   \begin{align}
 	   \cab = &~ \frac{\vb}{\rho c^2} = C_\mathrm{MB} \sd^2 \; , \\
-	   \ma = &~ \frac{\rho \, l_z}{\sb} \; ,
+	   \mab = &~ \frac{\rho \, l_z}{\sb} \; ,
 	   \end{align}
 
 where :math:`\sb = l_x \, l_y` is the baffle area, :math:`l_z` is the enclosure depth, :math:`\sd = \pi \ad^2` is the driver area, and :math:`V= l_x \, l_y \, l_z` is the enclosure volume. The 2-port circuit diagram for a vented box at low frequency is illustrated in :numref:`fig.box`.
@@ -119,12 +119,12 @@ The definition is
 where :math:`1.0 < \deltv < 1.4`. The factor of 1.4 corresponds to :math:`\gamma = C_P/C_V`. At this time, there is no general theory which can connect material properties of fill to precise values of :math:`\rab` and :math:`\deltv`. For an unfilled enclosure, :math:`\deltv=1`, whereas for an enclosure densely filled with fiberglass, :math:`\deltv \simeq 1.4`.
 
 Connection to Beranek factor
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+............................
 
 The end-correction factor :math:`B`, first introduced by Beranek in his 1954 book :cite:`beranek:1954`, is related to the piston self-interaction coefficient :math:`\epsilon_{11}` and defines the acoustic mass :math:`M` when the port is blocked:
 
 .. math::
-   M_{11} \doteq \epsilon_{11} \ma =  \frac{B \rho}{\pi \, \ad} \; .
+   M_{11} \doteq \epsilon_{11} \mab =  \frac{B \rho}{\pi \, \ad} \; .
 
 Thus, we can define :math:`B` in terms of :math:`\epsilon_{11}` as
 
@@ -173,12 +173,12 @@ We use a star to denote a modified form of :math:`\qp` used as the Speakerbench 
 
 
 End corrections
-^^^^^^^^^^^^^^^
+...............
 
-Because there is no precise theory for the effective port length, :math:`\lp`, in terms of the physical port length, :math:`\lpp`, it is customary to first define the effective length in terms of the resonant frequency :math:`\wp` as
+Because there is no precise theory for the effective port length, :math:`\lp`, in terms of the physical port length, :math:`\lpp`, it is customary to first define the effective length in terms of the resonant frequency :math:`\wpb` as
 
 .. math::
-   \wp^2 = \frac{1}{\cab \map} = \frac{\sp c^2}{\vb \lp} \; .
+   \wpb^2 = \frac{1}{\cab \map} = \frac{\sp c^2}{\vb \lp} \; .
 
 To derive this result we have used
 
@@ -211,7 +211,7 @@ The identification and calculation of acoustic masses is complicated and depends
    :widths: 25, 25, 25, 25
    :name: tab.mass
 
-   port,":math:`\displaystyle \left(0.6\ap\right)\frac{\rho}{\sp}`",":math:`\displaystyle \frac{\rho \, \vp}{\sp^2}`",":math:`\displaystyle \left(\epsilon_{22}-\epsilon_{12}\right)\,\ma`"
-   box,":math:`\displaystyle \left(0.6\ad\right) \frac{\rho}{\sd}`",":math:`\displaystyle \frac{\mmd}{\sd^2}`",":math:`\displaystyle \epsilon_{11} \, \ma`"
+   port,":math:`\displaystyle \left(0.6\ap\right)\frac{\rho}{\sp}`",":math:`\displaystyle \frac{\rho \, \vp}{\sp^2}`",":math:`\displaystyle \left(\epsilon_{22}-\epsilon_{12}\right)\,\mab`"
+   box,":math:`\displaystyle \left(0.6\ad\right) \frac{\rho}{\sd}`",":math:`\displaystyle \frac{\mmd}{\sd^2}`",":math:`\displaystyle \epsilon_{11} \, \mab`"
 
 The **outer** masses result from radiation into free space. For both the driver and port, the coefficient of 0.6 applies to unflanged radiation. Note that for flanged radiation (infinite baffle) the coefficient is 0.85. The **intrinsic** box and port masses are the moving masses of the driver, and port air plug, respectively. For the driver, it is assumed that the outer mass is already contained in the advanced model :math:`\mms` whereas for the port, we assume it is mounted externally to justify the unflanged assumption. The **inner** masses, finally, require numerical evaluation of the Helmholtz matrix elements :math:`\epsilon_{pq}` via Eq. :eq:`eq.eps`.

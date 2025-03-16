@@ -63,10 +63,11 @@ Glossary of symbols
    :widths: 10,50
 
    ":math:`B`", "Beranek mass loading factor"
-   ":math:`\wp`", "Resonant frequency of the loudspeaker (ported) system :math:`= 2 \pi\fp`, in rad/s"
-   ":math:`h`", "System tuning ratio :math:`= \wp/\ws` or :math:`= \omega_B/\ws`"
+   ":math:`\fpb`", "Resonant frequency of the vented enclosure, i.e., loudspeaker port in box (system), in Hz"
+   ":math:`\wpb`", "Resonant frequency of the loudspeaker (ported) system :math:`= 2 \pi\fpb`, in rad/s"
+   ":math:`h`", "System tuning ratio :math:`= \wpb/\ws` or :math:`= \omega_B/\ws`"
    ":math:`R_\mathrm{S}`", "Electrical series resistance"
-   ":math:`M_A`", "Unit of acoustic mass :math:`= \rho_0 \, l_z/\sb`"
+   ":math:`M_{AB}`", "Acoustic mass related to the baffle (and Beranek factor) :math:`= \rho_0 \, \vb /\sb^2 = \rho_0 \, L_Z/\sb`"
    ":math:`\qa`", "Box fill absorption loss :math:`Q`"
    ":math:`\ql`", "Box leakage loss :math:`Q`"
    ":math:`\mmf`", "Mass of air radiation load on front side of driver diaphragm when mounted in a box"
