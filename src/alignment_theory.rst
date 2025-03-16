@@ -309,7 +309,7 @@ Comparison
 
    The normalized amplitude response :math:`|G_\mathrm{H}|` (left) and group delay :math:`\omega_0 \tau_g = -d\phi/d\omega` (right) of the five discrete alignments.
 
-Note: These graphs are **not** normalized relative to the driver's resonance frequency, but :math:`\omega_0 \doteq \sqrt{\omega_B \, \ws} = \sqrt{h} \, \ws`. Below, we tabulate each of the five discrete alignments as a function of the enclosure loss :math:`\ql`. The python source code used is also shown.
+Note: These graphs are **not** normalized relative to the driver's resonance frequency, but :math:`\omega_0 \doteq \sqrt{\wpb \, \ws} = \sqrt{h} \, \ws`. Below, we tabulate each of the five discrete alignments as a function of the enclosure loss :math:`\ql`. The python source code used is also shown.
 
 
 .. collapse:: CLICK HERE to expand discrete alignment source code
