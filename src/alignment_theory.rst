@@ -76,15 +76,15 @@ Here, we have the electrical and mechanical Q values
    \qms & = \frac{\mms}{\rms} \, \ws \\
    \qes & = \frac{\mms}{\rme} \, \ws
 
-where the value of :math:`\rme` depends on the electrical resistance of the driver voice coil :math:`\re` as well as any added electrical resistance :math:`R_\mathrm{S}` in series with the driver
+where :math:`\rme` is the electrical DC resistance :math:`\re` converted to the mechanical side. The electrical damping depends on the electrical resistance of the driver voice coil :math:`\re` as well as any added electrical resistance :math:`R_\mathrm{S}` in series with the driver including the output resistance :math:`R_g` of the voltage source (amplifier), and we may name this :math:`R_\mathrm{MES}`
 
 .. math::
-   \rme = \frac{\bls}{\re + R_\mathrm{S}} \; .
+   R_\mathrm{MES} = \frac{\bls}{\re + R_\mathrm{S}} \; .
 
 When you enable the optional filter in the Speakerbench box mode, and apply a series resistance, the modified value :math:`Q_\mathrm{T,R_S}` is calculated in Speakerbench and displayed in the INFO tab.
 
 .. math::
-   Q_\mathrm{T,R_S} = \frac{\mms}{\rme + \rms} \, \ws
+   Q_\mathrm{T,R_S} = \frac{\mms}{R_\mathrm{MES} + \rms} \, \ws
 
 This value is what Speakerbench uses for response calculations (and in the alignment chart). The second-order response function (see :ref:`Second-order alignments`) becomes:
 
@@ -242,7 +242,7 @@ In the limit of no losses, the Bessel response corresponds to
    h      & \simeq 0.9759 \\
    \alpha & \simeq 2.333
 
-The filter coefficients can be written in terms of Bessel polynomial
+The filter coefficients can be written in terms of the 4\ :sup:`th`-order Bessel polynomial
 
 .. math::
    y_4(x) = 105 x^4 + 105 x^3 + 45 x^2 + 10 x + 1 \; .
@@ -257,11 +257,15 @@ Bessel polynomials arise in the theory of Bessel functions and are named after F
 .. math::
    \tau_g = -\frac{d\phi}{d\omega} \sim 1 + O(\omega^8)
 
+.. comment:
+   We cannot end this section with a low-pass equation. It appears incomplete. Bass reflex = high-pass.
+
 Critically damped CD4
 .....................
 
 .. comment:
-   I don't think this is true: We remind ourselves that a bass reflex system consists of two oscillators: 1) the driver in the box, and 2) the port in the box
+   Jeff - I don't think this is true: We remind ourselves that a bass reflex system consists of two oscillators: 1) the driver in the box, and 2) the port in the box
+   Claus - it is true.
 
 .. subfigure:: AB
    :width: 80%

@@ -1,1 +1,0 @@
-sphinx-build -M html ./src ./doc --fail-on-warning

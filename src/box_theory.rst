@@ -1,5 +1,6 @@
 .. _box_theory:
-		
+
+=======================		
 Speakerbench Box Theory
 =======================
 
@@ -72,9 +73,9 @@ where in Eq. :eq:`eq.eps` we have defined
    :label: eq.defs
 	
    \begin{align}
-	   \theta_p = &~ \frac{n \pi y_p}{l_y} \\
-	   \beta_p = &~ \frac{\pi a_p}{l_z}\dmn \\
-	   \dmn^2 = &~ \left( \frac{m l_z}{l_x} \right)^2 + \left( \frac{n l_z}{l_y} \right)^2 . \\
+	   \theta_p = &~ \frac{n \pi y_p}{L_y} \\
+	   \beta_p = &~ \frac{\pi a_p}{L_z}\dmn \\
+	   \dmn^2 = &~ \left( \frac{m L_z}{L_x} \right)^2 + \left( \frac{n L_z}{L_y} \right)^2 . \\
 	   \gamma_{mn} = &~ 4-2 \left( \delta_{m0}+\delta_{n0} \right)
    \end{align}
 
@@ -85,10 +86,10 @@ The index :math:`p=1` corresponds to the driver (subscript :math:`D`) and :math:
 	
 	   \begin{align}
 	   \cab = &~ \frac{\vb}{\rho c^2} = C_\mathrm{MB} \sd^2 \; , \\
-	   \mab = &~ \frac{\rho \, l_z}{\sb} \; ,
+	   \mab = &~ \frac{\rho \, L_z}{\sb} \; ,
 	   \end{align}
 
-where :math:`\sb = l_x \, l_y` is the baffle area, :math:`l_z` is the enclosure depth, :math:`\sd = \pi \ad^2` is the driver area, and :math:`V= l_x \, l_y \, l_z` is the enclosure volume. The 2-port circuit diagram for a vented box at low frequency is illustrated in :numref:`fig.box`.
+where :math:`\sb = L_x \, L_y` is the baffle area of the enclosure (inside the box), :math:`L_z` is the enclosure depth, :math:`\sd = \pi \ad^2` is the driver area, and :math:`\vb = L_x \, L_y \, L_z` is the enclosure volume. The 2-port circuit diagram for a vented box at low frequency is illustrated in :numref:`fig.box`.
 
 .. subfigure:: AB
    :name: fig.box
@@ -110,13 +111,13 @@ In the model shown in :numref:`fig.box`, we have retained the empirical box abso
 .. math::
    \qa \doteq \frac{1}{\ws \cab \rab} \; .
 
-The compliance :math:`\cfu` is a modified compliance that accounts for volume expansion due the conversion from adiabatic to isothermal expansion. This effect is decribed by Futtrup :cite:`futtrup:2011` and also in the earlier work by Leach :cite:`leach:1989`. A more rigorous treatment of wave propagation in proous media outside the context of loudspeaker enclosures is given by Wilson :cite:`wilson:1993`, Tarnow :cite:`tarnow:2002` and others.
+The compliance :math:`\cfu` is a modified compliance that accounts for volume expansion due the conversion from adiabatic to isothermal expansion. This effect is decribed by Futtrup :cite:`futtrup:2011` and also in the earlier work by Leach :cite:`leach:1989`. A more rigorous treatment of wave propagation in porous media outside the context of loudspeaker enclosures is given by Wilson :cite:`wilson:1993`, Tarnow :cite:`tarnow:2002` and others.
 The definition is
 
 .. math::
    \cfu \doteq \deltv \, \cab \; ,
 
-where :math:`1.0 < \deltv < 1.4`. The factor of 1.4 corresponds to :math:`\gamma = C_P/C_V`. At this time, there is no general theory which can connect material properties of fill to precise values of :math:`\rab` and :math:`\deltv`. For an unfilled enclosure, :math:`\deltv=1`, whereas for an enclosure densely filled with fiberglass, :math:`\deltv \simeq 1.4`.
+where :math:`1.0 < \deltv < 1.4`. The factor of 1.4 corresponds to :math:`\gamma = C_P/C_V`. At this time, there is no general theory which can connect material properties of fill to precise values of :math:`\rab` and :math:`\deltv`. For an unfilled enclosure, :math:`\deltv=1`, whereas for an enclosure densely filled with fiberglass, :math:`\deltv \simeq 1.4` in the limit, when operating isothermal.
 
 Connection to Beranek factor
 ............................
@@ -129,7 +130,7 @@ The end-correction factor :math:`B`, first introduced by Beranek in his 1954 boo
 Thus, we can define :math:`B` in terms of :math:`\epsilon_{11}` as
 
 .. math::
-   B = \pi \epsilon_{11} \frac{l_z \ad}{l_x l_y} \; .
+   B = \pi \epsilon_{11} \frac{L_z \, \ad}{L_x \, L_y} \; .
 
 
 PORT: T-network port model
@@ -169,8 +170,9 @@ We use a star to denote a modified form of :math:`\qp` used as the Speakerbench 
 .. math::
    :label: eq.qp
 	
-   \qps \doteq \frac{\lpp}{\lp} \frac{1}{\wb\cab\rap} = \frac{\lpp}{\lp} \qp \; .
+   \qps \doteq \frac{\lpp}{\lp} \frac{1}{\wb\cab\rap} = \frac{\lpp}{\lp} \qp \; ,
 
+where :math:`\lpp` is the physical port length, and :math:`\lp` is the effective port length.
 
 End corrections
 ...............
@@ -178,7 +180,7 @@ End corrections
 Because there is no precise theory for the effective port length, :math:`\lp`, in terms of the physical port length, :math:`\lpp`, it is customary to first define the effective length in terms of the resonant frequency :math:`\wpb` as
 
 .. math::
-   \wpb^2 = \frac{1}{\cab \map} = \frac{\sp c^2}{\vb \lp} \; .
+   \wpb^2 = \frac{1}{\cab \map} = \frac{\sp \, c^2}{\vb \lp} \; .
 
 To derive this result we have used
 
@@ -193,7 +195,7 @@ The interior of the box provides an end correction to the port mass. In the case
 The volume velocity through the radiation mass represents the sound exiting the vent, whereas the velocity through the :math:`\mathrm{csch}` branch is associated with reflections and compression in the tube. The internal correction is
 
 .. math::
-  \lpi = \frac{\epsilon_{22}-\epsilon_{21}}{\sb} \sp \, l_z
+  \lpi = \frac{\epsilon_{22}-\epsilon_{21}}{\sb} \sp \, L_z
 
 Thus, the effective length of the port is given by
 
@@ -211,7 +213,7 @@ The identification and calculation of acoustic masses is complicated and depends
    :widths: 25, 25, 25, 25
    :name: tab.mass
 
-   port,":math:`\displaystyle \left(0.6\ap\right)\frac{\rho}{\sp}`",":math:`\displaystyle \frac{\rho \, \vp}{\sp^2}`",":math:`\displaystyle \left(\epsilon_{22}-\epsilon_{12}\right)\,\mab`"
-   box,":math:`\displaystyle \left(0.6\ad\right) \frac{\rho}{\sd}`",":math:`\displaystyle \frac{\mmd}{\sd^2}`",":math:`\displaystyle \epsilon_{11} \, \mab`"
+   port,":math:`\displaystyle \left(0.6 \, \ap\right)\frac{\rho}{\sp}`",":math:`\displaystyle \frac{\rho \, \vp}{\sp^2}`",":math:`\displaystyle \left(\epsilon_{22}-\epsilon_{12}\right)\,\mab`"
+   box,":math:`\displaystyle \left(0.6 \, \ad\right) \frac{\rho}{\sd}`",":math:`\displaystyle \frac{\mmd}{\sd^2}`",":math:`\displaystyle \epsilon_{11} \, \mab`"
 
 The **outer** masses result from radiation into free space. For both the driver and port, the coefficient of 0.6 applies to unflanged radiation. Note that for flanged radiation (infinite baffle) the coefficient is 0.85. The **intrinsic** box and port masses are the moving masses of the driver, and port air plug, respectively. For the driver, it is assumed that the outer mass is already contained in the advanced model :math:`\mms` whereas for the port, we assume it is mounted externally to justify the unflanged assumption. The **inner** masses, finally, require numerical evaluation of the Helmholtz matrix elements :math:`\epsilon_{pq}` via Eq. :eq:`eq.eps`.

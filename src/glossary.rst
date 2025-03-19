@@ -64,7 +64,7 @@ Glossary of symbols
    :widths: 10,50
 
    ":math:`B`", "Beranek mass loading factor"
-   ":math:`\fpb`", "Resonant frequency of the vented enclosure, i.e., loudspeaker port in box (system), in Hz"
+   ":math:`\fpb`", "Resonant frequency (Helmholtz) of the vented enclosure, i.e., loudspeaker port in box (system), in Hz"
    ":math:`\wpb`", "Resonant frequency of the loudspeaker (ported) system :math:`= 2 \pi\fpb`, in rad/s"
    ":math:`h`", "System tuning ratio :math:`= \wpb/\ws` or in classical text :math:`= \omega_B/\ws`"
    ":math:`R_\mathrm{S}`", "Electrical series resistance"
