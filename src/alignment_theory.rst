@@ -458,7 +458,7 @@ With the calculated transition from LR4 to B4, we have obtained a subtle improve
 Chebyshev C4
 ............
 
-Perhaps the most remarkable of all vented alignments is the Chebyshev C4 method because of the systematic way in which it defines an entire family (in the parameter k) that controls ripple and simultaneously connects to B4. Chebyshev-like alignments for loudspeakers were exploited as early as 1956 by F.J. van Leeuwen :cite:`vanleeuwen:1956`. These alignments have also been discussed by Thiele and Small, and in detail by Benson following the treatment by Weinberg (expand). The alignment is named after Pafnuty Chebyshev because the amplitude response is written in terms of the Chebyshev polynomial of the first kind. Consider the 4\ :sup:`th`-order low-pass case,
+Perhaps the most remarkable of all vented alignments is the Chebyshev C4 method because of the systematic way in which it defines an entire family (in the parameter k) that controls ripple and simultaneously connects to B4. Chebyshev-like alignments for loudspeakers were exploited as early as 1956 by F.J. van Leeuwen :cite:`vanleeuwen:1956`. These alignments have also been discussed by Thiele and Small, and in detail by Benson following the treatment by Weinberg :cite:`weinberg:1962`. The alignment is named after Pafnuty Chebyshev because the amplitude response is written in terms of the Chebyshev polynomial of the first kind. Consider the 4\ :sup:`th`-order low-pass case,
 
 .. math::
    \left| G_\mathrm{H}(i\omega) \right|^2 = \frac{1}{1+\varepsilon^2 T_4^2 (x)}
