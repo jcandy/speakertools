@@ -72,7 +72,7 @@ Speakerbench doesn't do the actual impedance measurements for you; rather, you w
 .. toctree::
    :caption: Theory Notes
    :hidden:
-	
+
    deltamass_theory
    box_theory
    alignment_theory
@@ -89,5 +89,5 @@ Speakerbench doesn't do the actual impedance measurements for you; rather, you w
    zreferences
 
 .. image:: images/poweredbyrackhosting.png
-   :width: 330px
-   :target: https://rackhosting.dk/  
+   :width: 260px
+   :target: https://rackhosting.dk/
