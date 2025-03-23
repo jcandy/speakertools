@@ -14,6 +14,9 @@ Speakerbench
 
 `Speakerbench <https://www.speakerbench.com>`_ is a free, web-based application for modeling loudspeakers. A novel feature of the software is the use of an **advanced transducer model** that includes motor semi-inductance and suspension viscoelasticity.
 
+This documentation extensively explains a lot of intricate details about how features and calculations under the hood are implemented in Speakerbench. As such, the documentation is for users who are looking for knowledge, for programmers who wish to interact with Speakerbench, and for ourselves to remember what we did, how, and why.
+
+For a simple and quick one-page overview of **how to use** Speakerbench, please have a look at the `Manual <https://www.speakerbench.com/manual/index.html>`_.
 
 Why use Speakerbench?
 ---------------------
