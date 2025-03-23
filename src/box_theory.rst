@@ -18,7 +18,6 @@ The standard theory of loudspeaker enclosures was popularized by Small :cite:`sm
 
    .. image:: images/box/small_vented.png
       :alt: Acoustical circuit (Small)
-	
    .. image:: images/box/benson_vented.png
       :alt: Mechanical circuit (Benson)
 
@@ -72,22 +71,26 @@ where in Eq. :eq:`eq.eps` we have defined
 .. math::
    :label: eq.defs
 	
-   \begin{align}
-	   \theta_p = &~ \frac{n \pi y_p}{L_y} \\
-	   \beta_p = &~ \frac{\pi a_p}{L_z}\dmn \\
-	   \dmn^2 = &~ \left( \frac{m L_z}{L_x} \right)^2 + \left( \frac{n L_z}{L_y} \right)^2 . \\
-	   \gamma_{mn} = &~ 4-2 \left( \delta_{m0}+\delta_{n0} \right)
-   \end{align}
+   \theta_p      & = \frac{n \pi y_p}{L_y} \; , \\
+   \beta_p       & = \frac{\pi a_p}{L_z}\dmn \; , \\
+   \dmn          & = \sqrt{\left( \frac{m L_z}{L_x} \right)^2 + \left( \frac{n L_z}{L_y} \right)^2} \; , \\
+   \gamma_{mn}   & = 4-2 \left( \delta_{m0}+\delta_{n0} \right) \; .
 
-The index :math:`p=1` corresponds to the driver (subscript :math:`D`) and :math:`p=2` corresponds to the port (subscript :math:`P`). We have chosen simple normalizing acoustic compliance and mass,
+The indices :math:`p=(1,2)` correspond to the driver and port
+
+.. math::
+   \begin{array}{cll}
+   p = 1 & \ap = \text{Port radius}   & \yp = \text{Port height} \\
+   p = 2 & \ad = \text{Driver radius} & \yd = \text{Driver height} 
+   \end{array}
+   
+We have chosen simple normalizing acoustic compliance and mass,
 
 .. math::
    :label: eq.units
 	
-	   \begin{align}
-	   \cab = &~ \frac{\vb}{\rho c^2} = C_\mathrm{MB} \sd^2 \; , \\
-	   \mab = &~ \frac{\rho \, L_z}{\sb} \; ,
-	   \end{align}
+   \cab & = \frac{\vb}{\rho c^2} = C_\mathrm{MB} \sd^2 \; , \\
+   \mab & = \frac{\rho \, L_z}{\sb} \; ,
 
 where :math:`\sb = L_x \, L_y` is the baffle area of the enclosure (inside the box), :math:`L_z` is the enclosure depth, :math:`\sd = \pi \ad^2` is the driver area, and :math:`\vb = L_x \, L_y \, L_z` is the enclosure volume. The 2-port circuit diagram for a vented box at low frequency is illustrated in :numref:`fig.box`.
 
@@ -99,12 +102,9 @@ where :math:`\sb = L_x \, L_y` is the baffle area of the enclosure (inside the b
    :subcaptions: below
 
    .. image:: images/box/box_classic.png
-      :alt: T-network diagram for classic box
-	
    .. image:: images/box/box_q.png
-      :alt: T-network diagram for Beranek box
 
-   Comparison of classic (left) and Beranek (right) box models.
+   Comparison of T-network circuit for classic (left) model versus T-network circuit for Beranek (right) model.
 	
 In the model shown in :numref:`fig.box`, we have retained the empirical box absorption which can be equivalently written as an absorption Q:
 
@@ -146,17 +146,14 @@ This model for the port also contains an empirical loss factor :math:`\rap` that
 .. subfigure:: AB
    :name: fig.port
    :width: 90%
-   :gap: 0px
+   :gap: 80px
    :align: center
    :subcaptions: below
 
    .. image:: images/box/port_classic.png
-      :alt: Classic port model
-	
    .. image:: images/box/port_q.png
-      :alt: Transmission line port model
 	
-   T-network diagrams for classic (left) and T-line (right) ports. Here, :math:`\zeta` is a complex propagation constant defined in :eq:`eq.zeta`, and :math:`M_\mathrm{rad}` is the effective radiation mass.
+   T-network diagrams for classic (left) and T-line (right) ports. Here, :math:`\zeta` is a complex propagation constant defined in :eq:`eq.zeta`, :math:`Z = \rho c/\sp` is the specific acoustic impedance of air in the vent, :math:`M_\mathrm{API}` is the inner port radiation mass, and :math:`M_\mathrm{APO}` is the outer port radiation mass.
 
 The complex propagation constant used in Speakerbench is
 
