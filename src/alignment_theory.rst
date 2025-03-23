@@ -501,16 +501,16 @@ where :math:`k = \tanh\varphi < 1`. These are evidently the poles of the B4 alig
    (s-s_2)(s-s_3) & = s^2 + 2 k s \cos\frac{\pi}{8} + 1 + (k^2-1)\cos^2\frac{\pi}{8} \\
 
 .. math::
-   \prod_{m-1}^4 (s-s_m) = s^4 + k c_0 \, s^3  + \left[ 1+k^2(1+\sqrt{2}) \right] s^2 + k c_0 \left( 1+\frac{k^2-1}{\sqrt{8}} \right) s + D(k)
+   \prod_{m-1}^4 (s-s_m) = s^4 + k \, c_0 \, s^3  + \left[ 1+k^2(1+\sqrt{2}) \right] s^2 + k \, c_0 \left( 1+\frac{k^2-1}{\sqrt{8}} \right) s + D(k)
 
-where :math:`c_0 = \sqrt{4+\sqrt{8}}`. Finally we can renormalize to find the forms reported by Small for the high-pass function
+where :math:`c_0 = \sqrt{4+\sqrt{8}}` and :math:`D(k) = \frac{k^4 + 6 k^2 + 1}{8}`. Finally we can renormalize to find the forms reported by Small for the high-pass function
 
 .. math::
-   a_3 & = \frac{c_0 k}{D^{1/4}} \\
+   a_3 & = \frac{c_0 \, k}{D^{1/4}} \\
    a_2 & = \frac{1+k^2(1+\sqrt{2})}{D^{1/2}} \\
-   a_1 & = \frac{c_0 k}{D^{3/4}} \left( 1+\frac{k^2-1}{\sqrt{8}} \right)
+   a_1 & = \frac{c_0 \, k}{D^{3/4}} \left( 1+\frac{k^2-1}{\sqrt{8}} \right)
 
-Evidenty, these functions can be analytically continued triivally to the region :math:`k \geq 1`. The region :math:`k < 1` has passband ripple, the special case :math:`k = 1` is the B4 alignment, and the region :math:`k > 1` is monotonic.
+Evidenty, these functions can be analytically continued trivially to the region :math:`k \geq 1`. The region :math:`k < 1` has passband ripple, the special case :math:`k = 1` is the B4 alignment, and the region :math:`k > 1` is monotonic.
 
 .. collapse:: CLICK HERE to expand Chebyshev C4 source code
 
