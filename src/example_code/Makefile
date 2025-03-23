@@ -6,6 +6,9 @@ all:
 	python print_quasi.py > print_quasi.txt
 	mv *png ../images/alignment
 	mv *txt ../images/alignment
+	make zip
+
+zip:
 	tar -zcf libalignment.tgz print* libalignment.py
 	zip libalignment print* libalignment.py
 

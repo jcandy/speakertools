@@ -14,7 +14,7 @@ def coef(align):
 
    if align == 'BL4':
       # Bessel BL4
-      a1 = 105/105**0.75  
+      a1 = 105/105**0.75
       a2 = 45/105**0.5
       a3 = 10/105**0.25
    elif align == 'B4':
@@ -30,7 +30,7 @@ def coef(align):
       a2 = 2+4*np.cos(t1)*np.cos(t2)
       a3 = a1
    elif align == 'IB4':
-      # Inter-order Butterworth IB4 
+      # Inter-order Butterworth IB4
       b = np.sqrt(3)
       a = np.sqrt(2*(b-1))
       a1 = (2+a)/b**0.25
@@ -54,10 +54,10 @@ def qtsolve(a1,a2,a3,ql):
 
    if ql > 1e5:
       ql = 0.0
-      
+
    q0 = np.sqrt(a3*a1)
    l0 = np.sqrt(a3/a1)
-   
+
    for i in range(5):
       s1 = a1-q0/l0-ql*l0
       s2 = a3-q0*l0-ql/l0
@@ -76,7 +76,7 @@ def qtsolve(a1,a2,a3,ql):
    Qt    = 1/q0
    h     = l0**2
    alpha = h*(a2-ql*q0)-(1+h*h)
-      
+
    return Qt,h,alpha
 
 #------------------------------------------------------------------------
@@ -109,8 +109,8 @@ def f(k,Ql,Qt):
    d = (k**4+6*k**2+1)/8
    a3 = k/Qtb/d**0.25
    a1 = a3/d**0.5*(1-(1-k**2)/8**0.5)
-   a2 = 1+k**2*(1+np.sqrt(2))/np.sqrt(d)
-   
+   a2 = (1+k**2*(1+np.sqrt(2)))/np.sqrt(d)
+
    # Solve a3 equation for l
    l = 0.5*Qt*(a3+np.sqrt(a3**2-4/(Ql*Qt)))
 
@@ -132,14 +132,13 @@ def c4(Ql,Qt):
       k = (k1*f2-k2*f1)/(f2-f1)
       k1 = k2
       k2 = k
+
       if abs(k1-k2) < 1e-10:
          break
 
-   ql = 1/Ql
-   q0 = 1/Qt
    h  = l2**2
-   
-   alpha = h*(a2-ql*q0)-(1+h*h)
+
+   alpha = h*(a2-1/(Ql*Qt))-(1+h*h)
 
    return k,h,alpha
 
@@ -165,11 +164,11 @@ def quasi(Ql,Qt,A1,A2):
 
 #------------------------------------------------------------------------
 # Convenience function to generate SPL and group delay
-# given polynomial coefficients (a1,a2,a3) 
+# given polynomial coefficients (a1,a2,a3)
 #------------------------------------------------------------------------
 def response(a1,a2,a3,x0=3.1,n=64):
 
-   # frequency 
+   # frequency
    w = np.logspace(np.log10(1/x0),np.log10(x0),n)
    s = 1j*w
 
