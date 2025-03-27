@@ -160,7 +160,7 @@ The conversion of the Bromwich integral to a Fourier integral is always possible
    & = &~ e^{-t} (1-t) \; .
    \end{eqnarray}
 
-As required, the analytic solution in Eq. :eq:`eq.direct`, obtained by directvintegration of the infinite (Fourier) integral, is the same as that obtained in Eq. :eq:`eq.residue` by contour integration.  However, consideration of the Fourier integral above reveals a serious deficiency; namely, that the integral decays very slowly at large values of :math:`y`:
+As required, the analytic solution in Eq. :eq:`eq.direct`, obtained by direct integration of the infinite (Fourier) integral, is the same as that obtained in Eq. :eq:`eq.residue` by contour integration.  However, consideration of the Fourier integral above reveals a serious deficiency; namely, that the integral decays very slowly at large values of :math:`y`:
 
 .. math::
   \frac{2y^2 \cos(yt) + (y^3-y) \sin(yt)}{(1+y^2)^2} \sim \frac{\sin(yt)}{y}
