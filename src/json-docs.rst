@@ -70,7 +70,7 @@ The fitted data contains only the information identified by the fitting procedur
 .. code:: json
 
   {
-    "usercomments":"Sample_data_for_SEAS_woofer",
+    "comments":"Sample_data_for_SEAS_woofer",
     "volt":"0.242",
     "git":"76ff186",
     "date":"21/02/2020",
@@ -88,7 +88,9 @@ The fitted data contains only the information identified by the fitting procedur
     "cms":0.8403,
     "beta":0.1034,
     "f0":45.7839,
-    "fs":44.985
+    "fs":44.985,
+    "error": "0.4251356676392162",
+    "score": "EXCELLENT"
   }
 
 String on the left side are keywords. All letters must be lower-case.
@@ -140,12 +142,16 @@ The complete datasheet file contains all information necessary to describe a dri
     "ah":"30.0",
     "cs":"344.299",
     "rho":"1.19667",
-    "xmax":"6.0"
+    "xmax":"6.0",
+    "error": "0.425136",
+    "score": "EXCELLENT"
   }
 
 The 'sd' input is required and must be entered by the user. Brand and Model are also required and must be entered by the user, conveniently stored at the beginning of the file so that you can open a SBD file in a text editor and identify the test object. The listed temp, pres and ah (air temperature, air pressure and relative air humidity) are defaults but you can change this to reflect your actual measurement conditions.
 
 Some inputs are optional, for example xmax is optional (set xmax = 0.0 if the information is not available). Specifying xmax adds additional functionality to Speakerbench. See below description for the Thiele/Small Datasheet for details. In the SBD-file all numbers are stored as strings.
+
+The error value and the score are provided by the fit process and they are optional. Set error = 0.0 if the information is not available and score can be an empty string: "".
 
 Note the distinction between manufacturer and brand. For example brand name SB Acoustics are manufactured by Sinar Baja Electric Co. Ltd. Some brands have several manufacturing sites.
 
@@ -164,17 +170,21 @@ Speakerbench allows you to download your box tuning parameters into a TUNE file 
     "vb": "8.302388637830859",
     "dp": 2,
     "qp": "50.0",
+    "qa": "100.0",
     "ql": "100.0",
-    "port": "simple",
-    "mybox": "T-net",
+    "delta": "1.0",
+    "port": "classic",
+    "mybox": "Beranek",
     "fillpercent": "0",
     "fillmaterial": "pet",
-    "gain": 1,
+    "gain": 0,
     "fmax": 10000,
     "nfreq": 256,
     "time": false,
     "lxlz": 1,
     "lylz": 1,
+    "ydrv": 0.5,
+    "yprt": 0.2
     "filt": false,
     "ls": "0",
     "rs": "0",
@@ -206,9 +216,9 @@ Speakerbench can work with standard Thiele/Small datasheets. The key is to set t
     "le":"0.0",       - set to 0 when not using advanced parameters
     "bl":"5.4",       - required in both cases (ts1 or ts2)
     "mms":"12.3",     - required for ts2 (for ts1 this value is calculated, any value here is overwritten)
-    "c0":"0.0",       - set to 0 when not using advanced parameters ... or set = cms (??), any value here is overwritten
-    "r0":"0.0",       - set to 0 when not using advanced parameters ... or set = rms (??), any value here is overwritten
-    "f0":"0.0",       - set to 0 when not using advanced parameters ... or set = fs (??), any value here is overwritten
+    "c0":"0.0",       - set to 0 when not using advanced parameters ... or set = cms, any value here is overwritten (by cms)
+    "r0":"0.0",       - set to 0 when not using advanced parameters ... or set = rms, any value here is overwritten (by rms)
+    "f0":"0.0",       - set to 0 when not using advanced parameters ... or set = fs, any value here is overwritten (by fs)
     "beta":"0.0",     - set to 0 when not using advanced parameters
     "lambda":"0.0",   - this field is calculated based on beta, any value here is overwritten
     "sd":"104.0",     - required in both cases (ts1 or ts2)
@@ -220,16 +230,17 @@ Speakerbench can work with standard Thiele/Small datasheets. The key is to set t
     "qes":"0.357488", - required for ts1 (for ts2 this value is calculated, any value here is overwritten)
     "qts":"0.307195", - required for ts1 (for ts2 this value is calculated, any value here is overwritten)
     "fs":"36.4074",   - required for ts1
-    "vas":"0.0",      - this field is calculated (push the APPLY button after data import)
+    "vas":"0.0",      - required for ts1 (for ts2 this value is calculated, any value here is overwritten)
     "temp":"20.0",    - required, this is ambient temperature for the input data and calculations
     "pres":"1013.25", - required, this is air pressure for the input data and calculations
     "ah":"30.0",      - required, this is relative air humidity for the input data and calculations
     "cs":"343.684",   - required, this is the speed of sound for the input data and calculations
     "rho":"1.20095",  - required, this is the density of air for the input data and calculations
-    "xmax":"6.0"}     - optional
+    "xmax":"6.0",     - optional
+    "error":"0",      - optional, set to 0 when not using advanced parameters
+    "score":""}       - optional, set to "" (empty string) when not using advanced parameters
   }
 
 All JSON files are 'escaped' such that a space is replaced by an underscore.
 
 An online internet database at `Loudspeakerdatabase.com <https://loudspeakerdatabase.com>`_ by Cristian Pop provides access to more than **4000** Thiele/Small datasheets and lets you download a JSON file for Speakerbench in the above mentioned format, which you can import directly into the Datasheet Creator app.
-
