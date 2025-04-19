@@ -2,29 +2,30 @@
 
 ## About the project
 
-<p>Speakertools is a tool section for
-<a href="https://speakerbench.com">Speakerbench</a>, not only targeting
-users, but equally as much the programmers. One such tool is the
-documentation, which helps us (the programmers) to remember what we
-made, how, and why.</p>
+Speakertools is a tool and documentation repository for [Speakerbench](https://speakerbench.com) developers and users. Python tools are located in speakertools/bin and Sphinx documentation sources are in speakertools/src. 
 
 ## Instructions
 
-To *edit* webpages:
+To *edit* rst source files for documentation (on laptop):
 
-- edit files in the src directory.
+```
+$ cd src
+$ vi index.rst
+```
 
-To *build* webpages:
+To *build* webpages (on laptop):
 
-$ make (this will generate html files)
+```
+$ make  # this will generate html files in src/_build/html
+```
 
-To *publish* webpages:
+To *build* and *publish* webpages (on server):
 
-$ make sync  (to copy html files to doc directory)\
-$ make clean (to remove temporary files\
-$ cd .. (change to doc directory)\
-$ git add . ; git commit -m <message> (add/commit changes)\
-$ git push
+```
+$ make
+$ make sync   # to copy html files to doc directory
+$ make clean  # to remove contents of src/_build
+```
 
 NOTES: Currently,
 
