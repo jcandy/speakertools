@@ -27,25 +27,25 @@ Measurement data contains added masses m1 and m2 and frequency, magnitude and ph
 .. code::
 
   {
-    "usercomments":"Write_something_here",
-    "volt":0.242,
-    "m1":8.017,
-    "m2":16.048,
-    "z0":[
+    "comments": "Write_something_here",
+    "volt": 0.242,
+    "m1": 8.017,
+    "m2": 16.048,
+    "z0": [
         [10.0,7.1179,25.2241],
         [10.199,7.1646,25.5729],
         ...
         [19999.564,27.1911,48.1313],
         [20000.0,27.1868,48.1256]
         ],
-    "z1":[
+    "z1": [
         [10.0,7.1929,25.7824],
         [10.199,7.2537,26.1631],
         ...
         [19999.564,27.1904,48.1484],
         [20000.0,27.1923,48.1576]
         ],
-    "z2":[
+    "z2": [
         [10.0,7.3166,26.3593],
         [10.2,7.3756,26.7591],
         ...
@@ -70,26 +70,26 @@ The fitted data contains only the information identified by the fitting procedur
 .. code:: json
 
   {
-    "comments":"Sample_data_for_SEAS_woofer",
-    "volt":"0.242",
-    "git":"76ff186",
-    "date":"21/02/2020",
-    "re":5.7212,
-    "leb":0.1258,
-    "l3":0.5255,
-    "le":1.1774,
-    "rss":562.405,
-    "ke":0.0386,
-    "bl":7.0089,
-    "mms":14.8959,
-    "r0":1.714,
-    "rms":2.1101,
-    "c0":0.7849,
-    "cms":0.8403,
-    "beta":0.1034,
-    "f0":45.7839,
-    "fs":44.985,
-    "error": "0.4251356676392162",
+    "comments": "Sample_data_for_SEAS_woofer",
+    "volt": "0.242",
+    "git": "76ff186",
+    "date": "21/02/2020",
+    "re": 5.7212,
+    "leb": 0.1258,
+    "l3": 0.5255,
+    "le": 1.1774,
+    "rss": 562.405,
+    "ke": 0.0386,
+    "bl": 7.0089,
+    "mms": 14.8959,
+    "r0": 1.714,
+    "rms": 2.1101,
+    "c0": 0.7849,
+    "cms": 0.8403,
+    "beta": 0.1034,
+    "f0": 45.7839,
+    "fs": 44.985,
+    "error": "0.4251",
     "score": "EXCELLENT"
   }
 
@@ -107,42 +107,42 @@ The complete datasheet file contains all information necessary to describe a dri
 .. code:: json
 
   {
-    "manufacturer":"SEAS_Fabrikker_AS",
-    "brand":"SEAS",
-    "model":"H1488-08_(L16RNX)",
-    "provider":"Claus_Futtrup",
-    "date":"14/03/2020",
-    "comments":"",
-    "volt":"0.24227",
-    "git":"f198998",
-    "re":"5.72125",
-    "leb":"0.125781",
-    "rss":"562.405",
-    "ke":"0.0386331",
-    "le":"1.17742",
-    "bl":"7.00892",
-    "mms":"14.8959",
-    "c0":"0.784866",
-    "r0":"1.71396",
-    "f0":"45.7839",
-    "beta":"0.10336",
-    "lambda":"0.57126",
-    "sd":"103.869",
-    "dd":"115.0",
-    "cms":"0.840309",
-    "rms":"2.11006",
-    "l3":"0.525458",
-    "qms":"1.99535",
-    "qes":"0.490346",
-    "qts":"0.393617",
-    "fs":"44.985",
-    "vas":"12.8604",
-    "temp":"21.0",
-    "pres":"1013.25",
-    "ah":"30.0",
-    "cs":"344.299",
-    "rho":"1.19667",
-    "xmax":"6.0",
+    "manufacturer": "SEAS_Fabrikker_AS",
+    "brand": "SEAS",
+    "model": "H1488-08_(L16RNX)",
+    "provider": "Claus_Futtrup",
+    "date": "14/03/2020",
+    "comments": "",
+    "volt": "0.24227",
+    "git": "f198998",
+    "re": "5.72125",
+    "leb": "0.125781",
+    "rss": "562.405",
+    "ke": "0.0386331",
+    "le": "1.17742",
+    "bl": "7.00892",
+    "mms": "14.8959",
+    "c0": "0.784866",
+    "r0": "1.71396",
+    "f0": "45.7839",
+    "beta": "0.10336",
+    "lambda": "0.57126",
+    "sd": "103.869",
+    "dd": "115.0",
+    "cms": "0.840309",
+    "rms": "2.11006",
+    "l3": "0.525458",
+    "qms": "1.99535",
+    "qes": "0.490346",
+    "qts": "0.393617",
+    "fs": "44.985",
+    "vas": "12.8604",
+    "temp": "21.0",
+    "pres": "1013.25",
+    "ah": "30.0",
+    "cs": "344.299",
+    "rho": "1.19667",
+    "xmax": "6.0",
     "error": "0.425136",
     "score": "EXCELLENT"
   }
@@ -175,8 +175,6 @@ Speakerbench allows you to download your box tuning parameters into a TUNE file 
     "delta": "1.0",
     "port": "classic",
     "mybox": "Beranek",
-    "fillpercent": "0",
-    "fillmaterial": "pet",
     "gain": 0,
     "fmax": 10000,
     "nfreq": 256,
@@ -201,44 +199,44 @@ Speakerbench can work with standard Thiele/Small datasheets. The key is to set t
 .. code::
 
   {
-    "manufacturer":"",          - optional
-    "brand":"Brand",            - required
-    "model":"Model",            - required
-    "provider":"Your_Name",     - optional
-    "date":"",                  - optional, format: DD/MM/YYYY (consider at least a 'year' specification here, for some revision control)
-    "comments":"ts2", - ts1 or ts2 activates Thiele/Small simulations, as explained above
-    "volt":"",        - optional, this is the voltage used for measuring the data (might be unknown)
-    "git":"0",        - set to 0 when datasheet is not created by Speakerbench itself (through measurements, upload and fitting data)
-    "re":"3.1",       - required in both cases (ts1 or ts2)
-    "leb":"0.0",      - set to 0 when not using advanced parameters ... or set = l3 inductor, any value here is overwritten when activating ts1 or ts2
-    "rss":"0.0",      - set to 0 when not using advanced parameters ... any value is overwritten
-    "ke":"0.0",       - set to 0 when not using advanced parameters
-    "le":"0.0",       - set to 0 when not using advanced parameters
-    "bl":"5.4",       - required in both cases (ts1 or ts2)
-    "mms":"12.3",     - required for ts2 (for ts1 this value is calculated, any value here is overwritten)
-    "c0":"0.0",       - set to 0 when not using advanced parameters ... or set = cms, any value here is overwritten (by cms)
-    "r0":"0.0",       - set to 0 when not using advanced parameters ... or set = rms, any value here is overwritten (by rms)
-    "f0":"0.0",       - set to 0 when not using advanced parameters ... or set = fs, any value here is overwritten (by fs)
-    "beta":"0.0",     - set to 0 when not using advanced parameters
-    "lambda":"0.0",   - this field is calculated based on beta, any value here is overwritten
-    "sd":"104.0",     - required in both cases (ts1 or ts2)
-    "dd":"0.0",       - this field is calculated when sd is specified (push the APPLY button after data import)
-    "cms":"1.3",      - required for ts2 (for ts1 this value is calculated, any value here is overwritten)
-    "rms":"1.54",     - required for ts2 (for ts1 this value is calculated, any value here is overwritten)
-    "l3":"0.32",      - required but can be zero - it is the classical voice coil inductance, Le, identified at the +3 dB point
-    "qms":"2.18357",  - required for ts1 (for ts2 this value is calculated, any value here is overwritten)
-    "qes":"0.357488", - required for ts1 (for ts2 this value is calculated, any value here is overwritten)
-    "qts":"0.307195", - required for ts1 (for ts2 this value is calculated, any value here is overwritten)
-    "fs":"36.4074",   - required for ts1
-    "vas":"0.0",      - required for ts1 (for ts2 this value is calculated, any value here is overwritten)
-    "temp":"20.0",    - required, this is ambient temperature for the input data and calculations
-    "pres":"1013.25", - required, this is air pressure for the input data and calculations
-    "ah":"30.0",      - required, this is relative air humidity for the input data and calculations
-    "cs":"343.684",   - required, this is the speed of sound for the input data and calculations
-    "rho":"1.20095",  - required, this is the density of air for the input data and calculations
-    "xmax":"6.0",     - optional
-    "error":"0",      - optional, set to 0 when not using advanced parameters
-    "score":""}       - optional, set to "" (empty string) when not using advanced parameters
+    "manufacturer": "",          - optional
+    "brand": "Brand",            - required
+    "model": "Model",            - required
+    "provider": "Your_Name",     - optional
+    "date": "",                  - optional, format: DD/MM/YYYY (consider at least a 'year' specification here, for some revision control)
+    "comments": "ts2", - ts1 or ts2 activates Thiele/Small simulations, as explained above
+    "volt": "",        - optional, this is the voltage used for measuring the data (might be unknown)
+    "git": "0",        - set to 0 when datasheet is not created by Speakerbench itself (through measurements, upload and fitting data)
+    "re": "3.1",       - required in both cases (ts1 or ts2)
+    "leb": "0.0",      - set to 0 when not using advanced parameters ... or set = l3 inductor, any value here is overwritten when activating ts1 or ts2
+    "rss": "0.0",      - set to 0 when not using advanced parameters ... any value is overwritten
+    "ke": "0.0",       - set to 0 when not using advanced parameters
+    "le": "0.0",       - set to 0 when not using advanced parameters
+    "bl": "5.4",       - required in both cases (ts1 or ts2)
+    "mms": "12.3",     - required for ts2 (for ts1 this value is calculated, any value here is overwritten)
+    "c0": "0.0",       - set to 0 when not using advanced parameters ... or set = cms, any value here is overwritten (by cms)
+    "r0": "0.0",       - set to 0 when not using advanced parameters ... or set = rms, any value here is overwritten (by rms)
+    "f0": "0.0",       - set to 0 when not using advanced parameters ... or set = fs, any value here is overwritten (by fs)
+    "beta": "0.0",     - set to 0 when not using advanced parameters
+    "lambda": "0.0",   - this field is calculated based on beta, any value here is overwritten
+    "sd": "104.0",     - required in both cases (ts1 or ts2)
+    "dd": "0.0",       - this field is calculated when sd is specified (push the APPLY button after data import)
+    "cms": "1.3",      - required for ts2 (for ts1 this value is calculated, any value here is overwritten)
+    "rms": "1.54",     - required for ts2 (for ts1 this value is calculated, any value here is overwritten)
+    "l3": "0.32",      - required but can be zero - it is the classical voice coil inductance, Le, identified at the +3 dB point
+    "qms": "2.18357",  - required for ts1 (for ts2 this value is calculated, any value here is overwritten)
+    "qes": "0.357488", - required for ts1 (for ts2 this value is calculated, any value here is overwritten)
+    "qts": "0.307195", - required for ts1 (for ts2 this value is calculated, any value here is overwritten)
+    "fs": "36.4074",   - required for ts1
+    "vas": "0.0",      - required for ts1 (for ts2 this value is calculated, any value here is overwritten)
+    "temp": "20.0",    - required, this is ambient temperature for the input data and calculations
+    "pres": "1013.25", - required, this is air pressure for the input data and calculations
+    "ah": "30.0",      - required, this is relative air humidity for the input data and calculations
+    "cs": "343.684",   - required, this is the speed of sound for the input data and calculations
+    "rho": "1.20095",  - required, this is the density of air for the input data and calculations
+    "xmax": "6.0",     - optional
+    "error": "0",      - optional, set to 0 when not using advanced parameters
+    "score": ""}       - optional, set to "" (empty string) when not using advanced parameters
   }
 
 All JSON files are 'escaped' such that a space is replaced by an underscore.
