@@ -25,4 +25,4 @@ This app also provides an optional comment field. We recommended that you type t
 The comment field is the first entry in the data object such that if you open up the file in a text editor, you can read your comment in plain text (at the top). This will help you identify the measurement. When measuring your driver, we recommend that you follow steps outlined in :doc:`measure`.
 
 .. important::
-   All three measurements in the ZMA files must contain the same number of datapoints at the same measurement frequencies.
+   All three measurements in the ZMA files must contain the same number of datapoints and ideally they should be at the same measurement frequencies. Minor deviations in frequency is tolerated.
