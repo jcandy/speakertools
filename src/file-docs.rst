@@ -14,13 +14,13 @@ Speakerbench utilizes a number of file formats, which are explained in this sect
 For input of impedance measurements, Speakerbench requires files in the **ZMA** file format. Speakerbench operates with JSON files, first by collecting measurement data in a **Z**-file, then extracting and fitting data to a model which outputs an **ADV**-file. This file serves as input to the datasheet creator, which generates a complete datasheet in an **SBD**-file (which the datasheet creator can accept as input as well).
 
 For box simulation, Speakerbench supports **TUNE**-files containing the input settings of a box tuning, as well as export of the graphs in **PLT**-files. You may also import impedance measurements
-(`**ZMA**-files <https://fileinfo.com/extension/zma>`_) as well as frequency response measurements
-(`**FRD**-files <https://fileinfo.com/extension/frd>`_) into the box simulator for comparing your result with the simulation.
+(`ZMA-files <https://fileinfo.com/extension/zma>`_) as well as frequency response measurements
+(`FRD-files <https://fileinfo.com/extension/frd>`_) into the box simulator for comparing your result with the simulation.
 
 ZMA File Format Explained
 -------------------------
 
-The ZMA file format may consist of a header, where the first character is a '*', and followed by each measurement point on separate lines in the Frequency - Magnitude (Ohm) - Phase angle (degrees) format:
+The ZMA file format may consist of a header, where the first character of each line is a '*', and followed by each measurement point on separate lines in the Frequency - Magnitude (Ohm) - Phase angle (degrees) format:
 
 .. code::
 
@@ -34,9 +34,11 @@ The ZMA file format may consist of a header, where the first character is a '*',
    1006.846    +7.1984   +17.8486
   10003.368   +18.9094   +44.9883
 
-The header section may be up to 255 lines long.
+The header section may be up to 256 lines long.
 
 The actual data in the example above has been significantly shortened for brevity and should in practice contain several hundred data points.
+
+The frequencies must be sorted and listed in increasing order, as shown in the example above.
 
 Data are separated by space characters and ordered in columns, not comma separated or tabulator character separated.
 
@@ -283,9 +285,7 @@ An online internet database at `Loudspeakerdatabase.com <https://loudspeakerdata
 FRD File Format Explained
 -------------------------
 
-The FRD file format may consist of a header, where the first character
-is a '*', and followed by each measurement point on separate lines in
-the Frequency - Magnitude (SPL dB) - Phase angle (degrees) format:
+The FRD file format may consist of a header, where the first character of each line is a '*', and followed by each measurement point on separate lines in the Frequency - Magnitude (SPL dB) - Phase angle (degrees) format:
 
 .. code::
 
@@ -299,7 +299,7 @@ the Frequency - Magnitude (SPL dB) - Phase angle (degrees) format:
     1002.062  +118.6441    -0.0002
    10093.406  +114.9486    +0.0003
 
-The header section may be up to 255 lines long.
+The header section may be up to 256 lines long.
 
 The actual data in the example above has been significantly shortened for brevity and should in practice contain several hundred data points.
 
