@@ -20,29 +20,31 @@ For box simulation, Speakerbench supports **TUNE**-files containing the input se
 ZMA File Format Explained
 -------------------------
 
-The ZMA file format may consist of a header, where the first character of each line is a '*', and followed by each measurement point on separate lines in the Frequency - Magnitude (Ohm) - Phase angle (degrees) format:
+The ZMA file format is similar to the `FRD file format <#frd-file-format-explained>`_ and may consist of a header, where the first character of each line is an asterisk (*), and followed by each measurement point on separate lines in the Frequency (Hz) - Magnitude (Ohm) - Phase angle (degrees) format (sometimes named FMP):
 
 .. code::
 
   ****************************************************
   * Some info here, e.g., FILE:L16RNX_0g_242_27mV.zma
   * INFO: More info here
-  * Data: Frequency (hertz), Impedance (ohms), Phase (degrees)
+  * Data: Frequency (Hertz), Impedance (ohms), Phase (degrees)
   ****************************************************
      10.000    +7.1179   +25.2241
     101.339    +9.2848   -37.0496
    1006.846    +7.1984   +17.8486
   10003.368   +18.9094   +44.9883
 
-The header section may be up to 256 lines long.
+The header section may be up to 256 lines long. There is no requirement for a header.
 
-The actual data in the example above has been significantly shortened for brevity and should in practice contain several hundred data points.
+The input data must use a dot (.) as the decimal separator. The actual data in the example above has been significantly shortened for brevity and should in practice contain several hundred data points.
 
 The frequencies must be sorted and listed in increasing order, as shown in the example above.
 
 Data are separated by space characters and ordered in columns, not comma separated or tabulator character separated.
 
 ZMA files must contain ASCii characters only. Special characters, like a degree symbol (°), is not allowed, not even in the header since Speakerbench import will choke on such data and the data import will fail.
+
+When importing ZMA files in Speakerbench to collect measured impedance data, all three measurements must contain the same number of datapoints and ideally they should be at the same measurement frequencies. Minor deviations in frequency is tolerated. It is not allowed to e.g. reduce the frequency range for some of the measurements.
 
 JSON Datafile Definitions
 -------------------------
@@ -285,27 +287,31 @@ An online internet database at `Loudspeakerdatabase.com <https://loudspeakerdata
 FRD File Format Explained
 -------------------------
 
-The FRD file format may consist of a header, where the first character of each line is a '*', and followed by each measurement point on separate lines in the Frequency - Magnitude (SPL dB) - Phase angle (degrees) format:
+FRD stands for Frequency Response Data and was described by the `FRD Consortium <https://web.archive.org/web/20060502042528/http://www.pvconsultants.com/audio/frdis.htm>`_.
+
+The FRD file format may consist of a header, where the first character of each line is an asterisk (*), and followed by each measurement point on separate lines in the Frequency - Magnitude (SPL dB) - Phase angle (degrees) format:
 
 .. code::
 
   ****************************************************
   * Some info here, e.g., FILE:L16RNX_0g_242_27mV.frd
   * INFO: More info here
-  * Data: Frequency (hertz), SPL (dB), Phase (degrees)
+  * Data: Frequency (Hertz), SPL (dB), Phase (degrees)
   ****************************************************
       10.072   +81.4199    -0.1295
      100.475  +117.4328    +0.0022
     1002.062  +118.6441    -0.0002
    10093.406  +114.9486    +0.0003
 
-The header section may be up to 256 lines long.
+The header section may be up to 256 lines long. There is no requirement for a header.
 
-The actual data in the example above has been significantly shortened for brevity and should in practice contain several hundred data points.
+The input data must use a dot (.) as the decimal separator. The actual data in the example above has been significantly shortened for brevity and should in practice contain several hundred data points.
 
 Data are separated by space characters and ordered in columns, not comma separated or tabulator character separated.
 
 FRD files must contain ASCii characters only. Special characters, like a degree symbol (°), is not allowed, not even in the header since Speakerbench import will choke on such data and the data import will fail.
+
+In Speakerbench you may load one FRD file into the box modeler containing a measurement of a speaker, driver, or port output (as well as one `ZMA file <#zma-file-format-explained>`_). The frequency response in the file is plotted along with the simulation in the SPL tab, by which you can compare the output of a physically built loudspeaker with the Speakerbench simulation to verify that your simulation is correct or possibly adjust losses (:math:`\qa`, :math:`\ql`, :math:`\qp`) accordingly to identify their value.
 
 PLT File Format Explained
 -------------------------
@@ -362,4 +368,4 @@ The first part of the PLT file contains your TUNE parameters, and hereafter each
 
 All graphs with complex data are exported in cartesian format.
 
-The "tms" (time in millisecond) and "stp" vectors only show up if you enable plotting of the step response.
+The "tms" (time in milliseconds) and "stp" vectors only show up if you enable plotting of the step response.

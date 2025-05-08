@@ -37,6 +37,7 @@ html_theme           = 'sphinx_rtd_theme'
 html_favicon         = 'images/logo/favicon.ico'
 html_show_sphinx     = True
 html_show_copyright  = True
+html_show_sourcelink = False
 html_last_updated_fmt = '%b %d, %Y'
 
 html_theme_options = {'analytics_id': '',
