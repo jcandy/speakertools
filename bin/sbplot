@@ -18,7 +18,7 @@ rc('text',usetex=True)
 rc('font',size=GFONTSIZE)
 
 # Plot frame and axis setup
-def plotsetup(phase,ext):
+def plotsetup(phase,linear,ext):
 
     FHZ=r'$f\,(\mathrm{Hz})$'
     SPL=r'$\mathrm{SPL}\,\mathrm{(dB)}$'
@@ -37,10 +37,14 @@ def plotsetup(phase,ext):
 
     ax.grid(which="major", ls="-", alpha=0.4)
     ax.grid(which="minor", ls=":", alpha=0.4)
-    ax.set_xlabel(FHZ)
-    ax.set_xscale('log')
-    ax.set_xticks(TICKS)
-    ax.set_xticklabels(LABELS)
+    ax.set_xlabel(FHZ)       
+
+    if linear:
+        ax.set_xscale('linear')
+    else:
+        ax.set_xscale('log')
+        ax.set_xticks(TICKS)
+        ax.set_xticklabels(LABELS)
 
     if phase:
         # Plot phase
@@ -57,6 +61,21 @@ def plotsetup(phase,ext):
             ax.set_ylabel(IMP)
 
     return plt,ax
+
+def mycolor(i):
+
+    # weights (lower is darker)
+    fr = 0.95
+    fg = 0.95
+    fb = 0.95
+
+    t = np.pi/np.sqrt(3)*float(i)
+    
+    r = fr*np.cos(t)**4
+    g = fg*np.cos(t+np.pi/4)**4
+    b = fb*np.cos(t+np.pi/2)**4
+   
+    return (r,g,b)
 
 # Command line option parser
 def opts():
@@ -137,12 +156,16 @@ def opts():
                         help='plot title',
                         type=str,
                         default='null')
+
+    parser.add_argument('-linear',
+                        help='linear frequency scale',
+                        action='store_true')
     
     args=parser.parse_args()
 
     return args.i,args.c,args.loc,args.amin, \
         args.amax,args.fmin,args.fmax,args.o, \
-        args.gain,args.t,args.w,args.phase,args.title
+        args.gain,args.t,args.w,args.phase,args.title,args.linear
 
 # defaults
 zero = 0
@@ -154,7 +177,7 @@ ylabel = 'null'
 xs = 12
 ys = 6
 
-pltfiles,c,loc,amin,amax,fmin,fmax,out,gain,t,width,phase,title = opts()
+pltfiles,c,loc,amin,amax,fmin,fmax,out,gain,t,width,phase,title,linear = opts()
 
 if pltfiles == 'null' and c == 'null':
     print('ERROR: (sbplot) No input files specified. Type sbplot -h for help.')
@@ -166,18 +189,18 @@ n = len(myfiles)
 
 name,ext = os.path.splitext(myfiles[0])
 
-plt,ax = plotsetup(phase,ext)
-
-color = ['black','red','green','blue','magenta','cyan','purple']
+plt,ax = plotsetup(phase,linear,ext)
 #-------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------
 # Process datasets (comma separated list of frd files in c)
 
-p = 0
-for x in myfiles:
+for p,x in enumerate(myfiles):
     try:
-        data = np.genfromtxt(x,comments="#")
+        with open(x) as f:
+            # Assume first character is a comment
+            comment = f.readline()[0]
+        data = np.genfromtxt(x,comments=comment)
     except:
         print('ERROR: (sbplot) {} not found'.format(x))
         sys.exit()
@@ -202,7 +225,7 @@ for x in myfiles:
         label = r'$\mathrm{' + t.split(',')[p] + '}$'
 
     if colors == 'null':
-        c0 = color[p]
+        c0 = mycolor(p)
     else:
         c0 = colors.split(',')[p]
 
@@ -224,6 +247,7 @@ for x in myfiles:
     if zero == 1:
         a[:] = a[:]-a[0]
 
+    c0 = mycolor(p)
     ax.plot(f,a,linewidth=w0,label=label,color=c0,linestyle=s0,alpha=a0)
 
     p = p + 1
