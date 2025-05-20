@@ -13,17 +13,17 @@ Speakerbench reads and creates a number of file formats which are summarized in 
 
 .. csv-table:: **File format summary**
    :align: center
-   :header: *filetype*, *contents*, *format*, *link*
-   :widths: 13,13,30,13
+   :header: *filetype*, *contents*, *format*
+   :widths: 10,10,40
    :name: tab.fileformat
 
-   ZMA, ASCII, raw impedance data, "`ZMA <#zma-file>`_"
-   FRD, ASCII, raw SPL data,       "`FRD <#frd-file>`_"
-   Z,   JSON,  Speakerbench impedance object,"`Z-file <#speakerbench-z-file>`_"
-   ADV, JSON,  Speakerbench advanced parameter object,"`ADV-file <#speakerbench-adv-file>`_"
-   SBD, JSON,  Speakerbench advanced driver object,"`SBD-file <#speakerbench-sbd-file>`_"
-   TUNE, JSON, Speakerbench box tuning object,"`TUNE-file <#speakerbench-tune-file>`_"
-   PLT, JSON,  Speakerbench box output object,"`PLT-file <#speakerbench-plt-file>`_"
+   "`ZMA <#zma-file>`_", ASCII, raw impedance data
+   "`FRD <#frd-file>`_", ASCII, raw SPL data
+   "`Z <#speakerbench-z-file>`_",   JSON,  Speakerbench impedance data object
+   "`ADV <#speakerbench-adv-file>`_", JSON,  Speakerbench advanced parameter object
+   "`SBD <#speakerbench-sbd-file>`_", JSON,  Speakerbench driver datasheet object
+   "`TUNE <#speakerbench-tune-file>`_", JSON, Speakerbench box tuning object
+   "`PLT <#speakerbench-plt-file>`_", JSON,  Speakerbench box output object
 
 Speakerbench does not save any data on the server. Instead, data is handled in your browser and stored in `JSON format <https://en.wikipedia.org/wiki/JSON>`_. For typical usage there is no need to hand-edit JSON files as the usage will be seamless and hidden from the user.
 
@@ -126,7 +126,7 @@ Speakerbench ADV-File
 This container is created by the advanced model fitter
 
 .. image:: images/file_docs/app-2.png
-   
+
 
 The fitted data contains only the information identified by the fitting procedure (plus comments). Here is a structured view of the content of such a JSON file (actual data are from the L16RNX just for the example). The file name is by convention ``ADV_something.json``.
 
@@ -219,7 +219,7 @@ Legacy Thiele/Small option
 
 Speakerbench can work with standard Thiele/Small datasheets. The key is to set the ``comments`` key to either ``ts1`` or ``ts2`` which implies there are two methods supported by Speakerbench. The first method is to accept the :math:`Q`-values and other Thiele/Small parameters as input and calculate the mechanical parameters. The second method is to accept the mechanical parameters (``cms``, ``mms``, ``rms`` and so on) and calculate the :math:`Q`-values, etc. The file contains the same keywords as a standard datasheet (see previous section) and the file name is unchanged; ``SBD_something.json``. Here is a structured view of the content of such a JSON file, with comments (which should obviously not be typed into the JSON file).
 
-.. code:: 
+.. code::
 
   {
     "manufacturer": "",  - optional
@@ -264,7 +264,7 @@ Speakerbench can work with standard Thiele/Small datasheets. The key is to set t
 
 An online internet database at `Loudspeakerdatabase.com <https://loudspeakerdatabase.com>`_ by Cristian Pop provides access to more than **4000** Thiele/Small datasheets and lets you download a Speakerbench SBD-file which you can import directly into the :ref:`Creator app<Create Datasheet>`.
 
-Speakerbench TUNE-File 
+Speakerbench TUNE-File
 ----------------------
 
 This container is created by the box simulator
