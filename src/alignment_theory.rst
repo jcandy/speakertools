@@ -158,7 +158,7 @@ In 1976, some years after Thiele’s work, Linkwitz-Riley filters for use in ele
 .. math::
     G_\mathrm{H}(s) = \frac{ s^4 } { \left(s^2 + \sqrt{2} s + 1 \right)^2 } \; .
 
-An important property of the combined high-pass and low-pass sections is that the resulting crossover sums to unit magnitude, with the outputs in phase at the crossover frequency. Linkwitz originally proposed filters with these characteristic for solving lobing issues with noncoincident transducers. Of course, the application to crossovers is unrelated to bass-reflex design, which may partly explain why the literature seems to contain no recorded use of the Linkwitz-Riley filter as a discrete target alignment. In relation to bass reflex alignment, LR4 exhibits desirable features like fast settling time (controlled impulse response) similar to :ref:`Bessel BL4` but with a more extended frequency response. The response coefficients are
+An important property of the combined high-pass and low-pass sections is that the resulting crossover sums to unit magnitude, with the outputs in phase at not just the crossover frequency but all frequencies. Linkwitz originally proposed filters with these characteristic for solving lobing issues with noncoincident transducers. Of course, the application to crossovers is unrelated to bass-reflex design, which may partly explain why the literature seems to contain no recorded use of the Linkwitz-Riley filter as a discrete target alignment. In relation to bass reflex alignment, LR4 exhibits desirable features like fast settling time (controlled impulse response) similar to :ref:`Bessel BL4` but with a more extended frequency response. The response coefficients are
 
 .. math::
    a_1 = \sqrt{8} \simeq 2.828
@@ -361,7 +361,7 @@ In Speakerbench, when we apply this method, the alignment acronym is followed by
 .. literalinclude::
    images/alignment/print_ca.txt
 
-Compliance Alteration was first presented in Voice Coil Magazine from October 2024. Later, the article became Open Access when AudioXpress released an `Compliance Alteration article <https://audioxpress.com/article/bass-reflex-alignments-compliance-alteration>`_. The method can be applied to any desired discrete target alignment. This method is particularly interesting if your driver :math:`\qts` is a bit too high, because with the compliance alteration technique, the box calculation is then treated as if the suspension is a bit too stiff. Fortunately, the driver suspension will experience aging (or burn-in) over time and will soften. When this happens, the provided equations dictate that your system will, over time, move toward the desired target response, and if softened enough to reach :math:`Q_\mathrm{TS,ref}`, the system response will match the target without any error. If the softening does not happen, the system response will deviate slightly from the target.
+Compliance Alteration was first presented in Voice Coil Magazine from October 2024. Later, the article became Open Access when AudioXpress released a `Compliance Alteration article <https://audioxpress.com/article/bass-reflex-alignments-compliance-alteration>`_. The method can be applied to any desired discrete target alignment. This method is particularly interesting if your driver :math:`\qts` is a bit too high, because with the compliance alteration technique, the box calculation is then treated as if the suspension is a bit too stiff. Fortunately, the driver suspension will experience aging (or burn-in) over time and will soften. When this happens, the provided equations dictate that your system will, over time, move toward the desired target response, and if softened enough to reach :math:`Q_\mathrm{TS,ref}`, the system response will match the target without any error. If the softening does not happen, the system response will deviate slightly from the target.
 
 Method 3: Generalized quasi-alignment
 .....................................
@@ -470,7 +470,7 @@ where :math:`x = \omega/\omega_c` and :math:`\omega_c` is the critical frequency
 .. math::
    T_4(x) = 8 x^4 - 8 x^2 + 1 \quad \text{such that} \quad T_4(\cos\phi) = \cos(4\phi)
 
-Thus, in the region :math:`x \leq 1` the properties of polynomial ensure that the amplitude is bounded by
+Thus, in the region :math:`x \leq 1` the properties of the polynomial ensure that the amplitude is bounded by
 
 .. math::
    \frac{1}{1+\varepsilon^2} \leq \left| G_\mathrm{H}(i \omega) \right|^2 \leq 1 \; .
@@ -512,7 +512,7 @@ where :math:`c_0 = \sqrt{4+\sqrt{8}}` and :math:`D(k) = \frac{k^4 + 6 k^2 + 1}{8
    a_2 & = \frac{1+k^2(1+\sqrt{2})}{D^{1/2}} \\
    a_1 & = \frac{c_0 \, k}{D^{3/4}} \left( 1+\frac{k^2-1}{\sqrt{8}} \right)
 
-Evidenty, these functions can be analytically continued trivially to the region :math:`k \geq 1`. The region :math:`k < 1` has passband ripple, the special case :math:`k = 1` is the B4 alignment, and the region :math:`k > 1` is monotonic.
+Evidenty, these functions can be analytically continued trivially to the region :math:`k \geq 1`. The region :math:`k < 1` has passband ripple, the special case :math:`k = 1` is the B4 alignment, and the region :math:`k > 1` is monotonic and is named the sub-Chebyshev (SC4) alignment in the literature.
 
 .. collapse:: CLICK HERE to expand Chebyshev C4 source code
 
@@ -545,7 +545,7 @@ where :math:`u = i \omega/\ws`. In reality, the actual leakage loss :math:`\ql` 
 
    G_\mathrm{H}(u) = \frac{u^2}{\displaystyle u^2 + \frac{u}{\qts} + \left( \alpha+1 \right)} \; .
 
-Simulation of a closed box in Speakerbench in triggered by zeroing the port tuning frequency: :math:`\fpb = 0`. Losses in this case will vanish because Speakerbench accepts input for :math:`\ql` rather than :math:`\qlc`. To arrive at the canonical form for a closed box, we write :math:`u = \sqrt{\alpha+1} \, s` to find
+Simulation of a closed box in Speakerbench is triggered by zeroing the port tuning frequency: :math:`\fpb = 0`. Losses in this case will vanish because Speakerbench accepts input for :math:`\ql` rather than :math:`\qlc`. To arrive at the canonical form for a closed box, we write :math:`u = \sqrt{\alpha+1} \, s` to find
 
 .. math::
    :label: eq.closed
