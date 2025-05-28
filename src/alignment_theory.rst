@@ -94,7 +94,7 @@ This value is what Speakerbench uses for response calculations (and in the align
 Discrete alignments
 -------------------
 
-A *discrete* bass reflex alignment means we need to select a driver with a specific :math:`\qts` value and match that with a specific box volume and port tuning frequency to obtain the unique discrete alignment. Two popular classic discrete alignments are the Butterworth (B4) and Bessel (BL4) ones. In addition, Thiele :cite:`thiele:1974` defined the Inter-Order Butterworth (IB4) discrete alignment around 1974. In these notes we further discuss the so-called Linkwitz-Riley (LR4) and Critically Damped (CD4) discrete alignments. Each discrete alignment defines a specific 4\ :sup:`th`-order filter with fixed coefficients :math:`(a_1,a_2,a_3)` along with properties that are broadly suitable for vented aligments. The coefficients are
+A *discrete* bass reflex alignment means we need to select a driver with a specific :math:`\qts` value and match that with a specific box volume and port tuning frequency to obtain the unique discrete alignment. Two popular classic discrete alignments are the Butterworth (B4) and Bessel (BL4) ones. In addition, Thiele :cite:`thiele:1974` defined the Inter-Order Butterworth (IB4) discrete alignment around 1974. In these notes we further discuss the so-called Linkwitz-Riley (LR4) and Critically Damped (CD4) discrete alignments. Each discrete alignment defines a specific 4\ :sup:`th`-order filter with fixed coefficients :math:`(a_1,a_2,a_3)` along with properties that are broadly suitable for vented aligments. The following sections discuss the discrete alignments, their coefficients, and other properties.
 
 Butterworth B4
 ..............
@@ -411,7 +411,7 @@ Alignment families
 ------------------
 
 Beyond discrete aligments, for which :math:`(a_1,a_2,a_3)` have explicit numerical values, well-known **alignment families** exist for which :math:`(a_1,a_2,a_3)` depend upon a free parameter. The term **alignment family** is derived from the mathematical definition of a `family of response curves <https://en.wikipedia.org/wiki/Family_of_curves>`_.
-An alignment family allows one to cover a range of driver :math:`\qts` values rather than just a single value. The B4Q quasi-alignment described above is in the loudspeaker industry considered an alignment family. Small and others refer to this family as QB3 (references).
+An alignment family allows one to cover a range of driver :math:`\qts` values rather than just a single value. The B4Q quasi-alignment described above is in the loudspeaker industry considered an alignment family. Small and others refer to this family as QB3 (Table V in :cite:`thiele:1971b`, appendix 1 in :cite:`small:1973c`).
 
 Boombox BB4
 ...........
