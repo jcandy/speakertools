@@ -2,7 +2,7 @@
 
 ## About the project
 
-Speakertools is a tool and documentation repository for [Speakerbench](https://speakerbench.com) developers and users. Python tools are located in speakertools/bin and Sphinx documentation sources are in speakertools/src. 
+Speakertools is a tool and documentation repository for [Speakerbench](https://speakerbench.com) developers and users. Python tools are located in speakertools/bin and Sphinx documentation sources are in speakertools/src.
 
 ## Instructions
 
@@ -13,13 +13,13 @@ $ cd src
 $ vi index.rst
 ```
 
-To *build* webpages (on laptop):
+To *build* webpages (on laptop), enable the Python environment for Sphinx:
 
 ```
 $ make  # this will generate html files in src/_build/html
 ```
 
-To *build* and *publish* webpages (on server):
+To *build* and *publish* webpages (on server), enable the Python environment for Sphinx:
 
 ```
 $ make
