@@ -16,7 +16,7 @@ project   = 'Speakerbench'
 copyright = '2020-'+time.strftime("%Y")+' | C. Futtrup and J. Candy'
 author    = 'Speakerbench Team'
 
-version = "0.1"
+version = "1.0"
 release = version
 
 bibtex_bibfiles = ['refs.bib']
