@@ -142,8 +142,6 @@ STEP 3: Create Datasheet (7:40)
 +-----------+------------------------------------------+
 | 1:18      | Information not filled out by import     |
 +-----------+------------------------------------------+
-| 1:01      | Drag/drop the ADV JSON File from fitter  |
-+-----------+------------------------------------------+
 | 2:13      | Tooltips                                 |
 +-----------+------------------------------------------+
 | 2:26      | Entering data into Datasheet Creator     |

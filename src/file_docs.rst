@@ -33,7 +33,7 @@ Speakerbench does not save any data on the server. Instead, data is handled in y
 ZMA File
 --------
 
-For input of impedance measurements, Speakerbench requires files in `ZMA format <https://fileinfo.com/extension/zma>`_ format. ZMA format is similar to the `FRD file format <#frd-file>`_ and may consist of a header, where the first character of each header line is an asterisk (*), followed by rows of measurement points with each row containing three space-delimited columns: Frequency (Hz), Magnitude (Ohm), Phase angle (degrees). This format is sometimes named FMP.
+For input of impedance measurements, Speakerbench requires files in the `ZMA file <https://fileinfo.com/extension/zma>`_ format. ZMA format is similar to the `FRD file format <#frd-file>`_ and may consist of a header, where the first character of each header line is an asterisk (*), followed by rows of measurement points with each row containing three space-delimited columns: Frequency (Hz), Magnitude (Ohm), Phase angle (degrees). This format is sometimes named FMP.
 
 .. code::
 
@@ -161,7 +161,7 @@ The ``git`` key corresponds to the current git hashtag for the version of Speake
 Speakerbench SBD-File
 ---------------------
 
-This container is created by the advanced model fitter
+This container is created by the Datasheet creator
 
 .. image:: images/file_docs/app-3.png
 
@@ -210,7 +210,7 @@ The SBD-file contains all information necessary to describe a driver for Speaker
     "score": "EXCELLENT"
   }
 
-The ``sd`` input is required and must be entered by the user as described in the :ref:`Create Datasheet` section. Brand and Model are also required and must be entered by the user, conveniently stored at the beginning of the file so that you can open a SBD file in a text editor and identify the test object. ``temp``, ``pres`` and ``ah`` (air temperature, air pressure and relative air humidity respectively) are defaults but you can edit to reflect your actual measurement conditions. 0Some inputs are optional, for example ``xmax`` is optional (set to zero if the information is not available). Specifying ``xmax`` adds additional functionality to Speakerbench. See below description for the Thiele/Small Datasheet for details. In the SBD-file all numbers are stored as strings (see the legacy Thiele/Small section below).
+The ``sd`` input is required and must be entered by the user as described in the :ref:`Create Datasheet` section. Brand and Model are also required and must be entered by the user, conveniently stored at the beginning of the file so that you can open a SBD file in a text editor and identify the test object. ``temp``, ``pres`` and ``ah`` (air temperature, air pressure and relative air humidity respectively) are defaults but you can edit to reflect your actual measurement conditions. Some inputs are optional, for example ``xmax`` is optional (set to zero if the information is not available). Specifying ``xmax`` adds additional functionality to Speakerbench. See below description for the Thiele/Small Datasheet for details. In the SBD-file all numbers are stored as strings (see the legacy Thiele/Small section below).
 
 ``error`` (the fit error) and ``score`` (the fit score) are provided by the fit process and are optional. These values are omitted in the  `Loudspeaker Database <https://loudspeakerdatabase.com>`_, for example. Note the distinction between manufacturer and brand. For example brand name SB Acoustics are manufactured by Sinar Baja Electric Co. Ltd. Some brands have several manufacturing sites.
 
