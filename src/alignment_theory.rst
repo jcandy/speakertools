@@ -405,7 +405,7 @@ Finally, note that by setting :math:`\epsilon=0` above we obtain the lossless so
 
 In Speakerbench, when we apply this method, the alignment acronym is followed by Q as in B4Q, LR4Q and BL4Q. Thus, B4Q in Speakerbench is the same as what is known in classical theory as the QB3 alignment. We remark that Bullock :cite:`bullock:1981` defines SQB3 as a subset of QB3 for drivers with :math:`0.56 > \qts > 0.4`.
 
-The generalized quasi-alignment method was first presented in Voice Coil Magazine, October 2024. Later, the article became Open Access when AudioXpress released our `Quasi-Alignment Families <https://audioxpress.com/article/voice-coil-focus-quasi-alignment-families>`_ article. Like with Compliance Alteration, this method can be applied to any desired discrete target alignment.
+The generalized quasi-alignment method was first presented in Voice Coil Magazine, January 2025. Later, the article became Open Access when AudioXpress released our `Quasi-Alignment Families <https://audioxpress.com/article/voice-coil-focus-quasi-alignment-families>`_ article. Like with Compliance Alteration, this method can be applied to any desired discrete target alignment.
 
 Alignment families
 ------------------
