@@ -16,7 +16,7 @@ All the plots and data output shown on this page were generated using the **Spea
 
 - Source code at `GitHub speakerbench repository <https://github.com/jcandy/speakertools/tree/master/src/example_code>`_.
 - Download :download:`ZIP archive <example_code/libalignment.zip>`
-- Download :download:`TGZ archive <example_code/libalignment.zip>`
+- Download :download:`TGZ archive <example_code/libalignment.tgz>`
 
 .. code-block:: bash
 		
