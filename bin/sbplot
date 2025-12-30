@@ -13,31 +13,31 @@ from matplotlib import rc
 #------------------------------------------------------------
 
 # fonts
-GFONTSIZE=18
+GFONTSIZE = 18
 rc('text',usetex=True)
 rc('font',size=GFONTSIZE)
 
 # Plot frame and axis setup
 def plotsetup(phase,linear,ext):
 
-    FHZ=r'$f\,(\mathrm{Hz})$'
-    SPL=r'$\mathrm{SPL}\,\mathrm{(dB)}$'
-    PHASE=r'$\mathrm{Phase}\,\mathrm{(deg)}$'
-    IMP=r'$|Z|\,(\Omega)$'
-    TICKS=[10,20,50,100,200,500,1000,2000,5000,10000,20000]
-    LABELS=[r'$10$',r'$20$',r'$50$',r'$100$',r'$200$',r'$500$',
-            r'$1\mathrm{k}$',r'$2\mathrm{k}$',r'$5\mathrm{k}$',r'$10\mathrm{k}$',r'$20\mathrm{k}$']
+    FHZ = r'$f\,(\mathrm{Hz})$'
+    SPL = r'$\mathrm{SPL}\,\mathrm{(dB)}$'
+    PHASE = r'$\mathrm{Phase}\,\mathrm{(deg)}$'
+    IMP = r'$|Z|\,(\Omega)$'
+    TICKS = [10,20,50,100,200,500,1000,2000,5000,10000,20000]
+    LABELS = [r'$10$',r'$20$',r'$50$',r'$100$',r'$200$',r'$500$',
+              r'$1\mathrm{k}$',r'$2\mathrm{k}$',r'$5\mathrm{k}$',r'$10\mathrm{k}$',r'$20\mathrm{k}$']
 
     fig = plt.figure(figsize=(xs,ys))
 
     ax = fig.add_subplot(111)
 
     if title != 'null':
-        ax.set_title(r'$\mathrm{' + title + '}$', size=18)
+        ax.set_title(r'$\mathrm{' + title + '}$',size=18)
 
-    ax.grid(which="major", ls="-", alpha=0.4)
-    ax.grid(which="minor", ls=":", alpha=0.4)
-    ax.set_xlabel(FHZ)       
+    ax.grid(which="major",ls="-",alpha=0.4)
+    ax.grid(which="minor",ls=":",alpha=0.4)
+    ax.set_xlabel(FHZ)
 
     if linear:
         ax.set_xscale('linear')
@@ -47,15 +47,13 @@ def plotsetup(phase,linear,ext):
         ax.set_xticklabels(LABELS)
 
     if phase:
-        # Plot phase
         ax.set_ylim(-180,180)
-        if ext == '.frd' or ext == '.FRD':
+        if ext.lower() == '.frd':
             ax.set_ylabel(r'$\arg(\mathrm{SPL}) ~ (\mathrm{degrees})$')
         else:
             ax.set_ylabel(r'$\arg(Z) ~ (\mathrm{degrees})$')
     else:
-        # Plot SPL
-        if ext == '.frd' or ext == '.FRD':
+        if ext.lower() == '.frd':
             ax.set_ylabel(SPL)
         else:
             ax.set_ylabel(IMP)
@@ -63,18 +61,12 @@ def plotsetup(phase,linear,ext):
     return plt,ax
 
 def mycolor(i):
-
     # weights (lower is darker)
-    fr = 0.95
-    fg = 0.95
-    fb = 0.95
-
+    fr = fg = fb = 0.95
     t = np.pi/np.sqrt(3)*float(i)
-    
     r = fr*np.cos(t)**4
     g = fg*np.cos(t+np.pi/4)**4
     b = fb*np.cos(t+np.pi/2)**4
-   
     return (r,g,b)
 
 # Command line option parser
@@ -82,90 +74,36 @@ def opts():
 
     mytext = '''\
     description:
-       sbplot is a flexible tool to plot frd files (containing SPL data) and
-       zma files (containined impedance data).
+       sbplot is a tool to plot frd (SPL data) and zma (impedance data) files.
     '''
 
     parser = argparse.ArgumentParser(
         formatter_class=argparse.RawTextHelpFormatter,
-        prog = 'sbplot',
+        prog='sbplot',
         description="Speakerbench Plot",
         epilog=textwrap.dedent(mytext))
-    
-    parser.add_argument('-i',
-                        help="Speakerbench PLT file",
-                        type=str,
-                        default='null',
-                        metavar='PLTFILES')
 
-    parser.add_argument('-c',
-                        help="comma-separated list of frd or zma files",
-                        type=str,
-                        default='null')
+    parser.add_argument('-i',help="Speakerbench PLT file",type=str,
+                        default='null',metavar='PLTFILES')
+    parser.add_argument('-c',help="comma-separated list of frd or zma files",
+                        type=str,default='null')
+    parser.add_argument('-loc',help="legend quadrant (1-4)",type=int,default=1)
+    parser.add_argument('-amin',help="amplitude minimum",type=str,default='auto')
+    parser.add_argument('-amax',help="amplitude maximum",type=str,default='auto')
+    parser.add_argument('-fmin',help="frequency minimum",type=float,default=10.0)
+    parser.add_argument('-fmax',help="frequency maximum",type=float,default=1e4)
+    parser.add_argument('-o',help="output (png,jpg,pdf,screen) | default: screen",
+                        type=str,default='screen')
+    parser.add_argument('-gain',help="gain",type=str,default='null')
+    parser.add_argument('-t',help="legend text",type=str,default='null')
+    parser.add_argument('-w',help="line width",type=str,default='null')
+    parser.add_argument('-phase',help='toggle phase',action='store_true')
+    parser.add_argument('-title',help='plot title',type=str,default='null')
+    parser.add_argument('-linear',help='linear frequency scale',action='store_true')
 
-    parser.add_argument('-loc',
-                        help="legend quadrant (1-4)",
-                        type=int,
-                        default=1)
-      
-    parser.add_argument('-amin',
-                        help="amplitude minimum",
-                        type=str,
-                        default='auto')
-
-    parser.add_argument('-amax',
-                        help="amplitude maximum",
-                        type=str,
-                        default='auto')
-
-    parser.add_argument('-fmin',
-                        help="frequency minimum",
-                        type=float,
-                        default=10.0)
-
-    parser.add_argument('-fmax',
-                        help="frequency maximum",
-                        type=float,
-                        default=1e4)
-
-    parser.add_argument('-o',
-                        help="output (png,jpg,pdf,screen) | default: screen",
-                        type=str,
-                        default='screen')
-    
-    parser.add_argument('-gain',
-                        help="gain",
-                        type=str,
-                        default='null')
-
-    parser.add_argument('-t',
-                        help="legend text",
-                        type=str,
-                        default='null')
-
-    parser.add_argument('-w',
-                        help="line width",
-                        type=str,
-                        default='null')
-
-    parser.add_argument('-phase',
-                        help='toggle phase',
-                        action='store_true')
-
-    parser.add_argument('-title',
-                        help='plot title',
-                        type=str,
-                        default='null')
-
-    parser.add_argument('-linear',
-                        help='linear frequency scale',
-                        action='store_true')
-    
-    args=parser.parse_args()
-
-    return args.i,args.c,args.loc,args.amin, \
-        args.amax,args.fmin,args.fmax,args.o, \
-        args.gain,args.t,args.w,args.phase,args.title,args.linear
+    args = parser.parse_args()
+    return (args.i,args.c,args.loc,args.amin,args.amax,args.fmin,args.fmax,
+            args.o,args.gain,args.t,args.w,args.phase,args.title,args.linear)
 
 # defaults
 zero = 0
@@ -183,12 +121,8 @@ if pltfiles == 'null' and c == 'null':
     print('ERROR: (sbplot) No input files specified. Type sbplot -h for help.')
     sys.exit()
 
-# list of filenames
 myfiles = c.split(',')
-n = len(myfiles)
-
 name,ext = os.path.splitext(myfiles[0])
-
 plt,ax = plotsetup(phase,linear,ext)
 #-------------------------------------------------------------------------
 
@@ -197,68 +131,54 @@ plt,ax = plotsetup(phase,linear,ext)
 
 for p,x in enumerate(myfiles):
     try:
+        # Detect header lines by finding first line with 3 numeric columns
+        skip_lines = 0
         with open(x) as f:
-            # Assume first character is a comment
-            comment = f.readline()[0]
-        data = np.genfromtxt(x,comments=comment)
-    except:
+            for line in f:
+                parts = line.split()
+                if len(parts) == 3:
+                    try:
+                        [float(val) for val in parts]
+                        break  # Found data start
+                    except ValueError:
+                        pass
+                skip_lines += 1
+
+        data = np.genfromtxt(x,skip_header=skip_lines)
+    except FileNotFoundError:
         print('ERROR: (sbplot) {} not found'.format(x))
+        sys.exit()
+    except Exception as e:
+        print('ERROR: (sbplot) Failed to parse {}: {}'.format(x,str(e)))
         sys.exit()
 
     f = data[:,0]
-
-    if gain == 'null':
-        g = 0.0
-    else:
-        g = float(gain.split(',')[p])
-
-    if phase:
-        a = data[:,2]
-    else:
-        a = data[:,1] + g
+    g = 0.0 if gain == 'null' else float(gain.split(',')[p])
+    a = data[:,2] if phase else data[:,1]+g
 
     if t == 'null':
-        # Watch for underscore
         word = x.replace(r'_',r'\_')
-        label = r'$\mathrm{' +word+ '}$'
+        label = r'$\mathrm{' + word + '}$'
     else:
         label = r'$\mathrm{' + t.split(',')[p] + '}$'
 
-    if colors == 'null':
-        c0 = mycolor(p)
-    else:
-        c0 = colors.split(',')[p]
-
-    if style == 'null':
-        s0 = '-'
-    else:
-        s0 = style.split(',')[p]
-
-    if width == 'null':
-        w0 = 1
-    else:
-        w0 = width.split(',')[p]
-
-    if alpha == 'null':
-        a0 = 1.0
-    else:
-        a0 = float(alpha.split(',')[p])
+    c0 = mycolor(p) if colors == 'null' else colors.split(',')[p]
+    s0 = '-' if style == 'null' else style.split(',')[p]
+    w0 = 1 if width == 'null' else width.split(',')[p]
+    a0 = 1.0 if alpha == 'null' else float(alpha.split(',')[p])
 
     if zero == 1:
         a[:] = a[:]-a[0]
 
-    c0 = mycolor(p)
     ax.plot(f,a,linewidth=w0,label=label,color=c0,linestyle=s0,alpha=a0)
-
-    p = p + 1
 #-------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------
 # Generate plots
 
-# Overide y-axis label
+# Override y-axis label
 if ylabel != 'null':
-    ax.set_ylabel(r'$'+ylabel+'$')
+    ax.set_ylabel(r'$' + ylabel + '$')
 
 ax.set_xlim(float(fmin),float(fmax))
 if amin != 'auto':

@@ -4,6 +4,8 @@
 Speakerbench Box Theory
 =======================
 
+Below we review selected elements of the driver/enclosure theory used in Speakerbench. We highlight those features that are not well-covered in the literature. At the end of this page we give a brief summary of the model options available in the Speakerbench app. 
+
 History of enclosure models
 ---------------------------
 
@@ -26,7 +28,7 @@ The standard theory of loudspeaker enclosures was popularized by Small :cite:`sm
 DRIVER: the advanced model
 --------------------------
 
-The *blocked electrical* and *motional* impedances of the driver are modified from the standard Theile-Small expressions according to
+The *blocked electrical* and *motional* impedances of the driver are modified from the standard Thiele-Small expressions according to
 
 .. math::
    :label: eq.oldnew
@@ -38,12 +40,23 @@ The *blocked electrical* and *motional* impedances of the driver are modified fr
    s \mms + R_0 + \displaystyle \frac{1}{s C_0 \left[ 1+\beta\ln(1+\omega_0/s)\right]} \; .
    \end{align*}
 
-The equivalent electrical circuit for the driver in free air is given in :numref:`fig.elec_total`.
+The equivalent electrical circuit for the driver in free air is given in :numref:`fig.elec_total`. For a given advanced model representation, Speakerbench also generates a best-approximation Thiele-Small model. A concrete example of the conversion for the SEAS L16RNX is given below:
 
-BOX: T-network enclosure model
-------------------------------
+.. figure:: images/box/conversion.png
+   :width: 25 %
+   :alt: table
+   :name: fig.conversion
+   :align: center
 
-The classic form for the acoustic impedance of enclosure is
+   Speakerbench parameter for results for the SEAS L16RNX. Advanced parameters are shown in blue. Reduced TS model, derived from the advanced fit, are shown in pink.
+
+   
+BOX: T-network (Beranek) enclosure model
+----------------------------------------
+
+Speakerbench allows simulations of a **classic** and **Beranek** box. The classic box is well-treated in the literature and provides a well-established reference point for modeling. The classic model is nevertheless approximate and this has motivated us to also provide the Beranek model which more carefully treats the acoustic masses. We choose to call the model Beranek because all the theory was well-known to him.
+
+The classic form for the acoustic impedance of an enclosure is
 
 .. math::
    Z_\mathrm{box} =  \frac{1}{s \cab} + \rab
@@ -57,7 +70,7 @@ A vented enclosure is represented not by a single circuit element but rather by 
 	
    Z_{pq} = \frac{1}{s \cab } + s \mab \, \epsilon_{pq} \; .
 
-In this expression we have ignored terms of order :math:`s^2` and higher. By ignoring these terms we limit the applicability of the theory to the frequency range where the neglected terms are small. Note that in this section, all masses and compliances are assumed to be in acoustic units. When mechanical units are used, a lower-case :math:`m` subscript will be added. The quantity :math:`\epsilon_{pq}` is a dimensionless :math:`2\!\times\!2` array
+In this expression we have ignored terms of order :math:`s^2` and higher. By ignoring these terms we limit the applicability of the theory to the frequency range where the neglected terms are small. We have also ignored the box absorption :math:`\rab` but this empirical effect can be added if desired. Note that, in this section, all masses and compliances are assumed to be in acoustic units. When mechanical units are used, a lower-case :math:`m` subscript will be added. The quantity :math:`\epsilon_{pq}` is a dimensionless :math:`2\!\times\!2` array
 
 .. math::
    :label: eq.eps
@@ -122,7 +135,7 @@ where :math:`1.0 < \deltv < 1.4`. The factor of 1.4 corresponds to :math:`\gamma
 Connection to Beranek factor
 ............................
 
-The end-correction factor :math:`B`, first introduced by Beranek in his 1954 book :cite:`beranek:1954`, is related to the piston self-interaction coefficient :math:`\epsilon_{11}` and defines the acoustic mass :math:`M` when the port is blocked:
+The radiation mass factor :math:`B`, first introduced by Beranek in his 1954 book :cite:`beranek:1954`, is related to the piston self-interaction coefficient :math:`\epsilon_{11}` and defines the acoustic mass :math:`M` when the port is blocked:
 
 .. math::
    M_{11} \doteq \epsilon_{11} \mab =  \frac{B \rho}{\pi \, \ad} \; .
@@ -130,8 +143,12 @@ The end-correction factor :math:`B`, first introduced by Beranek in his 1954 boo
 Thus, we can define :math:`B` in terms of :math:`\epsilon_{11}` as
 
 .. math::
+   :label: eq.bfactor
+	   
    B = \pi \epsilon_{11} \frac{L_z \, \ad}{L_x \, L_y} \; .
 
+The mass loading factor was discussed at length by Leach :cite:`leach:1989` who was unaware of its theoretical basis. Note that Eq. :eq:`eq.bfactor` generalizes the result in :cite:`beranek:2019` to arbitrary frontal cross-section and driver height.
+   
 
 PORT: T-network port model
 --------------------------
@@ -139,7 +156,7 @@ PORT: T-network port model
 The classic form for the acoustic impedance of the port is
 
 .. math::
-   Z_\mathrm{port} =  \rap + s \map
+   Z_\mathrm{port} =  \rap + s \map \; .
 
 This model for the port also contains an empirical loss factor :math:`\rap` that cannot be computed from first-principles but can only be empirically determined. This form is also valid only for wavelengths much longer than the port length.
 
@@ -184,33 +201,53 @@ To derive this result we have used
 .. math::
    \map = \frac{\mmp}{\sp^2} = \frac{\rho\vp}{\sp^2} = \frac{\rho \,\lp}{\sp} \; .
 
-The interior of the box provides an end correction to the port mass. In the case where the port is *external* to the box (internal flange), the exterior end correction is the usual unflanged value radiation mass :math:`M_\mathrm{rad} = \rho \, \lpo/\sp` where
+Radiation from both ends of the port (one end in the box, one end outside the box) will provide end corrections to the effective port mass, thereby lowering the port resonant frequency. The inner and outer radiation masses, :math:`\rho \, \lpi/\sp` and :math:`\rho \, \lpo/\sp`, will determine the end corrections as detailed in the next section. In the Beranek model of the enclosure, the volume velocity through the radiation mass represents the sound exiting the vent, whereas the velocity through the :math:`\mathrm{csch}` branch is associated with reflections and compression in the tube. In this case the internal correction is
 
 .. math::
-   \lpo = 0.6 \, \ap
+  \lpi = \frac{\epsilon_{22}-\epsilon_{21}}{\sb} \sp \, L_z \; .
 
-The volume velocity through the radiation mass represents the sound exiting the vent, whereas the velocity through the :math:`\mathrm{csch}` branch is associated with reflections and compression in the tube. The internal correction is
-
-.. math::
-  \lpi = \frac{\epsilon_{22}-\epsilon_{21}}{\sb} \sp \, L_z
-
-Thus, the effective length of the port is given by
+Generally, the effective length of the port is given by
 
 .. math::
    \lp = \lpi + \lpp + \lpo
 
-Summary of acoustic masses
---------------------------
+Summary of radiation masses
+---------------------------
 
-The identification and calculation of acoustic masses is complicated and depends strongly on geometry. In an effort to clarify the physical interpretation, we tabulate the relevant acoustic masses in :numref:`tab.mass` below.
+The identification and calculation of various radiation masses is complicated and potentially confusing for Speakerbench users. In an effort to clarify the physical interpretation, we tabulate the relevant moving masses and end corrections as implemented in Speakerbench. The treatment of radiation mass is different in the **classic** and **Beranek** models. First, in :numref:`tab.endc`, we summarize the well-known dimensionless radiation impedance factors for ducts and pistons
 
-.. csv-table:: **Box and vent acoustic masses**
+.. csv-table:: **Dimensionless radiation impedance factors**
    :align: center
-   :header: "", *outer*, *intrinsic*,*inner*
-   :widths: 25, 25, 25, 25
-   :name: tab.mass
+   :header: *factor*, *value*, *explanation*
+   :widths: 20, 20, 50
+   :name: tab.endc
 
-   port,":math:`\displaystyle \left(0.6 \, \ap\right)\frac{\rho}{\sp}`",":math:`\displaystyle \frac{\rho \, \vp}{\sp^2}`",":math:`\displaystyle \left(\epsilon_{22}-\epsilon_{12}\right)\,\mab`"
-   box,":math:`\displaystyle \left(0.6 \, \ad\right) \frac{\rho}{\sd}`",":math:`\displaystyle \frac{\mmd}{\sd^2}`",":math:`\displaystyle \epsilon_{11} \, \mab`"
+   :math:`\lpu`,:math:`0.6133`,unflanged duct :cite:`levine:1948`
+   :math:`\lpf`,:math:`0.8216`,infinitely flanged duct :cite:`levine:1948`
+   :math:`\ldfree`,:math:`\displaystyle \frac{4}{3\pi} \simeq 0.4244`,piston in free air (one side) :cite:`morse:1968`
+   :math:`\ldu`,:math:`\displaystyle \frac{2}{\pi} \simeq 0.6366`,closed-back piston :cite:`morse:1968`
+   :math:`\ldf`,:math:`\displaystyle \frac{8}{3\pi} \simeq 0.8488`,infinitely baffled piston (one side)
 
-The **outer** masses result from radiation into free space. For both the driver and port, the coefficient of 0.6 applies to unflanged radiation. Note that for flanged radiation (infinite baffle) the coefficient is 0.85. The **intrinsic** box and port masses are the moving masses of the driver, and port air plug, respectively. For the driver, it is assumed that the outer mass is already contained in the advanced model :math:`\mms` whereas for the port, we assume it is mounted externally to justify the unflanged assumption. The **inner** masses, finally, require numerical evaluation of the Helmholtz matrix elements :math:`\epsilon_{pq}` via Eq. :eq:`eq.eps`.
+In terms of these factors, Speakerbench decomposes the driver masses as shown in :numref:`tab.massd`, and the vent ene corrections as shown in :numref:`tab.lp`.
+
+.. csv-table:: **Driver physical and radiation masses**
+   :align: center
+   :header: *model*, :math:`\mmf` (front), :math:`\mmd` (physical) , :math:`\mmr` (rear), :math:`\mmse` (effective)
+   :widths: 20, 20, 20, 20, 20
+   :name: tab.massd
+
+   classic,":math:`\displaystyle \ldfree \mmz`",":math:`\displaystyle \mms-2\ldfree \mmz`",":math:`\displaystyle \ldfree \mmz`",":math:`\displaystyle \mms`"
+   Beranek,":math:`\displaystyle 0.9 \ldf \mmz`",":math:`\displaystyle \mms-2\ldfree \mmz`",":math:`\displaystyle \epsilon_{11} \mab \sd^2`",":math:`\displaystyle \sum`"
+
+.. csv-table:: **Vent intrinsic and radiation lengths**
+   :align: center
+   :header: *model*, :math:`\lpo` (outer), :math:`\lpp` (physical) , :math:`\lpi` (inner), :math:`\lp` (effective)
+   :widths: 20, 20, 20, 20, 20
+   :name: tab.lp
+
+   classic,":math:`\displaystyle \lpf\,\ap`",":math:`\displaystyle \frac{\vp}{\sp}`",":math:`\displaystyle \lpu\,\ap`",":math:`\displaystyle \sum`"
+   Beranek,":math:`\displaystyle \lpu\,\ap`",":math:`\displaystyle \frac{\vp}{\sp}`",":math:`\displaystyle (\epsilon_{22}-\epsilon_{12}) L_z \frac{\sp}{\sb}`",":math:`\displaystyle \sum`"
+
+In :numref:`tab.massd`, :math:`\mms` is the moving mass of the driver as measured in free-space by a measurement system. This differs from :math:`\mmse`, which is the moving mass of the driver when mounted in a box. Also, the radiation masses above are defined in terms of :math:`\mmz = \rho \pi \ad^3`. These tables should be compared with the numerical values provided by Speakerbench in the Info tab of the box app.
+
+The **outer** masses result from radiation into free space whereas the **inner** masses result from radiation into the enclosure. The inner masses are sensitive to the enclosure geometry and port location. In the **classic model** the port is *internal* and thus the flanged and unflanged coefficients are used for outer and inner mass, respectively. Further, the inner and outer driver radiation is assumed to be infinitely baffled. In the **Beranek model** the port is *external* and the unflanged coefficient is used for the outer mass whereas the inner mass is proportional to :math:`\epsilon_{22}-\epsilon_{12}`. The outer driver radiation is assumed to be partially baffled (hence the factor of 0.9) whereas the inner is proportional to :math:`\epsilon_{11}`. This partial-baffle coefficient must lie between 0.75 (zero baffle) and 1.0 (infinite baffle) as discussed by Beranek (see, for example, the *Simple Enclosures* section of :cite:`beranek:1954`). The exact value required the solution of the exterior Helmholtz equation. For the **inner** masses in the Beranek model, we numerically evaluate the Helmholtz matrix elements :math:`\epsilon_{pq}` via Eq. :eq:`eq.eps`.
