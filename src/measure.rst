@@ -43,4 +43,4 @@ Some examples of measurement equipment, which support saving impedance measureme
 - `Room EQ Wizard (REW) <https://www.roomeqwizard.com>`_, using `Text Export <https://www.roomeqwizard.com/help/help_en-GB/html/file.html#filewritemeasured>`_ (software only)
 - `Dayton Audio DATS V3 <https://www.daytonaudio.com/product/1650/dats-v3-computer-based-audio-component-test-system>`_
 
-We recommend either a stepped-sine signal measurement such that all frequency points are measured under steady-state conditions, or a Farina sweep :cite:`farina:2000` with sufficiently long duation (10s) to resolve low frequencies. Note that REW and DATS V3 both use a sweep.
+We recommend either a stepped-sine signal measurement such that all frequency points are measured under steady-state conditions, or a Farina sweep :cite:`farina:2000` with sufficiently long duration (10s) to resolve low frequencies. Note that REW and DATS V3 both use a sweep.

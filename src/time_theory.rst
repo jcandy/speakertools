@@ -14,7 +14,7 @@ The problem and the solution
 
 A fundamental aspect of loudspeaker modeling is the ability to calculate the time-domain response of a driver in free air, or in a specified enclosure, given prior calculation of the frequency response.   Whereas the low-frequency electroacoustic theory of Benson, Thiele and Small  may be used to compute the steady-state pressure (SPL), velocity and excursion of a loudspeaker as a function of frequency, it remains to compute the time-domain impulse and step responses by inverse Laplace transform. This is done analytically by Benson :cite:`benson:1993` for simple closed boxes by decomposing the :math:`s`-domain response function into a sum of poles such that the Laplace transform can be inverted using exponential and related functions. For more complicated polynomial filters, numerical methods based on computing eigenvalues of the companion matrix are often used.  This approach does not generalize to non-polynomial response functions which inevitably require a numerical treatment, most often by discrete Fourier inversion methods.
 
-In these notes we describe a numerical approach to invert Laplace transforms required for computation of the time-domain response of loudspeakers.  The method is an adaptation of the method of Weideman :cite:`weideman:2007`, with suitable modifications to accomodate the analytic structure found in typical audio applications.  In comparison to the Fourier method, however, the Weideman method is significantly more efficient and accurate, yet it is straightforward to implement without the need for third-party mathematical libraries.  Thus it can be implemented in existing box-modeling software with little effort.
+In these notes we describe a numerical approach to invert Laplace transforms required for computation of the time-domain response of loudspeakers.  The method is an adaptation of the method of Weideman :cite:`weideman:2007`, with suitable modifications to accommodate the analytic structure found in typical audio applications.  In comparison to the Fourier method, however, the Weideman method is significantly more efficient and accurate, yet it is straightforward to implement without the need for third-party mathematical libraries.  Thus it can be implemented in existing box-modeling software with little effort.
 
 Response function representation
 --------------------------------
@@ -35,8 +35,8 @@ Here, :math:`X(s)` and :math:`F(s)` are the Laplace transforms of :math:`x(t)` a
 
 .. math::
    \begin{eqnarray}
-   X(s) & = & {\cal L}[x] \doteq \int_0^\infty dt \, e^{-st} x(t) \; , \\
-   F(s) & = & {\cal L}[f] \doteq \int_0^\infty dt \, e^{-st} f(t) \; .
+   X(s) & = & {\cal L}[x] \triangleq \int_0^\infty dt \, e^{-st} x(t) \; , \\
+   F(s) & = & {\cal L}[f] \triangleq \int_0^\infty dt \, e^{-st} f(t) \; .
    \end{eqnarray}
 
 
@@ -50,7 +50,7 @@ where the inverse is defined in terms of the Bromwich integral
 .. math::
    :label: eq.brom
 	
-   x(t) = {\cal L}^{-1} \left[ X \right] \doteq \frac{1}{2 \pi i} \int_{\sigma-i\infty}^{\sigma+i\infty} ds \, e^{st} X(s) \; .
+   x(t) = {\cal L}^{-1} \left[ X \right] \triangleq \frac{1}{2 \pi i} \int_{\sigma-i\infty}^{\sigma+i\infty} ds \, e^{st} X(s) \; .
 
 Here, :math:`\sigma` is chosen so that the contour lies to the right of all singularities of the integrand, as illustrated in :numref:`zplane`.  So long as the contour remains to the right of these singularities, the Cauchy integral theorem :cite:`greene:2006` guarantees that the value of the integral is independent of the path of integration.
 
@@ -91,7 +91,7 @@ The required inverse transform is thus
 
 The step and delta functions are related according to
 
-.. math:: \frac{dH}{dt} \doteq \dot{H} = \delta(t) \; ,
+.. math:: \frac{dH}{dt} \triangleq \dot{H} = \delta(t) \; ,
 
 where this formula is rigorously justified in terms of generalized functions :cite:`zemanian:1965`.  Note that, in this paper, a dot denotes a time derivative.
 
@@ -123,7 +123,7 @@ In the present paper, we choose to formulate the inverse problem using a dimensi
 	
    R(s) = \frac{s^2}{\displaystyle s^2 + \frac{s}{\qts} + 1 + \alpha} \; ,
 
-where :math:`\alpha \doteq \cms/\cmb` is the compliance ratio and :math:`\qts` is the driver total :math:`Q`.  In these expressions, :math:`\cms` is the mechanical compliance of the driver suspension, and :math:`\cmb` is the equivalent mechanical compliance of the interior of the closed box.  Further, :math:`1/\qts = 1/\qes + 1/\qms`, where :math:`\qes` and :math:`\qms` are the electrical and mechanical :math:`Q` factors of the driver.
+where :math:`\alpha \triangleq \cms/\cmb` is the compliance ratio and :math:`\qts` is the driver total :math:`Q`.  In these expressions, :math:`\cms` is the mechanical compliance of the driver suspension, and :math:`\cmb` is the equivalent mechanical compliance of the interior of the closed box.  Further, :math:`1/\qts = 1/\qes + 1/\qms`, where :math:`\qes` and :math:`\qms` are the electrical and mechanical :math:`Q` factors of the driver.
 
 For the special choice of :math:`\alpha=0` (i.e., the infinite baffle limit :math:`\cmb \rightarrow \infty`) and :math:`\qts = 0.5`, we can write the inversion integral for the step response as
 
@@ -206,7 +206,7 @@ The integration rule is trapezoidal
 
    \xs(t) = \frac{\Delta}{2\pi i} \sum_{k=-N}^N e^{s_k t} \frac{R(s_k)}{s_k} s^\prime(u_k) \; ,
 
-where :math:`s_k \doteq s(u_k)`, :math:`s^\prime = ds/du = 2\mu(i-u)` and :math:`u_k = k \Delta`. Although
+where :math:`s_k \triangleq s(u_k)`, :math:`s^\prime = ds/du = 2\mu(i-u)` and :math:`u_k = k \Delta`. Although
 Eq. :eq:`eq.trap` provides a discrete approximation to the integral for any values of :math:`\Delta` and :math:`\mu`, Weideman shows that the optimal parameters for the parabolic contour are
 
 .. math::
@@ -232,7 +232,7 @@ The new parameter :math:`h = \wpb / \ws`, where :math:`\wpb` is resonant frequen
 	
    \begin{eqnarray}
    h^2 & = & 1 , \; \alpha = \sqrt{2} \\
-   1/\qts & = & 2\cos(\pi/8)+2\cos(3\pi/8) \doteq 1/Q_4 \; .
+   1/\qts & = & 2\cos(\pi/8)+2\cos(3\pi/8) \triangleq 1/Q_4 \; .
    \end{eqnarray}
 
 Note that :math:`Q_4 \simeq 0.382683`. Then the poles occur on the unit circle at :math:`s_k = \exp(i\theta_k)`, where
@@ -261,7 +261,7 @@ Weideman's algorithm as follows: choose a value of :math:`N_0` to give desired i
 .. math::
    :label: eq.m1
 
-   \mu_c \doteq \max\left\{1,h\right\} \quad \text{and} \quad t_c \doteq \frac{\pi N_0}{12 \mu_c} \; .
+   \mu_c \triangleq \max\left\{1,h\right\} \quad \text{and} \quad t_c \triangleq \frac{\pi N_0}{12 \mu_c} \; .
 
 If :math:`t < t_c`, set
 
@@ -277,7 +277,7 @@ Otherwise, for :math:`t \geq t_c`, choose
 
    \mu = \mu_c \; , \quad N = \left\lceil N_0 \, \frac{t}{t_c} \, \right\rceil \; , \quad \Delta = \frac{3}{N} \; ,
 
-where :math:`\lceil \cdot \rceil` is the ceiling function (i.e., the smallest integer greater than or equal to the argument). In other words, when :math:`t < t_c`, we decrease :math:`\mu` at fixed :math:`N` to stay on the optimal contour.  When :math:`t > t_c`, we must increase :math:`N` to stay on the optimal contour for fixed :math:`\mu_c`. In practice, the method is conservative insofar as :math:`N` increases more rapidly than necessary to maintain accuracy.  For more complicated response functions, some method to determine the maximum height of the pole should be used, and that value should replace :math:`h` in the previous formulae. Since the minimum height of the parabolic contour in the left half-plane is :math:`y = 2 \mu`, the method above is conservative in that it ensures the contour is at least *double* the height of the highest pole.  To justify this choice, refer again to :numref:`butter` c.  The plot shows that not only will the choice :math:`\mu=1` fail when :math:`h > 2`, but that as the pole nears the contour, the integrand will vary rapidly, giving a large error in the trapezoidal integration scheme.  Thus, the choice :math:`\mu_c \doteq \max\left(1,h\right)` will ensure the contour is well-above the highest pole.
+where :math:`\lceil \cdot \rceil` is the ceiling function (i.e., the smallest integer greater than or equal to the argument). In other words, when :math:`t < t_c`, we decrease :math:`\mu` at fixed :math:`N` to stay on the optimal contour.  When :math:`t > t_c`, we must increase :math:`N` to stay on the optimal contour for fixed :math:`\mu_c`. In practice, the method is conservative insofar as :math:`N` increases more rapidly than necessary to maintain accuracy.  For more complicated response functions, some method to determine the maximum height of the pole should be used, and that value should replace :math:`h` in the previous formulae. Since the minimum height of the parabolic contour in the left half-plane is :math:`y = 2 \mu`, the method above is conservative in that it ensures the contour is at least *double* the height of the highest pole.  To justify this choice, refer again to :numref:`butter` c.  The plot shows that not only will the choice :math:`\mu=1` fail when :math:`h > 2`, but that as the pole nears the contour, the integrand will vary rapidly, giving a large error in the trapezoidal integration scheme.  Thus, the choice :math:`\mu_c \triangleq \max\left(1,h\right)` will ensure the contour is well-above the highest pole.
 
 Result with viscoelastic suspension
 -----------------------------------
@@ -311,7 +311,7 @@ Proceeding, the vented box response function can be modified to include the effe
 
 where :math:`c(s)` is an analytic function
 
-.. math:: c(s) \doteq 1-\beta \ln \frac{s}{s+2} \; ,
+.. math:: c(s) \triangleq 1-\beta \ln \frac{s}{s+2} \; ,
 
 that multiplies the static suspension compliance, :math:`\clog`.  In this example, we have chosen :math:`s_0=2`, corresponding to a transition frequency that is double the resonant frequency, but in practical cases other values may apply.  Note that when replacing the static compliance with the 3PC model, the meaning of :math:`\rms` will change in response to the frequency-dependent damping effect (originating from the imaginary part of the logarithm). We emphasize that due to the branch cut :math:`s \in [-2,0]`, the inverse transform of :math:`R(s)/s` *cannot* be computed by traditional transform tables or a straightforward integration. :numref:`fig.perror` shows the time-domain step response as computed using the method of the present paper. The solid and dashed curves, respectively, show the response with and without the creep function.  We can also give
 an indication of the resolution required to give acceptable results.  Also in :numref:`fig.perror` we plot the absolute inversion error as a function of the initial number of nodes, :math:`N_0`.  We remark that eventually all curves overlap at sufficiently large :math:`t` for which :math:`\mu = 1`. These results show that the present method can compute the inverse efficiently to nearly machine precision.  In fact, in generating :numref:`fig.perror`, it was sufficient to use :math:`N_0 \leq 32`.  This is surprising given the apparent computational complexity of the integral in Eq. :eq:`eq.direct`.
@@ -336,13 +336,13 @@ Here, the unknown functions are :math:`x(\tau)` and :math:`I(\tau)`, with :math:
 
 .. math:: {\cal L}^{-1} \left[  \frac{X(s)}{\clog} \frac{1}{1+\beta\ln(1+s_0/s)} \right] \; ,
 
-where :math:`\clog` is a new constant compliance, :math:`\beta` is a measure of the strength of the viscoelastic behaviour, and :math:`s_0` is a parameter that characterizes the transition frequency between viscoelastic :math:`(s < s_0)` and simple elastic :math:`(s \gg s_0)` behaviour.  Here, we have introduced the Laplace variable :math:`s` corresponding to the dimensionless time :math:`t = \ws \tau`, such that :math:`\ws \doteq 1/\sqrt{\mms \clog}` is the resonant frequency of the system in the limit :math:`\beta \rightarrow 0`. We can rearrange terms slightly to write the required inverse transform as
+where :math:`\clog` is a new constant compliance, :math:`\beta` is a measure of the strength of the viscoelastic behaviour, and :math:`s_0` is a parameter that characterizes the transition frequency between viscoelastic :math:`(s < s_0)` and simple elastic :math:`(s \gg s_0)` behaviour.  Here, we have introduced the Laplace variable :math:`s` corresponding to the dimensionless time :math:`t = \ws \tau`, such that :math:`\ws \triangleq 1/\sqrt{\mms \clog}` is the resonant frequency of the system in the limit :math:`\beta \rightarrow 0`. We can rearrange terms slightly to write the required inverse transform as
 
 .. math:: \frac{x(t)}{\clog} - \frac{\beta}{\clog} {\cal L}^{-1} \left[ G(s) X(s) \right] \; ,
 
 where
 
-.. math:: G(s) \doteq \frac{\ln(1+s_0/s)}{1+\beta \ln(1+s_0/s)} \; .
+.. math:: G(s) \triangleq \frac{\ln(1+s_0/s)}{1+\beta \ln(1+s_0/s)} \; .
 
 According to the convolution theorem, the time domain response can be written explicitly as
 
@@ -385,7 +385,7 @@ In Eq. (13) of a paper by Ritter and Agerkvist :cite:`ritter:2010`, the viscoela
 
 .. math:: \log_{10} \left[ \frac{i \omega \tau_\mathrm{min} e^{-i \beta}}{\sqrt{1+\omega^2\tau_\mathrm{min}^2}} \right] \; .
 
-In this expression, :math:`\beta=\tan^{-1}(\tau_\mathrm{min} \omega)` is the phase angle. We remark that Ritter's :math:`\beta` is unrelated to :math:`\beta` in these notes.  By defining :math:`s_0 \doteq 1/\tau_\mathrm{min}`, setting :math:`s=i\omega`, and expanding the complex exponential, we can rewrite this as
+In this expression, :math:`\beta=\tan^{-1}(\tau_\mathrm{min} \omega)` is the phase angle. We remark that Ritter's :math:`\beta` is unrelated to :math:`\beta` in these notes.  By defining :math:`s_0 \triangleq 1/\tau_\mathrm{min}`, setting :math:`s=i\omega`, and expanding the complex exponential, we can rewrite this as
 
 .. math:: \log_{10} \left[ \frac{(s/s_0)}{\sqrt{1-s^2/s_0^2}} \left( \cos\beta - i \sin\beta\right) \right] \; .
 

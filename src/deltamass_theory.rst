@@ -29,7 +29,7 @@ The measurement of total (electrical) impedance of an electro-dynamic transducer
 
    Z(\omega) = \ze + \zm = \ze + \frac{1}{i \omega \cmes + \fr(\omega)} \; .
 
-In this expression, :math:`\omega = 2 \pi f` is the *angular frequency* of oscillation and :math:`f` is the frequency in Hz. In the classical Thiele/Small approach, :math:`\fr(\omega)` contains the stiffness :math:`\lces \doteq \cms \bls` and damping :math:`\res \doteq \bls / \rms`, but in a general formulation this part may also include viscoelasticity.  As such :math:`\fr(\omega)` is a model-independent representation of the stiffness and damping.  The only condition which must be met in this formulation is that the moving mass :math:`\mms`, here represented by the electrical equivalent :math:`\cmes \doteq \mms / \bls`, is fully captured by :math:`\cmes` and does not contribute to :math:`\fr`.  This implies that radiation impedance (air load) is assumed to be constant in the frequency range of interest.  Note also that the expression :math:`\zm`, which is often used to denote the mechanical impedance (see for example Ref. :cite:`benson:1993`), refers in this work to the *motional impedance*, or the equivalent electrical impedance of the voice coil due to its motion in the magnetic field.
+In this expression, :math:`\omega = 2 \pi f` is the *angular frequency* of oscillation and :math:`f` is the frequency in Hz. In the classical Thiele/Small approach, :math:`\fr(\omega)` contains the stiffness :math:`\lces \triangleq \cms \bls` and damping :math:`\res \triangleq \bls / \rms`, but in a general formulation this part may also include viscoelasticity.  As such :math:`\fr(\omega)` is a model-independent representation of the stiffness and damping.  The only condition which must be met in this formulation is that the moving mass :math:`\mms`, here represented by the electrical equivalent :math:`\cmes \triangleq \mms / \bls`, is fully captured by :math:`\cmes` and does not contribute to :math:`\fr`.  This implies that radiation impedance (air load) is assumed to be constant in the frequency range of interest.  Note also that the expression :math:`\zm`, which is often used to denote the mechanical impedance (see for example Ref. :cite:`benson:1993`), refers in this work to the *motional impedance*, or the equivalent electrical impedance of the voice coil due to its motion in the magnetic field.
 
 In the dual-added-mass approach, three measurements of driver impedance are conducted:
 
@@ -73,8 +73,8 @@ With this in mind, it is possible to extract the pure motional impedance.  First
 
 .. math::
    \begin{align}
-   \Delta Z_1 \doteq & Z^{(0)} - Z^{(1)} = \zm^{(0)} - \zm^{(1)} = \frac{i\omega\Delta C_1}{(i\omega C+\fr)(i\omega C_1+\fr)} \; ,\\
-   \Delta Z_2 \doteq & Z^{(0)} - Z^{(2)} = \zm^{(0)} - \zm^{(2)} = \frac{i\omega\Delta C_2}{(i\omega C+\fr)(i\omega C_2+\fr)} \; .
+   \Delta Z_1 \triangleq & Z^{(0)} - Z^{(1)} = \zm^{(0)} - \zm^{(1)} = \frac{i\omega\Delta C_1}{(i\omega C+\fr)(i\omega C_1+\fr)} \; ,\\
+   \Delta Z_2 \triangleq & Z^{(0)} - Z^{(2)} = \zm^{(0)} - \zm^{(2)} = \frac{i\omega\Delta C_2}{(i\omega C+\fr)(i\omega C_2+\fr)} \; .
    \end{align}
 
 In principle, each :math:`\Delta Z` contains no component of electrical impedance, :math:`\ze`, because it is unchanged between measurements.  Therefore each :math:`\Delta Z` contains contributions only from motional impedance.  These formulae depend only on measurement data and are independent of fitting to a given compliance model.  In terms of the unweighted motional impedance :math:`\zm^{(0)}` (which we write as :math:`\zm` for brevity) we have
@@ -140,7 +140,7 @@ We will now describe a method to deduce the moving mass :math:`\mms`, along with
 .. math::
    :label: eq.glog
 
-   g(\omega) \doteq \frac{1}{\rlog} + \frac{\sigma(\omega)}{i \omega \llog}\; ,
+   g(\omega) \triangleq \frac{1}{\rlog} + \frac{\sigma(\omega)}{i \omega \llog}\; ,
 
 where :math:`\sigma` is a complex factor that describes viscoelastic creep and frequency-dependent damping
 
@@ -158,11 +158,11 @@ where for brevity we have defined :math:`a=\cmes`, :math:`b=1/\rlog` and :math:`
 .. math::
    :label: eq.errorm
 
-   \varepsilon_\beta(a,b,c) \doteq \sum_j \left[ \left( b - \frac{\sigma_I(\omega)}{\omega_j} \, c - \mathrm{Re}\,Y_j \right)^2 + \left( \omega_j a + \frac{\sigma_R(\omega_j)}{\omega_j} \, c - \mathrm{Im}\, Y_j \right)^2 \right] \; ,
+   \varepsilon_\beta(a,b,c) \triangleq \sum_j \left[ \left( b - \frac{\sigma_I(\omega)}{\omega_j} \, c - \mathrm{Re}\,Y_j \right)^2 + \left( \omega_j a + \frac{\sigma_R(\omega_j)}{\omega_j} \, c - \mathrm{Im}\, Y_j \right)^2 \right] \; ,
 
 where
 
-.. math:: Y_j \doteq \frac{1}{(\zms)_j}
+.. math:: Y_j \triangleq \frac{1}{(\zms)_j}
 
 is the motional admittance.  Here, :math:`\sigma_R = \mathrm{Re}\,\sigma` and :math:`\sigma_I = \mathrm{Im} \,\sigma`. The summation variable :math:`j` denotes a suitable subdomain of the frequency range. For the analysis in the present paper, we choose values of :math:`j` for which :math:`0.8 \, \ws < \omega_j < 1.2 \, \ws`. Taking the partial derivatives of :math:`\varepsilon` with respect to :math:`a,b,c` yields the following linear equations for the minimum norm of the residual:
 
@@ -198,7 +198,7 @@ Equivalent :math:`\res` and :math:`\lces`
 
 It is of some interest to determine equivalent values for :math:`\res` and :math:`\lces` in the LOG model that can be compared with traditional Thiele-Small parameters. Although the correspondence is not unique, a simple method approach is to set
 
-.. math:: g(\ws) \doteq \frac{1}{\res} + \frac{1}{i\ws \lces} \; .
+.. math:: g(\ws) \triangleq \frac{1}{\res} + \frac{1}{i\ws \lces} \; .
 
 Then, some algebra shows that
 

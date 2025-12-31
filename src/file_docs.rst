@@ -28,7 +28,7 @@ Speakerbench reads and creates a number of file formats which are summarized in 
 Speakerbench does not save any data on the server. Instead, data is handled in your browser and stored in `JSON format <https://en.wikipedia.org/wiki/JSON>`_. For typical usage there is no need to hand-edit JSON files as the usage will be seamless and hidden from the user.
 
 .. note::
-   For techical reasons, Speakerbench replaces spaces in JSON strings with an underscore. Handling of the replacement will be hidden from the user.
+   For technical reasons, Speakerbench replaces spaces in JSON strings with an underscore. Handling of the replacement will be hidden from the user.
 
 ZMA File
 --------
@@ -50,7 +50,7 @@ For input of impedance measurements, Speakerbench requires files in the `ZMA fil
 The header section is optional and may be up to 256 lines long. The input data must use a dot (.) as the decimal separator with **columns separated by spaces** not commas or tabs. Frequencies (rows) must be listed in increasing order. The actual data in the example above has been significantly shortened for brevity and should in practice contain several hundred data points. ZMA files must contain ASCII characters only.
 
 .. warning::
-   Special characters, like a degree symbol (°), are not allowed, not even in the header since Speakerbench import will choke on such data and the data import will fail.
+   Special characters, like a degree symbol (°), are not allowed, not even in the header since Speakerbench import will fail on such data.
 
 When importing ZMA files into Speakerbench to collect measured impedance data, all three measurements must contain the same number of datapoints and ideally they should be at the same measurement frequencies (although minor deviations in frequency are acceptable without loss of accuracy). It is not recommended  to reduce the frequency range for some of the measurements. Note that ZMA upload is also allowed in the box modeler to compare external/measured data to the Speakerbench modeled impedance.
 
@@ -293,7 +293,7 @@ Speakerbench allows you to download your box tuning parameters into a TUNE-file,
     "lxlz": 1,
     "lylz": 1,
     "ydrv": 0.5,
-    "yprt": 0.2
+    "yprt": 0.2,
     "filt": false,
     "ls": "0",
     "rs": "0",

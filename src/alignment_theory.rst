@@ -38,7 +38,7 @@ To facilitate choosing the box volume and vent tuning, Speakerbench will propose
 	
    G_\mathrm{H}(s) = \frac{s^4}{s^4 + a_1 s^3 + a_2 s^2 + a_3 s + 1} \; ,
 
-where :math:`s = j \omega / \omega_0` is the dimensionless complex frequency variable normalized to :math:`\omega_0 \doteq \sqrt{\wb\ws} = \sqrt{h} \, \ws`. In the first part of his article series, Small :cite:`small:1973c` (Eqs. 22-24) writes the lossy box filter coefficients as
+where :math:`s = j \omega / \omega_0` is the dimensionless complex frequency variable normalized to :math:`\omega_0 \triangleq \sqrt{\wb\ws} = \sqrt{h} \, \ws`. In the first part of his article series, Small :cite:`small:1973c` (Eqs. 22-24) writes the lossy box filter coefficients as
 
 .. math::
    :label: eq.a
@@ -313,7 +313,7 @@ Comparison
 
    The normalized amplitude response :math:`|G_\mathrm{H}|` (left) and group delay :math:`\omega_0 \tau_g = -d\phi/d\omega` (right) of the five discrete alignments.
 
-Note: These graphs are **not** normalized relative to the driver's resonance frequency, but :math:`\omega_0 \doteq \sqrt{\wpb \, \ws} = \sqrt{h} \, \ws`. Below, we tabulate each of the five discrete alignments as a function of the enclosure loss :math:`\ql`. The python source code used is also shown.
+Note: These graphs are **not** normalized relative to the driver's resonance frequency, but :math:`\omega_0 \triangleq \sqrt{\wpb \, \ws} = \sqrt{h} \, \ws`. Below, we tabulate each of the five discrete alignments as a function of the enclosure loss :math:`\ql`. The python source code used is also shown.
 
 
 .. collapse:: CLICK HERE to expand discrete alignment source code
@@ -410,7 +410,7 @@ The generalized quasi-alignment method was first presented in Voice Coil Magazin
 Alignment families
 ------------------
 
-Beyond discrete aligments, for which :math:`(a_1,a_2,a_3)` have explicit numerical values, well-known **alignment families** exist for which :math:`(a_1,a_2,a_3)` depend upon a free parameter. The term **alignment family** is derived from the mathematical definition of a `family of response curves <https://en.wikipedia.org/wiki/Family_of_curves>`_.
+Beyond discrete alignments, for which :math:`(a_1,a_2,a_3)` have explicit numerical values, well-known **alignment families** exist for which :math:`(a_1,a_2,a_3)` depend upon a free parameter. The term **alignment family** is derived from the mathematical definition of a `family of response curves <https://en.wikipedia.org/wiki/Family_of_curves>`_.
 An alignment family allows one to cover a range of driver :math:`\qts` values rather than just a single value. The B4Q quasi-alignment described above is in the loudspeaker industry considered an alignment family. Small and others refer to this family as QB3 (Table V in :cite:`thiele:1971b`, appendix 1 in :cite:`small:1973c`).
 
 Boombox BB4
@@ -528,9 +528,9 @@ Second-order alignments
 One can take the limit :math:`h \rightarrow 0` in :eq:`eq.a` to recover the limit of a closed box. However, there is a subtlety related to :math:`\ql` which is apparent from the definition
 
 .. math::
-   \ql \doteq \frac{h}{\alpha} \rml \cms \, \ws \; .
+   \ql \triangleq \frac{h}{\alpha} \rml \cms \, \ws \; .
 
-This definition is unsuitable for the case of small :math:`h` and, arguably, unsuitable in general. To properly retain loss in a sealed enclosure we introduce :math:`\qlc` via :math:`\ql \doteq h \, \qlc`. After some algebra, and using :math:`\qlc` in place of :math:`\ql`, we can derive the 3rd-order leaky-sealed-box response
+This definition is unsuitable for the case of small :math:`h` and, arguably, unsuitable in general. To properly retain loss in a sealed enclosure we introduce :math:`\qlc` via :math:`\ql \triangleq h \, \qlc`. After some algebra, and using :math:`\qlc` in place of :math:`\ql`, we can derive the 3rd-order leaky-sealed-box response
 
 .. math::
    \frac{u^3}{\displaystyle u^3
@@ -555,8 +555,8 @@ Simulation of a closed box in Speakerbench is triggered by zeroing the port tuni
 where
 
 .. math::
-   \qtc & \doteq \sqrt{\alpha+1} \, \qts \; , \\
-   \wcb & \doteq \sqrt{\alpha+1} \, \ws \; \\
+   \qtc & \triangleq \sqrt{\alpha+1} \, \qts \; , \\
+   \wcb & \triangleq \sqrt{\alpha+1} \, \ws \; \\
 
 where :math:`s = i \omega/\wcb`. A closed box system has one free design parameter :math:`\alpha = \cms / \cmb = \vas / \vb`. In the Speakerbench alignment chart, there are two dots shown at :math:`h = 0`. These represent the second-order Bessel (:math:`\qtc = 1 / \sqrt{3} \simeq 0.577`) and Butterworth (:math:`\qtc = 1 / \sqrt{2} \simeq 0.707`) responses, respectively. A critically damped 2\ :sup:`nd`-order closed box would require :math:`\qtc = 0.5`.
 
