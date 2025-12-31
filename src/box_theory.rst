@@ -4,7 +4,7 @@
 Speakerbench Box Theory
 =======================
 
-Below we review selected elements of the driver/enclosure theory used in Speakerbench. We highlight those features that are not well-covered in the literature. At the end of this page we give a brief summary of the model options available in the Speakerbench app. 
+Below we review selected elements of the driver/enclosure theory used in Speakerbench. We highlight those features that are not well-covered in the literature. At the end of this page we give a brief summary of the model options available in the Speakerbench app.
 
 History of enclosure models
 ---------------------------
@@ -50,7 +50,7 @@ The equivalent electrical circuit for the driver in free air is given in :numref
 
    Speakerbench parameter results for the SEAS L16RNX. Advanced parameters are shown in blue. Reduced TS model, derived from the advanced fit, are shown in pink.
 
-   
+
 BOX: T-network (Beranek) enclosure model
 ----------------------------------------
 
@@ -94,9 +94,9 @@ The indices :math:`p=(1,2)` correspond to the driver and port
 .. math::
    \begin{array}{cll}
    p = 1 & \ap = \text{Port radius}   & \yp = \text{Port height} \\
-   p = 2 & \ad = \text{Driver radius} & \yd = \text{Driver height} 
+   p = 2 & \ad = \text{Driver radius} & \yd = \text{Driver height}
    \end{array}
-   
+
 We have chosen simple normalizing acoustic compliance and mass,
 
 .. math::
@@ -118,8 +118,8 @@ where :math:`\sb = L_x \, L_y` is the baffle area of the enclosure (inside the b
    .. image:: images/box/box_q.png
 
    Comparison of T-network circuit for classic (left) model versus T-network circuit for Beranek (right) model.
-	
-In the model shown in :numref:`fig.box`, we have retained the empirical box absorption which can be equivalently written as an absorption
+
+In the model shown in :numref:`fig.box`, we have retained the empirical box absorption which can be equivalently written as an absorption Q
 
 .. math::
    \qa \triangleq \frac{1}{\ws \cab \rab} \; .
@@ -143,11 +143,11 @@ Thus, we can define :math:`B` in terms of :math:`\epsilon_{11}` as
 
 .. math::
    :label: eq.bfactor
-	   
+	
    B = \pi \epsilon_{11} \frac{L_z \, \ad}{L_x \, L_y} \; .
 
 The mass loading factor was discussed at length by Leach :cite:`leach:1989`, who was unaware of its theoretical basis. Note that Eq. :eq:`eq.bfactor` generalizes the result in :cite:`beranek:2019` to arbitrary frontal cross-section and driver height.
-   
+
 
 PORT: T-network port model
 --------------------------
