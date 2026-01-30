@@ -1,0 +1,65 @@
+#!/bin/bash
+#=============================================================
+# sb
+#
+# PURPOSE:
+#  Top-level script controlling Speakerbench utilities.
+#=============================================================
+
+#=============================================================
+# Define directories
+#
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+UTIL_DIR=$SCRIPT_DIR/util
+#=============================================================
+
+#=============================================================
+# Syntax validity check and help message
+#
+n=$#
+
+if [ $n -eq 0 ]
+then
+  echo
+  echo "Usage:   sb [options]"
+  echo
+  echo "UTILITIES (call without further args for help)"
+  echo
+  echo "         --ext"
+  echo "         Extract frd/zma data from PLT file"
+  echo
+  echo "         --plot"
+  echo "         Plot frd/zma data"
+  echo
+  echo "         --circuit"
+  echo "         Generate LaTeX circuit diagrams"
+  echo
+  exit 1
+fi
+#=============================================================
+
+#=============================================================
+# Parse command line options
+#
+if [ $# -le 1 ]; then
+    # No extra args means get help
+    uarg="-h"
+else
+    uarg="${@:2}"
+fi
+
+while [ $# -gt 0 ] ; do
+  case "$1" in
+
+  --ext) python $UTIL_DIR/sb_ext.py $uarg ; exit 0 ;;
+
+  --plot) python $UTIL_DIR/sb_plot.py $uarg ; exit 0 ;;
+
+  --circuit) python $UTIL_DIR/sb_circuit.py $uarg ; exit 0 ;;
+
+  *) echo "ERROR: (sb) Unknown option $1." ; exit 1 ;;
+
+  esac
+  shift
+done
+#=============================================================

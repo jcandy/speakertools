@@ -9,15 +9,15 @@ import textwrap
 def extract(pltfile,rootname):
 
    import datetime
-   
+
    x = format(datetime.datetime.now(),'%Y-%m-%d %H:%M:%S')
 
    hstr = ''
    hstr += 'Speakerbench Extract | '+x+'\n'
-   
+
    with open(pltfile) as data:
       dict = json.load(data)
-   
+
    f  = np.array(dict['f'])
 
    # frd
@@ -30,7 +30,7 @@ def extract(pltfile,rootname):
    x = np.c_[f,u,v*180/np.pi]
    outfile = rootname+'.frd'
    np.savetxt(outfile,x,fmt='%.8e',header=hstr)
-   print('INFO: (sbext) Extracted '+outfile)
+   print('INFO: (sb --ext) Extracted '+outfile)
 
    # zma
    z = np.array(dict['zr'])+1j*np.array(dict['zi'])
@@ -42,9 +42,9 @@ def extract(pltfile,rootname):
    x = np.c_[f,u,v*180/np.pi]
    outfile = rootname+'.zma'
    np.savetxt(outfile,x,fmt='%.8e',header=hstr)
-   print('INFO: (sbext) Extracted '+outfile)
-    
-   return 
+   print('INFO: (sb --ext) Extracted '+outfile)
+
+   return
 
 def opts():
 
@@ -56,7 +56,7 @@ def opts():
 
     parser=argparse.ArgumentParser(
        formatter_class=argparse.RawTextHelpFormatter,
-       prog="sbext",
+       prog="sb --ext",
        description="Speakerbench Extract",
        epilog=textwrap.dedent(mytext))
 
@@ -72,13 +72,13 @@ def opts():
                         default='plt')
 
     args=parser.parse_args()
-    
+
     return args.i,args.r
 
 pltfile,rootfile = opts()
 
 if pltfile == 'null':
-    print('ERROR: (sbext) No PLT file specified.')
+    print('ERROR: (sb --ext) No PLT file specified.')
     sys.exit()
 
 
