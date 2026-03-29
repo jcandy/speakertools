@@ -45,12 +45,47 @@ def make_draw(x1, y1, comp, x2, y2):
         return r"\draw ({},{}) to[{}] ({},{});".format(x1, y1, comp, x2, y2)
 
 
+def grid_internals(config):
+    """Generate LaTeX to draw just the grid with line labels."""
+
+    nx, ny = config['grid']['nx'], config['grid']['ny']
+    widths = config['widths']
+
+    x = np.zeros(nx)
+    for i in range(nx-1):
+        x[i+1] = x[i] + widths['x'][i]
+
+    y = np.zeros(ny)
+    for j in range(ny-1):
+        y[j+1] = y[j] + widths['y'][j]
+
+    itext = ""
+    # Draw faint horizontal lines with labels (x, i, j)
+    for j in range(ny):
+        for i in range(nx-1):
+            itext += r"\draw[gray!30] ({},{}) -- ({},{});".format(x[i], y[j], x[i+1], y[j])
+            midx = (x[i] + x[i+1]) / 2
+            itext += r"\node[above,scale=0.35,font=\sffamily] at ({},{}) {{x,{},{}}};".format(midx, y[j], i, j)
+    # Draw faint vertical lines with labels (y, i, j)
+    for i in range(nx):
+        for j in range(ny-1):
+            itext += r"\draw[gray!30] ({},{}) -- ({},{});".format(x[i], y[j], x[i], y[j+1])
+            midy = (y[j] + y[j+1]) / 2
+            itext += r"\node[right,scale=0.35,font=\sffamily] at ({},{}) {{y,{},{}}};".format(x[i], midy, i, j)
+    # Draw nodes at each grid intersection
+    for i in range(nx):
+        for j in range(ny):
+            itext += r"\node[circle,fill,inner sep=0.8pt] at ({},{}) {{}};".format(x[i], y[j])
+
+    return itext
+
+
 def internals(config):
 
     nx, ny = config['grid']['nx'], config['grid']['ny']
-    lines = config['lines']
+    lines = config.get('lines', {})
     widths = config['widths']
-    components = config['components']
+    components = config.get('components', [])
 
     ax = np.empty([nx-1, ny], dtype=object)
     ax[:, :] = 'null'
@@ -113,9 +148,9 @@ def main():
                         const='LIST',
                         metavar='NAME')
 
-    parser.add_argument('-pdf',
+    parser.add_argument('-nopdf',
                         action='store_true',
-                        help='Generate PDF using pdflatex')
+                        help='Skip PDF generation (only output .tex)')
 
     parser.add_argument('-border',
                         help='Preview border in pt (default: 5)',
@@ -132,7 +167,43 @@ def main():
                         type=float,
                         default=1.2)
 
+    parser.add_argument('-grid',
+                        action='store_true',
+                        help='Draw only the grid with line labels (for design)')
+
+    parser.add_argument('-nx',
+                        help='Generate JSON with nx grid points',
+                        type=int)
+
+    parser.add_argument('-ny',
+                        help='Generate JSON with ny grid points',
+                        type=int)
+
+    parser.add_argument('-o',
+                        help='Output filename for generated JSON (default: grid.json)',
+                        default='grid.json',
+                        metavar='JSONFILE')
+
     args = parser.parse_args()
+
+    # Handle -nx/-ny to generate a new JSON file
+    if args.nx is not None and args.ny is not None:
+        config = {
+            "grid": {"nx": args.nx, "ny": args.ny},
+            "widths": {
+                "x": [1.0] * (args.nx - 1),
+                "y": [1.0] * (args.ny - 1)
+            },
+            "lines": {},
+            "components": []
+        }
+        with open(args.o, 'w') as f:
+            json.dump(config, f, indent=4)
+        print('INFO: (sb --circuit) Generated {}'.format(args.o))
+        sys.exit(0)
+    elif args.nx is not None or args.ny is not None:
+        print('ERROR: (sb --circuit) Must specify both -nx and -ny')
+        sys.exit(1)
 
     # Determine examples directory
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -165,7 +236,10 @@ def main():
     with open(input_file) as f:
         config = json.load(f)
 
-    itext = internals(config)
+    if args.grid:
+        itext = grid_internals(config)
+    else:
+        itext = internals(config)
     latex_content = wrap_latex(itext, args.border, args.bipole, args.scale)
 
     output_file = input_file.rsplit('.', 1)[0] + '.tex'
@@ -174,7 +248,7 @@ def main():
 
     print('INFO: (sb --circuit) Generated {}'.format(output_file))
 
-    if args.pdf:
+    if not args.nopdf:
         subprocess.run(['pdflatex', output_file])
         print('INFO: (sb --circuit) Generated {}'.format(output_file.rsplit('.', 1)[0] + '.pdf'))
 
