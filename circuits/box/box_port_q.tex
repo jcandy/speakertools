@@ -1,0 +1,33 @@
+\documentclass[tikz,crop]{standalone}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{siunitx}
+\usepackage{amsfonts}
+
+\begin{document}
+
+\ctikzset{bipoles/length=0.85cm}
+\begin{circuitikz}[scale=1.2]
+% BOX
+\draw (0,3) to[L, l^=$(\epsilon_{11}-\epsilon_{12})M_A$, o-o] (2,3) to[L, l^=$(\epsilon_{22}-\epsilon_{12})M_A$, o-o] (4,3);
+\draw (2,3) to[L, l^=$\epsilon_{12} M_A$, o-o] (2,2);
+\draw (2,2) to[R, l^=$R^*_\mathrm{A}$, o-o] (2,1) to[C,l^=$C^*_\mathrm{A}$,o-o] (2,0);
+\draw (0,0) to[short,o-o] (2,0) to[short,o-o] (4,0);
+%\draw (1.4,2) to[short,o-o] (2,2) to[short,o-o] (2.6,2);
+% PORT
+\draw (4,3) to[L, l^=$M_P/2$, o-o] (6,3) to[L, l^=$M_P/2$, o-o] (8,3);
+\draw (6,3) to[L, l^=$-M_P/6$, o-o] (6,1.5) to [C,l^=$C_P$] (6,0);
+\draw (4,0) to[short,o-o] (6,0) to[short,o-o] (8,0);
+% RAD
+\draw (8,3) to[short,o-o] (9,3);
+\draw (9,3) to[L, l^=$M_\mathrm{rad}$, o-o] (9,0);
+\draw (8,0) to[short,o-o] (9,0);
+% DIVIDERS
+\draw[dashed] (4,4) to (4,-1);
+\draw[dashed] (8,4) to (8,-1);
+% LABELS
+\path (2,-0.5) node{BOX};
+\path (6,-0.5) node{PORT};
+\path (9,-0.5) node{Radiation};
+\end{circuitikz}
+\end{document}

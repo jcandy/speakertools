@@ -1,0 +1,19 @@
+\documentclass[crop,tikz]{standalone}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{siunitx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\begin{document}
+
+\ctikzset{bipoles/length=0.85cm}
+\begin{circuitikz}[scale=1.2]
+\draw (0,0) to [sV=$F_g$, i=$u_\mathrm{D}$,o-o] (0,2); 
+% ZE
+\draw (0,2) to[generic, l^=$\mathbb{Z}_\mathrm{E}$, o-o] (2,2);
+% ZM
+\draw (2,2) to[generic,l^=$\mathbb{Z}_\mathrm{mot}$,o-o] (2,0) to[short,o-o] (0,0);
+\end{circuitikz}
+
+\end{document}

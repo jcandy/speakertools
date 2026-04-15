@@ -1,0 +1,36 @@
+\documentclass[tikz,crop]{standalone}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{siunitx}
+\usepackage{amsfonts}
+
+\begin{document}
+
+\newcommand\re{R_\mathrm{E}}
+\newcommand\leb{L_\mathrm{EB}}
+\newcommand\rss{R_\mathrm{SS}}
+\newcommand\ke{K_\mathrm{E}}
+\newcommand\lee{L_\mathrm{E}}
+\newcommand\cmes{C_\mathrm{MES}}
+\newcommand\res{R_\mathrm{ES}}
+\newcommand\lces{L_\mathrm{CES}}
+\newcommand\gles{\Lambda_\mathrm{ES}}
+\newcommand\bls{(B\ell)^2}
+\newcommand\zmmot{\mathbb{Z}_{\rm mot}}
+
+\ctikzset{bipoles/length=0.85cm}
+\begin{circuitikz}[scale=1.2]
+\draw (0,0) to [sV=$e_g$, i=$i_\mathrm{vc}$,o-o] (0,2); 
+% Re, Leb and Rss 
+\draw (0,2) to[R, l^=$\re$, o-o] (1.5,2) to[L, l^=$\leb$, o-o] (3,2) to[R,l^=$\rss$, o-o] (4.5,2);
+% lower Ke branch
+\draw (3,2) to[short,o-o] (3,1) to[generic,l_=$\ke$,o-o] (4.5,1) to[short,o-o] (4.5,2);
+% Upper Le branch
+\draw (3,2) to[short,o-o] (3,3) to[L,l^=$\lee$,o-o] (4.5,3) to[short,o-o] (4.5,2);
+% Electrical return
+\draw (0,0) to[short,o-o] (5.5,0);
+% Re, Leb and Rss
+\draw (4.5,2) to[short,o-o] (5.5,2) to[generic, l=\textcolor{blue}{$\bls/\zmmot$}, o-o] (5.5,0);
+\end{circuitikz}
+
+\end{document}
